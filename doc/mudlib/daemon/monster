@@ -1,0 +1,7 @@
+□ MONSTER -- 怪物的设定
+
+void setup_monster(object ob)
+设定怪物的各项基本资料. 注: 怪物没有 default limb. 要自己设.
+
+Elon@ES2
+drafted: 07-13-95

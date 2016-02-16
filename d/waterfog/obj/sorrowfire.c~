@@ -1,0 +1,29 @@
+
+*** Modified files in JOE when it aborted on Fri Jul 28 14:25:00 1995
+*** JOE was aborted by signal 1
+
+*** File 'sorrowfire.c'
+// sorrowfire.c
+
+#include <weapon.h>
+
+inherit SWORD;
+
+void create()
+{
+	set_name("焦殇剑", ({ "sword of sorrowfire", "sword", "sorrowfire" }) );
+	set_weight(15000);
+	if( clonep() )
+		set_default_object(__FILE__);
+	else {
+		set("unit", "把");
+		set("long", "
+		set("value", 2800);
+		set("material", "iron");
+		set("wield_msg", "$N拿出一条黑黝黝的$n握在手中。\n");
+		set("unwield_msg", "$N放下手中的$n。\n");
+	}
+
+	init_staff(54);
+	setup();
+}

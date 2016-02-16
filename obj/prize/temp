@@ -1,0 +1,28 @@
+// black_vest.c
+
+#include <armor.h>
+
+inherit CLOTH;
+
+void create()
+{
+	set_name("堵捣璉み", ({ "black vest", "vest" }) );
+	set_weight(6000);
+	if( clonep() )
+		set_default_object(__FILE__);
+	else {
+		set("long",
+			"硂ン堵捣璉み癬ㄓ堵翶翶ぃ或癬泊τゑ︾狝\n"
+			"ㄇ灿ウ借獶獶┉玱ぃ琌ぐ或狥﹁\n"
+			"麓Θ\n");
+		set("unit", "ン");
+		set("value", 14000);
+		set("material", "blacksilk");
+		set("armor_prop/armor", 30);
+		set("armor_prop/armor_vs_force", 70);
+		set("armor_prop/attack", -5);
+	}
+	setup();
+}
+
+int query_autoload() { return 1; }

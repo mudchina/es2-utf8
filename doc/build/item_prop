@@ -1,0 +1,30 @@
+□ 物品属性
+
+"name"								(string)
+
+    物品的中文名称。
+
+"id"								(string)
+
+    物品的英文名称。
+
+"long"								(string)
+
+    物品的详细描述。
+
+"value"								(int)
+
+    物品的价值，单位是「钱」(coin)。
+
+"unit"								(string)
+
+    物品的单位，如：个、把、枝.....
+
+"no_get"							(int)
+
+    表示物品是否可被捡起来。
+
+"no_drop"							(int string)
+
+    表示物品是否可被丢弃，如果型态是 string, 则当有人企图丢弃这个物品时
+    会将该字串用 notify_fail 传回去。

@@ -1,0 +1,39 @@
+□ 定义在人物物件中的附加函数(apply functions)
+
+void defeated_enemy(object victim)
+
+当这名人物打昏一个敌人的时候会呼叫这个附加函数，victim 即是被打昏的的
+敌人物件。
+呼叫者: COMBAT_D
+有预设定义此一函数的系统物件: none
+
+void killed_enemy(object victim)
+
+当这名人物杀死一个敌人的时候会呼叫这个附加函数，victim 是即将要被杀死
+的敌人物件。
+呼叫者: COMBAT_D
+有预设定义此一函数的系统物件: none
+
+int accept_fight(object who)
+
+当有其他生物对这个人物下 fight 指令的时候，会呼叫这个附加函数，who 是
+下 fight 指令的生物，如果是对 player 下，"fight" 指令会直接显示讯息徵
+求被挑战一方的同意，如果是对 NPC 下这个指令，则当这个附加函数传回 1
+时才会接受挑战，否则显示某某不想跟你较量的讯息。
+呼叫者: "fight" 指令
+有预设定义此一函数的系统物件: NPC
+
+int accept_object(object who, object item)
+
+当有人用 give 指令给这个非玩家人物东西时，会呼叫这个附加函数，传回 1
+表示愿意接受这个东西，传回 0 表示不接受。
+呼叫者: "give" 指令
+有预设定义此一函数的系统物件: none
+
+void recruit_apprentice(objct apprentice)
+
+当一个人物收了另一个人物做弟子时会呼叫这个附加函数，你可以在这个函数里
+修改弟子的 rank 或其他东西。
+呼叫者: "apprentice" 指令
+有预设定义此一函数的系统物件: none
+

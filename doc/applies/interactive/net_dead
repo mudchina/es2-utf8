@@ -1,0 +1,23 @@
+
+     nnnneeeetttt____nnnneeeeaaaadddd((((4444))))            MMMMuuuuddddOOOOSSSS ((((5555 SSSSeeeepppp 1111999999994444))))             nnnneeeetttt____nnnneeeeaaaadddd((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          net_dead - called by the MudOS driver when an interactive
+          object drops its connection
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          void net_dead( void );
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          If an interactive object (i.e. the player object) suddenly
+          loses its connection (i.e. it goes "net dead"), then the
+          driver calls this function on that object giving it a chance
+          to clean up, notify its environment etc.  Be aware that
+          functions that depend on the object being interactive will
+          not work as expected.
+
+     AAAAUUUUTTTTHHHHOOOORRRR
+          Wayfarer@Portals
+
+     Page 1                                          (printed 3/16/95)
+

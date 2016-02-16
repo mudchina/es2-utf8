@@ -1,0 +1,15 @@
+□ 武器种类的定义档
+ 
+#include <weapon.h>
+ 
+inherit EQUIP;
+ 
+varargs void init_xxxx(int damage, int flag)
+设定该样武器的伤害值及 flag. 其中 xxxx 为武器种类.
+
+void setup()
+完成武器设定. 设入该样武器所需要的技能名称, 动作及所使用的动词.
+最後呼叫所继承的物件的 setup() 函数.
+
+Elon@ES2 
+drafted: 07-06-95

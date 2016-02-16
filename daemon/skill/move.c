@@ -1,0 +1,3 @@
+// move.c
+
+inherit SKILL;

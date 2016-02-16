@@ -1,0 +1,12 @@
+/adm/daemons/securityd
+/adm/daemons/virtuald
+/adm/daemons/logind
+/adm/daemons/cmd_d
+/adm/daemons/chinesed
+/adm/daemons/emoted
+/adm/daemons/aliasd
+/adm/daemons/fingerd
+/adm/daemons/channeld
+/adm/daemons/natured
+#/adm/daemons/network/dns_master
+/adm/daemons/ftpd

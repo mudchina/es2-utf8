@@ -1,0 +1,19 @@
+□ RANKD
+
+string query_rank(object ob) 
+传回物件的 rank
+
+string query_respect(object ob)
+传回对物件的尊称.
+
+string query_rude(object ob)
+传回对物件粗鲁的称呼.
+
+string query_self(object ob)
+传回自称
+
+string query_self_rude(object ob)
+传回粗鲁的自称.
+
+Elon@ES2
+drafted: 07-13-95

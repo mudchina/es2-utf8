@@ -1,0 +1,17 @@
+□ CHAR_D (人物精灵)
+
+这个精灵物件用来对人物物件(包括玩家与 NPC)的 setup() 做最後的系统性设定，以
+及处理一些和人物标准物件(CHAR)相关的琐事。
+
+void setup_char(object ob)
+
+  标准人物物件在执行玩 setup() 之後会呼叫这个系统人物设定函数，以对人物的
+  设定做最後的检查或补充。
+
+varargs object make_corpse(object victim, object killer)
+
+  人物的死亡程序之一，由 F_DAMAGE 中的 die() 呼叫这个函数以造出人物的□体
+  ，由於 killer 不一定存在( 死於中毒、重伤等 )，因此第二个参数可有可无。
+
+Elon@ES2 drafted: 07-13-95
+Annihilator (07/28/95)

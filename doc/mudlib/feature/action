@@ -1,0 +1,29 @@
+□ ACTION
+
+varargs void start_busy(mixed new_busy, mixed new_interrupt)
+
+nomask int is_busy() { return busy != 0; }
+判定使用者是否正忙著做某件事.
+
+void continue_action()
+如果战斗中使用者有 busy 著个 flag, 则 heart_beat() 会改呼叫这个函
+数.
+
+This function will be called in the place of attack() during 
+combat to indicate a person is in busy statue. 
+
+void interrupt_me(object who, string how)
+This function interrupts whatever the user is doing.
+
+int start_call_out(function fun, int delay)
+开始执行 call_out, 将传入的函数名称及延迟时间传给 call_out() 这个
+函数, 并於时间到时执行该函数.
+
+void eval_function(function fun) { evaluate(fun); }
+执行某个函数.
+
+Evaluate the function named fun. (a fun function :)
+
+
+Elon@ES2
+drafted: 07-09-95

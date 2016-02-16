@@ -1,0 +1,83 @@
+
+战士系：擅长使用武器(重武器)作战，使用所有护具。
+
+战士(warrior) —┬ 骑士(knight) —┬ 王者(lord)                kni/mag
+                │                └ 圣骑士(paladin)           kni/cle
+                ├ 勇士(valour) —┬ 英雄(hero)                war+/mag
+                │                └ 超战士(champion)          war++
+                ├ 武士(samurai) —┬ 大名(daimyo)             sam+
+                │                 └ 牢人(ronin)              sam/mag
+                └ 剑士(swordman) —┬ 剑术家(fencer)          swd+
+                                    └ □兵(mercenary)         swd/mag
+
+  war   - parry, block, disarm, estimate
+  kni   - holy bonus, quest bonus
+  war+  - two weapons, shield bash
+  war++ - power strike, counter attack
+  sam   - two weapons, power slash
+  sam+  - unholy bonus, critical hit
+  swd   - power slash, riposte
+  swd+  - counter attack, multiple attack
+
+-----------------------------------------------------------------------------
+小偷系：擅长闪躲、偷窃、开锁，使用皮革、布类护具。
+
+小偷(thief) —┬ 强盗(brigand) —┬ 刽子手(executioner)        asn/war
+              │                 └ 杀手(assassin)             asn+
+              └ 骗子(trickster) —┬ 郎中(charlatan)          tri/cle
+                                   └ 幻术师(illusionist)      tri/mag
+
+  thi   - dodge, steal, pick lock, hide, sneak
+  brg   - plunder, horrify
+  asn   - assault, critical
+  asn+  - backstab, stealth
+  tri   - disguise, charm
+
+-----------------------------------------------------------------------------
+魔法师系：擅长攻击法术，使用布、魔法类护具。
+
+魔术师(mage) —┬ 法师(sorcerer) —┬ 大法师(archmage)         mag++
+               │                  └ 贤者(sage)               mag+/cle
+               └ 咒术师(conjurer) —┬ 召唤师(summoner)       sum
+                                     └ 魔导士(warlock)        mag+/war
+
+  mag   - scribe, concentrate, magical defense
+  mag+  - meditate, spellmaster
+  mag++ - forbiden power
+  sum   - spellmaster
+-----------------------------------------------------------------------------
+牧师系：擅长辅助、回复法术，使用轻金属、神圣类护具。
+
+牧师(cleric) —┬ 主教(bishop) —┬ 大主教(archbishop)         cle++
+               │                └ 圣徒(saint)                cle+/mag
+               └ 神授战士(crusader) —┬ 驱魔师(exorcist)     cle+/war
+                                       └ 圣者(avatar)         cle/war/mag
+
+  cle   - turn undead, prayer
+  cle+  - holy bonus, magical defense, meditate
+  cle++ - spellmaster, divine bonus
+-----------------------------------------------------------------------------
+蛮族系：体力、耐力、攻击力高，使用毛皮、石制护具。
+
+蛮族(barbarian) —┬ 狂战士(berserker) —┬ 猎头人(headhunter) bar+/war
+                  │                     └ 捍卫者(guardian)   bar/war/cle
+                  └ 巫医(shaman) —┬ 降头师(necromancer)     nec
+                                    └ 巫毒师(voodooist)       sha/mag
+
+  bar   - melee bonus, berserk, war cry
+  bar+  - power strike, assault
+  sha   - magical defense, concentrate, spellmaster
+  nec   - necromancy
+-----------------------------------------------------------------------------
+士兵系：擅长战术、群体作战、特殊地形作战，使用局部强化护具。
+
+义勇军(militia) —┬ 士兵(soldier) —┬ 骑兵(cavalry)          mil+/cav
+                  │                 └ 特种部队(combatant)    mil++
+                  └ 弓箭手(archer) —┬ 游骑兵(ranger)        arc/cav
+                                      └ 狙击手(sniper)        arc/asn
+
+  mil   - sneak, hide, block, estimate
+  mil+  - assault, tactical assist
+  mil++ - melee bonus, ambush, raid
+  cav   - riding, raid
+  arc   - missiles

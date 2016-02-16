@@ -1,0 +1,20 @@
+ 
+    relay_say()         Eastern Stories II (23 Sep 1995)        relay_say()
+ 
+    NAME
+        relay_say - interface for say
+ 
+    SYNOPSIS
+        void relay_say(object me, string arg);
+ 
+    DESCRIPTION
+        relay_say, if present, will be called on all the objects in the
+        environment of me, when object me says string arg.
+        It is used as an interface to handle any interaction triggered
+        by the say command.
+ 
+    SEE ALSO
+        relay_emote(), relay_channel(), relay_whisper()
+ 
+    Page 1                                                  (printed 9/23/95)
+ 

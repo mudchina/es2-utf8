@@ -1,0 +1,23 @@
+
+     ccccaaaattttcccchhhh____tttteeeellllllll((((4444))))          MMMMuuuuddddOOOOSSSS ((((5555 SSSSeeeepppp 1111999999994444))))           ccccaaaattttcccchhhh____tttteeeellllllll((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          catch_tell - provides an interface to interact with users
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          void catch_tell( string message );
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          If INTERACTIVE_CATCH_TELL is defined in options.h, whenever
+          the driver has something to tell an object due to say(),
+          shout(), tell_object(), etc.  catch_tell in the player
+          object will be called with the message to be printed.  The
+          message can be displayed, discarded, or modified in any way
+          desired.  This is a useful way to have flexible earmuffs, or
+          to support intelligent clients.
+
+     SSSSEEEEEEEE AAAALLLLSSSSOOOO
+          message(3), receive(3), receive_message(4)
+
+     Page 1                                          (printed 3/16/95)
+

@@ -1,0 +1,32 @@
+□ CHINESE_D -- 中英文转换
+
+void create()
+将字典中的资料载入.
+
+void remove()
+将字典里的资料存入资料档中.
+
+string chinese_number(int i)
+将英文数字换算成中文数字.
+
+string query_save_file()
+传回字典档的档名.
+
+string chinese(string str)
+由 to_chinese() simul_efun 呼叫. 如果传入字串在字典中有相对应的中文
+字, 则传回该中文字串, 否则传回原始字串.
+
+void remove_translate(string key)
+将字典里某个字删除.
+
+void add_translate(string key, string chinz)
+将 key 及相对应的中文 chinz 加入字典里.
+
+void dump_translate()
+列出字典里所有的内容.
+
+string chinese_date(int date)
+换算中文时间.
+
+Elon@ES2
+drafted: 07-13-95

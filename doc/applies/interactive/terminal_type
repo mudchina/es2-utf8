@@ -1,0 +1,18 @@
+
+     tttteeeerrrrmmmmiiiinnnnaaaallll____ttttyyyyppppeeee((((4444))))       MMMMuuuuddddOOOOSSSS ((((11119999 NNNNoooovvvv 1111999999994444))))       tttteeeerrrrmmmmiiiinnnnaaaallll____ttttyyyyppppeeee((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          terminal_type - inform the mudlib of the user's terminal
+          type
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          void terminal_type( string term );
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          This apply is called on the interactive object with term set
+          to the terminal type for the user, as reported by telnet
+          negotiation.  If the user's client never responds (it's not
+          telnet, for example) this will never be called.
+
+     Page 1                                          (printed 3/16/95)
+

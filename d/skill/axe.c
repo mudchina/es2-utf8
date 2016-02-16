@@ -1,0 +1,3 @@
+// axe.c
+
+inherit SKILL;

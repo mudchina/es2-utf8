@@ -1,0 +1,26 @@
+ 
+    hit_ob()            Eastern Stories II (23 Sep 1995)           hit_ob()
+ 
+    SYNOPSIS
+        mixed hit_ob( object ob, object victim );
+ 
+    APPLIED
+        skill daemons (martial/force), weapon, npc.
+ 
+    DESCRIPTION
+        hit_ob is called by COMBAT_D when a character hits his/her opponent
+        during combat. With this function, you can do extra damage to the
+        victim depending on the skill/weapon/npc you are using. Noted that
+        if the character is using a weapon, the hit_ob defined within the
+        character itself is not called. (i.e. if your draconian is wielding
+        a sword, then he cannot breathe fire)
+ 
+        If hit_ob returns a string, the string is added to the combat
+        message (between action message and damage message). If an
+        integer is returned, the integer is added to the damage bonus for
+        that hit. Returned value of other types are ignored.
+ 
+    SEE ALSO
+ 
+    Page 1                                                  (printed 9/23/95)
+ 

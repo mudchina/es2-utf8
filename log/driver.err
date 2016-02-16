@@ -1,0 +1,5 @@
+loading config file: ../adm/etc/config.ES2
+init_addr_server: connect: Connection refused
+]simul_efun loaded successfully.
+Setting up IPC on port 4000.
+Shutting down: Process terminated

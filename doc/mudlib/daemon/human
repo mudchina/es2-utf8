@@ -1,0 +1,16 @@
+□ HUMAN 
+
+BASE_WEIGHT 	体重
+
+void create()
+设定人类的基本资料及属性.
+单位, 性别, 是否会说话, 身体的各部份 ... etc.
+
+void setup_human(object ob)
+设定人类的各项资料. 
+
+mapping query_action()
+传回动作词.
+
+Elon@ES2
+drafted: 07-13-95

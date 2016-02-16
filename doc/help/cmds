@@ -1,0 +1,22 @@
+[探险用指令]
+  buy  close  drop  get  give  go  hp  id  inventory  look  open  put
+  skills  score  team  follow steal
+[战斗用指令]
+  cast  fight  kill  remove  surrender  unwield  wear  wield
+  wimpy  exert  conjure
+[沟通用指令]
+  ask  finger  reply  say  semote  shout  tell  tune  whisper  who
+  emote
+[武功]
+  enable  enchant  enforce  exercise  learn  meditate  practice  respirate
+  study  perform  abandon  
+[门派]
+  apprentice  expell  nick  recruit
+[对特定对象使用的指令]
+  eat  drink  list  fill  push  pull  fillwater scribe   
+[其他]
+  alias  help  passwd  quit  save  suicide  time  set  unset  to  wizlist
+uptime version scribe title
+ 
+□ 如果你是巫师的话，请用 help wizcmds 查询巫师专用指令。
+(Sat 09-02-95)

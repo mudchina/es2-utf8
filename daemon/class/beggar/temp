@@ -1,0 +1,24 @@
+// soulimpaler.c
+
+#include <ansi.h>
+#include <weapon.h>
+
+inherit SWORD;
+
+void create()
+{
+	set_name( HIW "ǜ糃艶" NOR, ({ "soulimpaler", "sword" }) );
+	set_weight(7000);
+	if( clonep() )
+		set_default_object(__FILE__);
+	else {
+		set("unit", "р");
+		set("long", "硂琌р﹀︹糃秖Τㄓょオ\n");
+		set("value", 4000000);
+		set("material", "crimsonsteel");
+		set("wield_msg", "$N詜羘┾р$n搐もい\n");
+		set("unequip_msg", "$N盢もい$n础璉糃繲\n");
+	}
+	init_sword(80);
+	setup();
+}

@@ -1,0 +1,137 @@
+// shiao.c
+
+inherit NPC;
+inherit F_MASTER;
+
+void consider();
+
+void create()
+{
+	set_name("拷笯剐", ({ "master fighter", "master", "fighter" }) );
+
+	set("nickname", "ぱǜ");
+	set("gender", "╧┦");
+	set("age", 24);
+	set("long",
+		"拷笯剐ギネ碢ぇい癬ㄓ笵癌ぃ丁废\n");
+	set("attitude", "peaceful");
+
+	set("str", 26);
+	set("cor", 30);
+	set("int", 24);
+	set("cps", 30);
+
+	set("force", 4000);
+	set("max_force", 2400);
+	set("force_factor", 30);
+
+	set("combat_exp", 1000000);
+	set("score", 200000);
+
+	set("chat_chance_combat", 80);
+	set("chat_msg_combat", ({
+		(: consider :),
+		(: exert_function, "powerup" :),
+		(: exert_function, "recover" :)
+	}) );
+
+	set_skill("unarmed", 100);
+	set_skill("sword", 60);
+	set_skill("blade", 40);
+	set_skill("throwing", 40);
+	set_skill("force", 100);
+	set_skill("parry", 60);
+	set_skill("dodge", 60);
+	set_skill("literate", 60);
+	set_skill("perception", 80);
+
+	set_skill("six-chaos-sword", 80);
+	set_skill("celestial", 100);
+	set_skill("celestrike", 100);
+	set_skill("stormdance", 50);
+	set_skill("pyrobat-steps", 50);
+
+	map_skill("sword", "six-chaos-sword");
+	map_skill("parry", "six-chaos-sword");
+	map_skill("force", "celestial");
+	map_skill("unarmed", "celestrike");
+	map_skill("dodge", "pyrobat-steps");
+	map_skill("move", "pyrobat-steps");
+
+	create_family("ぱǜ", 16, "");
+
+	setup();
+
+	carry_object("/obj/longsword");
+	carry_object(__DIR__"icy_boot")->wear();
+	carry_object(__DIR__"icy_girth")->wear();
+	carry_object(__DIR__"icy_cloth")->wear();
+	carry_object(__DIR__"icy_ribbon")->wear();
+}
+
+void init()
+{
+	add_action("do_swear", "swear");
+}
+
+void attempt_apprentice(object me)
+{
+	if( me->query_temp("pending/celestial_swear") ) {
+		command("say 弧礚痲璝ぃ祇粆砏獽琌各帝―и⊿ノ");
+		return;
+	} else {
+		command("say иぱǜ砏腨" + RANK_D->query_respect(me)
+			+ "狦痷Τみ祇粆(swear)ㄓ");
+		me->set_temp("pending/celestial_swear", 1);
+	}
+}
+
+int do_swear(string arg)
+{
+	if( !this_player()->query_temp("pending/celestial_swear") )
+		return 0;
+	if( !arg ) return notify_fail("璶祇ぐ或粆\n");
+	this_player()->set_temp("pending/celestial_swear", 0);
+	message_vision("$N祇粆笵" + arg + "\n", this_player());
+	if( strsrch(arg, "") >=0 && strsrch(arg, "砏") >=0 ) {
+		command("smile");
+		command("say 硂碞琌\n");
+		command("recruit " + this_player()->query("id"));
+	} else {
+		command("say 祇琌ぐ或碍粆и⊿钮");
+	}
+	return 1;
+}
+
+int recruit_apprentice(object ob)
+{
+	if( ::recruit_apprentice(ob) )
+		add("apprentice_availavble", -1);
+}
+
+void consider()
+{
+	int i, flag = 0;
+	object *enemy;
+
+	enemy = query_enemy() - ({ 0 });
+	for(i=0; i<sizeof(enemy); i++) {
+		if( !living(enemy[i]) ) continue;
+		if( enemy[i]->query_temp("weapon") ) {
+			flag++;
+			if(	!query_temp("weapon") ) {
+				command("say " + RANK_D->query_respect(enemy[i]) + "琂礛ㄏも钡┷ゼぃ穛");
+				command("wield sword");
+				command("say 秈┷");
+				break;
+			}
+		}
+	}
+	if( !flag && query_temp("weapon") ) {
+		if( sizeof(enemy) > 1 )
+			command("say 垛... 琂礛" + chinese_number(sizeof(enemy)) + "常琌も瞶讽抄");
+		else
+			command("say 琂礛" + RANK_D->query_respect(enemy[0]) + "ぃㄏ礛抄\n");
+		command("unwield sword");
+	}
+}

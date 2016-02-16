@@ -1,0 +1,29 @@
+
+     vvvvaaaalllliiiidddd____aaaassssmmmm((((4444))))           MMMMuuuuddddOOOOSSSS ((((11118888 SSSSeeeepppp 1111999999994444))))           vvvvaaaalllliiiidddd____aaaassssmmmm((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          valid_asm - controls whether or not a LPC->C compiled object
+          can use asm { }
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          int valid_asm( string file );
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          When the driver is compiled with LPC_TO_C, valid_asm() is
+          called whenever the asm { } structure is found in code.  If
+          it returns 0, the compilation will terminate with an error.
+
+          The asm { } structure is used as follows:
+
+               asm {
+                 <C code>
+               }
+
+          It causes the code between the braces to be literally
+          inserted into the compiled file.
+
+     SSSSEEEEEEEE AAAALLLLSSSSOOOO
+          valid_compile_to_c(4)
+
+     Page 1                                          (printed 3/16/95)
+

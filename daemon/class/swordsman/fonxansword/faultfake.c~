@@ -1,0 +1,38 @@
+//fakefault
+
+#include <ansi.h>
+
+inherit SSERVER;
+inherit F_MASTER;
+
+int perform (object me, object target)
+{
+	string msg;
+        int skill;
+
+        if( !target ) target = offensive_target(me);
+	
+        if( !target || !target->is_character() || !me->is_fighting(target) )
+		return notify_fail("'缺‘字诀只能在战斗中使用。\n");
+
+	msg  = CYN "$N左手捏了个'缺‘字诀，剑光竟散乱开，诱使$n进招，";
+
+	if (random(me->query("combat_exp")) > random (target->query("combat_exp")/2) ) {
+		msg += "\n$p看见机会，立刻放手进攻.\n" NOR;
+	
+	        skill = me->query_skill("sword");
+		me->add_temp("apply/attack", skill/3);
+	        me->add_temp("apply/dodge", -skill/2);
+                COMBAT_D->do_attack(me, target, target->query_temp("weapon"));
+		COMBAT_D->do_attack(target, me ,me->query_temp("weapon"));
+		me->add_temp("apply/attack", -skill/3);
+		me->add_temp("apply/dodge", skill/2);
+		message_vision(msg, me, target);
+        	return 1;
+		}
+	
+	msg += "\n可是$p看破了$P的企图，并没有上当。\n" NOR;
+        message_vision(msg, me, target);
+	return 1;
+}
+

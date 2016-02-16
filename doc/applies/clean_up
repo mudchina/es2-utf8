@@ -1,0 +1,25 @@
+
+     cccclllleeeeaaaannnn____uuuupppp((((4444))))            MMMMuuuuddddOOOOSSSS ((((5555 SSSSeeeepppp 1111999999994444))))             cccclllleeeeaaaannnn____uuuupppp((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          clean_up - periodically called in inactive objects
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          int clean_up( int inherited );
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          The clean_up() function is called by the driver on a regular
+          basis in all objects that have been inactive for the time
+          specified for clean_up() in the runtime configuration file.
+          One flag is passed to the function, specifying whether or
+          not the object has been inheritted by anything.  If
+          clean_up() returns 0, clean_up() will never be called again
+          on that object.  If it returns 1, it will be called again
+          when the object remains inactive for the specified
+          clean_up() delay.
+
+          One thing that might be commonly done by an object in this
+          function is destructing itself to conserve memory.
+
+     Page 1                                          (printed 3/16/95)
+

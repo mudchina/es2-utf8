@@ -1,0 +1,25 @@
+
+     vvvvaaaalllliiiidddd____oooobbbbjjjjeeeecccctttt((((4444))))        MMMMuuuuddddOOOOSSSS ((((5555 SSSSeeeepppp 1111999999994444))))         vvvvaaaalllliiiidddd____oooobbbbjjjjeeeecccctttt((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          valid_object - allows control over which objects can be
+          loaded
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          int valid_object( object obj );
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          After loading an object, the driver will call valid_object()
+          with the newly created object as its argument, in the master
+          object.  If the function exists, and returns 0, then the
+          object will be destructed and the efun that caused it to
+          load will error out.  If it does not exist, or returns 1,
+          then loading will proceed as normal.  In conjunction with
+          'nomask' and the inherits() efun, this could allow safely
+          restricting destruct() via a simul_efun.
+
+     SSSSEEEEEEEE AAAALLLLSSSSOOOO
+          valid_override(4)
+
+     Page 1                                          (printed 3/16/95)
+

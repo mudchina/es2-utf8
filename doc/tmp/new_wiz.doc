@@ -1,0 +1,76 @@
+ES2 New Wiz Document English draft (Tue  08-08-95)
+ 
+1. Responsibility
+ 
+-What is a wizard?
+A wizard is a programmer, a creator, who creates areas for the mud. In LPmud,
+anything can be done, therefore the position of being a wizard is a
+privileged job and also a job with responsibilties.
+Being a wizard means you can kill a player instantly, created a deadly
+monster that walks around the realms, or make a world that everyone enjoys
+living in. Anything you can think of, you can do it within the mud.
+ 
+-The hierarchy of wizhood and who they are/what do they do:
+admin       : the person in charge of the whole mud, and the person who
+              is making all the major decisions on the mud. All the words
+              from an admin is final. In short, admin is the law.
+arch        : admin's assistance, usually someone who is familiar
+              with the system in general and handles most of the QC
+              requests. this is also the person to ask if you have
+              system related questions.
+wizard      : the major force in creating new areas. observe the wizard
+              rules and behaves.
+apprentice  : wizard in training. at this stage, you will want to get
+              yourself familiar with the mud as a whole and the rules of
+              wizards. You need to know that you are no longer a player,
+              but someone in control on the creation of the world. Get
+              to know all the responsibilities of being a wizard and adjust
+              your attitude.
+ 
+-Philosophy:
+Being a wizard is like holding an endless power source, anything can be
+done and think before you start doing anything. Also be prepared to
+face the consequence that you or your codes created and be responsible.
+When you are doing something, always keep in mind that your action will
+effect the whole mud (or game system) no matter how insignificant it is.
+ 
+Respect those who are in higher ranks and remember, if you can be promoted,
+so can you be demoted.
+ 
+2. QC
+ 
+-Why QC?
+Before an area is opened to the players, or being "explored" by players,
+the area must be checked by either an admin or the arch wizard of the mud
+to ensure the consisitency of the areas within the mud and also to make
+sure all the codes will be working properly. Please noted, under no
+circumsance an un-check object can be accessed or touched by players unless
+you have the permission from the admins. Testing directly on players is not
+recommanded and the permission will not be given out without a very good
+reason. Usually your area will need a lot of modifications before it can be
+opened, this is to ensure that your area will fit into the game and won't
+create problems to the players or to the entire game system. Also, balance
+will be a major consideration as well.
+ 
+-New Areas
+Before you start a project on writing new areas, it is recommanded that you
+first check with your arch wizard or mud admin to make sure that the
+planned area will fit into the theme of the mud. It is better to do so
+early on the stage then to re-write the entire area after you are done with
+it.
+ 
+-Preparation:
+To submit a QC request for your area, first make sure that ALL your rooms
+and exits will work properly and all the functions within will work as well.
+During the process of QC, you should make yourself available most of the
+time in case something comes up and need to be asked or corrected right
+away.
+ 
+-Maintenance:
+Your job is not done after your area is opened to the players, maintenance
+of the is as important as is to code the area. The system is changing from
+time to time and so will your area requires to be changed. Pay close
+attention to the system related announcement and make changes to your area
+accordingly. If you are going to have major changes, please go through the
+QC process again.
+

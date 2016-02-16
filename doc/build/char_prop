@@ -1,0 +1,83 @@
+□ 人物的属性 (scratch)
+
+"id"								(string)
+
+    人物的识别字，这个字可以用来识别玩家，通常 "id" 跟 "name" 都不直接用
+    set() 设定，而是用 F_NAME 中的 set_name()。
+
+"title", "nickname", "name"					(string)
+
+    人物的称号、绰号、与中文姓名。
+
+"age"								(int)
+
+    人物的年龄，玩家的年龄是由定义在 USER_OB 中的 update_age() 定期更新。
+
+"age_modify"							(int)
+
+    这个数值会在 update_age() 中被加在人物的年龄上，可以是负数。
+
+"gin", "eff_gin", "max_gin"					(int)
+"kee", "eff_kee", "max_kee"
+"sen", "eff_sen", "max_sen"
+
+    人物的精气神数值及其上限，其中 "gin", "kee", "sen" 请透过定义在 F_DAMAGE
+    中的 receive_damage() 与 receive_heal() 增减，"eff_gin", "eff_kee",
+    "eff_sen" 则用 receive_wound() 与 receive_curing()。
+
+"str", "cor", "int", "spi", "cps", "per", "kar"			(int)
+
+    人物的天赋，依序分别为膂力(strength)、胆识(courage)、悟性(intelligence)
+    、灵性(spirituality)、定力(composure)、容貌(personality)、福缘(karma)。
+    根据天赋的原意，请勿修改这几个值，也不要依赖这些值做一些相关重大的检查。
+
+"atman", "max_atman"						(int)
+"force", "max_force"
+"mana", "max_mana"
+
+    人物的灵力(atman, AP)、内力(force, FP)、法力(mana, MP) 及其上限，可
+    以用 set(), add() 直接修改，但是必须自行检查上下限。
+
+"MKS", "PKS"							(int)
+
+    人物杀死其他生物的统计(MKS = Monster Killing Statistic, PKS = Player
+    Killing Stastics)。
+
+"combat_exp"							(int)
+
+    人物的实战经验。
+
+"score"								(int)
+
+    人物的综合评价。
+
+"force_factor"							(int)
+
+    人物 enforce 指定的强度，表示用内力伤人所耗的内力。
+
+"mana_factor"						(int)
+
+    人物 enchant 指定的强度，表示引出武器魔法效果所耗的法力。
+
+"family"							(mapping)
+
+    人物的师承门派等记录，当人物拜师或自创门派时就会设定这个属性，其内容
+    及定义如下：
+	"family_name"：	门派名称
+	"master_name"：	师父的中文名字
+	"master_id"：	师父的英文代号
+	"generation"：	人物在这个门派中的辈分，1 表示开山始祖，2 表示
+			第二代弟子....等等。
+	"title"：	人物在这个门派中的地位，如"掌门人"、"左护法"、等
+			等，刚加入一个新门派的预设值是"弟子"。
+	"priv"：	人物在门派中的权限旗号，一般弟子是 0，掌门人是 -1
+	"enter_time"：	人物加入门派时 time() 所传回的值。
+
+"guilds"							(mapping)
+
+    人物所参加的各种组织，每个组织有一个 identity 当 key，value
+    的内容由该组织的相关物件自行定义。
+
+"startroom"							(string)
+
+   人物 login 时出现的房间，一般都设为公会。

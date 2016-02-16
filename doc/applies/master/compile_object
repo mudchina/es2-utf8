@@ -1,0 +1,29 @@
+
+     ccccoooommmmppppiiiilllleeee____oooobbbbjjjjeeeecccctttt((((4444))))      MMMMuuuuddddOOOOSSSS ((((5555 SSSSeeeepppp 1111999999994444))))       ccccoooommmmppppiiiilllleeee____oooobbbbjjjjeeeecccctttt((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          compile_object - serves as the mudlib interface for the
+          virtual object facility
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          object compile_object( string pathname );
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          The driver calls compile_object(3) in the event that the
+          mudlib instructs the driver to load a file that does not
+          exist.  For example, the driver will call
+          compile_object("/obj/file.r") in master if the mudlib calls
+          call_other("/obj/file.r", "some_function") or
+          new("/obj/file.r") and /obj/file.r.c names a file that does
+          not exist.  The compile_object() function is expected to
+          return 0 if the mudlib does not wish to associate an object
+          with the file name "/obj/file.r".  If the mudlib does wish
+          to associate an object with the filename "/obj/file.r", then
+          the mudlib should return the object it wishes associated.
+          After an association is made between an object and a
+          filename, then it will be as if the file, file.r.c, did
+          exist (to the driver) and when loaded produced the object
+          that compile_object() returned.
+
+     Page 1                                          (printed 3/16/95)
+

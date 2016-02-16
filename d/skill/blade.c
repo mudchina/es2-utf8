@@ -1,0 +1,4 @@
+// blade.c
+
+inherit SKILL;
+

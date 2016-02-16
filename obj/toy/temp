@@ -1,0 +1,59 @@
+// poison_dust.c
+
+inherit COMBINED_ITEM;
+
+void create()
+{
+	set_name("伐贾硃换床", ({ "poison dust", "dust" }) );
+	if( clonep() )
+		set_default_object(__FILE__);
+	else {
+		set("long",
+			"硂琌贺瑀┦瞨疨琄媚рウ(pour)皊ぇいㄏノ\n" );
+		set("unit", "");
+		set("base_value", 700);
+		set("base_unit", "");
+		set("base_weight", 30);
+	}
+	set_amount(1);
+}
+
+void init()
+{
+	add_action("do_pour", "pour");
+}
+
+int do_pour(string arg)
+{
+	string me, what;
+	object ob;
+	function f;
+
+	if( !arg
+	||	sscanf(arg, "%s in %s", me, what)!=2
+	||	!id(me) )
+		return notify_fail("Α: pour <媚> in <珇>\n");
+
+	ob = present(what, this_player());
+	if( !ob )
+		return notify_fail("ō⊿Τ " + what + " 硂妓狥﹁\n");
+	if( !ob->query("liquid/remaining") )
+		return notify_fail(ob->name() + "柑ぐ或⊿Τ杆ㄇ皊坊て媚\n");
+	f = (: call_other, __FILE__, "drink_drug" :);
+	ob->set("liquid/drink_func", bind(f, ob));
+	ob->add("liquid/slumber_effect", 100);
+	message_vision("$N盢ㄇ" + name() + "秈" + ob->name() 
+		+ "穘碭\n", this_player());
+	add_amount(-1);
+	return 1;
+}
+
+int drink_drug(object ob)
+{
+	this_player()->apply_condition("slumber_drug",
+		(int)this_player()->query_condition("slumber_drug") 
+		+ (int)ob->query("liquid/slumber_effect") );
+	return 0;
+}
+
+

@@ -1,0 +1,17 @@
+
+     vvvvaaaalllliiiidddd____ssssaaaavvvveeee____bbbbiiiinnnnaaaarrrryyyy((((4444))))   MMMMuuuuddddOOOOSSSS ((((5555 SSSSeeeepppp 1111999999994444))))    vvvvaaaalllliiiidddd____ssssaaaavvvveeee____bbbbiiiinnnnaaaarrrryyyy((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          valid_save_binary - controls whether or not an object can
+          save its program
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          int valid_save_binary( string file );
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          When the driver is compiled with ALWAYS_SAVE_BINARIES, or an
+          object uses If valid_save_binary returns 1, the save will be
+          allowed, otherwise it will not.
+
+     Page 1                                          (printed 3/16/95)
+

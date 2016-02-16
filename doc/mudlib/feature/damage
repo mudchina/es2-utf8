@@ -1,0 +1,49 @@
+□ DAMAGE
+
+int is_ghost()
+判断物件是否为鬼魂.
+
+varargs int receive_damage(string type, int damage, object who)
+让物件某项状况的数值减少. damage 不得为负数. 本函数会检查伤害种类是
+否合法後将物件的状况数值减少, 若最後值低於零则设为 -1. 最後, 打开物
+件的心跳 (heart_beat).
+
+varargs int receive_wound(string type, int damage, object who)
+同 receive_damage. 但伤害是加在状态值上 (eff_xxx).
+
+varargs int receive_heal(string type, int heal)
+同 receive damage, 但作用相反, 本函数是将某个数值加入状况的数值上.
+
+varargs int receive_curing(string type, int heal)
+同 receive_wound, 但作用相反, 本函数是将数值加入状态值上, 相当於
+医疗.
+
+void unconcious()
+把某个物件弄昏, 判别及执行步骤如下: 没有生命的物件不能设, 如果物件
+是因为受伤而昏的, 呼叫在 COMBAT_D 中的 winner_reward() 以处理胜力
+者的奖赏.. etc. 删除指定物件的敌人表, 送出相关讯息 (让在场的大家都
+知道) 将精气神等状态设为0, 关闭指定物件接受讯息的的权力, 最後设定
+清醒的时间, 放到 call_out 上.
+
+varargs void revive(int quiet)
+把某人弄醒. 如果 call_out 还在, 删掉他. 如果清醒的物件本来是在另一
+个使用者的 inventory 中, 将之移到使用者的环境中. 呼叫 enable_player()
+以设定玩家的指令和相关设定, 传出对应的讯息并将讯息管道打开. 若传入
+值 quiet 为 1, 则清醒的讯息不会送出.
+
+void die()
+死了...
+如果物件是昏迷不醒的状况, 先把他弄醒. 奖励杀人者 (hmm...) 并制造一
+具□体, 把 killer 表删除, 如果死者是玩家, 则把他设为鬼魂并送到阴间
+去, 否则直接摧毁该物件.
+
+void reincarnate()
+复活...
+将物件的 ghost 标记去掉. 身体的各项状态值设为上限.
+
+int heal_up()
+update all status (gin, kee, sen, fp, mp, ap.. etc)
+
+Elon@ES2
+drafted: 07-12-95
+

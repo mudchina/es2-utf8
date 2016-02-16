@@ -1,0 +1,29 @@
+
+     ccccrrrreeeeaaaattttoooorrrr____ffffiiiilllleeee((((4444))))        MMMMuuuuddddOOOOSSSS ((((5555 SSSSeeeepppp 1111999999994444))))         ccccrrrreeeeaaaattttoooorrrr____ffffiiiilllleeee((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          creator_file - specifies the uid to give to a newly created
+          object
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          string creator_file(string filename);
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          The creator_file() function is called in the master object
+          each time a new object is created.  The `filename' of the
+          object is passed as the sole parameter, and the string that
+          creator_file() returns is set as the new object's uid.  If
+          the AUTO_SETEUID option is enabled at compile-time of the
+          driver, it is also set as the new object's euid.
+
+          One exception: if the AUTO_TRUST_BACKBONE option is enabled
+          at compile-time of the driver, and creator_file() returns
+          the backbone uid (as specified by get_bb_uid() in the master
+          object), the object is given the uid and euid of the object
+          that loaded it.
+
+     SSSSEEEEEEEE AAAALLLLSSSSOOOO
+          seteuid(3), new(3), clone_object(3), call_other(3)
+
+     Page 1                                          (printed 3/16/95)
+

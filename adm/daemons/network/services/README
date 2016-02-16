@@ -1,0 +1,18 @@
+
+       /adm/daemons/network/dns_aux/
+
+       This contains all of the CD udp compatability stuff.
+
+       The CD protocol is quite neat.  The way it works is  you  send  a
+       udp  packet  to the udp port of the machine we want to know about
+       with a format of
+
+       @@@cmd[||arg1:val1[||arg2:val2[||...]]]@@@
+
+       Where the cmd is the name of the command we want to execute.  The
+       arguments can be basicly anything.
+
+       The  original  versions   of   these   files  were   written   by
+       Pinkfish@Discworld,  the  current version by Grendel@Tmi-2 93-08-
+       15.
+

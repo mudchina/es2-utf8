@@ -1,0 +1,3 @@
+// sword.c
+
+inherit SKILL;

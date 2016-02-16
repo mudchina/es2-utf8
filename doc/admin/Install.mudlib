@@ -1,0 +1,47 @@
+□ 如何架设 ES2 mudlib
+
+(1) MudOS 部份
+
+  首先，你要有一份 MudOS (最好是 v21c2 版)，而且因为中文的关系，在
+  compile 之前需要做一些修改。为了节省您的时间，建议您从 comm.c 的
+  telnet_neg() 函数与 ed.c 的 prntln() 函数下手，对 C 语言稍有基础
+  的人应该很容易就能看出该如何修改，在此就不赘言了。
+
+  其次，您必须将 MudOS 正确无误地 compile 出可执行档，在开始 compile
+  之前，您必须先设定好 options.h 的内容，ES2 mudlib 的 options.h
+  也可以从我们提供的 ftp site 得到，如果您无法确定一些选项要如何设定
+  ，请参考该档案。
+
+  接下来，在正常的情况下只要在 src 子目录下打 make 就可以作出两个可
+  执行档：driver 跟 addr_server，如果出了其他编译上的问题，请您请教
+  SYSOP。
+
+(2) Install
+
+  当您有了 MudOS 执行档之後，就可以开始架设 ES2 mudlib，在 es2目录下
+  /adm/etc/config.ES2 是用来当作 MudOS driver 参数的 runtime config
+  file，请您将这个档案拷贝到 driver 的目录下，然後用文书编辑器修改里
+  面 mudlib directory 跟 binary directory 这两个路径为您存放 ES2 
+  mudlib 以及 driver 可执行档的绝对路径，这个档案中除了前面所说的两
+  个路径以外，其他有关路径的设定都是相对於 mudlib 的路径，如果您对
+  mudlib 还不是很熟悉，请勿更改。
+
+  到这里如果一切都正常，您只要在 driver 的目录下用：
+
+  driver config.ES2 &
+
+  就可以启动了，当您看到 Setting up IPC on port XXXX (XXXX 是您在
+  config.ES2 中设定要让 mud 使用的 port 号码)，就表示安装成功了。
+
+(3) 如何创造第一个人物
+
+  当您拿到这份 mudlib 的时候，会发现并没有任何人物资料档，请您在 es2
+  目录下, adm/etc/wizlist 中加上您的名字，以及一个 (admin)，(admin)
+  表示具有最高的权限等级，wizlist 这个档案是用来储存所有巫师的等级，
+  而且不管人物存在与否，所以请您只留下自己，将其他不存在的人物删掉。
+
+  接下来您重新启动 MudOS，然後连线进去创造您刚才设定的人物，您会发现
+  这名人物的状态一开始就是 (admin)，接下来您就可以用 promote 指令将
+  其他人擢升为巫师，promote 会自动将这些人物的等级写入 wizlist。
+
+By Annihilator (07/22/95)

@@ -1,0 +1,15 @@
+〖 猌竟贺摸﹚竡郎
+ 
+#include <weapon.h>
+ 
+inherit EQUIP;
+ 
+varargs void init_xxxx(int damage, int flag)
+砞﹚赣妓猌竟端甡の flag. ㄤい xxxx 猌竟贺摸.
+
+void setup()
+ЧΘ猌竟砞﹚. 砞赣妓猌竟┮惠璶м嘿, 笆の┮ㄏノ笆迭.
+程㊣┮膥┯ン setup() ㄧ计.
+
+Elon@ES2 
+drafted: 07-06-95

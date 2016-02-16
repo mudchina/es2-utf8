@@ -1,0 +1,33 @@
+
+     ccccrrrreeeeaaaatttteeee((((4444))))              MMMMuuuuddddOOOOSSSS ((((5555 SSSSeeeepppp 1111999999994444))))               ccccrrrreeeeaaaatttteeee((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          create - object initialization
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          void create( void );
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          Every object should have a create function defined within
+          it.  Within that function, all initial object initialization
+          should be done.  create() is called on *all* objects.
+          *NOTE* - This behavior is different than the stock 3.1.2
+          LPmud driver.  In 3.1.2, if an object is created first by
+          being inherited, then create() wasn't called on it.  In
+          MudOS, this behavior has changed so that it is *always*
+          called when an object is created.  As a result, you may see
+          some odd behavior if you have a create in a parent object
+          that does a write, you will see two writes, as if create()
+          had been called twice on the same object.  In reality,
+          create *is* being called twice, but on two *different*
+          objects: the parent, and the child that is calling
+          parent::create() manually.
+
+     SSSSEEEEEEEE AAAALLLLSSSSOOOO
+          reset(4), __INIT(4)
+
+     AAAAUUUUTTTTHHHHOOOORRRR
+          Wayfarer@Portals
+
+     Page 1                                          (printed 3/16/95)
+

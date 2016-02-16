@@ -1,0 +1,4 @@
+// perception.c
+
+inherit SKILL;
+

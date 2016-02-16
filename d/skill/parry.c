@@ -1,0 +1,4 @@
+// parry.c
+
+inherit SKILL;
+

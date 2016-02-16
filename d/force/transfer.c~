@@ -1,0 +1,55 @@
+// transfer.c
+
+#include <ansi.h>
+
+inherit SSERVER;
+
+int exert(object me, object target)
+{
+	int A, B, force, forceme;
+
+	// Don't let player order NPC to exert transfer on them.
+	if( !userp(me) ) return 0;
+
+	if( !target || target==me || !living(target) )
+		return notify_fail("你要将真气传给谁？\n");
+
+	if( (string)me->query_skill_mapped("force") != target->query_skill_mapped("force") )
+		return notify_fail(target->name() + "所使用的内功\和你不同。\n");
+
+        if( (int)me->query("max_force") < (int)target->query("max_force") )
+                return notify_fail("对方的内力比你高, 你省省吧。\n");
+
+	if( (int)me->query("force") <= (int)me->query("max_force") )
+		return notify_fail("你没有足够的真气来传内力。\n");
+
+	if( (int)me->query("max_force") < 100 ) return notify_fail("你的内力不足。\n");
+
+	me->add("max_force", -100);
+        forceme = me->query("max_force");
+        me->set("force", forceme / 3);
+	message_vision("$N将手掌贴在$n背心，开始将本身的内力灌注在$n体内。\n", me, target);
+
+        A = me->query_skill("force");
+        B = target->query_skill("force");
+        force = target->query("max_force");
+
+	if( random(100) < ((A+B)/2)/((A-B)+1) )
+          {
+           message_vision("$n受不了强大内力的冲激, 昏了过去。\n", me, target);
+           target->add("max_force", - force / 3 );
+           target->set("force", 0);
+           target->unconcious();
+           return 1;
+          }
+
+        target->add("max_force", 60);
+	write("Ok.\n");
+	tell_object(target, HIY "你觉得一股热气从" + me->name() + "的手掌传了过来。\n" NOR);
+
+        if(userp(target)) log_file("static/TRANSFER", 
+           sprintf("%s transfer force to %s on %s.\n", geteuid(me), geteuid(target), ctime(time()) ) );
+
+	return 1;
+        
+}

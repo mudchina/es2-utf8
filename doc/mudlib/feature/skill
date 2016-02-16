@@ -1,0 +1,39 @@
+□ SKILL 
+
+mapping query_skills()
+传回物件的所有技能.
+
+mapping query_learned()
+传回所有技能的学习点数.
+
+void set_skill(string skill, int val)
+设定技能. 传入技能名称及等级, 若技能的 mapping 不存在则新建立一个, 
+否则直接设入技能名称及等级.
+
+int delete_skill(string skill)
+删除某项技能. 连带的也会删除该项技能的学习点数.
+
+varargs void map_skill(string skill, string mapped_to)
+把某项技能致能, 若第二个参数没有传入, 则取消该项致能.
+
+string query_skill_mapped(string skill)
+传回某项技能种类所致能的技能名称.
+
+Returns the name of the skill that is enabled as as skill type
+passed as parameter.
+
+varargs int query_skill(string skill, int raw)
+传回技能的等级.
+
+mapping query_skill_map()
+传回技能致能的列表.
+
+ 
+int skill_death_penalty()
+人物死後会呼叫这个函数以计算死亡时所造成的技能损失.
+
+varargs void improve_skill(string skill, int amount, int weak_mode)
+增家传入技能的学习点数, 并判定是否有进步以增加等级.
+
+Elon@ES2
+drafted: 07-08-95

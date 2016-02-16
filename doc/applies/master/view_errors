@@ -1,0 +1,20 @@
+
+     vvvviiiieeeewwww____eeeerrrrrrrroooorrrrssss((((4444))))         MMMMuuuuddddOOOOSSSS ((((5555 SSSSeeeepppp 1111999999994444))))          vvvviiiieeeewwww____eeeerrrrrrrroooorrrrssss((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          view_errors - checks if a user should see error messages
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          int view_errors(object user)
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          if MUDLIB_ERROR_HANDLER is off, view_errors(user) is called
+          when a user encounters an error.  If it returns non-zero,
+          the user is given a detailed error message.  If not, the
+          default error message is printed.
+
+     SSSSEEEEEEEE AAAALLLLSSSSOOOO
+          MUDLIB_ERROR_HANDER(3)
+
+     Page 1                                          (printed 3/16/95)
+

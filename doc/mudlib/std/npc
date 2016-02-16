@@ -1,0 +1,35 @@
+□ NPC
+
+object carry_object(string file)
+复制 NPC 身上所携带的东西.
+
+object add_money(string type, int amount)
+设定 NPC 身上所携带的钱币及种类.
+
+int accept_fight(object who)
+判定 NPC 是否接受挑战 (fight). 首先检查 NPC 的战斗行为 (attitude), 
+判定是否可以被围殴. 再来判定 NPC 自身的体力, 并依 attitude 的设定决
+定是否接受挑战. 
+
+int chat()
+如果 NPC 有设定任何固定时间会执行的事项, 则此函数会依照 chat_chance
+所设的数字乱数决定是否可以执行, 若可, 则乱数决定要执行那一项, 如果该
+事项为文字字串, 则直接显示该字串, 若为函数设定, 则呼叫并执行该函数.
+
+int random_move()
+内定的 NPC 逛街函数, 系统会乱数决定一个出口并试著使该 NPC 往那个方向
+移动. (如果有出口的话)
+
+void cast_spell(string spell)
+使一个 NPC 施法. 首先确定 NPC 会施法 (检查技能) 接下来由系统乱数决定
+施法对象.
+
+int exert_function(string func)
+使用内力.
+
+int return_home(object home)
+将被绑走的 NPC 送回家, 首先系统会判定 NPC 是否处於战斗状态中, 如果是
+那就只好等下次了... 不然 NPC 就大摇大摆的变回去了.
+
+Elon@ES2
+drafted: 07-11-95

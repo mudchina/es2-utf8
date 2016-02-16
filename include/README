@@ -1,0 +1,6 @@
+□ 系统表头档(Header files)
+
+这个目录下存放的都是用来 #include 的表头档，其中 globals.h 会被自动引入( 设定
+在 MudOS 的 runtime config 中。
+
+By Annihilator(07/10/95)

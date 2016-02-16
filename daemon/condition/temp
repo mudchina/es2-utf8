@@ -1,0 +1,13 @@
+// snake_poison.c
+
+#include <ansi.h>
+
+int update_condition(object me, int duration)
+{
+	me->receive_wound("kee", 10);
+	me->receive_damage("sen", 10);
+	me->apply_condition("snake_poison", duration - 1);
+	tell_object(me, HIG "い矰瑀祇\n" NOR );
+	if( duration < 1 ) return 0;
+	return 1;
+}

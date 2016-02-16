@@ -1,0 +1,11 @@
+□ F_MORE
+
+void more(string cmd, string *text, int line)
+将传入的文字阵列一行一行的显示出来，并依照使用者所输入的指令动作。
+
+void start_more(string msg)
+开使执行 more，将传入的字串一行一行的分开以方便显示。
+
+Elon@ES2
+06-11-95 drafted.
+

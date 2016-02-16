@@ -1,0 +1,37 @@
+□ CHAR 人物的基本设定
+
+继承档: 
+	F_ACTION
+	F_ALIAS
+	F_APPRENTICE
+	F_ATTACK
+	F_COMMAND
+	F_DAMAGE
+	F_DBASE
+	F_EDIT
+	F_FINANCE
+	F_MESSAGE
+	F_MORE
+	F_MOVE
+	F_NAME
+	F_SKILL
+	F_TEAM
+
+int is_character()
+传回 1 如果物件是一个人物.
+Returns 1 if object inherits this.
+
+void setup()
+Call Character daemon to setup this_object() and randomly set 
+the tick size.
+
+void heart_beat()
+Called everytime to update character status. 
+系统会定期呼叫这个函数用来更新活的物件的各项状况, 继续战斗等等. 
+若物件不是使用者, 则呼叫 chat() 函数. 并重新设定 tick size.
+最後如果使用者身体状况皆正常 (满血), 而且不在战斗中, 则系统会将使
+用者的 heart_beat 关掉以节省系统负担 (发呆不需要心跳... :)
+然後让我们老一点 (只有使用者会变老).
+
+Elon@ES2
+drafted: 07-12-95

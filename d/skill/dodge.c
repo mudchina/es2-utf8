@@ -1,0 +1,3 @@
+// dodge.c
+
+inherit SKILL;

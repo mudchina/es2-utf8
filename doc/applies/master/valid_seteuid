@@ -1,0 +1,21 @@
+
+     vvvvaaaalllliiiidddd____sssseeeetttteeeeuuuuiiiidddd((((4444))))       MMMMuuuuddddOOOOSSSS ((((5555 SSSSeeeepppp 1111999999994444))))        vvvvaaaalllliiiidddd____sssseeeetttteeeeuuuuiiiidddd((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          valid_seteuid - secures the use of seteuid(3)
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          int valid_seteuid( object obj, string euid );
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          The driver calls valid_seteuid(ob, euid) in the master
+          object from inside the seteuid(euid) efunction.  If
+          valid_seteuid() returns 0, then the seteuid() call will
+          fail.  If valid_seteuid() returns 1, then the seteuid(3)
+          will succeed.
+
+     SSSSEEEEEEEE AAAALLLLSSSSOOOO
+          seteuid(3), geteuid(3), getuid(3), export_uid(3)
+
+     Page 1                                          (printed 3/16/95)
+

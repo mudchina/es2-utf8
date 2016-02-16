@@ -1,0 +1,43 @@
+□ F_NAME
+ 
+void set_name(string name, string *id)
+ 
+将 name 字串设入物件的 name 属性中. 如果该物件还没有设 id 属性,
+则取传入之 id 阵列的第一个 (id[0]) 元素为该物件的 id. 并将 my_id 
+阵列设为传入之 id 阵列的值.
+ 
+int id(string str)
+如果 "apply/id" 这个临时属性存在且不是空字串的话, 表示这个物件正在假冒
+别的物件, 我们就用 applied_id □的内容来当这个物件的 id, 如果有找到的
+话传回 1. 否则传回 0. 这样可以避免「冒牌货」在 id 指令下见光死.
+如果没有 "apply/id", 则以 my_id 的内容来判定. 如果 str 与 my_id 阵列中
+的某个元素相同, 则传回 1, 否则传回 0.
+ 
+string *parse_command_id_list() { return my_id; }
+如果 "apply/id" 这个临时属性存在且不是空字串的话, 传回 applied_id 阵列
+的所有内容. 否则传回 my_id 阵列的内容.
+ 
+varargs string name(int raw)
+如果物件有 "apply/name" 这个临时属性而且不是空的的话, 则传回值为 mask
+这个阵列的倒数第二项元素.
+如果物件有 "name" 这个属性, 传回值为 "name" 的内容. 否则传回这个物件的
+档名.
+ 
+varargs string short(int raw)
+如果该物件设有 short 这个属性, 则传回字串为 short 的内容加上 id. 否则
+传回字串为该物件 name 属性的内容加上 id. 如果该物件不是人物 (由
+is_chaaracter() 判定) 则在此传回字串的内容.
+如果这个物件有 "apply/short" 这个临时属性且内容不是空的, 则传回字串被
+设为 "apply/short" 阵列的倒数第二个元素. 否则传回字串会将物件的 nickname
+及 title 等属性加以组合. 最後判定这个物件是否在断线中, 输入文字中, 编
+辑档案中或是昏迷不醒, 并将适当的字串加入先前的字串一起传回.
+ 
+varargs string long(int raw)
+如果这个物件有 "apply/long" 这个临时属性且内容不是空的, 则传回 "apply/long"
+阵列的倒数第二个元素. 否则传回 "long" 这个属性的内容. 若该物件没有 "long"
+这个属性, 则呼叫并传回 short() 函数的内容并加上 "。\n".
+ 
+by Elon@ES2
+03-03-95 drafted.
+06-02-95 revised.
+

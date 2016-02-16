@@ -1,0 +1,53 @@
+
+     vvvvaaaalllliiiidddd____oooovvvveeeerrrrrrrriiiiddddeeee((((4444))))      MMMMuuuuddddOOOOSSSS ((((5555 SSSSeeeepppp 1111999999994444))))       vvvvaaaalllliiiidddd____oooovvvveeeerrrrrrrriiiiddddeeee((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          valid_override - controls the use of efun::
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          int valid_override( string file, string efun_name );
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          Add valid_override to master.c in order to control the use
+          of the efun::  prefix.  The valid_override function in
+          master.c will be called each time the driver attempts to
+          compile a function call that begins with efun::.  If
+          valid_override returns 0, then that compile will fail.  Thus
+          valid_override provides a way to modify the behavior of
+          efuns that isn't circumventable via the efun:: prefix (by
+          having a simul_efun of the same name as the efun to be
+          modified and having valid_override disallow that simul_efun
+          from being overriden).
+
+          If you wish to have the original 3.1.2 efun:: behavior,
+          simply add a line to master.c that looks like this:
+
+             int valid_override(string file, string efun) { return 1; }
+
+          Here is an example valid_override that is more restrictive:
+
+            int
+            valid_override(string file, string name)
+            {
+                if (file == "/adm/obj/simul_efun") {
+                    return 1;
+                }
+                if (name == "destruct")
+                    return 0;
+                if (name == "shutdown")
+                    return 0;
+                if (name == "snoop")
+                    return 0;
+                if (name == "exec")
+                    return 0;
+                return 1;
+             }
+
+     AAAAUUUUTTTTHHHHOOOORRRR
+          Truilkan@Basis
+
+     SSSSEEEEEEEE AAAALLLLSSSSOOOO
+          valid_object(4), function_exists(3)
+
+     Page 1                                          (printed 3/16/95)
+

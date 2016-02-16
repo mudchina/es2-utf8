@@ -1,0 +1,50 @@
+// chillgaze.c
+
+#include <ansi.h>
+
+inherit SSERVER;
+
+int exert(object me, object target)
+{
+	object *ob;
+	int i, skill, damage;
+
+	if( !me->is_fighting() )
+		return notify_fail("種碒窫ぇ砃驹矮いㄏノ\n");
+	me->start_busy(4);
+
+	if( (int)me->query("force") < 50 )
+		return notify_fail("ずぃ镑\n");
+
+	if( !target || target==me ) {
+		target = offensive_target(me);
+		if( !target) return notify_fail("璶癸街琁甶種碒窫ぇ砃\n");
+	}
+
+	skill = me->query_skill("force");
+
+	me->add("force", -50);
+	me->receive_damage("sen", 20);
+
+	message_vision(
+		HIB "$N泊┛礛祇钵蛮利礢ㄢр╪帝$n\n" NOR, me, target);
+	
+	if( random(target->query("combat_exp")) > (int)me->query("combat_exp") / 2 ) {
+		message_vision("$Nе锣筁繷磷秨$nヘ\n", target, me);
+		return 1;
+	}
+
+	damage = (int)me->query("force_factor") * 2 - target->query("max_force") / 15;
+	if( damage < 1 ) {
+		message_vision("琌$N癸$n猔跌跌璝礚窣....\n", target, me);
+		return 1;
+	}
+
+	target->receive_damage("gin", damage);
+	if( random(skill) > (int)target->query("cps") * 2 )
+		target->receive_wound("gin", damage/2);
+	message_vision("$N砆$nヘ┮尼ぃ窽ゴ碒径\n", target, me);
+
+	return 1;
+}
+

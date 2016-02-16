@@ -1,0 +1,22 @@
+
+     sssslllloooowwww____sssshhhhuuuuttttddddoooowwwwnnnn((((4444))))       MMMMuuuuddddOOOOSSSS ((((5555 SSSSeeeepppp 1111999999994444))))        sssslllloooowwww____sssshhhhuuuuttttddddoooowwwwnnnn((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          slow_shutdown - informs the mud that a slow shutdown is in
+          progress
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          void slow_shutdown( int minutes );
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          This master apply is called when the driver can't allocate
+          any more memory from the heap and had to use its reserved
+          memory block.  This function can only be called if the
+          "reserved size" config file setting was set.  The minutes
+          remaining to driver shutdown is passed to this function.
+
+     SSSSEEEEEEEE AAAALLLLSSSSOOOO
+          crash(4), shutdown(3)
+
+     Page 1                                          (printed 3/16/95)
+

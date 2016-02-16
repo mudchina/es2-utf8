@@ -1,0 +1,3 @@
+// hammer.c
+
+inherit SKILL;

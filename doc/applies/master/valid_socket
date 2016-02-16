@@ -1,0 +1,28 @@
+
+     vvvvaaaalllliiiidddd____ssssoooocccckkkkeeeetttt((((4444))))        MMMMuuuuddddOOOOSSSS ((((5555 SSSSeeeepppp 1111999999994444))))         vvvvaaaalllliiiidddd____ssssoooocccckkkkeeeetttt((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          valid_socket - protects the socket efunctions.
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          int valid_socket( object caller, string function,
+                            mixed *info );
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          Each of the socket efunctions calls valid_socket() prior to
+          executing.  If valid_socket returns 0, then the socket
+          efunction fails.  If valid_socket returns 1, then the socket
+          efunction attempts to succeed.  The first argument 'caller'
+          is the object that called the socket efunction.  The second
+          argument is the name of the socket efunction that is being
+          called (e.g. socket_write() or socket_bind()).  The third
+          argument is an array of information.  The first element of
+          the array (when applicable) is file descriptor being
+          referenced.  The second element of the array is the owner of
+          the socket (object).  The third element of the array is the
+          address (string) of the remote end of the socket.  The
+          fourth element of the array is the port number associated
+          with the socket.
+
+     Page 1                                          (printed 3/16/95)
+

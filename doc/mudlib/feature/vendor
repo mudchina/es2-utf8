@@ -1,0 +1,17 @@
+□ VENDOR -- 标准贩卖物件
+
+int buy_object(object me, string what)
+(为完)
+
+void complete_trade(object me, string what)
+完成交易, 将物件交给买主并传出相关讯息.
+
+string price_string(int v)
+以对等的币值列出物件的价值.
+
+int do_vendor_list(string arg)
+列出所出售的物品及价钱.
+
+Elon@ES2
+drafted: 07-13-95
+

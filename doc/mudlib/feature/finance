@@ -1,0 +1,15 @@
+
+□ F_FINANCE
+
+int can_afford(int amount)
+这个函数是用来判定一个物件 (this_object()) 是否付得起 amount 这个价钱.
+若传回 0 表示这个物件并没有这麽多钱, 传回 1 表示物件有这麽多钱, 而且
+有正确的钱币种类. 传回 2 则表示此物件虽然有足够的钱, 却没有正确的钱币
+种类.
+
+int pay_money(int amount)
+(未完)
+
+Elon@ES2
+06-11-95 drafted.
+

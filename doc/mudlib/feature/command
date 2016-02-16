@@ -1,0 +1,37 @@
+
+□ F_COMMAND
+ 
+init_command_hook()
+经由 add_action, 将所有 user 输入东西传入 command_hook() 这个函数.
+本函数没有传回值.
+ 
+find_command(string verb)
+呼叫 command daemon (COMMAND_D) 看看在指定路径内是否有跟 verb 同名
+的档案, 若有, 传回档名.
+ 
+command_hook(string arg)
+一但使用者输入一行文字, driver 会将除了第一 个字以外的文字当成参数
+(arg) 并传至此函数. 输入的第一个字就是所谓的动词 (verb). 通常是 一
+个指令.接下来我们经由 query_verb()  得到 这个动词, 也就是使用者所输
+入的第一个字.然後开始判定使用者输入这行文字的目的. 首先我们将动词传
+入 find_command()看看在使用者的路径设定中是否有与这个动词相同的指令
+档名, 如果有, 则试著以call_other()  去呼叫 该档名的 main() 函数并传
+入参数 arg 及动作人 物件.如果成功, 则结束离开. 不符合上述条件者, 本
+函数在此呼叫 EMOTE_D ( emotedaemon), 判别这个动词是不是 emote 之一,
+如果不是的话则呼叫管理交谈频道的 daemon, (CHANNEL_D) 看看这个是不是
+交谈频道用的指令. 最後, 我们来判定这是不是使用者用来移动的 的指令 (
+如: 东, 南, 西, 北等等). 如果以上皆非, 那我们就传回 0, 有可能这个使
+用者输入了一个不存在的指令.
+ 
+如果 PROFILE_COMMANDS 有定义的话, 有关这个指令的使用情形会由
+PROFILE_D记录下来并存於指定档案中.
+ 
+set_path(string *p)
+将 *p 指定为路径. *p 为阵列型态.
+ 
+force_me(string cmd)
+强迫动作物件执行一个指令, 呼叫此函数的物件需要有 ROOT UID 才会成功.
+ 
+By Elon@ES2
+12-13-94 drafted.
+06-01-95 revised.

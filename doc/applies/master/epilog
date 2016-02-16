@@ -1,0 +1,30 @@
+
+     eeeeppppiiiilllloooogggg((((4444))))              MMMMuuuuddddOOOOSSSS ((((5555 SSSSeeeepppp 1111999999994444))))               eeeeppppiiiilllloooogggg((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          epilog - returns an array of the filenames of the objects to
+          be preloaded.
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          string *epilog( int load_empty );
+          void preload( string filename );
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          The driver calls epilog() in master after the master object
+          has been loaded.  Mudlibs typically use epilog to initialize
+          data structures in master (such as security tables etc).
+          epilog() should returns an array of filenames which
+          correspond to objects that the mudlib wants to have
+          preloaded; that is, loaded before the first player logs in.
+          For each filename returned in the array, the driver will
+          called preload(filename) in master.
+
+          The variable 'load_empty' is non-zero if the -e option was
+          specified when starting up the driver.  It can be used as a
+          signal to the mudlib to not load castles, etc.
+
+     SSSSEEEEEEEE AAAALLLLSSSSOOOO
+          preload(4)
+
+     Page 1                                          (printed 3/16/95)
+

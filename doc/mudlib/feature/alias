@@ -1,0 +1,25 @@
+□  ALIAS -- 替代指令
+
+MAX_REPEAT 30  : 最多同一个指令可以重覆的数量.
+MAX_ALIASES 40 : 可设定的替代指令数量.
+HISTORY_BUFFER_SIZE 10 : 系统记忆指令的数量.
+
+string process_input(string str)
+处里输入指令.
+如果使用者已输入超过 MAX_REPEAT 所定义的数量的相同指令, 系统会强迫使
+用者离开.
+接下来系统会判定使用者是否要重覆使用前面用过的指令, 再来会核对使用者
+自己所设定的替代指令表, 若有找到符合的则将输入的替代指令扩张为完整的
+指令. 传回值为处理过後的输入指令. 若以上条件都不符合则呼叫 ALIAS_D 
+的 process_global_alias() 函数并将结果做为此函数的传回值.
+
+int set_alias(string verb, string replace)
+将新的替代指令加入替代指令列表. 若没有传入第二个参数, 则取消所传入之
+替代指令的设定, 并确定使用者没有超过替代指令数量的上限.
+
+mapping query_all_alias()
+传回物件所设定的替代指令.
+
+
+Elon@ES2
+drafted: 07-08-95

@@ -1,0 +1,26 @@
+
+     ddddoooommmmaaaaiiiinnnn____ffffiiiilllleeee((((4444))))         MMMMuuuuddddOOOOSSSS ((((5555 SSSSeeeepppp 1111999999994444))))          ddddoooommmmaaaaiiiinnnn____ffffiiiilllleeee((((4444))))
+
+     NNNNAAAAMMMMEEEE
+          domain_file - determine the domain for a given object
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          string domain_file( string file );
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN
+          This function must exist in the master object.  It is called
+          by the domain statistic functions in the driver to determine
+          what domain a given object should be associated with.  This
+          is totally arbitrary and up to the mudlib designers wishes.
+          It should be noted that the domain that the object is
+          assigned to will receive "credit" for all of the objects
+          behavior (errors, heart_beats, worth, etc).
+
+     SSSSEEEEEEEE AAAALLLLSSSSOOOO
+          author_stats(3), domain_stats(3), author_file(4)
+
+     AAAAUUUUTTTTHHHHOOOORRRR
+          Wayfarer@Portals
+
+     Page 1                                          (printed 3/16/95)
+
