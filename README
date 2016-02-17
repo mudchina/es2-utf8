@@ -5,6 +5,13 @@
 系统上的风格做一个大概的介绍，如果您从来未曾接触过 MudOS 或是 LPmud 的系统
 ，我建议您先阅读一下您的 MudOS 所附的文件档。
 
+□ MudOS / FluffOS
+
+你可以用 FluffOS 来运行这个 mudlib。这里是我修改过的一个版本，可以在 Linux 
+以及 Mac OS X 上运行。
+
+https://github.com/floatinghotpot/fluffos
+
 □ 档案目录
 
 首先让我假设您是在 ES2 mudlib 的根目录下发现这份说明，那麽在这个目录下您应该
@@ -15,6 +22,8 @@
 
 以下将介绍几个比较重要的子目录，其他没有介绍到的您可以在个别子目录下找到相关
 的 README 档案。
+
+/bin  这个目录下放的是 MudOS 的可执行文件 driver 以及配置文件 config.ES2。
 
 /adm  这个目录下存放的是一些有关系统安全，以及影响整个游戏运作的「单一」物件
       。这些物件大部分在 Mud 启动的时候就会被载入，而且在 Mud 执行过程中经常
@@ -40,5 +49,5 @@
 
 /u    这是巫师们的工作目录(Home directories)，最好也常常备份。
 
+感谢原作者 Annihilator (06/15/95) 为中文 MUD 的普及做出的卓越贡献。
 
-By Annihilator (06/15/95)
