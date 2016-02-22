@@ -103,7 +103,7 @@ int look_item(object me, object obj)
 
 int look_living(object me, object obj)
 {
-	string str, limb_status, pro;
+	string str, pro;
 	mixed *inv;
 	mapping my_fam, fam;
 	int personal;

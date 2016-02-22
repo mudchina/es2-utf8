@@ -66,7 +66,7 @@ void start_shutdown()
 	call_out("countdown", 60, 15);
 }
 
-private void countdown(int min)
+void countdown(int min)
 {
 	min--;
 	if( min ) {
@@ -86,7 +86,7 @@ private void countdown(int min)
 	}
 }
 
-private void do_shutdown()
+void do_shutdown()
 {
 	message("system",
 		HIW "\n\n侮天鬼王" HIR "用震耳欲聋的声音喝道：\n\n"

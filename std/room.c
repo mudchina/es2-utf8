@@ -1,6 +1,6 @@
 // room.c
 
-#pragma save_binary
+//#pragma save_binary
 
 #include <dbase.h>
 #include <room.h>
@@ -149,7 +149,7 @@ int check_door(string dir, mapping door)
 
 varargs void create_door(string dir, mixed data, string other_side_dir, int status)
 {
-	mapping d, exits, item_desc;
+	mapping d, exits;
 	object ob;
 
 	exits = query("exits");

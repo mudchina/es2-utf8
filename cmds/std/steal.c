@@ -53,7 +53,7 @@ notify_fail("你想行窃的对象不在这里。\n");
         return 1;
 }
 
-private void compelete_steal(object me, object victim, object ob, int sp, int 
+void compelete_steal(object me, object victim, object ob, int sp, int 
 dp)
 {
         me->delete_temp("stealing");

@@ -17,8 +17,8 @@ mapping requests;
 
 // The interface to the mudlib
 void remote_finger(object source, string user,string mud);
-private void udp_finger(object source, string user,string mud);
-private void tcp_finger(object source, string user,string mud);
+void udp_finger(object source, string user,string mud);
+void tcp_finger(object source, string user,string mud);
 
 // The inetd functions
 void service_request(int id, mixed *parms);

@@ -1,7 +1,5 @@
 // char.c
 
-#pragma save_binary
-
 #include <action.h>
 #include <ansi.h>
 #include <command.h>

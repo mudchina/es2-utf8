@@ -37,7 +37,7 @@ private void get_new_pass(string pass, object ob)
         input_to("confirm_new_pass", 1, ob, crypt(pass,0));
 }
 
-private void confirm_new_pass(string pass, object ob, string new_pass)
+void confirm_new_pass(string pass, object ob, string new_pass)
 {
         write("\n");
         if( crypt(pass, new_pass)!=new_pass ) {

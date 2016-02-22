@@ -17,7 +17,7 @@ string find_command(string verb)
 
 // This is the add_action hook handling movement, commands, emotes and
 // channels. Optimization is needed.
-private nomask int command_hook(string arg)
+nomask int command_hook(string arg)
 {
 	string verb, file;
 
@@ -61,7 +61,7 @@ private nomask int command_hook(string arg)
 	return 1;
 }
 
-private nomask void set_path(string *p)
+nomask void set_path(string *p)
 {
 //	if( origin() != ORIGIN_LOCAL
 //	&&	geteuid(previous_object()) != ROOT_UID )

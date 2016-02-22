@@ -79,7 +79,7 @@ void do_pings();
 void set_mud_info(string name, mapping junk);
 void zap_mud_info(string name, mapping junk);
 void support_q_callback(mapping info);
-private void query_services(string mud, string address, string port, string tcp);
+void query_services(string mud, string address, string port, string tcp);
 
 // name serving functions
 int query_service_method(string mud, string service);

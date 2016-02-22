@@ -49,7 +49,7 @@ int re_route_cmd(string str)
                        });
         i = member_array(cmd, invalid_cmds);
         if (i == -1) return 0;
-        else write("这里是巫师会客室, 不是让你拿来练功\的地方哦!\n");
+        else write("这里是巫师会客室, 不是让你拿来练功的地方哦!\n");
         return 1;
 }
 

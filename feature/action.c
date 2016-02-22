@@ -19,7 +19,7 @@ nomask int is_busy() { return busy!=0; }
 
 // This is called by heart_beat() instead of attack() when a ppl is busy
 // doing something else.
-private void continue_action()
+void continue_action()
 {
 	if( intp(busy) && (busy > 0) ) {
 		busy--;
@@ -68,4 +68,4 @@ int start_call_out(function fun, int delay)
 	return 1;
 }
 
-private void eval_function(function fun) { evaluate(fun); }
+void eval_function(function fun) { evaluate(fun); }

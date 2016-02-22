@@ -5,7 +5,7 @@
 
 inherit F_CLEAN_UP;
 
-private int do_purge_players(int day);
+int do_purge_players(int day);
 
 int main(object me, string arg)
 {
@@ -38,7 +38,7 @@ int main(object me, string arg)
 	return 1;
 }
 
-private int do_purge_players(int day)
+int do_purge_players(int day)
 {
 	int i, j, ppl_cnt, count;
 	string *dir, *ppls, name;

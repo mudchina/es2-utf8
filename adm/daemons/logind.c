@@ -45,8 +45,7 @@ void logon(object ob)
                 else if( wizardp(usr[i]) ) wiz_cnt++;
                 else ppl_cnt++;
         }
-        printf("目前共有 %d 位巫师、%d 位玩家在线上，以及 %d 
-位使用者尝试连线中。\n\n",
+        printf("目前共有 %d 位巫师、%d 位玩家在线上，以及 %d 位使用者尝试连线中。\n\n",
                 wiz_cnt, ppl_cnt, login_cnt );
 
         write("您的英文名字：");

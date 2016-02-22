@@ -130,7 +130,6 @@ varargs void revive(int quiet)
 void die()
 {
 	object corpse, killer;
-	int i;
 
 	if( !living(this_object()) ) revive(1);
 	if( wizardp(this_object()) && query("env/immortal") ) return;
@@ -176,7 +175,7 @@ int max_water_capacity() { return query_weight() / 200; }
 
 int heal_up()
 {
-	int update_flag, i;
+	int update_flag;
 	mapping my;
 
 //	if( this_object()->is_fighting() ) return -1;

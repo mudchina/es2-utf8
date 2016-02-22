@@ -4,7 +4,7 @@
 
 void more(string cmd, string *text, int line)
 {
-	int i,j;
+	int i;
 
 	switch(cmd) {
 		case "":

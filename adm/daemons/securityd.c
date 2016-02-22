@@ -135,7 +135,7 @@ int valid_write(string file, mixed user, string func)
 	if( func=="save_object" ) {
 		if( sscanf(base_name(user), "/obj/%*s")
 		&&	sscanf(file, "/data/%*s")
-		&&	file == (string)user->query_save_file() )
+		&&	sscanf(file, (string)user->query_save_file() + "%*s") )
 			return 1;
 	}
 

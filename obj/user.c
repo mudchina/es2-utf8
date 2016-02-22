@@ -70,7 +70,7 @@ void setup()
 	restore_autoload();
 }
 
-private void user_dump(int type)
+void user_dump(int type)
 {
 	switch(type) {
 		case DUMP_NET_DEAD:

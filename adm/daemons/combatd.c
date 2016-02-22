@@ -1,6 +1,6 @@
 // combatd.c
 
-#pragma optimize all
+#pragma optimize
 
 #include <ansi.h>
 #include <skill.h>

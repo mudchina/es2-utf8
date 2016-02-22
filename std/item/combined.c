@@ -16,7 +16,7 @@ void setup()
 
 int query_amount() { return amount; }
 
-private void destruct_me() { destruct(this_object()); }
+void destruct_me() { destruct(this_object()); }
 
 void set_amount(int v)
 {

@@ -24,7 +24,7 @@ int main(object me, string arg)
 	return 1;
 }
 
-private void check_password(string passwd, object me, int forever)
+void check_password(string passwd, object me, int forever)
 {
 	object link_ob;
 	string old_pass;
@@ -44,7 +44,7 @@ private void check_password(string passwd, object me, int forever)
 	}
 }
 
-private int slow_suicide(object me)
+int slow_suicide(object me)
 {
 	object link_ob;
 	int stage;

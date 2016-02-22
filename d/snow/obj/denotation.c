@@ -4,10 +4,10 @@ inherit ITEM;
 
 void create()
 {
-	set_name("功\德箱", ({ "denotation box", "box" }) );
+	set_name("功德箱", ({ "denotation box", "box" }) );
 	set("unit", "个");
 	set("long",
-		"这是寺庙接受善男信女捐献香油钱的功\德箱，你可以把想捐的钱\n"
+		"这是寺庙接受善男信女捐献香油钱的功德箱，你可以把想捐的钱\n"
 		"放进去。\n");
 	set("value", 1);
 	set("no_get", 1);

@@ -21,10 +21,10 @@ external_port_1 : telnet 4000
 external_port_2 : binary 4001
 
 # absolute pathname of mudlib
-mudlib directory : /Users/liming/workspace/mud/es2
+mudlib directory : /Users/liming/workspace/mud/es2-utf8
 
 # absolute pathname of driver/config dir
-binary directory : /Users/liming/workspace/mud/es2
+binary directory : /Users/liming/workspace/mud/es2-utf8
 
 # ------------------------------------------------------------------------
 #
@@ -55,10 +55,10 @@ debug log file : debug.log
 global include file : "/include/globals.h"
 
 # default no-matching-action message
-default fail message : What?
+default fail message : 什么？
 
 # default message when error() occurs (optional)
-default error message :
+default error message : 你觉得有点不对劲，但是又说不上来。
 
 # if an object is left alone for a certain time, then the
 # function clean_up will be called. This function can do anything,
