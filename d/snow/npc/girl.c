@@ -29,7 +29,7 @@ void create()
 	set("chat_msg_combat", ({
 		(: perform_action, "sword.counterattack" :),
 		"柳绘心秀眉微蹙，说道：喂！我哪里得罪你了？干嘛这样跟我拼死拼活？\n",
-		"柳绘心不住地望著窗外：你还是快走吧，我没空陪你练功\夫！\n",
+		"柳绘心不住地望著窗外：你还是快走吧，我没空陪你练功夫！\n",
 	}) );
 
 	set_skill("unarmed", 20);
@@ -60,7 +60,7 @@ int accept_fight(object me)
 {
 	if( (string)me->query("family/family_name")=="封山剑派" ) {
 		if( (string)me->query("gender")=="女性" ) {
-			command("say 师姐！别整天想著练功\嘛，我们去花园摘花儿玩嘛？");
+			command("say 师姐！别整天想著练功嘛，我们去花园摘花儿玩嘛？");
 			return 0;
 		} else {
 			command("say 我才不要，你们去找李教头练吧！");
