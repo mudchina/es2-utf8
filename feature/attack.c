@@ -27,11 +27,9 @@ varargs int is_fighting(object ob)
 // This function returns 1 if we are fighting anyone (or with ob)
 varargs int is_killing(mixed id)
 {
-	if( objectp(id) ) id = id->query("id");
-
 	if( !id ) return sizeof(killer) > 0;
-
-	return member_array(id, killer)!=-1;
+    if( objectp(id) ) id = id->query("id");
+	return member_array(id, killer) != -1;
 }
 
 //This function starts fight between this_object() and ob
