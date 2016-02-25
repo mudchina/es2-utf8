@@ -4,10 +4,22 @@ function writeToScreen(str) {
   out.scrollTop(out.prop("scrollHeight"));
 }
 
+// remove \r\n in a room description, to fit window width
+function optimizeRoomDesc(str) {
+  var paras = str.split('\n    ');
+  for(var i=0; i<paras.length-1; i++) {
+    paras[i] = paras[i].replace(/\r\n/g, '');
+  }
+  return paras.join('\n    ');
+}
+
 function writeServerData(buf) {
   var data = new Uint8Array(buf);
   var str = binayUtf8ToString(data, 0);
 
+  console.log(str);
+  if(str.indexOf(' - ') > 0) str = optimizeRoomDesc(str);
+  
   var lines = str.split('\r\n');
   for(var i=0; i<lines.length; i++) {
     var line = lines[i].replace(/\s\s/g, '&nbsp;');
