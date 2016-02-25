@@ -110,6 +110,9 @@ function adjustLayout() {
 
 $(window).resize(adjustLayout);
 
+var cmdHistory = [];
+var cmdIndex = 0;
+
 $(document).ready(function(){
   //$.cookie('lang', 'zh');
   //hotjs.i18n.setLang('zh');
@@ -137,13 +140,47 @@ $(document).ready(function(){
   }
   var sendInput = function() {
     var cmd = $('input#cmd');
-    send(cmd.val().trim() + '\n');
+    var str = cmd.val().trim();
+
+    // store cmd in history for re-use when press up / down arrow key
+    if(str && (str != cmdHistory[cmdHistory.length-1])) {
+      if(cmdHistory.length > 100) cmdHistory.unshift();
+      cmdHistory.push(str);
+      cmdIndex = cmdHistory.length;
+    }
+
+    send(str + '\n');
     cmd.val('');
   }
 
   // UI events
-  $('input#cmd').keypress(function(e) {
-    if(e.keyCode == 13) sendInput();
+  $('input#cmd').keydown(function(e) {
+    // console.log(e.keyCode);
+    switch(e.keyCode) {
+      case 37: // left arrow key
+        break;
+      case 39: // right arrow key
+        break;
+      case 38: // up arrow key
+        if(cmdIndex > 0) {
+          cmdIndex --;
+          if(cmdIndex < cmdHistory.length) {
+            var str = cmdHistory[cmdIndex];
+            $('input#cmd').val(str);
+          }
+        } else $('input#cmd').val('');
+        break;
+      case 40: // down arrow key
+        if(cmdIndex < cmdHistory.length-1) {
+          cmdIndex ++;
+          var str = cmdHistory[cmdIndex];
+          $('input#cmd').val(str);
+        } else $('input#cmd').val('');
+        break;
+      case 13: // enter
+        sendInput();
+        break;
+    }
   });
   $('button#send').click(function(e) {
     sendInput();
