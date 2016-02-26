@@ -11,8 +11,17 @@ string to_chinese(string str)
 
 int is_chinese(string str)
 {
-	if( strlen(str)>=2 && str[0] > 128 && str[0] < 255 ) return 1;
-	return 0;
+  int i;
+  int len = strlen(str);
+  if(len >= 2) {
+    for(i=0; i<len; i++) {
+      // GBK or BIG5
+      if(str[i] >= 160 && str[i] < 255) return 1;
+      // UTF8
+      if ((str[i] & 0xC0) == 0x80) return 1;
+    }
+  }
+  return 0;
 }
 
 int utf8_strlen(string str)
