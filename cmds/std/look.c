@@ -54,10 +54,10 @@ int look_room(object me, object env)
 		write("你的四周灰蒙蒙地一片，什麽也没有。\n");
 		return 1;
 	}
-	str = sprintf( "%s - %s\n    %s%s",
+	str = sprintf( "\n▲ %s - %s\n  %s\n%s",
 		env->query("short"),
-		wizardp(me)? file_name(env): "",
-		env->query("long"),
+		file_name(env),
+		replace_string(env->query("long"), "\n", ""),
 		env->query("outdoors")? NATURE_D->outdoor_room_description() : "" );
 
 	if( mapp(exits = env->query("exits")) ) {
@@ -67,11 +67,11 @@ int look_room(object me, object env)
 				dirs[i] = 0;
 		dirs -= ({ 0 });
 		if( sizeof(dirs)==0 )
-			str += "    这里没有任何明显的出路。\n";
+			str += "  这里没有任何明显的出路。\n";
 		else if( sizeof(dirs)==1 )
-			str += "    这里唯一的出口是 " + BOLD + dirs[0] + NOR + "。\n";
+			str += "  这里唯一的出口是 " + BOLD + dirs[0] + NOR + "。\n";
 		else
-			str += sprintf("    这里明显的出口是 " + BOLD + "%s" + NOR + " 和 " + BOLD + "%s" + NOR + "。\n",
+			str += sprintf("  这里明显的出口是 " + BOLD + "%s" + NOR + " 和 " + BOLD + "%s" + NOR + "。\n",
 				implode(dirs[0..sizeof(dirs)-2], "、"), dirs[sizeof(dirs)-1]);
 	}
 //	str += env->door_description();
@@ -89,10 +89,13 @@ int look_room(object me, object env)
 
 int look_item(object me, object obj)
 {
+    string str;
 	mixed *inv;
 
-	write(obj->long());
-	inv = all_inventory(obj);
+    str = sprintf( "\n◇ %s\n%s\n", obj->short(), replace_string(obj->long(), "\n", "") );
+    write(str);
+
+    inv = all_inventory(obj);
 	if( sizeof(inv) ) {
 		inv = map_array(inv, "inventory_look", this_object() );
 		message("vision", sprintf("里面有：\n  %s\n",
@@ -111,7 +114,7 @@ int look_living(object me, object obj)
 	if( me!=obj )
 		message("vision", me->name() + "正盯著你看，不知道打些什麽主意。\n", obj);
 
-	str = obj->long();
+    str = sprintf( "\n□ %s\n%s\n", obj->short(), replace_string(obj->long(), "\n", "") );
 
 	pro = (obj==me) ? gender_self(obj->query("gender")) : gender_pronoun(obj->query("gender"));
 
@@ -125,7 +128,7 @@ int look_living(object me, object obj)
 		if ((int)me->query("age") > 14)
 			str += sprintf("你很象镜子中的自己啊!\n");
 		    else 
-			str += sprintf("你才十四岁啊，有什么好看的？n");
+			str += sprintf("你才十四岁啊，有什么好看的？\n");
 		}
 	    else {
 		if ((int)obj->query("age") < 15)

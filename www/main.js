@@ -1,24 +1,43 @@
+var ROOM_MARK = '▲ ', CHAR_MARK = '□ ', ITEM_MARK = '◇ ';
+
+// remove \r\n in a room description, to fit window width
+function parseRoom(str) {
+  var marks = str.split(ROOM_MARK);
+  for(var i=1; i<marks.length; i++) {
+    var desc = marks[i];
+  }
+  return str;
+}
+
+function parseChar(str) {
+  var marks = str.split(CHAR_MARK);
+  for(var i=1; i<marks.length; i++) {
+    var desc = marks[i];
+  }
+  return str;
+}
+
+function parseItem(str) {
+  var marks = str.split(ITEM_MARK);
+  for(var i=1; i<marks.length; i++) {
+    var desc = marks[i];
+  }
+  return str;
+}
+
 function writeToScreen(str) {
   var out = $('div#out');
   out.append('<span class="out">' + str + '</span>');
   out.scrollTop(out.prop("scrollHeight"));
 }
 
-// remove \r\n in a room description, to fit window width
-function optimizeRoomDesc(str) {
-  var paras = str.split('\n    ');
-  for(var i=0; i<paras.length-1; i++) {
-    paras[i] = paras[i].replace(/\r\n/g, '');
-  }
-  return paras.join('\n    ');
-}
-
 function writeServerData(buf) {
   var data = new Uint8Array(buf);
   var str = binayUtf8ToString(data, 0);
 
-  console.log(str);
-  if(str.indexOf(' - ') > 0) str = optimizeRoomDesc(str);
+  if(str.indexOf(ROOM_MARK) >= 0) str = parseRoom(str);
+  if(str.indexOf(CHAR_MARK) >= 0) str = parseChar(str);
+  if(str.indexOf(ITEM_MARK) >= 0) str = parseItem(str);
   
   var lines = str.split('\r\n');
   for(var i=0; i<lines.length; i++) {
@@ -27,7 +46,7 @@ function writeServerData(buf) {
 
     // replace the prompt "> " with a empty line
     var len = line.length;
-    if(len>=2 && line.substr(len-2) == '> ') line = line.substr(0, line-2) + '<br/>';
+    if(len>=2 && line.substr(len-2) == '> ') line = line.substr(0, line-2);
 
     line = ansi_up.ansi_to_html(line);
 
@@ -45,8 +64,8 @@ function adjustLayout() {
   });
   var h0 = $('div#cmd').outerHeight(true);
   $('div#out').css({
-    width: (w-2) + 'px',
-    height: (h - h0 -2) + 'px',
+    width: (w-32) + 'px',
+    height: (h - h0 -32) + 'px',
   });
 }
 
@@ -77,7 +96,7 @@ $(document).ready(function(){
 
   // send
   var send = function(str) {
-    writeToScreen(str);
+    //writeToScreen(str);
     if(sock) sock.emit('data', str);
   }
   var sendInput = function() {
