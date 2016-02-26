@@ -462,7 +462,8 @@ int check_legal_name(string name)
                         write("对不起，你的中文名字不能用控制字元。\n");
                         return 0;
                 }
-                if( i%2==0 && !is_chinese(name[i..<0]) ) {
+                // i%2==0 only for GBK/BIG5, not correct for UTF8
+                if( /*i%2==0 &&*/ !is_chinese(name[i..<0]) ) {
                         write("对不起，请您用「中文」取名字。\n");
                         return 0;
                 }
