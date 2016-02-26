@@ -43,8 +43,37 @@
 <body>
   <div id="page">
     <div id="out"></div>
-    <div id="cmd">
-      <input id='cmd' type="text" value="" autofocus><button id='send' class='cmd I18N' i18n='send'>Send</button><button id='clear' class='cmd I18N' i18n='clear'>Clear</button>
+    <div id="in">
+      <div id="menu"><input id='str' type="text" value="" autofocus><button id='explore' class='menu'>快捷</button><button id='map' class='menu'>地图</button><button id='chat' class='menu'>聊天</button><button id='fight' class='menu'>战斗</button></div>
+      <div id="explore" class="pad">
+        <table id='explore' cellspacing=5 cellpadding=0>
+          <tr>
+            <td><div id='expkeys'></div>
+            </td>
+            <td>
+          <table id='go' cellspacing=0 cellpadding=0>
+            <tr>
+              <td><button class='go' id='nw' macro='nw'>西北</button></td>
+              <td><button class='go' id='n' macro='n'>北</button></td>
+              <td><button class='go' id='ne' macro='ne'>东北</button></td></tr>
+            <tr>
+              <td><button class='go' id='w' macro='w'>西</button></td>
+              <td><button class='go' id='c' macro='l'>看</button></td>
+              <td><button class='go' id='e' macro='e'>东</button></td>
+            </tr>
+            <tr>
+              <td><button class='go' id='sw' macro='sw'>西南</button></td>
+              <td><button class='go' id='s' macro='s'>南</button></td>
+              <td><button class='go' id='se' macro='se'>东南</button></td></tr>
+          </table>
+            </td>
+          </tr>
+        </table>
+        </div>
+      </div>
+      <div id="map" class="pad"></div>
+      <div id="chat" class="pad"></div>
+      <div id="fight" class="pad"></div>
     </div>
   </div>
 </body>

@@ -6,9 +6,12 @@ body, div#page {
   background-color: darkgray;
 }
 
+div {
+}
+
 div#out {
   margin: 0px;
-  padding: 10px 20px 20px 10px;
+  padding: 10px 10px 20px 10px;
   overflow-y: scroll;
   overflow-x: scroll;
   font-family: SimSun;
@@ -24,7 +27,7 @@ span.out {
   word-wrap: break-word;
 }
 
-div#cmd {
+div#in {
   position: fixed;
   bottom: 0px;
   width: 100%;
@@ -32,14 +35,60 @@ div#cmd {
   margin: 0px;
 }
 
-input#cmd {
+input#str {
   font-size: 18px;
   padding: 5px;
 }
 
-button.cmd {
+button.menu {
   font-size: 18px;
-  width: 80px;
+  width: 60px;
   padding: 7px;
   margin: 1px;
+  border-radius: 3px;
+}
+
+div#menu {
+  width: 100%;
+}
+
+div.pad {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 200px;
+}
+
+div#explore, div#map, div#chat, div#fight {
+  display: none;
+}
+
+table#explore {
+  width: 100%;
+  height: 100%;
+}
+
+table#go {
+  width: 160 px;
+  height: 160 px;
+  padding: 0px;
+  margin: 0px;
+}
+
+button.keys {
+  font-size: 14px;
+  width: 50px;
+  height: 40px;
+  padding: 3px;
+  margin: 3px;
+  border-radius: 3px;
+}
+
+button.go {
+  font-size: 14px;
+  width: 50px;
+  height: 50px;
+  padding: 3px;
+  margin: 1px;
+  border-radius: 3px;
 }

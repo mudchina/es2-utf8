@@ -92,7 +92,7 @@ int look_item(object me, object obj)
     string str;
 	mixed *inv;
 
-    str = sprintf( "\n◇ %s\n%s\n", obj->short(), replace_string(obj->long(), "\n", "") );
+    str = sprintf( "\n◆ %s\n%s\n", obj->short(), replace_string(obj->long(), "\n", "") );
     write(str);
 
     inv = all_inventory(obj);
@@ -114,7 +114,7 @@ int look_living(object me, object obj)
 	if( me!=obj )
 		message("vision", me->name() + "正盯著你看，不知道打些什麽主意。\n", obj);
 
-    str = sprintf( "\n□ %s\n%s\n", obj->short(), replace_string(obj->long(), "\n", "") );
+    str = sprintf( "\n▼ %s\n%s\n", obj->short(), replace_string(obj->long(), "\n", "") );
 
 	pro = (obj==me) ? gender_self(obj->query("gender")) : gender_pronoun(obj->query("gender"));
 

@@ -1,6 +1,6 @@
-var ROOM_MARK = '▲ ', CHAR_MARK = '□ ', ITEM_MARK = '◇ ';
+var ROOM_MARK = '▲ ', CHAR_MARK = '▼ ', ITEM_MARK = '◆ ';
 
-// remove \r\n in a room description, to fit window width
+// TODO: parse exits, enable / disable go keys
 function parseRoom(str) {
   var marks = str.split(ROOM_MARK);
   for(var i=1; i<marks.length; i++) {
@@ -9,6 +9,9 @@ function parseRoom(str) {
   return str;
 }
 
+// TODO: find NPC id,
+// 1. set as default target
+// 2. show context-sensitive commands
 function parseChar(str) {
   var marks = str.split(CHAR_MARK);
   for(var i=1; i<marks.length; i++) {
@@ -17,6 +20,9 @@ function parseChar(str) {
   return str;
 }
 
+// TODO: find Item id,
+// 1. set as default target
+// 2. show context-sensitive commands
 function parseItem(str) {
   var marks = str.split(ITEM_MARK);
   for(var i=1; i<marks.length; i++) {
@@ -25,11 +31,18 @@ function parseItem(str) {
   return str;
 }
 
-function writeToScreen(str) {
+function scrollDown() {
   var out = $('div#out');
-  out.append('<span class="out">' + str + '</span>');
   out.scrollTop(out.prop("scrollHeight"));
 }
+
+function writeToScreen(str) {
+  $('div#out').append('<span class="out">' + str + '</span>');
+  scrollDown();
+}
+
+var LOGIN_MARK = '您的英文名字：', PASS_MARK = '请输入密码：';
+var askingLogin = false, askingPass = false, autologin = false;
 
 function writeServerData(buf) {
   var data = new Uint8Array(buf);
@@ -38,6 +51,8 @@ function writeServerData(buf) {
   if(str.indexOf(ROOM_MARK) >= 0) str = parseRoom(str);
   if(str.indexOf(CHAR_MARK) >= 0) str = parseChar(str);
   if(str.indexOf(ITEM_MARK) >= 0) str = parseItem(str);
+  askingLogin = (str.indexOf(LOGIN_MARK) >= 0);
+  askingPass = (str.indexOf(PASS_MARK) >= 0);
   
   var lines = str.split('\r\n');
   for(var i=0; i<lines.length; i++) {
@@ -52,33 +67,85 @@ function writeServerData(buf) {
 
     writeToScreen(line);
   }
+
+  if(askingLogin) {
+    setTimeout(function(){
+      autologin = localStorage.getItem('autologin');
+      if(autologin) autologin = confirm('是否用记住的密码自动登录？');
+      if(autologin) {
+        var u = localStorage.getItem('username');
+        if(sendData && u) sendData(u + '\n');
+      }
+    }, 100);
+  }
+  if(askingPass) {
+    if(autologin) {
+      var p = localStorage.getItem('password');
+      if(sendData && p) sendData(p + '\n');
+      $('button#explore').click();
+    }
+  }
+}
+
+var exploreCmds = [
+  ['看', 'l'],
+  ['捡', 'get'],
+  ['放', 'put'],
+  ['给', 'give'],
+  ['丢', 'drop'],
+  ['偷', 'steal'],
+  ['开门', 'open door'],
+  ['关门', 'close door'],
+  ['挑战', 'fight'],
+  ['杀', 'kill'],
+  ['跟随', 'follow'],
+  ['组队', 'team'],
+  ['状态', 'hp'],
+  ['物品', 'i'],
+  ['技能', 'skills'],
+  ['成就', 'score'],
+];
+
+function initKeys(cmds, div, callback) {
+  for(var i=0; i<cmds.length; i++) {
+    var pair = cmds[i];
+    var id = 'exp' + i;
+    var txt = pair[0];
+    var macro = pair[1];
+    $('<button>').text(txt).attr('id', id).attr('macro', macro).addClass('keys').click(callback).appendTo(div);
+  }
 }
 
 function adjustLayout() {
   var w = $(window).width(), h = $(window).height();
-  var w0 = $('div#cmd').width();
-  var w1 = $('button#send').outerWidth(true);
-  var w2 = $('button#clear').outerWidth(true);
-  $('input#cmd').css({
-    width: (w0 - (w1+w2+14)) + 'px',
+
+  // adjust input box width
+  var w0 = $('div#in').width();
+  var btns = ['explore', 'map', 'chat', 'fight'];
+  for(var i=0; i<btns.length; i++) {
+    w0 -= $('button#'+btns[i]).outerWidth(true)+5;
+  }
+  $('input#str').css({
+    width: w0 + 'px',
   });
-  var h0 = $('div#cmd').outerHeight(true);
+
+  // adjust output area, according to input area height
+  var h0 = $('div#in').outerHeight(true);
   $('div#out').css({
-    width: (w-32) + 'px',
+    width: (w-22) + 'px',
     height: (h - h0 -32) + 'px',
   });
+
+  scrollDown();
 }
 
-$(window).resize(adjustLayout);
+function showPad(name) {
+  $('div.pad').hide();
+  if(name) $('div#'+name).show();
+  adjustLayout();
+}
 
-var cmdHistory = [];
-var cmdIndex = 0;
-
-$(document).ready(function(){
-  //$.cookie('lang', 'zh');
-  //hotjs.i18n.setLang('zh');
-  //hotjs.i18n.translate();
-
+function connectServer() {
   // websocket
   var sock = io.connect();
   sock.on('data', function(buf){
@@ -95,62 +162,92 @@ $(document).ready(function(){
   });
 
   // send
-  var send = function(str) {
+  window.sendData = function(str) {
     //writeToScreen(str);
     if(sock) sock.emit('data', str);
   }
-  var sendInput = function() {
-    var cmd = $('input#cmd');
-    var str = cmd.val().trim();
+}
 
-    // store cmd in history for re-use when press up / down arrow key
-    if(str && (str != cmdHistory[cmdHistory.length-1])) {
-      if(cmdHistory.length > 100) cmdHistory.unshift();
-      cmdHistory.push(str);
-      cmdIndex = cmdHistory.length;
-    }
+$(window).resize(adjustLayout);
 
-    send(str + '\n');
-    cmd.val('');
+var cmdHistory = [];
+var cmdIndex = 0;
+
+function sendInput() {
+  var cmd = $('input#str');
+  var str = cmd.val().trim();
+
+  if(askingLogin) localStorage.setItem('username', str);
+  else if(askingPass) {
+    localStorage.setItem('password', str);
+    localStorage.setItem('autologin', confirm('是否记住密码？'));
   }
 
+  // store cmd in history for re-use when press up / down arrow key
+  if(cmdHistory.length > 20) cmdHistory.unshift();
+  if(str && (str != cmdHistory[cmdHistory.length-1])) {
+    cmdHistory.push(str);
+  }
+  cmdIndex = cmdHistory.length;
+
+  if(sendData) sendData(str + '\n');
+  cmd.val('');
+}
+
+function onMacroKey(e) {
+  var me = $(e.currentTarget);
+  var str = me.attr('macro');
+  if(sendData) sendData(str + '\n');
+}
+
+function initUI() {
+  $('button.menu').click(function(e) {
+    var name = $(e.currentTarget).attr('id');
+    showPad(name);
+  });
+
+  $('button.go').click(onMacroKey);
+
+  initKeys(exploreCmds, 'div#expkeys', onMacroKey);
+
   // UI events
-  $('input#cmd').keydown(function(e) {
+  $('input#str').keydown(function(e) {
     // console.log(e.keyCode);
     switch(e.keyCode) {
-      case 37: // left arrow key
-        break;
-      case 39: // right arrow key
-        break;
       case 38: // up arrow key
         if(cmdIndex > 0) {
           cmdIndex --;
           if(cmdIndex < cmdHistory.length) {
             var str = cmdHistory[cmdIndex];
-            $('input#cmd').val(str);
+            $('input#str').val(str);
           }
-        } else $('input#cmd').val('');
+        } else $('input#str').val('');
         break;
       case 40: // down arrow key
         if(cmdIndex < cmdHistory.length-1) {
           cmdIndex ++;
           var str = cmdHistory[cmdIndex];
-          $('input#cmd').val(str);
-        } else $('input#cmd').val('');
+          $('input#str').val(str);
+        } else $('input#str').val('');
         break;
       case 13: // enter
         sendInput();
         break;
     }
   });
-  $('button#send').click(function(e) {
-    sendInput();
+  $('input#str').focus(function(e){
+    showPad(null);
   });
-  $('button#clear').click(function(e) {
-    $('div#out').html('');
-  });
+}
+
+$(document).ready(function(){
+  initUI();
 
   setTimeout(function(){
     adjustLayout();
-  },200)
+
+    setTimeout(function(){
+      connectServer();
+    }, 200);
+  }, 100)
 });
