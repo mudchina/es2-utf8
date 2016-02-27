@@ -16,10 +16,10 @@
         ANSI_COLORS = [
           [
             { color: "0, 0, 0",        'class': "ansi-black"   },
-            { color: "187, 0, 0",      'class': "ansi-red"     },
-            { color: "0, 187, 0",      'class': "ansi-green"   },
+            { color: "255, 0, 0",      'class': "ansi-red"     },
+            { color: "0, 255, 0",      'class': "ansi-green"   },
             { color: "187, 187, 0",    'class': "ansi-yellow"  },
-            { color: "0, 0, 187",      'class': "ansi-blue"    },
+            { color: "0, 0, 255",      'class': "ansi-blue"    },
             { color: "187, 0, 187",    'class': "ansi-magenta" },
             { color: "0, 187, 187",    'class': "ansi-cyan"    },
             { color: "255,255,255",    'class': "ansi-white"   }

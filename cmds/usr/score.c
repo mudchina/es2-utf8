@@ -42,8 +42,8 @@ int main(object me, string arg)
 
 	my = ob->query_entire_dbase();
 
-	line = sprintf( BOLD "%s" NOR "%s\n\n", RANK_D->query_rank(ob), ob->short(1) );
-	line += sprintf(" 你是一%s%s岁的%s%s，%s生。\n\n",
+	line = sprintf( BOLD "%s" NOR "%s\n", RANK_D->query_rank(ob), ob->short(1) );
+	line += sprintf(" 你是一%s%s岁的%s%s，%s生。\n",
 		ob->query("unit"),
 		chinese_number(ob->query("age")), 
 		ob->query("gender"),
@@ -53,7 +53,7 @@ int main(object me, string arg)
 	if( wizardp(me) || (int)ob->query("age") >= 18 ) {
 		line += sprintf(
 			" 膂力：[%s]  胆识：[%s]  悟性：[%s]  灵性：[%s]\n"
-			" 定力：[%s]  容貌：[%s]  根骨：[%s]  福缘：[%s]\n\n",
+			" 定力：[%s]  容貌：[%s]  根骨：[%s]  福缘：[%s]\n",
 			display_attr(my["str"], ob->query_str()),
 			display_attr(my["cor"], ob->query_cor()),
 			display_attr(my["int"], ob->query_int()),
@@ -74,7 +74,7 @@ int main(object me, string arg)
 
 	if( mapp(my["family"]) ) {
 		if( my["family"]["master_name"] )
-			line = sprintf("%s 你的师父是%s。\n\n",
+			line = sprintf("%s 你的师父是%s。\n",
 				line, my["family"]["master_name"] );
 	}
 
@@ -112,21 +112,21 @@ int main(object me, string arg)
 	parry_points = COMBAT_D->skill_power(ob, skill_type, SKILL_USAGE_DEFENSE);
 	dodge_points = COMBAT_D->skill_power(ob, "dodge", SKILL_USAGE_DEFENSE);
 
-	line += sprintf("\n 战斗攻击力 " HIW "%d (+%d)" NOR "\t\t战斗防御力 " HIW "%d (+%d)\n\n" NOR,
+	line += sprintf(" 战斗攻击力 " HIW "%d (+%d)" NOR "\t\t战斗防御力 " HIW "%d (+%d)\n" NOR,
 		attack_points/100 + 1, ob->query_temp("apply/damage"),
 		(dodge_points + (weapon? parry_points: (parry_points/10)))/100 + 1, ob->query_temp("apply/armor"));
 
 	line += " 食物：" + tribar_graph(my["food"], ob->max_food_capacity(), ob->max_food_capacity(), YEL) + "\n";
 	line += " 饮水：" + tribar_graph(my["water"], ob->max_water_capacity(), ob->max_water_capacity(), CYN) + "\n";
 
-	line += sprintf("\n 你到目前为止总共杀了 %d 个人，其中有 %d 个是其他玩家。\n\n",
+	line += sprintf(" 你到目前为止总共杀了 %d 个人，其中有 %d 个是其他玩家。\n",
 		my["MKS"] + my["PKS"], my["PKS"]);
 
-	line += sprintf(" 杀    气： " RED "%d\n" NOR, ob->query("bellicosity") );
+	line += sprintf(" 杀    气： " RED "%d\t\t\t\t" NOR, ob->query("bellicosity") );
 	line += sprintf(" 潜    能： " HIY "%d (%d%%)\n" NOR,
 		(int)ob->query("potential") - (int)ob->query("learned_points"),
 		(1 + (int)ob->query("learned_points")) * 100 / (1 + (int)ob->query("potential")) );
-	line += sprintf(" 实战经验： " HIM "%d\n\n" NOR, ob->query("combat_exp") );
+	line += sprintf(" 实战经验： " HIM "%d\t\t\t\t" NOR, ob->query("combat_exp") );
 	line += sprintf(" 综合评价： " HIC "%d\n\n" NOR, ob->query("score") );
 
 	write(line);
@@ -158,7 +158,7 @@ string status_color(int current, int max)
 string tribar_graph(int val, int eff, int max, string color)
 {
 	return color + bar_string[0..(val*25/max)*2-1]
-		+ ((eff > val) ? blank_string[(val*25/max)*2..(eff*25/max)*2-1] : "") + NOR;
+		+ ((eff > val) ? blank_string[(val*25/max)*2..(eff*25/max)*2-1] : " ") + "  " + NOR;
 }
 
 int help(object me)

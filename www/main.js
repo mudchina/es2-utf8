@@ -1,10 +1,72 @@
 var ROOM_MARK = '▲ ', CHAR_MARK = '▼ ', ITEM_MARK = '◆ ';
 
-// TODO: parse exits, enable / disable go keys
+var EXITS_MARK = '这里明显的出口是';
+var ESC_CHAR = String.fromCharCode(27);
+var ESC_1 = new RegExp(ESC_CHAR+'\\[1m', 'g');
+var ESC_2 = new RegExp(ESC_CHAR+'\\[2;37;0m', 'g');
+
+// copy from es2 mudlib: /cmds/std/go.c
+var allDirs = {
+  'north': ['n', '北'],
+  'south': ['s', '南'],
+  'east': ['e', '东'],
+  'west': ['w', '西'],
+  'northup': ['n', '北上'],
+  'southup': ['s', '南上'],
+  'eastup': ['e', '东上'],
+  'westup': ['w', '西上'],
+  'northdown': ['n', '北下'],
+  'southdown': ['s', '南下'],
+  'eastdown': ['e', '东下'],
+  'westdown': ['w', '西下'],
+  'northeast': ['ne', '东北'],
+  'northwest': ['nw', '西北'],
+  'southeast': ['se', '东南'],
+  'southwest': ['sw', '西南'],
+  'up': ['nw', '上'],
+  'down': ['sw', '下'],
+  'out': ['ne', '外'],
+  'enter': ['ne', '里'],
+};
+var SHORT_DIRS = ['n','s','e','w','nw','sw','ne','se'];
+
+// parse exits, enable / disable go keys
 function parseRoom(str) {
   var marks = str.split(ROOM_MARK);
   for(var i=1; i<marks.length; i++) {
     var desc = marks[i];
+    var p = desc.indexOf(EXITS_MARK);
+    if(p < 0) continue;
+    p += EXITS_MARK.length;
+    var p2 = desc.indexOf('。', p);
+    if(p2 < 0) continue;
+
+    // extra open exits to array
+    var exits = desc.substr(p, p2-p)
+      .replace(ESC_1, '').replace(ESC_2, '').replace(/、/g, ',').replace('和', ',')
+      .split(',');
+    for(var j=0; j<exits.length; j++) {
+      exits[j] = exits[j].trim();
+    }
+
+    var openDirs = {};
+    for(var j=0; j<SHORT_DIRS.length; j++) {
+      openDirs[ SHORT_DIRS[j] ] = 0;
+    }
+    var domGo = $('table#go');
+    for(var j=0; j<exits.length; j++) {
+      var dirInfo = allDirs[ exits[j] ];
+      if(!dirInfo) continue;
+
+      var dirShort = dirInfo[0];
+      var dirName = dirInfo[1];
+      openDirs[ dirShort ] = 1;
+      $('button#'+dirShort, domGo).attr('macro',dir).text(dirName);
+    }
+    for(var k in openDirs) {
+      var btn = $('button#'+k, domGo);
+      if(!openDirs[k]) btn.attr('macro','').text('');
+    }
   }
   return str;
 }
@@ -33,7 +95,7 @@ function parseItem(str) {
 
 function scrollDown() {
   var out = $('div#out');
-  out.scrollTop(out.prop("scrollHeight"));
+  out.scrollTop(out.prop('scrollHeight'));
 }
 
 function writeToScreen(str) {
@@ -59,7 +121,7 @@ function writeServerData(buf) {
     var line = lines[i].replace(/\s\s/g, '&nbsp;');
     if(i < lines.length-1) line += '<br/>';
 
-    // replace the prompt "> " with a empty line
+    // replace the prompt '> ' with a empty line
     var len = line.length;
     if(len>=2 && line.substr(len-2) == '> ') line = line.substr(0, line-2);
 
@@ -88,11 +150,11 @@ function writeServerData(buf) {
 }
 
 var exploreCmds = [
-  ['看', 'l'],
   ['捡', 'get'],
   ['放', 'put'],
   ['给', 'give'],
   ['丢', 'drop'],
+  ['买', 'buy'],
   ['偷', 'steal'],
   ['开门', 'open door'],
   ['关门', 'close door'],
