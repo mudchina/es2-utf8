@@ -92,3 +92,7 @@ button.go {
   margin: 1px;
   border-radius: 3px;
 }
+
+button.disable {
+  color: dimgray;
+}

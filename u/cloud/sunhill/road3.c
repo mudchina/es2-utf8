@@ -11,7 +11,7 @@ LONG
         );
         set("exits", ([ /* sizeof() == 2 */
   "eastdown" : __DIR__"road2",
-  "eastup" : __DIR__"road4",
+  "northeast" : __DIR__"road4",
 ]));
         set("outdoors", "cloud");
 

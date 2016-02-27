@@ -10,7 +10,7 @@ void create()
 LONG
         );
         set("exits", ([ /* sizeof() == 2 */
-  "westdown" : __DIR__"road3",
+  "southwest" : __DIR__"road3",
   "southup" : "/d/sanyen/sroad2",
 //"southup" : __DIR__"hillsmoke/entrance",
 ]));

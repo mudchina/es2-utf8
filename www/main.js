@@ -1,6 +1,7 @@
 var ROOM_MARK = '▲ ', CHAR_MARK = '▼ ', ITEM_MARK = '◆ ';
 
 var EXITS_MARK = '这里明显的出口是';
+var EXITS_MASK2 = '这里唯一的出口是';
 var ESC_CHAR = String.fromCharCode(27);
 var ESC_1 = new RegExp(ESC_CHAR+'\\[1m', 'g');
 var ESC_2 = new RegExp(ESC_CHAR+'\\[2;37;0m', 'g');
@@ -36,7 +37,10 @@ function parseRoom(str) {
   for(var i=1; i<marks.length; i++) {
     var desc = marks[i];
     var p = desc.indexOf(EXITS_MARK);
-    if(p < 0) continue;
+    if(p < 0) {
+      p = desc.indexOf(EXITS_MASK2);
+      if(p < 0) continue;
+    }
     p += EXITS_MARK.length;
     var p2 = desc.indexOf('。', p);
     if(p2 < 0) continue;
@@ -55,17 +59,18 @@ function parseRoom(str) {
     }
     var domGo = $('table#go');
     for(var j=0; j<exits.length; j++) {
-      var dirInfo = allDirs[ exits[j] ];
+      var dir = exits[j];
+      var dirInfo = allDirs[ dir ];
       if(!dirInfo) continue;
 
       var dirShort = dirInfo[0];
       var dirName = dirInfo[1];
       openDirs[ dirShort ] = 1;
-      $('button#'+dirShort, domGo).attr('macro',dir).text(dirName);
+      $('button#'+dirShort, domGo).attr('macro',dir).text(dirName).removeClass('disable');
     }
     for(var k in openDirs) {
       var btn = $('button#'+k, domGo);
-      if(!openDirs[k]) btn.attr('macro','').text('');
+      if(!openDirs[k]) btn.attr('macro','').text('').addClass('disable');
     }
   }
   return str;
