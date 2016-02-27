@@ -22,9 +22,11 @@ div#out {
   border: 1px solid gray; 
 }
 
-span.out {
+p.out {
   white-space: pre;
   word-wrap: break-word;
+  margin: 2px;
+  padding: 0px;
 }
 
 div#in {
@@ -38,14 +40,6 @@ div#in {
 input#str {
   font-size: 18px;
   padding: 5px;
-}
-
-button.menu {
-  font-size: 18px;
-  width: 60px;
-  padding: 7px;
-  margin: 1px;
-  border-radius: 3px;
 }
 
 div#menu {
@@ -75,13 +69,24 @@ table#go {
   margin: 0px;
 }
 
+button {
+  border-radius: 5px;
+  background-color: aquamarine;
+}
+
+button.menu {
+  font-size: 18px;
+  width: 60px;
+  padding: 7px;
+  margin: 1px;
+}
+
 button.keys {
   font-size: 14px;
   width: 50px;
   height: 40px;
   padding: 3px;
-  margin: 3px;
-  border-radius: 3px;
+  margin: 1px;
 }
 
 button.go {
@@ -90,9 +95,21 @@ button.go {
   height: 50px;
   padding: 3px;
   margin: 1px;
-  border-radius: 3px;
 }
 
 button.disable {
-  color: dimgray;
+  background-color: darkgray;
+}
+
+a.cmd {
+  color: cyan;
+}
+
+span.itemtarget, span.chartarget {
+  width: 100px;
+  height: 20px;
+  padding: 3px 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  background-color: aquamarine;
 }
