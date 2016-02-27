@@ -145,7 +145,7 @@ var exploreCmds = [
   ['挑战', 'fight $char'],
   ['杀', 'kill $char'],
   ['跟随', 'follow $char'],
-  ['组队', 'team $char'],
+  ['组队', 'team with $char'],
   ['状态', 'hp $char'],
   ['物品', 'i'],
   ['技能', 'skills $char'],
