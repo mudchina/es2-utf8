@@ -7,7 +7,7 @@ function setTargetItem(str) {
 
 function setTargetChar(str) {
   charTarget = str;
-  $('span.chartarget').text('目标人物:'+str);
+  $('span.chartarget').text('人物:'+str);
 }
 
 function onMacroKey(e) {
