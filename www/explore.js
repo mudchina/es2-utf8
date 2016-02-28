@@ -6,15 +6,16 @@ var ESC_CHAR = String.fromCharCode(27);
 var ESC_1 = new RegExp(ESC_CHAR+'\\[1m', 'g');
 var ESC_2 = new RegExp(ESC_CHAR+'\\[2;37;0m', 'g');
 
-function addTargetLinks(str) {
-  var targets = str.match(/\([\w ]+\)/gi);
+function addTargetLinks(str, type) {
+  if(!type) type = 'look';
+  var targets = str.match(/\([\w \-]+\)/gi);
   if(targets) {
     targets = _.unique(targets);
     for(var i=0; i<targets.length; i++) {
       var quote_word = targets[i];
       var word = quote_word.replace('(','').replace(')','');
-      var id = word.split(' ')[0].toLowerCase();
-      var link_word = '(<a class="cmd" href="#" macro="l ' + id + '">' + word + '</a>)';
+      var id = word.toLowerCase();
+      var link_word = '(<a class="target" href="#" type="' + type + '" ob="' + id + '">' + word + '</a>)';
       str = str.replace(new RegExp('\\(' + word + '\\)', 'gi'), link_word);
     }
   }
@@ -39,12 +40,12 @@ var allDirs = {
   'northwest': ['nw', '西北'],
   'southeast': ['se', '东南'],
   'southwest': ['sw', '西南'],
-  'up': ['nw', '上'],
-  'down': ['sw', '下'],
-  'out': ['ne', '外'],
-  'enter': ['ne', '里'],
+  'up': ['up', '上'],
+  'down': ['d', '下'],
+  'out': ['up', '外'],
+  'enter': ['d', '里'],
 };
-var SHORT_DIRS = ['n','s','e','w','nw','sw','ne','se'];
+var SHORT_DIRS = ['n','s','e','w','nw','sw','ne','se','up','d'];
 
 function parseExits(str) {
   // parse exits, enable / disable go keys
@@ -102,7 +103,7 @@ function parseRoom(str) {
 
   parseExits(str);
 
-  return addTargetLinks(str);
+  return addTargetLinks(str, 'look');
 }
 
 // TODO: find NPC id,
@@ -118,19 +119,13 @@ function parseChar(str) {
     var targets = desc.match(/\([\w ]+\)/gi);
     if(targets) {
       var word = targets[0].replace('(','').replace(')','');
-      var id = word.split(' ')[0].toLowerCase();
+      var id = word.toLowerCase();
       setTargetChar(id);
+      break;
     }
   }
   
-  return addTargetLinks(str);
-}
-
-// TODO: find Item id,
-// 1. set as default target
-// 2. show context-sensitive commands
-function parseItem(str) {
-  return addTargetLinks(str);
+  return addTargetLinks(str, 'item');
 }
 
 var exploreCmds = [

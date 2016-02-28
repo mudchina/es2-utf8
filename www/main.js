@@ -1,3 +1,40 @@
+var itemTarget = '', charTarget = '';
+
+function setTargetItem(str) {
+  itemTarget = str;
+  $('span.itemtarget').text('物品/技能:'+str);
+}
+
+function setTargetChar(str) {
+  charTarget = str;
+  $('span.chartarget').text('目标人物:'+str);
+}
+
+function onMacroKey(e) {
+  var me = $(e.currentTarget);
+  var str = me.attr('macro');
+  //console.log(str);
+  if(sendCmd && str) sendCmd(str);
+}
+
+function onTargetLink(e) {
+  var me = $(e.currentTarget);
+  var ob = me.attr('ob');
+  if(!ob) return;
+  
+  setTargetItem(ob);
+
+  switch(me.attr('type')) {
+    case 'look':
+      if(sendCmd && ob) sendCmd('l ' + ob);
+      break;
+    case 'item':
+      break;
+    case 'skill':
+      break;
+  }
+}
+
 function scrollDown() {
   var out = $('div#out');
   out.scrollTop(out.prop('scrollHeight'));
@@ -6,11 +43,12 @@ function scrollDown() {
 function writeToScreen(str) {
   var p = $('<p>').append(str).addClass('out');
   p.appendTo('div#out');
-  $('a.cmd', p).on('click', onMacroKey);
+  $('a.target', p).on('click', onTargetLink);
   scrollDown();
 }
 
-var ROOM_MARK = '▲ ', CHAR_MARK = '▼ ', ITEM_MARK = '◆ ', INV_MARK = '带著下列这些东西';
+var ROOM_MARK = '▲ ', CHAR_MARK = '▼ ', ITEM_MARK = '◆ ';
+var INV_MARK = '带著下列这些东西', SKILLS_MARK = '目前所学过的技能';
 var LOGIN_MARK = '您的英文名字：', PASS_MARK = '请输入密码：';
 var askingLogin = false, askingPass = false, autologin = false;
 
@@ -21,8 +59,9 @@ function writeServerData(buf) {
   askingLogin = askingPass = false;
   if(str.indexOf(ROOM_MARK) >= 0) str = parseRoom(str);
   else if(str.indexOf(CHAR_MARK) >= 0) str = parseChar(str);
-  else if(str.indexOf(ITEM_MARK) >= 0) str = parseItem(str);
-  else if(str.indexOf(INV_MARK) >= 0) str = addTargetLinks(str);
+  else if(str.indexOf(ITEM_MARK) >= 0) str = addTargetLinks(str, 'item');
+  else if(str.indexOf(INV_MARK) >= 0) str = addTargetLinks(str, 'look');
+  else if(str.indexOf(SKILLS_MARK) >= 0) str = addTargetLinks(str, 'skill');
   else if(str.indexOf(LOGIN_MARK) >= 0) askingLogin = true;
   else if(str.indexOf(PASS_MARK) >= 0) askingPass = true;
   
@@ -57,18 +96,6 @@ function writeServerData(buf) {
       $('button#explore').click();
     }
   }
-}
-
-var itemTarget = '', charTarget = '';
-
-function setTargetItem(str) {
-  itemTarget = str;
-  $('span.itemtarget').text('物品目标：'+str);
-}
-
-function setTargetChar(str) {
-  charTarget = str;
-  $('span.chartarget').text('角色目标：'+str);
 }
 
 function connectServer() {
@@ -182,13 +209,6 @@ function cmdHistoryDown() {
     var str = cmdHistory[cmdIndex];
     $('input#str').val(str);
   } else $('input#str').val('');
-}
-
-function onMacroKey(e) {
-  var me = $(e.currentTarget);
-  var str = me.attr('macro');
-  //console.log(str);
-  if(sendCmd && str) sendCmd(str);
 }
 
 function initUI() {
