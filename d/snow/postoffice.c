@@ -25,7 +25,7 @@ LONG
 		"east" : __DIR__"mstreet4",
 	]));
 	set("objects", ([
-		__DIR__"npc/post_officer": 5, 
+		__DIR__"npc/post_officer": 1,
 	]) );
 
 	setup();

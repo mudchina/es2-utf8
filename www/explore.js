@@ -129,27 +129,111 @@ function parseChar(str) {
 }
 
 var exploreCmds = [
-  ['捡', 'get $item'],
-  ['放', 'put'],
-  ['给', 'give $item to $char'],
-  ['丢', 'drop $item'],
-  ['买', 'buy $item from $char'],
-  ['偷', 'steal $item from $char'],
-  ['开门', 'open door\nl'],
-  ['关门', 'close door\nl'],
-  ['挑战', 'fight $char'],
-  ['杀', 'kill $char'],
-  ['跟随', 'follow $char'],
-  ['组队', 'team with $char'],
-  ['状态', 'hp $char'],
-  ['物品', 'i'],
-  ['技能', 'skills $char'],
-  ['成就', 'score $char'],
+  ['捡', 'get $item', 'explore'],
+  ['放', 'put', 'explore'],
+  ['给', 'give $item to $char', 'explore'],
+  ['丢', 'drop $item', 'explore'],
+  ['买', 'buy $item from $char', 'explore'],
+  ['偷', 'steal $item from $char', 'explore'],
+
+  ['吃', 'eat $item', 'explore'],
+  ['喝', 'drink $item', 'explore'],
+  ['跟随', 'follow $char', 'explore'],
+  ['组队', 'team with $char', 'explore'],
+  ['开门', 'open door\nl', 'explore'],
+  ['关门', 'close door\nl', 'explore'],
+
+  ['穿', 'wear $item', 'fight'],
+  ['脱', 'remove $item', 'fight'],
+  ['装备', 'wield $item', 'fight'],
+  ['放下', 'unwield $item', 'fight'],
+  ['挑战', 'fight $char', 'kill'],
+  ['投降', 'surrender', 'kill'],
+
+  ['物品', 'i', 'status'],
+  ['状态', 'hp $char', 'status'],
+  ['技能', 'skills $char', 'status'],
+  ['成就', 'score $char', 'status'],
+  ['杀', 'kill $char', 'kill'],
+  ['逃', 'wimpy 20', 'kill'], // we escape when < 20%
+];
+
+var martialCmds = [
+  ['全技', 'enable ?', 'learn'], // 显示全部技能类别
+  ['拜师', 'apprentice $char', 'learn'],
+  ['收徒', 'recruit $char', 'learn'],
+  ['开除', 'expell $char', 'learn'],
+  // ['绰号', 'nick'], // nick <外号, 绰号>
+  ['学习', 'learn $skill from $char', 'learn'],
+  ['弃技', 'abandon $skill', 'learn'],
+
+  ['练习', 'practice $skill', 'practice'],
+  ['研读', 'study $item', 'practice'],
+  ['打坐', 'respirate 30', 'practice'], // 精 -> 灵力。
+  ['练气', 'exercise 30', 'practice'],  // 气 -> 内力
+  ['冥想', 'meditate 30', 'practice'],  // 神 -> 法力
+  ['放弃', 'abandon $skill', 'kill'],
+
+  ['用技', 'enable %skilltype $skill', 'prepare'], // 指定所要用的技能，需指明技能种类和技能名称。
+  ['施法', 'enchant 30', 'prepare'],   // enchant <灵力点数>, 设定使用魔法武器时要用来导引武器魔力所用的灵力强度。
+  ['发力', 'enforce 30', 'prepare'],   // enforce <内力点数>, 指定每次击中敌人时，要发出几点内力伤敌。
+  ['画符', 'scribe $skill on $item', 'prepare'],
+  ['挑战', 'fight $char', 'kill'],
+  ['投降', 'surrender', 'kill'],
+
+  ['传功', 'exert transfer', 'exert'],
+  ['疗伤', 'exert heal', 'exert'],
+  ['冲穴', 'exert mobilize', 'exert'],
+  ['逼毒', 'exert depoison', 'exert'],
+  ['杀', 'kill $char', 'kill'],
+  ['逃', 'wimpy 20', 'kill'], // we escape when < 20%
+];
+
+var chatCmds = [
+  ['hi', 'say hi', 'emote'],
+  ['bye', 'say bye', 'emote'],
+  ['微笑', 'emote 微笑起来。', 'emote'],
+  ['大笑', 'emote 大笑起来，笑得眼泪都要出来了。', 'emote'],
+  ['抽泣', 'emote 抹抹眼睛，低声抽泣起来。', 'emote'],
+  ['哭', 'emote 一屁股坐在地上，嚎啕大哭起来。', 'emote'],
+  ['痛苦', 'emote 一脸痛苦的样子。', 'emote'],
+  ['邪恶', 'emote 歪了歪嘴，邪恶的笑了。', 'emote'],
+
+  ['欢迎', 'chat 欢迎欢迎！', 'chat'],
+  ['再见', 'chat bye～', 'chat'],
+  ['下了', 'chat 我先下了哦，bye～', 'chat'],
+];
+
+var otherCmds = [
+  ['物品', 'i', 'status'],
+  ['头衔', 'title', 'status'],
+  ['帮助', 'help', 'status'],
+  ['巫师', 'wizlist', 'status'],
+
+  ['绰号', 'nick', 'warn'],
+  ['密码', 'passwd', 'warn'],
+  ['保存', 'save', 'warn'],
+  //['自杀', 'suicide', 'warn'],
+  ['退出', 'quit', 'warn'],
+
+  ['列举', 'list', 'explore'],
+  ['推', 'push', 'explore'],
+  ['拉', 'pull', 'explore'],
+  ['灌水', 'fillwater', 'explore'],
+
+  ['典当', 'pawn $item', 'explore'],
+  ['赎回', 'retrieve', 'explore'],
+  ['卖', 'sell $item', 'explore'],
+  ['工作', 'work', 'explore'],
+
 ];
 
 function initExploreKeys(callback) {
   $('button.go').click(callback);
   initKeys(exploreCmds, 'div#expkeys', callback);
+  initKeys(martialCmds, 'div#markeys', callback);
+  initKeys(chatCmds, 'div#chatkeys', callback);
+  initKeys(otherCmds, 'div#otherkeys', callback);
 }
 
 

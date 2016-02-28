@@ -5,7 +5,7 @@
 
 int main(object me, string arg)
 {
-	me->edit( (: this_object(), ({ "do_to", me, arg }) :) );
+	// me->edit( (: this_object(), ({ "do_to", me, arg }) :) );
 	return 1;
 }
 

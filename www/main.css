@@ -53,37 +53,38 @@ div.pad {
   height: 200px;
 }
 
-div#explore, div#map, div#chat, div#fight {
+div#explore, div#map, div#chat, div#martial, div#others {
   display: none;
 }
 
-table#explore {
+table.pad {
   width: 100%;
   height: 100%;
 }
 
-table#go {
-  width: 160 px;
-  height: 160 px;
+table.go {
+  width: 160;
+  height: 160;
   padding: 0px;
   margin: 0px;
 }
 
 button {
   border-radius: 5px;
-  background-color: aquamarine;
 }
 
-button.menu {
-  font-size: 18px;
-  width: 60px;
-  padding: 7px;
+button.menu, button.channel {
+  font-size: 14px;
+  width: 50px;
+  height: 36px;
+  padding: 3px;
   margin: 1px;
+  background-color: aquamarine;
 }
 
 button.keys {
   font-size: 14px;
-  width: 50px;
+  width: 40px;
   height: 40px;
   padding: 3px;
   margin: 1px;
@@ -91,27 +92,52 @@ button.keys {
 
 button.go {
   font-size: 14px;
-  width: 50px;
+  width: 45px;
   height: 40px;
   padding: 3px;
   margin: 1px;
   border-radius: 10px;
+  background-color: aquamarine;
 }
 
-button#nw {
-  border-top-left-radius: 30px;
+button.explore, button.learn, button.emote {
+  background-color: aquamarine;
 }
 
-button#ne {
-  border-top-right-radius: 30px;
+button.fight, button.practice, button.chat {
+  background-color: #66ddff;
 }
 
-button#sw {
-  border-bottom-left-radius: 30px;
+button.status, button.prepare, button.attack {
+  background-color: #ffdd88;
 }
 
-button#se {
-  border-bottom-right-radius: 30px;
+button.kill, button.warn {
+  background-color: #ff8888;
+}
+
+button.exert, button.whisper {
+  background-color: #88ff88;
+}
+
+button.rumor {
+  background-color: hotpink;
+}
+
+button.nw {
+  border-top-left-radius: 20px;
+}
+
+button.ne {
+  border-top-right-radius: 20px;
+}
+
+button.sw {
+  border-bottom-left-radius: 20px;
+}
+
+button.se {
+  border-bottom-right-radius: 20px;
 }
 
 button.disable {
@@ -122,11 +148,17 @@ a.target {
   color: cyan;
 }
 
-span.itemtarget, span.chartarget {
+a#itemtarget, a#chartarget {
   width: 100px;
   height: 20px;
   padding: 3px 10px;
+  font-size: 12px;
   border-radius: 5px;
   border: 1px solid gray;
-  background-color: aquamarine;
+  background-color: #eee;
+  text-decoration: none;
+}
+
+canvas#map {
+  border: 1px solid black;
 }

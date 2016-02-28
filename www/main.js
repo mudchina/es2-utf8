@@ -2,12 +2,12 @@ var itemTarget = '', charTarget = '';
 
 function setTargetItem(str) {
   itemTarget = str;
-  $('span.itemtarget').text('物品/技能:'+str);
+  $('a#itemtarget').text('物品/技能:'+str);
 }
 
 function setTargetChar(str) {
   charTarget = str;
-  $('span.chartarget').text('人物:'+str);
+  $('a#chartarget').text('目标:'+str);
 }
 
 function onMacroKey(e) {
@@ -122,7 +122,9 @@ function connectServer() {
 
     // when we look at sth, we set it as item target
     if((str.indexOf('l ') >= 0) || (str.indexOf('look ') >= 0)) {
-      setTargetItem(str.split(' ')[1]);
+      var words = str.split(' ');
+      words.shift();
+      setTargetItem(words.join(' '));
     }
 
     //writeToScreen(str);
@@ -136,7 +138,8 @@ function initKeys(cmds, div, callback) {
     var id = 'exp' + i;
     var txt = pair[0];
     var macro = pair[1];
-    $('<button>').text(txt).attr('id', id).attr('macro', macro).addClass('keys').click(callback).appendTo(div);
+    var cls = pair[2];
+    $('<button>').text(txt).attr('id', id).attr('macro', macro).addClass('keys').addClass(cls).click(callback).appendTo(div);
   }
 }
 
@@ -145,9 +148,9 @@ function adjustLayout() {
 
   // adjust input box width
   var w0 = $('div#in').width();
-  var btns = ['explore', 'map', 'chat', 'fight'];
+  var btns = ['explore', 'martial', 'map', 'chat', 'others'];
   for(var i=0; i<btns.length; i++) {
-    w0 -= $('button#'+btns[i]).outerWidth(true)+5;
+    w0 -= $('button#'+btns[i]).outerWidth(true)+4;
   }
   $('input#str').css({
     width: w0 + 'px',
@@ -217,6 +220,12 @@ function initUI() {
   $('button.menu').click(function(e) {
     var name = $(e.currentTarget).attr('id');
     showPad(name);
+  });
+  $('a#chartarget').click(function(e){
+    setTargetChar('');
+  });
+  $('a#itemtarget').click(function(e){
+    setTargetItem('');
   });
 
   initExploreKeys(onMacroKey);
