@@ -147,15 +147,15 @@ var exploreCmds = [
   ['脱', 'remove $item', 'fight'],
   ['装备', 'wield $item', 'fight'],
   ['放下', 'unwield $item', 'fight'],
-  ['挑战', 'fight $char', 'kill'],
-  ['投降', 'surrender', 'kill'],
+  ['挑战', 'fight $char', 'warn'],
+  ['投降', 'surrender', 'warn'],
 
   ['物品', 'i', 'status'],
   ['状态', 'hp $char', 'status'],
   ['技能', 'skills $char', 'status'],
   ['成就', 'score $char', 'status'],
-  ['杀', 'kill $char', 'kill'],
-  ['逃', 'wimpy 20', 'kill'], // we escape when < 20%
+  ['杀', 'kill $char', 'warn'],
+  ['逃', 'wimpy 20', 'warn'], // we escape when < 20%
 ];
 
 var martialCmds = [
@@ -172,21 +172,21 @@ var martialCmds = [
   ['打坐', 'respirate 30', 'practice'], // 精 -> 灵力。
   ['练气', 'exercise 30', 'practice'],  // 气 -> 内力
   ['冥想', 'meditate 30', 'practice'],  // 神 -> 法力
-  ['放弃', 'abandon $skill', 'kill'],
+  ['放弃', 'abandon $skill', 'warn'],
 
   ['用技', 'enable %skilltype $skill', 'prepare'], // 指定所要用的技能，需指明技能种类和技能名称。
   ['施法', 'enchant 30', 'prepare'],   // enchant <灵力点数>, 设定使用魔法武器时要用来导引武器魔力所用的灵力强度。
   ['发力', 'enforce 30', 'prepare'],   // enforce <内力点数>, 指定每次击中敌人时，要发出几点内力伤敌。
   ['画符', 'scribe $skill on $item', 'prepare'],
-  ['挑战', 'fight $char', 'kill'],
-  ['投降', 'surrender', 'kill'],
+  ['挑战', 'fight $char', 'warn'],
+  ['投降', 'surrender', 'warn'],
 
   ['传功', 'exert transfer', 'exert'],
   ['疗伤', 'exert heal', 'exert'],
   ['冲穴', 'exert mobilize', 'exert'],
   ['逼毒', 'exert depoison', 'exert'],
-  ['杀', 'kill $char', 'kill'],
-  ['逃', 'wimpy 20', 'kill'], // we escape when < 20%
+  ['杀', 'kill $char', 'warn'],
+  ['逃', 'wimpy 20', 'warn'], // we escape when < 20%
 ];
 
 var chatCmds = [
@@ -199,7 +199,7 @@ var chatCmds = [
   ['痛苦', 'emote 一脸痛苦的样子。', 'emote'],
   ['邪恶', 'emote 歪了歪嘴，邪恶的笑了。', 'emote'],
 
-  ['欢迎', 'chat 欢迎欢迎！', 'chat'],
+  ['欢迎', 'chat 欢迎欢迎，热烈欢迎！', 'chat'],
   ['再见', 'chat bye～', 'chat'],
   ['下了', 'chat 我先下了哦，bye～', 'chat'],
 ];

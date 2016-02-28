@@ -157,6 +157,7 @@ a#itemtarget, a#chartarget {
   border: 1px solid gray;
   background-color: #eee;
   text-decoration: none;
+  color: black;
 }
 
 canvas#map {
