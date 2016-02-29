@@ -104,7 +104,7 @@ void do_flee(object me)
 	else
 		dir = arg;
 
-	tell_object(me, "你慌里慌张逃往" + dir + "(" + arg + ")...\n");
+	tell_object(me, "你慌里慌张往" + dir + "(" + arg + ")逃去...\n");
 
     main(me, arg);
 }
