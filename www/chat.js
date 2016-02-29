@@ -39,7 +39,7 @@ function parseSmiley(str) {
     for(var i=0; i<targets.length; i++) {
       var quote_word = targets[i];
       var sm = parseInt(quote_word.replace('：\/',''), 10);
-      var img = '<img class="sm" src="sm/' + sm + '.png"/>';
+      var img = '<div class="triangle"></div><img class="sm" src="sm/' + sm + '.png"/>';
       str = str.replace(new RegExp('：\\/' + sm + '\\/', 'gi'), '：'+img);
     }
   }

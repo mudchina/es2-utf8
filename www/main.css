@@ -181,6 +181,17 @@ img.sm {
   border-radius: 5px;
 }
 
+div.triangle {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-bottom: 5px solid transparent;
+  border-top: 5px solid transparent;
+  border-right: 10px solid white;
+  font-size: 0;
+  line-height: 0;
+}
+
 a#itemtarget, a#chartarget, a#chatchannel {
   width: 100px;
   height: 20px;
