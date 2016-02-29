@@ -72,14 +72,18 @@ function addTargetLinks(str, type) {
 }
 
 var ROOM_MARK = '▲ ', CHAR_MARK = '▼ ', ITEM_MARK = '◆ ';
+var TELNET_MARK = 'ﺢ탿퟿떿놿ﻉ';
 var INV_MARK = '带著下列这些东西', SKILLS_MARK = '目前所学过的技能';
 var LOGIN_MARK = '您的英文名字：', PASS_MARK = '请输入密码：';
 var SMILEY_MARK = '：/';
+var GO_FAIL = '△ ';
 var askingLogin = false, askingPass = false, autologin = false;
 
 function writeServerData(buf) {
   var data = new Uint8Array(buf);
   var str = binayUtf8ToString(data, 0);
+  if(str.indexOf(TELNET_MARK) >= 0) str = str.replace(TELNET_MARK, '');
+  if(str.indexOf(GO_FAIL) >= 0) mapOnGoFail();
 
   askingLogin = askingPass = false;
   if(str.indexOf(ROOM_MARK) >= 0) str = parseRoom(str);
@@ -152,6 +156,9 @@ function connectServer() {
       words.shift();
       setTargetItem(words.join(' '));
     }
+
+    // pass to map module
+    mapCheckCmd(str);
 
     //writeToScreen(str);
     if(sock) sock.emit('data', str + '\n');

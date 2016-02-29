@@ -7,7 +7,7 @@ var ESC_1 = new RegExp(ESC_CHAR+'\\[1m', 'g');
 var ESC_2 = new RegExp(ESC_CHAR+'\\[2;37;0m', 'g');
 
 // copy from es2 mudlib: /cmds/std/go.c
-var allDirs = {
+var ALL_DIRS = {
   'north': ['n', '北'],
   'south': ['s', '南'],
   'east': ['e', '东'],
@@ -30,6 +30,10 @@ var allDirs = {
   'enter': ['d', '里'],
 };
 
+function getAllDirs() {
+  return ALL_DIRS;
+}
+
 var SHORT_DIRS = ['n','s','e','w','nw','sw','ne','se','up','d'];
 
 function parseExits(str) {
@@ -37,6 +41,7 @@ function parseExits(str) {
   var marks = str.split(ROOM_MARK);
   for(var i=1; i<marks.length; i++) {
     var desc = marks[i];
+    var nameAddr = desc.split('\n')[0];
     var p = desc.indexOf(EXITS_MARK);
     if(p < 0) {
       p = desc.indexOf(EXITS_MASK2);
@@ -54,6 +59,9 @@ function parseExits(str) {
       exits[j] = exits[j].trim();
     }
 
+    // pass to map module
+    mapCheckRoom(nameAddr, exits);
+
     var openDirs = {};
     for(var j=0; j<SHORT_DIRS.length; j++) {
       openDirs[ SHORT_DIRS[j] ] = 0;
@@ -61,7 +69,7 @@ function parseExits(str) {
     var domGo = $('table#go');
     for(var j=0; j<exits.length; j++) {
       var dir = exits[j];
-      var dirInfo = allDirs[ dir ];
+      var dirInfo = ALL_DIRS[ dir ];
       if(!dirInfo) continue;
 
       // enable go keys for valid exits

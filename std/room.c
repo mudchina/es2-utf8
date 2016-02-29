@@ -191,7 +191,7 @@ int valid_leave(object me, string dir)
 {
 	if( mapp(doors) && !undefinedp(doors[dir]) ) {
 		if( doors[dir]["status"] & DOOR_CLOSED )
-			return notify_fail("你必须先把" + doors[dir]["name"] + "打开！\n");
+			return notify_fail("△ 你必须先把" + doors[dir]["name"] + "打开！\n");
 		// if ( door[dir]["status"] & DOOR_HAS_TRAP ) ....
 	}
 	return 1;
