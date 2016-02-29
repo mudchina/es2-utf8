@@ -40,6 +40,7 @@ div#in {
 input#str {
   font-size: 18px;
   padding: 5px;
+  border: 1px solid black;
 }
 
 div#menu {
@@ -161,19 +162,23 @@ a.target {
 }
 
 img.smiley {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   padding: 3px;
   margin: 1px;
   vertical-align: middle;
+  background-color: white;
+  border-radius: 3px;
 }
 
 img.sm {
   width: 24px;
   height: 24px;
-  padding: 0px;
+  padding: 2px;
   margin: 0px;
   vertical-align: middle;
+  background-color: white;
+  border-radius: 5px;
 }
 
 a#itemtarget, a#chartarget, a#chatchannel {
