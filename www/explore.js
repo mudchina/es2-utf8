@@ -6,22 +6,6 @@ var ESC_CHAR = String.fromCharCode(27);
 var ESC_1 = new RegExp(ESC_CHAR+'\\[1m', 'g');
 var ESC_2 = new RegExp(ESC_CHAR+'\\[2;37;0m', 'g');
 
-function addTargetLinks(str, type) {
-  if(!type) type = 'look';
-  var targets = str.match(/\([\w \-]+\)/gi);
-  if(targets) {
-    targets = _.unique(targets);
-    for(var i=0; i<targets.length; i++) {
-      var quote_word = targets[i];
-      var word = quote_word.replace('(','').replace(')','');
-      var id = word.toLowerCase();
-      var link_word = '(<a class="target" href="#" type="' + type + '" ob="' + id + '">' + word + '</a>)';
-      str = str.replace(new RegExp('\\(' + word + '\\)', 'gi'), link_word);
-    }
-  }
-  return str;
-}
-
 // copy from es2 mudlib: /cmds/std/go.c
 var allDirs = {
   'north': ['n', '北'],
@@ -45,6 +29,7 @@ var allDirs = {
   'out': ['up', '外'],
   'enter': ['d', '里'],
 };
+
 var SHORT_DIRS = ['n','s','e','w','nw','sw','ne','se','up','d'];
 
 function parseExits(str) {
@@ -164,20 +149,20 @@ var martialCmds = [
   ['收徒', 'recruit $char', 'learn'],
   ['开除', 'expell $char', 'learn'],
   // ['绰号', 'nick'], // nick <外号, 绰号>
-  ['学习', 'learn $skill from $char', 'learn'],
-  ['弃技', 'abandon $skill', 'learn'],
+  ['学习', 'learn $item from $char', 'learn'],
+  ['弃技', 'abandon $item', 'learn'],
 
-  ['练习', 'practice $skill', 'practice'],
+  ['练习', 'practice $item', 'practice'],
   ['研读', 'study $item', 'practice'],
   ['打坐', 'respirate 30', 'practice'], // 精 -> 灵力。
   ['练气', 'exercise 30', 'practice'],  // 气 -> 内力
   ['冥想', 'meditate 30', 'practice'],  // 神 -> 法力
-  ['放弃', 'abandon $skill', 'warn'],
+  ['放弃', 'abandon $item', 'warn'],
 
-  ['用技', 'enable %skilltype $skill', 'prepare'], // 指定所要用的技能，需指明技能种类和技能名称。
+  ['用技', 'enable %skilltype $item', 'prepare'], // 指定所要用的技能，需指明技能种类和技能名称。
   ['施法', 'enchant 30', 'prepare'],   // enchant <灵力点数>, 设定使用魔法武器时要用来导引武器魔力所用的灵力强度。
   ['发力', 'enforce 30', 'prepare'],   // enforce <内力点数>, 指定每次击中敌人时，要发出几点内力伤敌。
-  ['画符', 'scribe $skill on $item', 'prepare'],
+  ['画符', 'scribe $item on $item', 'prepare'],
   ['挑战', 'fight $char', 'warn'],
   ['投降', 'surrender', 'warn'],
 
@@ -187,21 +172,6 @@ var martialCmds = [
   ['逼毒', 'exert depoison', 'exert'],
   ['杀', 'kill $char', 'warn'],
   ['逃', 'wimpy 20', 'warn'], // we escape when < 20%
-];
-
-var chatCmds = [
-  ['hi', 'say hi', 'emote'],
-  ['bye', 'say bye', 'emote'],
-  ['微笑', 'emote 微笑起来。', 'emote'],
-  ['大笑', 'emote 大笑起来，笑得眼泪都要出来了。', 'emote'],
-  ['抽泣', 'emote 抹抹眼睛，低声抽泣起来。', 'emote'],
-  ['哭', 'emote 一屁股坐在地上，嚎啕大哭起来。', 'emote'],
-  ['痛苦', 'emote 一脸痛苦的样子。', 'emote'],
-  ['邪恶', 'emote 歪了歪嘴，邪恶的笑了。', 'emote'],
-
-  ['欢迎', 'chat 欢迎欢迎，热烈欢迎！', 'chat'],
-  ['再见', 'chat bye～', 'chat'],
-  ['下了', 'chat 我先下了哦，bye～', 'chat'],
 ];
 
 var otherCmds = [
@@ -228,11 +198,10 @@ var otherCmds = [
 
 ];
 
-function initExploreKeys(callback) {
+function initModExplore(callback) {
   $('button.go').click(callback);
   initKeys(exploreCmds, 'div#expkeys', callback);
   initKeys(martialCmds, 'div#markeys', callback);
-  initKeys(chatCmds, 'div#chatkeys', callback);
   initKeys(otherCmds, 'div#otherkeys', callback);
 }
 

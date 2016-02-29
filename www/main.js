@@ -1,13 +1,21 @@
-var itemTarget = '', charTarget = '';
+var _itemTarget = '', _charTarget = '';
 
 function setTargetItem(str) {
-  itemTarget = str;
+  _itemTarget = str;
   $('a#itemtarget').text('物品/技能:'+str);
 }
 
+function getTargetItem() {
+  return _itemTarget;
+}
+
 function setTargetChar(str) {
-  charTarget = str;
+  _charTarget = str;
   $('a#chartarget').text('目标:'+str);
+}
+
+function getTargetChar() {
+  return _charTarget;
 }
 
 function onMacroKey(e) {
@@ -47,9 +55,26 @@ function writeToScreen(str) {
   scrollDown();
 }
 
+function addTargetLinks(str, type) {
+  if(!type) type = 'look';
+  var targets = str.match(/\([\w \-]+\)/gi);
+  if(targets) {
+    targets = _.unique(targets);
+    for(var i=0; i<targets.length; i++) {
+      var quote_word = targets[i];
+      var word = quote_word.replace('(','').replace(')','');
+      var id = word.toLowerCase();
+      var link_word = '(<a class="target" href="#" type="' + type + '" ob="' + id + '">' + word + '</a>)';
+      str = str.replace(new RegExp('\\(' + word + '\\)', 'gi'), link_word);
+    }
+  }
+  return str;
+}
+
 var ROOM_MARK = '▲ ', CHAR_MARK = '▼ ', ITEM_MARK = '◆ ';
 var INV_MARK = '带著下列这些东西', SKILLS_MARK = '目前所学过的技能';
 var LOGIN_MARK = '您的英文名字：', PASS_MARK = '请输入密码：';
+var SMILEY_MARK = '：/';
 var askingLogin = false, askingPass = false, autologin = false;
 
 function writeServerData(buf) {
@@ -62,6 +87,7 @@ function writeServerData(buf) {
   else if(str.indexOf(ITEM_MARK) >= 0) str = addTargetLinks(str, 'item');
   else if(str.indexOf(INV_MARK) >= 0) str = addTargetLinks(str, 'look');
   else if(str.indexOf(SKILLS_MARK) >= 0) str = addTargetLinks(str, 'skill');
+  else if(str.indexOf(SMILEY_MARK) >= 0) str = parseSmiley(str);
   else if(str.indexOf(LOGIN_MARK) >= 0) askingLogin = true;
   else if(str.indexOf(PASS_MARK) >= 0) askingPass = true;
   
@@ -116,8 +142,8 @@ function connectServer() {
 
   // send
   window.sendCmd = function(str) {
-    if(str.indexOf('$char')) str = str.replace('$char', charTarget);
-    if(str.indexOf('$item')) str = str.replace('$item', itemTarget);
+    if(str.indexOf('$char')) str = str.replace('$char', getTargetChar());
+    if(str.indexOf('$item')) str = str.replace('$item', getTargetItem());
     str = str.trim();
 
     // when we look at sth, we set it as item target
@@ -192,7 +218,15 @@ function sendInput() {
   }
   cmdIndex = cmdHistory.length;
 
-  if(sendCmd) sendCmd(str);
+  if(sendCmd) {
+    var c = getChatChannel();
+    if(c && (!askingLogin) && (!askingPass)) {
+      sendChat(str)
+    } else {
+      sendCmd(str);
+    }
+  }
+
   cmd.val('');
 }
 
@@ -227,8 +261,13 @@ function initUI() {
   $('a#itemtarget').click(function(e){
     setTargetItem('');
   });
+  $('a#chatchannel').click(function(e){
+    setChatChannel('');
+  });
 
-  initExploreKeys(onMacroKey);
+  initModExplore(onMacroKey);
+  initModChat(onMacroKey);
+  initModMap(onMacroKey);
 
   // UI events
   $('input#str').keydown(function(e) {

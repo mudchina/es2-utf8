@@ -47,8 +47,8 @@
   <div id="page">
     <div id="out"></div>
     <div id="in">
+      <div id='targets'><a id='chartarget' href='#'>目标:</a><a id='itemtarget' href='#'>物品/技能:</a><a id='chatchannel' href='#'>频道:</a></div>
       <div id="menu"><input id='str' type="text" value=""><button id='explore' class='menu'>探索</button><button id='martial' class='menu'>武功</button><button id='chat' class='menu'>聊天</button><button id='map' class='menu'>地图</button><button id='others' class='menu'>其它</button></div>
-      <div id='targets'><a id='chartarget' href='#'>目标:</a><a id='itemtarget' href='#'>物品/技能:</a></div>
       <div id="explore" class="pad">
         <table class='pad' cellspacing=5 cellpadding=0>
           <tr><td><div id='expkeys'></div></td><td>
@@ -107,20 +107,12 @@
       </div>
       <div id="chat" class="pad">
         <table class='pad' cellspacing=5 cellpadding=0>
-          <tr><td><div id='chatkeys'></div></td><td>
+          <tr><td><div id='chatkeys'></div></td><td style='vertical-align:top'>
           <table class='go' cellspacing=0 cellpadding=0>
-            <tr>
-              <td><button class='go emote' id='say'>说</button></td>
-            </tr>
-            <tr>
-              <td><button class='go whisper' id='whisper'>密语</button></td>
-            </tr>
-            <tr>
-              <td><button class='go chat' id='chat'>闲聊</button></td>
-            </tr>
-            <tr>
-              <td><button class='go rumor' id='rumor'>谣言</button></td>
-            </tr>
+            <tr><td><button class='channel emote' id='say' c='say'>说</button></td></tr>
+            <tr><td><button class='channel whisper' id='whisper' c='whisper'>密语</button></td></tr>
+            <tr><td><button class='channel chat' id='chat' c='chat'>闲聊</button></td></tr>
+            <tr><td><button class='channel rumor' id='rumor' c='rumor'>谣言</button></td></tr>
           </table>
             </td>
           </tr>

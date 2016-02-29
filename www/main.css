@@ -18,7 +18,7 @@ div#out {
   font-size: 16px;
   line-height: 150%;
   color: white;
-  background-color: #111111;
+  background-color: #111;
   border: 1px solid gray; 
 }
 
@@ -46,6 +46,13 @@ div#menu {
   width: 100%;
 }
 
+div#targets {
+  width: 100%;
+  padding: 5px 0px;
+  margin: 0px;
+  background-color: #111;
+}
+
 div.pad {
   margin: 0px;
   padding: 0px;
@@ -55,6 +62,11 @@ div.pad {
 
 div#explore, div#map, div#chat, div#martial, div#others {
   display: none;
+}
+
+div#chatkeys {
+  height: 100%;
+  overflow-y: scroll;
 }
 
 table.pad {
@@ -90,7 +102,7 @@ button.keys {
   margin: 1px;
 }
 
-button.go {
+button.go, button.channel {
   font-size: 14px;
   width: 45px;
   height: 40px;
@@ -148,11 +160,28 @@ a.target {
   color: cyan;
 }
 
-a#itemtarget, a#chartarget {
+img.smiley {
+  width: 40px;
+  height: 40px;
+  padding: 3px;
+  margin: 1px;
+  vertical-align: middle;
+}
+
+img.sm {
+  width: 24px;
+  height: 24px;
+  padding: 0px;
+  margin: 0px;
+  vertical-align: middle;
+}
+
+a#itemtarget, a#chartarget, a#chatchannel {
   width: 100px;
   height: 20px;
   padding: 3px 10px;
-  font-size: 12px;
+  margin: 0px 1px 2px 1px;
+  font-size: 14px;
   border-radius: 5px;
   border: 1px solid gray;
   background-color: #eee;
