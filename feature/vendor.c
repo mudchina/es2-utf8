@@ -34,20 +34,29 @@ string price_string(int v)
 	return v + "文钱";
 }
 
-int do_vendor_list(string arg)
+string get_vendor_list(string arg)
 {
 	mapping goods;
-	string list, *name;
+	string list, *id;
 	int i;
 
 	if( !mapp(goods = query("vendor_goods")) ) return 0;
 	if( arg && !this_object()->id(arg) ) return 0;
-	name = keys(goods);
+	id = keys(goods);
 	list = "你可以购买下列这些东西：\n";
-	for(i=0; i<sizeof(name); i++)
-		list += sprintf("%-30s：%s\n",
-			name[i],
-			price_string(goods[name[i]]->query("value")) );
-	write(list);
-	return 1;	
+	for(i=0; i<sizeof(id); i++)
+		list += sprintf("%s(%s)：%10s\n",
+            goods[id[i]]->name(),
+			id[i],
+			price_string(goods[id[i]]->query("value")) );
+  return list;
+}
+
+int do_vendor_list(string arg)
+{
+    string list;
+
+    get_vendor_list(arg);
+    write(list);
+    return 1;
 }

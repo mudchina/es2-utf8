@@ -15,10 +15,10 @@ void create()
 	set("attitude", "friendly");
 	set("rank_info/respect", "小二哥");
 	set("vendor_goods", ([
-		"匕首": "/obj/example/dagger",
-		"酒": "/obj/example/wineskin",
-		"包子": "/obj/example/dumpling",
-		"鸡腿": "/obj/example/chicken_leg",
+		"dagger": "/obj/example/dagger",
+		"wineskin": "/obj/example/wineskin",
+		"dumpling": "/obj/example/dumpling",
+		"chicken leg": "/obj/example/chicken_leg",
 	]) );
 	setup();
 }

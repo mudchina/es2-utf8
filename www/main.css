@@ -192,7 +192,7 @@ div.triangle {
   line-height: 0;
 }
 
-a#itemtarget, a#chartarget, a#chatchannel {
+a#cmdtarget, a#cmditem, a#chatchannel {
   width: 100px;
   height: 20px;
   padding: 3px 10px;

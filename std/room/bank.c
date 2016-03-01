@@ -11,11 +11,33 @@ void init()
 int do_convert(string arg)
 {
 	string from, to;
-	int amount, bv1, bv2;
+	int amount, bv1, bv2, ok = 0;
 	object from_ob, to_ob;
 
-	if( !arg || sscanf(arg, "%d %s to %s", amount, from, to)!=3 )
-		return notify_fail("指令格式：convert <数量> <货币种类> to <货币种类>\n");
+  if(arg) {
+    if(sscanf(arg, "%d %s to %s", amount, from, to)==3) {
+      ok = 1;
+    } else if(sscanf(arg, "%d %s", amount, from)==2) {
+      if(from == "gold") {
+        to = "silver";
+        ok = 1;
+      } else if(from == "silver") {
+        to = "coin";
+        ok = 1;
+      }
+    } else if(sscanf(arg, "%s", from)==1) {
+      amount = 1;
+      if(from == "gold") {
+        to = "silver";
+        ok = 1;
+      } else if(from == "silver") {
+        to = "coin";
+        ok = 1;
+      }
+    }
+  }
+  if(!ok)
+    return notify_fail("指令格式：convert <数量> <货币种类> to <货币种类>\n");
 
 	from_ob = present(from + "_money", this_player());
 	to_ob = present(to + "_money", this_player());

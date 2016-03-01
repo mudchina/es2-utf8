@@ -209,6 +209,10 @@ int look_living(object me, object obj)
 				pro, implode(inv, "\n") );
 	}
 
+    if( mapp(obj->query("vendor_goods")) ) {
+      str = str + obj->get_vendor_list();
+    }
+
 	message("vision", str, me);
 
 	if( obj!=me 

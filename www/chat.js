@@ -1,6 +1,17 @@
+var CHAT_CMDS = [
+  ['Hi', 'say Hi~', 'emote'],
+  ['大笑', 'emote 大笑起来，笑得眼泪都要出来了。', 'emote'],
+  ['哭', 'emote 一屁股坐在地上，嚎啕大哭起来。', 'emote'],
+  ['痛苦', 'emote 哎哟一声，一脸痛苦的样子。', 'emote'],
+  ['邪恶', 'emote 眨了眨眼，邪恶的笑了。', 'emote'],
+  ['欢迎', 'chat 欢迎欢迎，热烈欢迎！', 'chat'],
+  ['再见', 'chat bye~', 'chat'],
+  ['下了', 'chat 我先下线了哦，bye~', 'chat'],
+];
+
 var _chatChannel = '';
 
-function setChatChannel(c) {
+function setChatChannel(c,t) {
   switch(c) {
   case 'say':
   case 'chat':
@@ -11,26 +22,15 @@ function setChatChannel(c) {
     break;
   default:
     c = '';
+    t = '';
   }
   _chatChannel = c;
-  $('a#chatchannel').text('频道:'+c);
+  $('a#chatchannel').text('频道:'+t);
 }
 
 function getChatChannel() {
   return _chatChannel;
 }
-
-var chatCmds = [
-  ['hi', 'say hi', 'emote'],
-  ['大笑', 'emote 大笑起来，笑得眼泪都要出来了。', 'emote'],
-  ['哭', 'emote 一屁股坐在地上，嚎啕大哭起来。', 'emote'],
-  ['痛苦', 'emote 一脸痛苦的样子。', 'emote'],
-  ['邪恶', 'emote 歪了歪嘴，邪恶的笑了。', 'emote'],
-
-  ['欢迎', 'chat 欢迎欢迎，热烈欢迎！', 'chat'],
-  ['再见', 'chat bye～', 'chat'],
-  ['下了', 'chat 我先下了哦，bye～', 'chat'],
-];
 
 function parseSmiley(str) {
   var targets = str.match(/：\/[0-9]+\//gi);
@@ -56,7 +56,8 @@ function sendChat(str) {
 function onChannel(e) {
   var me = $(e.currentTarget);
   var c = me.attr('c');
-  setChatChannel(c);
+  var t = me.text();
+  setChatChannel(c,t);
 }
 
 function onSmiley(e) {
@@ -77,6 +78,6 @@ function initSmileys(div) {
 
 function initModChat(callback) {
   $('button.channel').click(onChannel);
-  initKeys(chatCmds, 'div#chatkeys', callback);
+  initKeys(CHAT_CMDS, 'div#chatkeys', callback);
   initSmileys('div#chatkeys');
 }

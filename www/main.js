@@ -1,21 +1,40 @@
-var _itemTarget = '', _charTarget = '';
+var _cmdItem = '', _cmdTarget = '';
 
-function setTargetItem(str) {
-  _itemTarget = str;
-  $('a#itemtarget').text('物品/技能:'+str);
+// set cmd item, if already same, then count +1
+function setCmdItem(str) {
+  if(_cmdItem && str) {
+    var n = parseInt(_cmdItem, 10) || 0;
+    var oldItem = '';
+    if(n > 1) {
+      var words = _cmdItem.split(' ');
+      words.shift();
+      oldItem = words.join(' ');
+    } else {
+      oldItem = _cmdItem;
+    }
+    if(oldItem === str) {
+      n = n ? (n+1) : 2;
+      _cmdItem = n + ' ' + str;
+    } else {
+      _cmdItem = str;
+    }
+  } else {
+    _cmdItem = str;
+  }
+  $('a#cmditem').text('物品/技能:'+_cmdItem);
 }
 
-function getTargetItem() {
-  return _itemTarget;
+function getCmdItem() {
+  return _cmdItem;
 }
 
-function setTargetChar(str) {
-  _charTarget = str;
-  $('a#chartarget').text('目标:'+str);
+function setCmdTarget(str) {
+  _cmdTarget = str;
+  $('a#cmdtarget').text('目标:'+str);
 }
 
-function getTargetChar() {
-  return _charTarget;
+function getCmdTarget() {
+  return _cmdTarget;
 }
 
 function onMacroKey(e) {
@@ -30,15 +49,14 @@ function onTargetLink(e) {
   var ob = me.attr('ob');
   if(!ob) return;
   
-  setTargetItem(ob);
-
-  switch(me.attr('type')) {
+  var type = me.attr('type');
+  switch(type) {
     case 'look':
       if(sendCmd && ob) sendCmd('l ' + ob);
       break;
     case 'item':
-      break;
     case 'skill':
+      setCmdItem(ob);
       break;
   }
 }
@@ -146,15 +164,15 @@ function connectServer() {
 
   // send
   window.sendCmd = function(str) {
-    if(str.indexOf('$char')) str = str.replace('$char', getTargetChar());
-    if(str.indexOf('$item')) str = str.replace('$item', getTargetItem());
+    if(str.indexOf('$char')) str = str.replace('$target', getCmdTarget());
+    if(str.indexOf('$item')) str = str.replace('$item', getCmdItem());
     str = str.trim();
 
     // when we look at sth, we set it as item target
     if((str.indexOf('l ') >= 0) || (str.indexOf('look ') >= 0)) {
       var words = str.split(' ');
       words.shift();
-      setTargetItem(words.join(' '));
+      setCmdItem(words.join(' '));
     }
 
     // pass to map module
@@ -262,11 +280,11 @@ function initUI() {
     var name = $(e.currentTarget).attr('id');
     showPad(name);
   });
-  $('a#chartarget').click(function(e){
-    setTargetChar('');
+  $('a#cmdtarget').click(function(e){
+    setCmdTarget('');
   });
-  $('a#itemtarget').click(function(e){
-    setTargetItem('');
+  $('a#cmditem').click(function(e){
+    setCmdItem('');
   });
   $('a#chatchannel').click(function(e){
     setChatChannel('');

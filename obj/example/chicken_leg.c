@@ -7,7 +7,7 @@ inherit F_FOOD;
 
 void create()
 {
-	set_name("烤鸡腿", ({ "fried chicken leg", "chicken", "leg" }) );
+	set_name("烤鸡腿", ({ "chicken leg", "chicken", "leg" }) );
 	set_weight(350);
 	if( clonep() )
 		set_default_object(__FILE__);
