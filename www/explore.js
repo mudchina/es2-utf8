@@ -37,27 +37,27 @@ var EXPLORE_CMDS = [
   ['给', 'give $item to $target', 'explore'],
   ['丢', 'drop $item', 'explore'],
   ['买', 'buy $item from $target', 'explore'],
-  ['偷', 'steal $item from $target', 'explore'],
+  ['兑换', 'convert $item', 'explore'],
 
   ['吃', 'eat $item', 'explore'],
   ['喝', 'drink $item', 'explore'],
-  ['跟随', 'follow $target', 'explore'],
-  ['组队', 'team with $target', 'explore'],
-  ['开门', 'open door\nl', 'explore'],
-  ['关门', 'close door\nl', 'explore'],
-
   ['穿', 'wear $item', 'fight'],
   ['脱', 'remove $item', 'fight'],
   ['装备', 'wield $item', 'fight'],
   ['放下', 'unwield $item', 'fight'],
+
+  ['跟随', 'follow $target', 'explore'],
+  ['组队', 'team with $target', 'explore'],
+  ['学习', 'learn $item from $target', 'explore'],
   ['切磋', 'fight $target', 'fight'],
   ['投降', 'surrender', 'fight'],
+  ['偷', 'steal $item from $target', 'warn'],
 
-  ['学习', 'learn $item from $target', 'exert'],
   ['物品', 'i', 'status'],
   ['状态', 'hp $target', 'status'],
   ['技能', 'skills $target', 'status'],
   ['成就', 'score $target', 'status'],
+  ['保存', 'save', 'status'],
   ['杀', 'kill $target', 'warn'],
 ];
 
@@ -208,6 +208,7 @@ function parseChar(str) {
 
 function initModExplore(callback) {
   $('button.go').click(callback);
+  $('button#od').attr('macro', 'open door\nlook'); // HTML5 string not accept \n
   initKeys(EXPLORE_CMDS, 'div#expkeys', callback);
   initKeys(MARTIAL_CMDS, 'div#markeys', callback);
   initKeys(OTHER_CMDS, 'div#otherkeys', callback);

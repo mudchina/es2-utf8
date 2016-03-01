@@ -211,5 +211,5 @@ a#cmdtarget, a#cmditem, a#chatchannel {
 }
 
 canvas#map {
-  border: 1px solid black;
+  border: 1px solid #333;
 }

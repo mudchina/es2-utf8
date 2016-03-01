@@ -1,7 +1,3 @@
-var rooms = {};
-var steps = [];
-var curAddr = '';
-
 /*
 // room info data format:
 
@@ -14,6 +10,10 @@ var curAddr = '';
 }
 */
 
+var rooms = {};
+var steps = [];
+var curAddr = '';
+
 var DIR_XY = {
   'n': ['north', 0, 1],
   's': ['south', 0, -1],
@@ -25,7 +25,7 @@ var DIR_XY = {
   'wu': ['westup', -1, 0],
   'nd': ['northdown', 0, 1],
   'sd': ['southdown', 0, -1],
-  'ed': ['eeastdownd', 1, 0],
+  'ed': ['eastdown', 1, 0],
   'wd': ['westdown', -1, 0],
   'ne': ['northeast', 1, 1],
   'nw': ['northwest', -1, 1],
@@ -101,6 +101,7 @@ function mapCheckRoom(nameAddr, exits) {
   }
 
   var inf = rooms[addr];
+  if(!inf) console.log(_.keys(rooms));
   if(!inf.name) inf.name = name;
   if(!inf.x) inf.x = 0;
   if(!inf.y) inf.y = 0;
@@ -115,9 +116,8 @@ function mapCheckRoom(nameAddr, exits) {
   }
 
   var stepDir = (steps.length > 0) ? steps.shift() : 'l';
-  console.log(addr, inf.name + '(' + inf.x + ',' + inf.y + ')', steps);
-
   if(stepDir.indexOf(' ') >= 0) return;
+
   if(inf.x && inf.x) {
     // already has (x,y), no need calc
   } else if(stepDir !== 'l') {
@@ -136,41 +136,59 @@ function mapCheckRoom(nameAddr, exits) {
   }
 
   curAddr = addr;
-
   drawMap();
+
+  if(changed) saveMap();
 }
 
-// TODO: load map info from local storage
-function initModMap(callback) {
-  
-  drawMap();
-}
-
-// TODO: save map info to local storage
+// save map info to local storage
 function saveMap() {
+  localStorage.setItem('rooms', JSON.stringify(rooms));
 }
 
-// TODO: draw map from map info
+// load map info from local storage
+function loadMap() {
+  var mapstr = localStorage.getItem('rooms');
+  if(mapstr.indexOf('{') === 0) {
+    rooms = JSON.parse(mapstr);
+  } else {
+    rooms = {};
+  }
+}
+
+// map view port size, canvas size
 var VIEW_W = 240, VIEW_H = 190;
-var ROOM_RANGE = 20, ROOM_SIZE = 12, ME_SIZE = 6;
+
+// virtual map size, we can touch to scroll map
+var MAP_W = 640, MAP_H = 480;
+var ROOM_RANGE = 20, ROOM_SIZE = 12, ME_SIZE = 8;
+var MAP_BG = '#753', MAP_COLOR = '#fff', ME_COLOR = '#f00';
+
+function setMapViewSize(w,h) {
+  var canvas = $('canvas#map')[0];
+  VIEW_W = canvas.width = w;
+  VIEW_H = canvas.height = h;
+  drawMap();
+}
+
+// draw map from map info
 function drawMap() {
   var canvas = $('canvas#map')[0];
   var c = canvas.getContext("2d");
-  c.fillStyle = "#555";
+  c.fillStyle = MAP_BG;
   c.fillRect(0, 0, VIEW_W, VIEW_H);
   var x0 = VIEW_W/2, y0 = VIEW_H/2;
 
   var myPos = rooms[curAddr];
   if(!myPos) return;
 
-  c.fillStyle = '#ffffff';
-  c.strokeStyle = '#ffffff';
-  c.stroke
+  c.strokeStyle = MAP_COLOR;
+  c.lineWidth = 2;
   for(var addr in rooms) {
     var inf = rooms[addr];
     var x = x0 + (inf.x - myPos.x) * ROOM_RANGE;
     var y = y0 - (inf.y - myPos.y) * ROOM_RANGE;
-    c.fillRect(x-ROOM_SIZE/2, y-ROOM_SIZE/2, ROOM_SIZE, ROOM_SIZE);
+    if(x<0 || x>VIEW_W || y<0 || y>VIEW_H) continue;
 
     c.beginPath();
     for(var k in DIR_XY) {
@@ -183,9 +201,35 @@ function drawMap() {
     }
     c.stroke();
   }
-  
-  c.fillStyle = '#ff0000';
-  var x = x0;
-  var y = y0;
-  c.fillRect(x-ME_SIZE/2, y-ME_SIZE/2, ME_SIZE, ME_SIZE);
+
+  c.fillStyle = MAP_COLOR;
+  for(var addr in rooms) {
+    var inf = rooms[addr];
+    var x = x0 + (inf.x - myPos.x) * ROOM_RANGE;
+    var y = y0 - (inf.y - myPos.y) * ROOM_RANGE;
+    if(x<0 || x>VIEW_W || y<0 || y>VIEW_H) continue;
+
+    c.fillRect(x-ROOM_SIZE/2, y-ROOM_SIZE/2, ROOM_SIZE, ROOM_SIZE);
+
+    c.save();
+    c.fillStyle = MAP_BG;
+    c.fillRect(x-(ROOM_SIZE/2-2), y-(ROOM_SIZE/2-2), ROOM_SIZE-4, ROOM_SIZE-4);
+    c.restore();
+  }
+
+  // draw player pos
+  c.fillStyle = ME_COLOR;
+  c.fillRect(x0-ME_SIZE/2, y0-ME_SIZE/2, ME_SIZE, ME_SIZE);
+
+  // draw room name
+  c.textBaseline = 'top';
+  c.font = 'normal lighter 16px SimSun';
+  c.lineWidth = 0.5;
+  c.strokeStyle = MAP_COLOR;
+  c.strokeText(myPos.name, 5, 5);
+}
+
+function initModMap(callback) {
+  loadMap();
+  drawMap();
 }

@@ -162,21 +162,26 @@ function connectServer() {
     console.log('disconnected');
   });
 
-  // send
+  // send one or multi-cmds with \n
   window.sendCmd = function(str) {
-    if(str.indexOf('$char')) str = str.replace('$target', getCmdTarget());
+    if(str.indexOf('$target')) str = str.replace('$target', getCmdTarget());
     if(str.indexOf('$item')) str = str.replace('$item', getCmdItem());
     str = str.trim();
 
-    // when we look at sth, we set it as item target
-    if((str.indexOf('l ') >= 0) || (str.indexOf('look ') >= 0)) {
-      var words = str.split(' ');
-      words.shift();
-      setCmdItem(words.join(' '));
-    }
+    // process cmds one by one
+    var lines = str.split('\n');
+    for(var i=0; i<lines.length; i++) {
+      var line = lines[i].trim();
+      // when we look at sth, we set it as item target
+      if((line.indexOf('l ') >= 0) || (line.indexOf('look ') >= 0)) {
+        var words = line.split(' ');
+        words.shift();
+        setCmdItem(words.join(' '));
+      }
 
-    // pass to map module
-    mapCheckCmd(str);
+      // pass to map module
+      mapCheckCmd(line);
+    }
 
     //writeToScreen(str);
     if(sock) sock.emit('data', str + '\n');
@@ -199,13 +204,24 @@ function adjustLayout() {
 
   // adjust input box width
   var w0 = $('div#in').width();
+  var w1 = w0;
   var btns = ['explore', 'martial', 'map', 'chat', 'others'];
   for(var i=0; i<btns.length; i++) {
-    w0 -= $('button#'+btns[i]).outerWidth(true)+4;
+    w1 -= $('button#'+btns[i]).outerWidth(true)+4;
   }
   $('input#str').css({
-    width: w0 + 'px',
+    width: w1 + 'px',
   });
+
+  // adjust map size
+  var tbGo = $('table#go');
+  var mw = w0 - tbGo.outerWidth(true) -22;
+  var mh = tbGo.outerHeight(true);
+  $('div#map, div#expkeys').css({
+    width: mw+'px',
+    height: mh+'px',
+  });
+  setMapViewSize(mw-5, mh-5);
 
   // adjust output area, according to input area height
   var h0 = $('div#in').outerHeight(true);
