@@ -277,8 +277,28 @@ function initUI() {
   $(window).resize(adjustLayout);
 
   $('button.menu').click(function(e) {
-    var name = $(e.currentTarget).attr('id');
-    showPad(name);
+    var me = $(e.currentTarget);
+    var menu = me.attr('id');
+    var pad = me.attr('pad');
+    showPad(pad);
+
+    var map = $('div#map');
+    var expkeys = $('div#expkeys');
+    switch(menu) {
+    case 'explore':
+      map.hide();
+      expkeys.show();
+      break;
+    case 'map':
+      if(map.is(':visible')) {
+        map.hide();
+        expkeys.show();
+      } else {
+        map.show();
+        expkeys.hide();
+      }
+      break;
+    }
   });
   $('a#cmdtarget').click(function(e){
     setCmdTarget('');

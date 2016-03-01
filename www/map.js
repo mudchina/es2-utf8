@@ -86,6 +86,7 @@ function mapOnFlee(str) {
 }
 
 function mapCheckRoom(nameAddr, exits) {
+  var alldirs = getAllDirs();
   var changed = false;
   
   var words = nameAddr.split(' - ');
@@ -105,17 +106,21 @@ function mapCheckRoom(nameAddr, exits) {
   if(!inf.y) inf.y = 0;
   for(var i=0; i<exits.length; i++) {
     var e = exits[i];
-    if(!inf[e]) {
+    if(e) e = alldirs[e];
+    if(e) e = e[0];
+    if(e && !inf[e]) {
       inf[e] = 1;
       changed = true;
     }
   }
 
   var stepDir = (steps.length > 0) ? steps.shift() : 'l';
-  console.log(addr, steps);
+  console.log(addr, inf.name + '(' + inf.x + ',' + inf.y + ')', steps);
 
   if(stepDir.indexOf(' ') >= 0) return;
-  if(stepDir !== 'l') {
+  if(inf.x && inf.x) {
+    // already has (x,y), no need calc
+  } else if(stepDir !== 'l') {
     var dirInfo = DIR_XY[stepDir];
     if(dirInfo) {
       // calculate (x,y) from lastRoom
@@ -137,6 +142,8 @@ function mapCheckRoom(nameAddr, exits) {
 
 // TODO: load map info from local storage
 function initModMap(callback) {
+  
+  drawMap();
 }
 
 // TODO: save map info to local storage
@@ -144,9 +151,41 @@ function saveMap() {
 }
 
 // TODO: draw map from map info
+var VIEW_W = 240, VIEW_H = 190;
+var ROOM_RANGE = 20, ROOM_SIZE = 12, ME_SIZE = 6;
 function drawMap() {
   var canvas = $('canvas#map')[0];
-  var cxt = canvas.getContext("2d");
-  cxt.fillStyle="#000";
-  cxt.fillRect(0,0,400,190);
+  var c = canvas.getContext("2d");
+  c.fillStyle = "#555";
+  c.fillRect(0, 0, VIEW_W, VIEW_H);
+  var x0 = VIEW_W/2, y0 = VIEW_H/2;
+
+  var myPos = rooms[curAddr];
+  if(!myPos) return;
+
+  c.fillStyle = '#ffffff';
+  c.strokeStyle = '#ffffff';
+  c.stroke
+  for(var addr in rooms) {
+    var inf = rooms[addr];
+    var x = x0 + (inf.x - myPos.x) * ROOM_RANGE;
+    var y = y0 - (inf.y - myPos.y) * ROOM_RANGE;
+    c.fillRect(x-ROOM_SIZE/2, y-ROOM_SIZE/2, ROOM_SIZE, ROOM_SIZE);
+
+    c.beginPath();
+    for(var k in DIR_XY) {
+      if(!inf[k]) continue;
+      var xy = DIR_XY[k];
+      if(xy[1] || xy[2]) {
+        c.moveTo(x,y);
+        c.lineTo(x+xy[1]*ROOM_RANGE, y-xy[2]*ROOM_RANGE);
+      }
+    }
+    c.stroke();
+  }
+  
+  c.fillStyle = '#ff0000';
+  var x = x0;
+  var y = y0;
+  c.fillRect(x-ME_SIZE/2, y-ME_SIZE/2, ME_SIZE, ME_SIZE);
 }

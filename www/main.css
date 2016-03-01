@@ -70,6 +70,11 @@ div#chatkeys {
   overflow-y: scroll;
 }
 
+div#map {
+  width: 240px;
+  overflow: scroll;
+}
+
 table.pad {
   width: 100%;
   height: 100%;
