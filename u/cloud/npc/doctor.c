@@ -21,10 +21,8 @@ void create()
         ]) );
 
         set("vendor_goods", ([
-                "金疮药": "/obj/drug/hurt_drug",
-		"蛇药": "/obj/drug/snake_drug",
-	//	"人参": "/u/cloud/obj/meat/tail",
-	//	"何首乌": "/u/cloud/obj/meat/zasui",
+          "medicine": "/obj/drug/hurt_drug",
+          "snake drug": "/obj/drug/snake_drug",
         ]) );
 
 	setup();

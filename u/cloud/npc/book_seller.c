@@ -5,25 +5,25 @@ inherit F_VENDOR;
 
 void create()
 {
-        set_name("潘若秋", ({ "seller" }) );
-        set("title", "书局老板");
-        set("gender", "男性" );
-        set("age", 32);
-        set("long", "潘老板长得很白净，一副读书人的老实相。\n");
-        set("combat_exp", 5000);
-        set("attitude", "friendly");
-        set_skill("unarmed", 70);
-        set_skill("dodge", 50);
+  set_name("潘若秋", ({ "seller" }) );
+  set("title", "书局老板");
+  set("gender", "男性" );
+  set("age", 32);
+  set("long", "潘老板长得很白净，一副读书人的老实相。\n");
+  set("combat_exp", 5000);
+  set("attitude", "friendly");
+  set_skill("unarmed", 70);
+  set_skill("dodge", 50);
 
-        set("inquiry", ([
-                "书局" : "为读书人办点事也是尽一份心意。", 
-        ]) );
+  set("inquiry", ([
+    "书局" : "为读书人办点事也是尽一份心意。", 
+  ]) );
 
-        set("vendor_goods", ([
-        	"说文解字": "/u/cloud/obj/literate_book",	
-	]) );
+  set("vendor_goods", ([
+    "literate book": "/u/cloud/obj/literate_book",	
+  ]) );
 
-        setup();
+  setup();
 }
 
 void init()

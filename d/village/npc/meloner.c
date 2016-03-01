@@ -32,7 +32,7 @@ LONG
 //	]) );
 
 	set("vendor_goods", ([
-                "西瓜": "/d/village/obj/melon",
+                "water melon": "/d/village/obj/melon",
         ]) );      
         
 	set("force", 500);

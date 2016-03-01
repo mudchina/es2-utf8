@@ -232,4 +232,10 @@ function drawMap() {
 function initModMap(callback) {
   loadMap();
   drawMap();
+
+  addLocalCmd('clear map', function(){
+    rooms = {};
+    localStorage.removeItem('rooms');
+    drawMap();
+  });
 }

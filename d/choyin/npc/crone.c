@@ -19,8 +19,8 @@ void create()
 		]) );
 
 	set("vendor_goods", ([
-		"平安符": "/d/choyin/npc/obj/amulet",
-		"红龟□": "/d/choyin/npc/obj/red_guay",
+		"amulet": "/d/choyin/npc/obj/amulet",
+		"red guay": "/d/choyin/npc/obj/red_guay",
 	]) );
 	setup();
 }

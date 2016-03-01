@@ -20,14 +20,14 @@ void create()
         ]) );
        set("vendor_goods", ([
 		"紫铜战盔": __DIR__"obj/armor1",
-                "烟雨鞭"  : __DIR__"obj/rain_whip",
-                "无情剑"  : __DIR__"obj/wuqing_sword",
-                "多情刀"  : __DIR__"obj/duoqing_blade",
-                "天魔杵"  : __DIR__"obj/demon_staff",
-                "牛皮盾"  : "/obj/weapon/shield",
-                "八角锤"  : "/obj/weapon/sixhammer",
-                "细剑"    : "/obj/weapon/thin_sword",
-                "匕首"    : "/obj/weapon/dagger",
+                "rain whip"  : __DIR__"obj/rain_whip",
+                "cool sword"  : __DIR__"obj/wuqing_sword",
+                "duoqing blade"  : __DIR__"obj/duoqing_blade",
+                "demon staff"  : __DIR__"obj/demon_staff",
+                "leather shield"  : "/obj/weapon/shield",
+                "sixhammer"  : "/obj/weapon/sixhammer",
+                "thin sword"    : "/obj/weapon/thin_sword",
+                "dagger"    : "/obj/weapon/dagger",
         ]) );
 
         setup();

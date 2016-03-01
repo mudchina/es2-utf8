@@ -33,14 +33,14 @@ void create()
 
         set("inquiry", ([
                 "here": "这里是京师绸缎庄，没钱别进来！\n",
-                "name": "在下谐陶，闺名不能告诉你。\n",
+                "name": "在下姓陶，闺名不能告诉你。\n",
                 "衣服": "您需要什么样的？",
         ]) );
         
         set("vendor_goods", ([
-                "轻罗绸衫": __DIR__"obj/lady_dress",
-                "淡青长袍": __DIR__"obj/green_cloth",
-                "艳红绸衫": __DIR__"obj/color_cloth",
+                "lady dress": __DIR__"obj/lady_dress",
+                "green cloth": __DIR__"obj/green_cloth",
+                "color cloth": __DIR__"obj/color_cloth",
         ]) );
 
         setup();

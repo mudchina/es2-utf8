@@ -23,11 +23,11 @@ void create()
         ]) );
 
         set("vendor_goods", ([
-                "牛肉": "/u/cloud/obj/meat/b_beef",
-		"牛腿": "/u/cloud/obj/meat/hind",
-		"牛尾": "/u/cloud/obj/meat/tail",
-		"杂碎": "/u/cloud/obj/meat/zasui",
-                "狗肉": "/u/cloud/obj/meat/dog_m.c",
+          "beef": "/u/cloud/obj/meat/b_beef",
+          "hind": "/u/cloud/obj/meat/hind",
+          "tail": "/u/cloud/obj/meat/tail",
+          "fragment": "/u/cloud/obj/meat/zasui",
+          "dog meat": "/u/cloud/obj/meat/dog_m.c",
         ]) );
 
 	setup();

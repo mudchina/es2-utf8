@@ -25,12 +25,12 @@ void create()
                 (:random_move :)
         }) );
         set("vendor_goods", ([
-                "紫罗兰": __DIR__"obj/purple_flower",
-                "红玫瑰": __DIR__"obj/red_flower",
-                "黄玫瑰": __DIR__"obj/yellow_flower",
-                "蓝天鹅": __DIR__"obj/blue_flower",
-                "白茶花": __DIR__"obj/white_flower",
-                "黑牡丹": __DIR__"obj/black_flower",
+                "purple flower": __DIR__"obj/purple_flower",
+                "red flower": __DIR__"obj/red_flower",
+                "yellow flower": __DIR__"obj/yellow_flower",
+                "blue flower": __DIR__"obj/blue_flower",
+                "white flower": __DIR__"obj/white_flower",
+                "black flower": __DIR__"obj/black_flower",
         ]) );
 
         setup();

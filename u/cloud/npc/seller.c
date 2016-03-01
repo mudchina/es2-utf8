@@ -21,10 +21,9 @@ void create()
         ]) );
 
         set("vendor_goods", ([
-                "麻绳": "/u/cloud/obj/etc/rope",
- //               "布袋": "/obj/example/bag",
-                "化尸粉": "/obj/dust",
-//"/u/cloud/obj/etc/dust",
+                "rope": "/u/cloud/obj/etc/rope",
+                "bag": "/obj/example/bag",
+                "dust": "/obj/dust",
         ]) );
 
         setup();

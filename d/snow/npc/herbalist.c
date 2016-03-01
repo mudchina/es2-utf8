@@ -23,20 +23,14 @@ void create()
 	set("max_sen", 300);
 
 	set("inquiry", ([
-		"治伤": (: heal_me :),
-		"疗伤": (: heal_me :),
-		"开药": (: heal_me :),
+      "治伤": (: heal_me :),
+      "疗伤": (: heal_me :),
+      "开药": (: heal_me :),
 	]) );
-/*	set("vendor_goods", ([
-		"人参" :		__DIR__"obj/ginseng", 
-		"雪莲" :		__DIR__"obj/ice_lotus",
-		"灵芝" :		__DIR__"obj/agaric",
-	]) );
-*/      
-        set("vendor_goods", ([
-                "金疮药": "/obj/drug/hurt_drug",
-                "蛇药": "/obj/drug/snake_drug",
-        ]) );
+    set("vendor_goods", ([
+      "medicine": "/obj/drug/hurt_drug",
+      "snake drug": "/obj/drug/snake_drug",
+    ]) );
 
 	set_skill("literate", 70);
 	set_skill("dodge", 60);

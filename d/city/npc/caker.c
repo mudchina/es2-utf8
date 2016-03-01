@@ -14,7 +14,7 @@ void create()
         set("rank_info/respect", "大叔");
         set("rank_info/self", "小的");
         set("vendor_goods", ([
-              "大饼": __DIR__"obj/cake",
+              "big cake": __DIR__"obj/cake",
         ]) );
         set("chat_chance", 13);
         set("chat_msg", ({

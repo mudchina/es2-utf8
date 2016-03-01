@@ -4,7 +4,7 @@ inherit ITEM;
 
 void create()
 {
-        set_name("说文解字", ({ "literatebook" }));
+        set_name("说文解字", ({ "literate book" }));
         set_weight(600);
         if( clonep() )
                 set_default_object(__FILE__);

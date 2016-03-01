@@ -19,9 +19,9 @@ void create()
                 "鞋" : "您需要什么样的？",
         ]) );
        set("vendor_goods", ([
-                "鹿皮小靴": __DIR__"obj/deer_boot",
-                "象皮战靴": __DIR__"obj/xiang_boot",
-                "绣花鞋"  : __DIR__"obj/flower_boot",
+                "deer boots": __DIR__"obj/deer_boot",
+                "elephant boots": __DIR__"obj/xiang_boot",
+                "flower boots"  : __DIR__"obj/flower_boot",
         ]) );
 
         setup();

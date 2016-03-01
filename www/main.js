@@ -1,4 +1,5 @@
 var _cmdItem = '', _cmdTarget = '';
+var _localCmds = {};
 
 // set cmd item, if already same, then count +1
 function setCmdItem(str) {
@@ -37,11 +38,18 @@ function getCmdTarget() {
   return _cmdTarget;
 }
 
+function addLocalCmd(cmd, func) {
+  if(typeof func === 'function') _localCmds[cmd] = func;
+}
+
 function onMacroKey(e) {
   var me = $(e.currentTarget);
   var str = me.attr('macro');
-  //console.log(str);
-  if(sendCmd && str) sendCmd(str);
+  var func = _localCmds[str];
+  if(func && typeof(func) === 'function')
+    func();
+  else if(sendCmd && str)
+    sendCmd(str);
 }
 
 function onTargetLink(e) {
@@ -329,6 +337,11 @@ function initUI() {
   initModExplore(onMacroKey);
   initModChat(onMacroKey);
   initModMap(onMacroKey);
+
+  addLocalCmd('clear screen', function(){
+    $('div#out').html('');
+    scrollDown();
+  });
 
   // UI events
   $('input#str').keydown(function(e) {

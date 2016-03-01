@@ -7,7 +7,7 @@ void create()
   set_name("蛇药",({"drug","snake drug"}));
   set("long",
       "这是一包用来解蛇毒的药\n"
-      "可以用(cure)来解蛇毒!\n");
+      "可以用(apply)来解蛇毒!\n");
   set("value",1000);
   set("unit","包");
   set("base_unit","份");
@@ -17,10 +17,10 @@ void create()
 
 void init()
 {
-  add_action("do_cure","cure");
+  add_action("do_apply","apply");
 }
 
-int do_cure()
+int do_apply()
 {
         object me;
         me=this_player();

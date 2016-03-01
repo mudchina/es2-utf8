@@ -5,7 +5,7 @@ inherit F_CLEAN_UP;
 int main(object me, string arg)
 {
 	string item, targ;
-	object ob, owner;
+	object owner;
 	int price, afford;
 
 	if( !arg || sscanf(arg, "%s from %s", item, targ)!=2 )

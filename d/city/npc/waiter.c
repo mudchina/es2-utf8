@@ -16,9 +16,9 @@ void create()
         set("attitude", "friendly");
         set("rank_info/respect", "小二哥");
         set("vendor_goods", ([
-                "雪花糕":	__DIR__"obj/cake",
-                "西湖醋鱼":	__DIR__"obj/fish",
-                "状元红":	__DIR__"obj/wine",
+                "cake":	__DIR__"obj/cake",
+                "fish":	__DIR__"obj/fish",
+                "wine":	__DIR__"obj/wine",
         ]) );
         setup();
 }

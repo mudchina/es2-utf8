@@ -98,12 +98,6 @@ var OTHER_CMDS = [
   ['帮助', 'help', 'status'],
   ['巫师', 'wizlist', 'status'],
 
-  ['绰号', 'nick', 'warn'],
-  ['密码', 'passwd', 'warn'],
-  ['保存', 'save', 'warn'],
-  //['自杀', 'suicide', 'warn'],
-  ['退出', 'quit', 'warn'],
-
   ['兑换', 'convert $item', 'explore'],
   ['询价', 'list', 'explore'],
   ['推', 'push', 'explore'],
@@ -115,6 +109,15 @@ var OTHER_CMDS = [
   ['卖', 'sell $item', 'explore'],
   ['工作', 'work', 'explore'],
 
+  ['绰号', 'nick', 'warn'],
+  ['密码', 'passwd', 'warn'],
+  ['保存', 'save', 'warn'],
+//  ['自杀', 'suicide', 'warn'],
+  ['退出', 'quit', 'warn'],
+
+  // local cmds
+  ['重置地图', 'clear map', 'warn'],
+  ['清除屏幕', 'clear screen', 'warn'],
 ];
 
 function getAllDirs() {

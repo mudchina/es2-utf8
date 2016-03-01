@@ -5,7 +5,7 @@ inherit F_FOOD;
 
 void create()
 {
-        set_name("狗肉", ({ "dog" }) );
+        set_name("狗肉", ({ "dog meat" }) );
         set_weight(400);
         if( clonep() )
                 set_default_object(__FILE__);

@@ -12,8 +12,7 @@ void create()
 	set("combat_exp", 30);
 	set("attitude", "friendly");
 	set("vendor_goods", ([
-	//	"obj/example/dumpling" : -1,
-	        "包子": "obj/example/dumpling",
+	        "dumpling": "obj/example/dumpling",
            ]) );
 	set("chat_chance", 15);
 	set("chat_msg", ({

@@ -12,7 +12,7 @@ void create()
         set("combat_exp", 30000);
         set("attitude", "friendly");
         set("vendor_goods", ([
-                "金疮药": "/obj/drug/hurt_drug",
+                "medicine": "/obj/drug/hurt_drug",
         ]) );
         set("chat_chance", 20);
         set("chat_msg", ({

@@ -21,14 +21,14 @@ void create()
         ]) );
 
         set("vendor_goods", ([
-                "鞭子": "/obj/weapon/whip",
-                "长剑": "/obj/weapon/longsword",
-                "单刀": "/obj/weapon/blade", 
-                "飞镖": "/obj/weapon/dart",
-                "牛皮盾": "/obj/weapon/shield",
-                "八角锤": "/obj/weapon/sixhammer",
-                "细剑": "/obj/weapon/thin_sword",
-                "匕首": "/obj/weapon/dagger.c",
+                "whip": "/obj/weapon/whip",
+                "sword": "/obj/weapon/longsword",
+                "blade": "/obj/weapon/blade", 
+                "dart": "/obj/weapon/dart",
+                "leather shield": "/obj/weapon/shield",
+                "sixhammer": "/obj/weapon/sixhammer",
+                "thin sword": "/obj/weapon/thin_sword",
+                "dagger": "/obj/weapon/dagger.c",
         ]) );
 
         setup();

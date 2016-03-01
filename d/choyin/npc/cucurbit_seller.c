@@ -11,7 +11,7 @@ void create()
 	set("combat_exp", 30);
 	set("attitude", "friendly");
 	set("vendor_goods", ([
-	      "糖葫芦":__DIR__"obj/cucurbit",
+	      "sugar cucurbit":__DIR__"obj/cucurbit",
 	]) );
 	set("chat_chance", 15);
 	set("chat_msg", ({

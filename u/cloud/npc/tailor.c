@@ -23,7 +23,7 @@ void create()
         ]) );
 
         set("vendor_goods", ([
-                "布衣": "/u/cloud/obj/cloth/cloth",
+                "cloth": "/u/cloud/obj/cloth/cloth",
         ]) );
 
 	setup();
