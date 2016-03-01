@@ -215,7 +215,7 @@ function adjustLayout() {
 
   // adjust map size
   var tbGo = $('table#go');
-  var mw = w0 - tbGo.outerWidth(true) -22;
+  var mw = w0 - tbGo.outerWidth(true) -12;
   var mh = tbGo.outerHeight(true);
   $('div#map, div#expkeys').css({
     width: mw+'px',
