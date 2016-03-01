@@ -149,7 +149,7 @@ function saveMap() {
 // load map info from local storage
 function loadMap() {
   var mapstr = localStorage.getItem('rooms');
-  if(mapstr.indexOf('{') === 0) {
+  if(mapstr && mapstr.indexOf('{') === 0) {
     rooms = JSON.parse(mapstr);
   } else {
     rooms = {};
