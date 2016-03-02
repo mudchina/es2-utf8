@@ -1,3 +1,0 @@
-#/obj/user.c
-dbase (["per":30,"eff_sen":100,"max_kee":100,"kee":100,"str":30,"max_gin":100,"title":"普通百姓","gin":100,"kar":30,"cor":30,"eff_kee":100,"con":30,"water":0,"eff_gin":100,"int":30,"race":"人类","mud_age":1599,"name":"雷锋","potential":100,"spi":30,"food":0,"channels":({"chat",}),"actions":,"id":"ray","default_actions":,"cps":30,"gender":"男性","max_sen":100,"birthday":1456366565,"sen":100,"age":14,"gift_tag":1,])
-autoload ({})

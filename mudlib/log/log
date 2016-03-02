@@ -1,0 +1,60 @@
+/adm/daemons/logind.c line 325: Warning: Unused local variable 'n' before the end of line
+/adm/daemons/logind.c line 411: Warning: Unused local variable 'room' before the end of line
+/include/net/ftpdsupp.h line 66: Warning: Unused local variable 'file' before the end of line
+/adm/daemons/ftpd.c line 1904: Warning: Unused local variable 'j' before the end of line
+/std/weapon/throwing.c line 25: Warning: Expression has no side effects, and the value is unused before ));
+/std/weapon/sword.c line 19: Warning: Expression has no side effects, and the value is unused before ) );
+/adm/daemons/logind.c line 325: Warning: Unused local variable 'n' before the end of line
+/adm/daemons/logind.c line 411: Warning: Unused local variable 'room' before the end of line
+/include/net/ftpdsupp.h line 66: Warning: Unused local variable 'file' before the end of line
+/adm/daemons/ftpd.c line 1904: Warning: Unused local variable 'j' before the end of line
+/adm/daemons/logind.c line 325: Warning: Unused local variable 'n' before the end of line
+/adm/daemons/logind.c line 411: Warning: Unused local variable 'room' before the end of line
+/include/net/ftpdsupp.h line 66: Warning: Unused local variable 'file' before the end of line
+/adm/daemons/ftpd.c line 1904: Warning: Unused local variable 'j' before the end of line
+/adm/daemons/logind.c line 325: Warning: Unused local variable 'n' before the end of line
+/adm/daemons/logind.c line 411: Warning: Unused local variable 'room' before the end of line
+/include/net/ftpdsupp.h line 66: Warning: Unused local variable 'file' before the end of line
+/adm/daemons/ftpd.c line 1904: Warning: Unused local variable 'j' before the end of line
+/adm/daemons/logind.c line 325: Warning: Unused local variable 'n' before the end of line
+/adm/daemons/logind.c line 411: Warning: Unused local variable 'room' before the end of line
+/include/net/ftpdsupp.h line 66: Warning: Unused local variable 'file' before the end of line
+/adm/daemons/ftpd.c line 1904: Warning: Unused local variable 'j' before the end of line
+/std/weapon/sword.c line 19: Warning: Expression has no side effects, and the value is unused before ) );
+/std/weapon/throwing.c line 25: Warning: Expression has no side effects, and the value is unused before ));
+/adm/daemons/combatd.c line 463: Warning: Unused local variable 'cost' before the end of line
+/adm/daemons/combatd.c line 500: Warning: Unused local variable 'ob' before the end of line
+/adm/daemons/combatd.c line 754: Warning: Unused local variable 'test' before the end of line
+/adm/daemons/logind.c line 325: Warning: Unused local variable 'n' before the end of line
+/adm/daemons/logind.c line 411: Warning: Unused local variable 'room' before the end of line
+/include/net/ftpdsupp.h line 66: Warning: Unused local variable 'file' before the end of line
+/adm/daemons/ftpd.c line 1904: Warning: Unused local variable 'j' before the end of line
+/std/weapon/sword.c line 19: Warning: Expression has no side effects, and the value is unused before ) );
+/std/weapon/throwing.c line 25: Warning: Expression has no side effects, and the value is unused before ));
+/adm/daemons/logind.c line 325: Warning: Unused local variable 'n' before the end of line
+/adm/daemons/logind.c line 411: Warning: Unused local variable 'room' before the end of line
+/include/net/ftpdsupp.h line 66: Warning: Unused local variable 'file' before the end of line
+/adm/daemons/ftpd.c line 1904: Warning: Unused local variable 'j' before the end of line
+/adm/daemons/logind.c line 325: Warning: Unused local variable 'n' before the end of line
+/adm/daemons/logind.c line 411: Warning: Unused local variable 'room' before the end of line
+/include/net/ftpdsupp.h line 66: Warning: Unused local variable 'file' before the end of line
+/adm/daemons/ftpd.c line 1904: Warning: Unused local variable 'j' before the end of line
+/adm/daemons/logind.c line 325: Warning: Unused local variable 'n' before the end of line
+/adm/daemons/logind.c line 411: Warning: Unused local variable 'room' before the end of line
+/include/net/ftpdsupp.h line 66: Warning: Unused local variable 'file' before the end of line
+/adm/daemons/ftpd.c line 1904: Warning: Unused local variable 'j' before the end of line
+/std/weapon/sword.c line 19: Warning: Expression has no side effects, and the value is unused before ) );
+/std/weapon/throwing.c line 25: Warning: Expression has no side effects, and the value is unused before ));
+/std/weapon/blade.c line 19: Warning: Expression has no side effects, and the value is unused before ) );
+/std/weapon/dagger.c line 19: Warning: Expression has no side effects, and the value is unused before ) );
+/std/weapon/whip.c line 19: Warning: Expression has no side effects, and the value is unused before ) );
+/d/choyin/npc/cityguard.c line 11: Warning: Unknown \ escape. before ��武林人物比起
+/d/choyin/npc/cityguard.c line 12: Warning: Unknown \ escape. before ��在稀松平常，
+/d/choyin/npc/obj/cloth_piece.c line 14: Warning: Unknown \ escape. before ��字。\n");
+/adm/daemons/combatd.c line 463: Warning: Unused local variable 'cost' before the end of line
+/adm/daemons/combatd.c line 500: Warning: Unused local variable 'ob' before the end of line
+/adm/daemons/combatd.c line 754: Warning: Unused local variable 'test' before the end of line
+/adm/daemons/logind.c line 325: Warning: Unused local variable 'n' before the end of line
+/adm/daemons/logind.c line 411: Warning: Unused local variable 'room' before the end of line
+/include/net/ftpdsupp.h line 66: Warning: Unused local variable 'file' before the end of line
+/adm/daemons/ftpd.c line 1904: Warning: Unused local variable 'j' before the end of line

@@ -4,4 +4,6 @@
 .idea
 *.iml
 *.log
-log
+*.o
+node_modules
+

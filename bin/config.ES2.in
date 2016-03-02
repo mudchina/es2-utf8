@@ -21,10 +21,10 @@ external_port_1 : telnet 4000
 external_port_2 : binary 4001
 
 # absolute pathname of mudlib
-mudlib directory : /Users/liming/workspace/mud/es2-utf8/mudlib
+mudlib directory : __ROOT__/mudlib
 
 # absolute pathname of driver/config dir
-binary directory : /Users/liming/workspace/mud/es2-utf8/bin
+binary directory : __ROOT__/bin
 
 # ------------------------------------------------------------------------
 #
