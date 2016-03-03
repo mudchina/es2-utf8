@@ -7,12 +7,12 @@ void create()
 	set("short", "黄土小径");
 	set("long", @LONG
 这是一条普通的黄土小径，小径往西南通往一处山间的平地，从这
-里可以望见不少房屋错落在平地上，往东北则一路上山。
+里可以望见不少房屋错落在平地上，往北则一路上山。
 LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
-  "northeast" : "/d/snow/eroad3",
-  "southwest" : "/d/snow/eroad1",
+  "east" : "/d/snow/eroad3",
+  "west" : "/d/snow/eroad1",
 ]));
 	set("outdoors", "snow");
 

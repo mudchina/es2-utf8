@@ -12,8 +12,8 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
-  "westup" : __DIR__"ladder4",
-  "eastdown" : __DIR__"sroad",
+  "northup" : __DIR__"ladder4",
+  "westdown" : __DIR__"sroad",
 ]));
 	set("no_clean_up", 0);
 	set("outdoors", "temple");

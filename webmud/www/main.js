@@ -230,6 +230,7 @@ function adjustLayout() {
     height: mh+'px',
   });
   setMapViewSize(mw-5, mh-5);
+  drawMap();
 
   // adjust output area, according to input area height
   var h0 = $('div#in').outerHeight(true);

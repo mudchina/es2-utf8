@@ -15,6 +15,29 @@ var steps = [];
 var curAddr = '';
 
 var DIR_XY = {
+  'north': [0, 1],
+  'south': [0, -1],
+  'east': [1, 0],
+  'west': [-1, 0],
+  'northup': [0, 1],
+  'southup': [0, -1],
+  'eastup': [1, 0],
+  'westup': [-1, 0],
+  'northdown': [0, 1],
+  'southdown': [0, -1],
+  'eastdown': [1, 0],
+  'westdown': [-1, 0],
+  'northeast': [1, 1],
+  'northwest': [-1, 1],
+  'southeast': [1, -1],
+  'southwest': [-1, -1],
+  'up': [0, 0],
+  'down': [0, 0],
+  'out': [0, 0],
+  'enter': [0, 0],
+};
+
+var DIR_EXY = {
   'n': ['north', 0, 1],
   's': ['south', 0, -1],
   'e': ['east', 1, 0],
@@ -37,8 +60,8 @@ var DIR_XY = {
   'enter': ['enter', 0, 0],
 };
 
-function getDirXY() {
-  return DIR_XY;
+function getDirEXY() {
+  return DIR_EXY;
 }
 
 function mapCheckCmd(str) {
@@ -66,8 +89,8 @@ function mapCheckCmd(str) {
     if((cmd === 'l') || (cmd === 'look')) {
       steps.push('l');
     } else {
-      for(var k in DIR_XY) {
-        var dirInfo = DIR_XY[k];
+      for(var k in DIR_EXY) {
+        var dirInfo = DIR_EXY[k];
         if((cmd === k) || (cmd === dirInfo[0])) {
           steps.push(k);
           break;
@@ -91,26 +114,26 @@ function mapCheckRoom(nameAddr, exits) {
   
   var words = nameAddr.split(' - ');
   if(words.length != 2) return;
-  var name = words[0];
+  var short = words[0];
   var addr = words[1];
 
   // update room inf in cache
   if(!rooms[addr]) {
-    rooms[addr] = {};
+    rooms[addr] = {
+      exits: {},
+    };
     changed = true;
   }
 
   var inf = rooms[addr];
   if(!inf) console.log(_.keys(rooms));
-  if(!inf.name) inf.name = name;
+  if(!inf.short) inf.short = short;
   if(!inf.x) inf.x = 0;
   if(!inf.y) inf.y = 0;
   for(var i=0; i<exits.length; i++) {
     var e = exits[i];
-    if(e) e = alldirs[e];
-    if(e) e = e[0];
-    if(e && !inf[e]) {
-      inf[e] = 1;
+    if(e && !inf.exits[e]) {
+      inf.exits[e] = 1;
       changed = true;
     }
   }
@@ -121,13 +144,13 @@ function mapCheckRoom(nameAddr, exits) {
   if(inf.x && inf.x) {
     // already has (x,y), no need calc
   } else if(stepDir !== 'l') {
-    var dirInfo = DIR_XY[stepDir];
+    var dirInfo = DIR_EXY[stepDir];
     if(dirInfo) {
       // calculate (x,y) from lastRoom
       if(curAddr) {
         var lastRoom = rooms[curAddr];
         if(lastRoom) {
-          lastRoom[stepDir] = addr;
+          lastRoom.exits[dirInfo[0]] = addr;
           inf.x = lastRoom.x + dirInfo[1];
           inf.y = lastRoom.y + dirInfo[2];
         }
@@ -156,11 +179,78 @@ function loadMap() {
   }
 }
 
+var domainPos = {
+  canyon: [-10,-3],
+  choyin: [8,-28],
+  chuenyu: [-11,-15],
+  city: [-20,-20],
+  cloud: [8,-13],
+  death: [15,0],
+  goathill: [8,9],
+  graveyard: [15,-8],
+  green: [1,11],
+  ice: [16,-5],
+  latemoon: [-2,-10],
+  oldpine: [6,-6],
+  sanyen: [2,-20],
+  snow: [0,0],
+  social_guild: [11,-20],
+  temple: [10,6],
+  village: [-15,-7],
+  waterfog: [-4,4],
+  wiz: [-1,0]
+};
+
+function getDomain(key) {
+  return key.split('/')[2];
+}
+  
+function autoXY(map) {
+  var domains = {};
+  var rms = map.rooms;
+  var nNew = 0;
+  for(var k in rms) {
+    var r = rms[k];
+    if('x' in r) continue;
+    var d = getDomain(k);
+    var xy = domainPos[d];
+    if(xy) {
+      r.x = xy[0];
+      r.y = xy[1];
+    } else {
+      r.x = 0;
+      r.y = 0;
+    }
+    //console.log(getDomain(k), k, '(' + r.x + ',' + r.y + ')');
+
+    var todo = [k];
+    while(todo.length > 0) {
+      var k = todo.pop();
+      var r = rms[k];
+      var e = r.exits;
+      for(var d in e) {
+        var key = e[d];
+        var next = rms[key];
+        if(!next) console.log(key, k, r);
+        else if(!('x' in next)) {
+          var xy = DIR_XY[d] || [0,0];
+          var sameDomain = (getDomain(k) === getDomain(key));
+          if(sameDomain) {
+            next.x = r.x + xy[0];
+            next.y = r.y + xy[1];
+            //console.log(key, '(' + next.x + ',' + next.y + ')');
+            todo.push(key);
+          }
+        }
+      }
+    }
+  }
+}
+
 // map view port size, canvas size
 var VIEW_W = 240, VIEW_H = 190;
 
 // virtual map size, we can touch to scroll map
-var MAP_W = 640, MAP_H = 480;
 var ROOM_RANGE = 20, ROOM_SIZE = 12, ME_SIZE = 8;
 var MAP_BG = '#753', MAP_COLOR = '#fff', ME_COLOR = '#f00';
 
@@ -168,43 +258,59 @@ function setMapViewSize(w,h) {
   var canvas = $('canvas#map')[0];
   VIEW_W = canvas.width = w;
   VIEW_H = canvas.height = h;
-  drawMap();
 }
 
 // draw map from map info
-function drawMap() {
+function drawMap(rms, cur) {
+  if(!rms) rms = rooms;
+  if(!cur) cur = curAddr;
+  var domains = {};
+
+  var myPos = rms[cur];
+  if(!myPos) {
+    for(var k in rms) {
+      myPos = rms[k];
+      break;
+    }
+  }
+  if(!myPos) return;
+
   var canvas = $('canvas#map')[0];
   var c = canvas.getContext("2d");
   c.fillStyle = MAP_BG;
   c.fillRect(0, 0, VIEW_W, VIEW_H);
   var x0 = VIEW_W/2, y0 = VIEW_H/2;
 
-  var myPos = rooms[curAddr];
-  if(!myPos) return;
-
   c.strokeStyle = MAP_COLOR;
   c.lineWidth = 2;
-  for(var addr in rooms) {
-    var inf = rooms[addr];
+  for(var addr in rms) {
+    var inf = rms[addr];
     var x = x0 + (inf.x - myPos.x) * ROOM_RANGE;
     var y = y0 - (inf.y - myPos.y) * ROOM_RANGE;
     if(x<0 || x>VIEW_W || y<0 || y>VIEW_H) continue;
 
     c.beginPath();
-    for(var k in DIR_XY) {
-      if(!inf[k]) continue;
-      var xy = DIR_XY[k];
-      if(xy[1] || xy[2]) {
-        c.moveTo(x,y);
-        c.lineTo(x+xy[1]*ROOM_RANGE, y-xy[2]*ROOM_RANGE);
-      }
+    for(var k in inf.exits) {
+      var rm = rms[inf.exits[k]];
+      if(!rm) continue;
+      
+      var x2 = x0 + (rm.x - myPos.x) * ROOM_RANGE;
+      var y2 = y0 - (rm.y - myPos.y) * ROOM_RANGE;
+
+      c.moveTo(x,y);
+      c.lineTo(x2, y2);
     }
     c.stroke();
   }
 
+  c.textBaseline = 'top';
+  c.font = 'normal lighter 16px SimSun';
+  c.lineWidth = 0.5;
+  c.strokeStyle = '#ff0';
+
   c.fillStyle = MAP_COLOR;
-  for(var addr in rooms) {
-    var inf = rooms[addr];
+  for(var addr in rms) {
+    var inf = rms[addr];
     var x = x0 + (inf.x - myPos.x) * ROOM_RANGE;
     var y = y0 - (inf.y - myPos.y) * ROOM_RANGE;
     if(x<0 || x>VIEW_W || y<0 || y>VIEW_H) continue;
@@ -215,6 +321,12 @@ function drawMap() {
     c.fillStyle = MAP_BG;
     c.fillRect(x-(ROOM_SIZE/2-2), y-(ROOM_SIZE/2-2), ROOM_SIZE-4, ROOM_SIZE-4);
     c.restore();
+
+    var d = getDomain(addr);
+    if(!domains[d]) {
+      domains[d] = 1;
+      c.strokeText(d, x, y);
+    }
   }
 
   // draw player pos
@@ -222,11 +334,7 @@ function drawMap() {
   c.fillRect(x0-ME_SIZE/2, y0-ME_SIZE/2, ME_SIZE, ME_SIZE);
 
   // draw room name
-  c.textBaseline = 'top';
-  c.font = 'normal lighter 16px SimSun';
-  c.lineWidth = 0.5;
-  c.strokeStyle = MAP_COLOR;
-  c.strokeText(myPos.name, 5, 5);
+  c.strokeText(myPos.short, 5, 5);
 }
 
 function initModMap(callback) {

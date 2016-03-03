@@ -59,7 +59,7 @@ function jsonFromLPC(file, mudlib) {
         value = str.replace(/set[ ]*\([ ]*,[ ]*"|"[ ]*\)[ ]*;[ ]*/g, '');
         break;
       case 'long':
-        value = str.replace(/set[ ]*\([ ]*,[ ]*@LONG[ ]*|[ ]*LONG[ ]*\)[ ]*;[ ]*|set[ ]*\([ ]*,[ ]*"[ ]*|[ ]*"[ ]*\)[ ]*;[ ]*/g, '').replace(/。[ ]*/g, '。');
+        //value = str.replace(/set[ ]*\([ ]*,[ ]*@LONG[ ]*|[ ]*LONG[ ]*\)[ ]*;[ ]*|set[ ]*\([ ]*,[ ]*"[ ]*|[ ]*"[ ]*\)[ ]*;[ ]*/g, '').replace(/。[ ]*/g, '。');
         break;
       case 'exits':
       case 'objects':
@@ -101,42 +101,6 @@ var walk = function(dir) {
   return results;
 };
 
-function searchRooms(mudlib, folders) {
-  var rooms = {};
-  var n = 0, m = 0;
-
-  var stat = fs.statSync(mudlib);
-  if(stat && stat.isDirectory()) {
-    if(!folders) folders = ['d', 'u'];
-
-    var files = [];
-    folders.forEach(function(dir, j){
-      dir = path.resolve(mudlib, dir);
-      files = files.concat(walk(dir));
-    });
-    m = files.length;
-
-    files.forEach(function(file){
-      var json = jsonFromLPC(file, mudlib);
-      if(json) {
-        var key = file.replace(mudlib, '');
-        key = key.replace(path.extname(key),'');
-        rooms[key] = json;
-        n ++;
-      }
-    });
-  }
-
-  console.log('types: \n', alltypes);
-
-  return {
-    total: m,
-    types: alltypes,
-    rooms: rooms,
-    count: n,
-  };
-}
-
 var DIR_XY = {
   'north': [0, 1],
   'south': [0, -1],
@@ -160,46 +124,116 @@ var DIR_XY = {
   'enter': [0, 0],
 };
 
-var rooms = {};
-var domains = {};
+var domainPos = {
+  canyon: [-10,-3],
+  choyin: [8,-28],
+  chuenyu: [-11,-15],
+  city: [-20,-20],
+  cloud: [8,-13],
+  death: [15,0],
+  goathill: [8,9],
+  graveyard: [25,0],
+  green: [1,11],
+  ice: [20,0],
+  latemoon: [-2,-11],
+  oldpine: [6,-6],
+  sanyen: [12,-18],
+  snow: [0,0],
+  social_guild: [11,-20],
+  temple: [10,6],
+  village: [-15,-7],
+  waterfog: [-4,4],
+  wiz: [-1,0]
+};
 
-function autoXY(todo) {
-  while(todo.length > 0) {
-    var k = todo.pop();
-    var r = rooms[k];
-    r.ok = true;
-    var e = r.exits;
-    for(var d in e) {
-      var key = e[d];
-      var next = rooms[key];
-      if(!next) console.log(key, next, k, r);
-      else if(!next.ok) {
-        var xy = DIR_XY[d] || [0,0];
-        next.x = r.x + xy[0];
-        next.y = r.y + xy[1];
-        console.log(key, '(' + next.x + ',' + next.y + ')');
-        todo.push(key);
+function getDomain(key) {
+  return key.split('/')[2];
+}
+  
+function autoXY(map) {
+  var domains = {};
+  var rms = map.rooms;
+  var nNew = 0;
+  for(var k in rms) {
+    var r = rms[k];
+    if('x' in r) continue;
+    var d = getDomain(k);
+    var xy = domainPos[d];
+    if(xy) {
+      r.x = xy[0];
+      r.y = xy[1];
+    } else {
+      r.x = 0;
+      r.y = 0;
+    }
+    //console.log(getDomain(k), k, '(' + r.x + ',' + r.y + ')');
+
+    var todo = [k];
+    while(todo.length > 0) {
+      var k = todo.pop();
+      var r = rms[k];
+      var e = r.exits;
+      for(var d in e) {
+        var key = e[d];
+        var next = rms[key];
+        if(!next) console.log(key, k, r);
+        else if(!('x' in next)) {
+          var xy = DIR_XY[d] || [0,0];
+          var sameDomain = (getDomain(k) === getDomain(key));
+          if(sameDomain) {
+            next.x = r.x + xy[0];
+            next.y = r.y + xy[1];
+            //console.log(key, '(' + next.x + ',' + next.y + ')');
+            todo.push(key);
+          }
+        }
       }
     }
   }
 }
 
-function autoMap(map) {
-  rooms = map.rooms;
-  domains = {};
-  
-  for(var k in rooms) {
-    var r = rooms[k];
-    if(r.ok) continue;
-    r.x = 0;
-    r.y = 0;
-    console.log(k, '(' + r.x + ',' + r.y + ')');
-    autoXY([k]);
+function parseMap(mudlib, folders) {
+  var domains = {};
+  var rooms = {};
+  var n = 0, m = 0;
+
+  var stat = fs.statSync(mudlib);
+  if(stat && stat.isDirectory()) {
+    if(!folders) folders = ['d', 'u'];
+
+    var files = [];
+    folders.forEach(function(dir, j){
+      dir = path.resolve(mudlib, dir);
+      files = files.concat(walk(dir));
+    });
+    m = files.length;
+
+    files.forEach(function(file){
+      var json = jsonFromLPC(file, mudlib);
+      if(json) {
+        var key = file.replace(mudlib, '');
+        key = key.replace(path.extname(key),'');
+        rooms[key] = json;
+        n ++;
+
+        // count rooms in a domain
+        var d = getDomain(key);
+        if(!domains[d]) domains[d] = 1;
+        else domains[d] += 1;
+      }
+    });
   }
 
-  map.domains = domains;
-  rooms = {};
-  domains = {};
+  console.log('domains: \n', domains);
+  var map = {
+    total: m,
+    count: n,
+    domains: domains,
+    rooms: rooms,
+  };
+  //autoXY(map);
+
+  return map;
 }
 
 exports = module.exports = {
@@ -207,8 +241,7 @@ exports = module.exports = {
   smartTrim: smartTrim,
   replaceDIR: replaceDIR,
   jsonFromLPC: jsonFromLPC,
-  searchRooms: searchRooms,
-  autoMap: autoMap,
+  parseMap: parseMap,
 };
   
 })();

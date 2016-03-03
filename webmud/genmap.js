@@ -26,16 +26,14 @@ var file = path.resolve(args._[1]);
 var ext = path.extname(file);
 var folders = ['d', 'u'];
 
-var ret = parser.searchRooms(mudlib, folders);
-if(ret) {
-  parser.autoMap(ret.rooms);
-
-  console.log(ret.count + ' rooms found from ' + ret.total + ' files.\n');
-  var text = JSON.stringify(ret.rooms, null, '  ');
+var map = parser.parseMap(mudlib, folders);
+if(map) {
+  console.log(map.count + ' rooms found from ' + map.total + ' files.\n');
+  var text = JSON.stringify(map, null, '  ');
   if(ext === '.json') {
     fs.writeFileSync(file, text, 'utf8');
   } else if(ext === '.js') {
-    fs.writeFileSync(file, 'var rooms = \n' + text + ';\n', 'utf8');
+    fs.writeFileSync(file, 'var mapdata = \n' + text + ';\n', 'utf8');
   } else {
     console.log('Only export to .json/.js file');
   }
