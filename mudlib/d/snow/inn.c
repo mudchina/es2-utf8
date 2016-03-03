@@ -20,7 +20,7 @@ void create()
 LONG
 	);
 
-	// This enables players to save this room as their startroom.
+	/* This enables players to save this room as their startroom. */
 	set("valid_startroom", 1);
 
 	set("item_desc", ([

@@ -1,5 +1,7 @@
 'use strict';
 
+(function(){
+
 var socketio = require('socket.io'),
   express = require('express'),
   http = require('http'),
@@ -159,3 +161,5 @@ WebTelnetProxy.startProxy = function(conf) {
 }
 
 exports = module.exports = WebTelnetProxy;
+
+})();

@@ -19,7 +19,7 @@ void create()
 LONG
         );
         set("exits", ([ /* sizeof() == 1 */
-  		"east" : "u/cloud/latemoon/entrance",
+  		"east" : __DIR__"entrance",
 ]));
 
         set("item_desc", ([

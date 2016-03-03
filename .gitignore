@@ -6,4 +6,8 @@
 *.log
 *.o
 node_modules
-
+mudlib/log/log
+mudlib/log/USAGE
+mudlib/log/author_stats
+mudlib/log/domain_stats
+mudlib/log/tsatic/CRASHES

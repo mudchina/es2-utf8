@@ -4,7 +4,7 @@
 
 var info = require('../package.json');
 var path = require('path');
-var WebTelnetProxy = require('./webtelnet.js');
+var WebTelnetProxy = require('./lib/webtelnet.js');
 
 var conf = {
   telnet: {

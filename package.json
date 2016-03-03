@@ -3,7 +3,8 @@
   "version": "0.9.7",
   "description": "WebMUD with ES2 mudlib",
   "bin": {
-    "es2-webmud": "./webmud/main.js"
+    "webmud": "./webmud/main.js",
+    "genmap": "./webmud/genmap.js"
   },
   "scripts": {
     "start": "node ./webmud/main.js",
