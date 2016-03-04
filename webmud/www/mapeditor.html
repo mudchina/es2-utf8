@@ -49,11 +49,20 @@ $(document).ready(function(){
     width: w +'px',
     height: h +'px',
   });
-  setMapViewSize(w, h);
-  mapAutoXY();
-  mapSetDrawMarked(0);
-  mapGoTo('/d/snow/inn');
-  //drawMap();
+  $('canvas#map').click(function(e){
+    // console.log(e.offsetX, e.offsetY);
+    var v = { x:e.offsetX, y:e.offsetY };
+    var p = mapXYFromView(v);
+    var k = mapFindAddrByXY(p.x, p.y);
+    var r = mapGetRoomByAddr(k);
+    if(k && r) console.log(k, r);
+  });
+  initMap({
+    width: w,
+    height: h,
+    center: '/d/snow/inn',
+    drawMarked: false,
+  });
 });
 </script>
 </html>

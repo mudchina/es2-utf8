@@ -227,7 +227,9 @@ function adjustLayout() {
     height: mh+'px',
     overflow: 'scroll',
   });
-  setMapViewSize(mw*2-5, mh*4-5);
+
+  // resize map & redraw
+  setMapViewSize(mw-5, mh*4-5);
   drawMap();
 
   // adjust output area, according to input area height
@@ -370,10 +372,12 @@ function initModMap(callback){
   addLocalCmd('save map', function(){
     saveMap();
   });
-  mapAutoXY();
-  mapSetDrawMarked(0);
-  loadMap();
-  drawMap();
+  initMap({
+    width: 640,
+    height: 640,
+    drawMarked: true,
+    center: '/d/snow/inn',
+  });
 }
 
 $(document).ready(function(){
