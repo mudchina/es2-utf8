@@ -10,8 +10,8 @@ void create()
 LONG
 	);
 	set("exits", ([
-		"north" :__DIR__"sroad5",
-		"southwest" :__DIR__"gate",
+		"west" :__DIR__"sroad3",
+		"south" :__DIR__"sroad5",
 	]));
 
 	set("objects", ([

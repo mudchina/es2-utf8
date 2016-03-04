@@ -18,7 +18,7 @@ TEXT
 	]) );
 	
 	set("exits",([ /* sizeof()==1 */
-		"northeast" : "/d/snow/sroad3",
+		"northeast" : "/d/snow/sroad4",
 	]) ); //eof(exits)
 	
 	setup();

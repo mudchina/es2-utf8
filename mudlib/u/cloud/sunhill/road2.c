@@ -10,8 +10,8 @@ void create()
 LONG
         );
         set("exits", ([ /* sizeof() == 2 */
-  "northdown" : __DIR__"road1",
-  "westup" : __DIR__"road3",
+  "north" : __DIR__"road1",
+  "west" : __DIR__"road3",
 ]));
         set("outdoors", "cloud");
 

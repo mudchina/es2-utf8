@@ -14,7 +14,7 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
-  "southeast" : "/d/waterfog/wpath4",
+  "south" : "/d/waterfog/wpath4",
   "west" : "/d/waterfog/swordtomb",
 ]));
 	set("no_clean_up", 0);

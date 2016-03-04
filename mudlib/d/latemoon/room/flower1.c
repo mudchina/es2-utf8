@@ -15,6 +15,7 @@ LONG
     set("exits", ([
      "north" :__DIR__"corridor7",
      "east" :__DIR__"bathroom1",
+     "south" : "/d/latemoon/miroom2",
     ]));
     set("objects", ([
         __DIR__"npc/shaoin" : 1,

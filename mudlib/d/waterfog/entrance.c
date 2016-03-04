@@ -15,7 +15,7 @@ LONG
 		"south" : __DIR__"frontyard",
 		"west" : __DIR__"westhall",
 		"east" : __DIR__"easthall",
-		"north" : CLASS_D("fighter") + "/guildhall",
+		"north" : __DIR__"guildhall",
 	]));
 	set("objects", ([
 		__DIR__"npc/guard": 2

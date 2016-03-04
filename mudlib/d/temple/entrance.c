@@ -14,7 +14,7 @@ LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
      "north" : __DIR__"square",
-     "eastdown" : __DIR__"ladder1",
+     "south" : __DIR__"ladder1",
 ]));
 
     set("outdoors", "temple");

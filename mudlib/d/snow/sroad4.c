@@ -7,14 +7,17 @@ void create()
 	set("short", "青石官道");
 	set("long", @LONG
 这是一条宽敞坚实的青石板大道，大道两旁种著整齐的花木，从这
-里往西通往水烟阁，往南则是衔接雪亭镇街道的路口。
+里往北通往水烟阁，往东则是衔接雪亭镇街道的路口。
 LONG
 	);
-	set("exits", ([ /* sizeof() == 2 */
-  "west" : "/d/waterfog/sroad1",
-  "south" : "/d/snow/sroad3",
+	set("exits", ([ /* sizeof() == 3 */
+  "north" : "/d/snow/sroad5",
+  "east" : "/d/snow/sroad3",
+  "southwest" : "/d/canyon/road",
 ]));
 	set("outdoors", "snow");
+	set("objects", ([
+		__DIR__"npc/crazy_dog": 1 ]) );
 
 	setup();
 	replace_program(ROOM);

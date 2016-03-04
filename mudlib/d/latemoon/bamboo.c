@@ -11,7 +11,7 @@ LONG
     "east" :__DIR__"bamboo1",
     "west" :__DIR__"bamboo2",
     "north" :__DIR__"bamboo3",
-    "south" :__DIR__"sroad4",
+    "south" :__DIR__"bamboo4",
 
 ]));
         set("outdoors", "latemoon");

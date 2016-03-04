@@ -16,7 +16,7 @@ LONG
 ]));
 	set("outdoors", "temple");
 	set("exits", ([ /* sizeof() == 2 */
-  "eastup" : __DIR__"ladder1",
+  "east" : __DIR__"ladder1",
   "southdown" : __DIR__"ladder3",
 ]));
 	set("no_clean_up", 0);

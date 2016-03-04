@@ -1,27 +1,26 @@
 var mapdata = 
 {
-  "total": 1444,
-  "count": 582,
+  "total": 1292,
+  "count": 557,
   "domains": {
     "canyon": 27,
-    "choyin": 61,
-    "chuenyu": 39,
-    "city": 57,
-    "death": 13,
+    "choyin": 62,
+    "chuenyu": 37,
+    "city": 55,
+    "death": 12,
     "goathill": 16,
     "graveyard": 2,
     "green": 38,
-    "ice": 2,
-    "latemoon": 80,
-    "oldpine": 42,
-    "sanyen": 20,
+    "latemoon": 74,
+    "oldpine": 41,
+    "sanyen": 18,
     "snow": 38,
     "social_guild": 1,
     "temple": 27,
-    "village": 27,
+    "village": 26,
     "waterfog": 28,
     "wiz": 4,
-    "cloud": 60
+    "cloud": 51
   },
   "rooms": {
     "/d/canyon/bamboo/bamboo1": {
@@ -211,7 +210,7 @@ var mapdata =
     "/d/canyon/road": {
       "short": "碎石小路",
       "exits": {
-        "northeast": "/d/snow/sroad3"
+        "northeast": "/d/snow/sroad4"
       }
     },
     "/d/canyon/stone_forest1": {
@@ -290,7 +289,7 @@ var mapdata =
       "short": "曲桥",
       "exits": {
         "north": "/d/choyin/bridge4",
-        "east": "/daemon/class/scholar/entrance"
+        "east": "/d/choyin/entrance"
       }
     },
     "/d/choyin/cloudpool": {
@@ -305,8 +304,8 @@ var mapdata =
     "/d/choyin/club": {
       "short": "草堂",
       "exits": {
-        "west": "/d/choyin/yard.c",
-        "east": "/d/choyin/fence.c"
+        "west": "/d/choyin/yard",
+        "east": "/d/choyin/fence"
       }
     },
     "/d/choyin/court1": {
@@ -365,11 +364,21 @@ var mapdata =
         "east": "/d/choyin/e_gate"
       }
     },
+    "/d/choyin/entrance": {
+      "short": "曼雩台",
+      "exits": {
+        "west": "/d/choyin/bridge5",
+        "east": "/d/choyin/taolin"
+      },
+      "objects": {
+        "CLASS_D(scholar)+/master": 1
+      }
+    },
     "/d/choyin/fence": {
       "short": "竹林",
       "exits": {
-        "west": "/d/choyin/club.c",
-        "eastup": "/d/choyin/rockyu.c"
+        "west": "/d/choyin/club",
+        "eastup": "/d/choyin/rockyu"
       }
     },
     "/d/choyin/guyehill": {
@@ -547,7 +556,7 @@ var mapdata =
       "exits": {
         "north": "/d/choyin/crossroad",
         "east": "/d/choyin/dragon_temple",
-        "south": "_DIR_rockroad"
+        "south": "/d/choyin/spath"
       },
       "objects": {
         "/d/choyin/npc/cityguard": 2
@@ -634,6 +643,17 @@ var mapdata =
       "exits": {
         "northeast": "/d/choyin/s_street1",
         "west": "/d/choyin/dragon_temple"
+      }
+    },
+    "/d/choyin/taolin": {
+      "short": "桃林",
+      "exits": {
+        "south": "/d/choyin/taolin",
+        "north": "/d/choyin/taolin",
+        "west": "/d/choyin/taolin",
+        "east": "/d/choyin/taolin",
+        "northwest": "/d/choyin/taolin",
+        "southeast": "/d/choyin/taolin"
       }
     },
     "/d/choyin/tomb1": {
@@ -764,23 +784,15 @@ var mapdata =
     "/d/chuenyu/croad1": {
       "short": "黄土大道",
       "exits": {
-        "northwest": "/d/village/road2",
-        "southeast": "/d/chuenyu/croad2"
+        "south": "/d/village/road1",
+        "north": "/d/chuenyu/croad2"
       }
     },
     "/d/chuenyu/croad2": {
       "short": "路口",
       "exits": {
         "northeast": "/d/chuenyu/sunnyroad",
-        "southeast": "/d/chuenyu/croad3",
-        "northwest": "/d/chuenyu/croad1"
-      }
-    },
-    "/d/chuenyu/croad3": {
-      "short": "北驿道",
-      "exits": {
-        "northwest": "/d/chuenyu/croad2",
-        "south": "/d/city/nroad2"
+        "south": "/d/chuenyu/croad1"
       }
     },
     "/d/chuenyu/dungeon": {
@@ -1192,7 +1204,7 @@ var mapdata =
     "/d/city/northdoor": {
       "short": "京师北门",
       "exits": {
-        "out": "/d/city/nroad1",
+        "north": "/d/city/nroad1",
         "south": "/d/city/street16"
       },
       "objects": {
@@ -1203,14 +1215,14 @@ var mapdata =
       "short": "北驿道",
       "exits": {
         "north": "/d/city/nroad2",
-        "enter": "/d/city/northdoor"
+        "south": "/d/city/northdoor"
       }
     },
     "/d/city/nroad2": {
       "short": "北驿道",
       "exits": {
         "south": "/d/city/nroad1",
-        "north": "/d/chuenyu/croad3"
+        "north": "/d/village/road2"
       },
       "objects": {
         "/u/cp/chater2": 1
@@ -1403,8 +1415,8 @@ var mapdata =
     "/d/city/street16": {
       "short": "大栅栏",
       "exits": {
-        "north": "d/city/northdoor",
-        "south": "d/city/street7"
+        "north": "/d/city/northdoor",
+        "south": "/d/city/street7"
       }
     },
     "/d/city/street17": {
@@ -1467,10 +1479,10 @@ var mapdata =
     "/d/city/street7": {
       "short": "十字路口",
       "exits": {
-        "east": "d/city/street8",
-        "west": "d/city/street15",
-        "north": "d/city/street16",
-        "south": "d/city/jitan"
+        "east": "/d/city/street8",
+        "west": "/d/city/street15",
+        "north": "/d/city/street16",
+        "south": "/d/city/jitan"
       }
     },
     "/d/city/street8": {
@@ -2088,32 +2100,22 @@ var mapdata =
         "north": "/d/green/stoneroom"
       }
     },
-    "/d/ice/cave0": {
-      "short": "洞口",
-      "exits": {
-        "east": "/d/mine/cave0",
-        "west": "/d/ice/path0"
-      }
-    },
-    "/d/ice/path0": {
-      "short": "空房间"
-    },
     "/d/latemoon/bamboo": {
       "short": "竹林",
       "exits": {
         "east": "/d/latemoon/bamboo1",
         "west": "/d/latemoon/bamboo2",
         "north": "/d/latemoon/bamboo3",
-        "south": "/d/latemoon/sroad4"
+        "south": "/d/latemoon/bamboo4"
       }
     },
     "/d/latemoon/bamboo1": {
       "short": "竹林",
       "exits": {
         "east": "/d/latemoon/bamboo",
-        "west": "/d/latemoon/bamboo2",
-        "north": "/d/latemoon/bamboo3",
-        "south": "/d/latemoon/bamboo2"
+        "west": "/d/latemoon/bamboo1",
+        "north": "/d/latemoon/bamboo2",
+        "south": "/d/latemoon/bamboo4"
       }
     },
     "/d/latemoon/bamboo2": {
@@ -2128,10 +2130,10 @@ var mapdata =
     "/d/latemoon/bamboo3": {
       "short": "竹林",
       "exits": {
-        "north": "/d/latemoon/bamboo1",
+        "north": "/d/latemoon/sroad5",
         "east": "/d/latemoon/bamboo",
         "west": "/d/latemoon/bamboo2",
-        "south": "/d/latemoon/bamboo4"
+        "south": "/d/latemoon/bamboo"
       }
     },
     "/d/latemoon/bamboo4": {
@@ -2146,18 +2148,20 @@ var mapdata =
         "/d/latemoon/obj/bamboo": 1
       }
     },
-    "/d/latemoon/corridor7": {
-      "short": "内厅",
+    "/d/latemoon/entrance": {
+      "short": "碎石小径",
       "exits": {
-        "south": "/d/latemoon/flower1",
-        "east": "/d/latemoon/corridor8",
-        "west": "/d/latemoon/corridor6"
+        "west": "/d/latemoon/gate",
+        "east": "/u/cloud/wroad0"
+      },
+      "objects": {
+        "/u/cloud/npc/lm_guard": 2
       }
     },
     "/d/latemoon/front_yard": {
       "short": "晚月庄前庭",
       "exits": {
-        "out": "/d/latemoon/gate",
+        "east": "/d/latemoon/gate",
         "west": "/d/latemoon/latemoon1",
         "south": "/d/latemoon/park/yard1"
       }
@@ -2165,43 +2169,8 @@ var mapdata =
     "/d/latemoon/gate": {
       "short": "晚月庄大门",
       "exits": {
-        "east": "/u/cloud/latemoon/entrance",
-        "enter": "/d/latemoon/front_yard"
-      }
-    },
-    "/d/latemoon/in_room/backroom": {
-      "short": "内厅",
-      "exits": {
-        "south": "/d/latemoon/in_room/flower1",
-        "east": "/d/latemoon/in_room/corridor8",
-        "west": "/d/latemoon/in_room/corridor6"
-      }
-    },
-    "/d/latemoon/in_room/bathroom": {
-      "short": "小花池",
-      "objects": {
-        "/d/latemoon/npc/fuyun": 1
-      },
-      "exits": {
-        "west": "/d/latemoon/in_room/bathroom1"
-      }
-    },
-    "/d/latemoon/in_room/bathroom1": {
-      "short": "沐浴更衣室",
-      "objects": {
-        "/d/latemoon/npc/shinyu": 1
-      },
-      "exits": {
-        "west": "/d/latemoon/in_room/flower1",
-        "east": "/d/latemoon/in_room/bathroom"
-      }
-    },
-    "/d/latemoon/in_room/flower1": {
-      "short": "内厅穿堂",
-      "exits": {
-        "north": "/d/latemoon/in_room/corridor7",
-        "south": "/d/latemoon/in_room/flowerc",
-        "east": "/d/latemoon/in_room/bathroom1"
+        "east": "/d/latemoon/entrance",
+        "west": "/d/latemoon/front_yard"
       }
     },
     "/d/latemoon/latebook": {
@@ -2308,24 +2277,6 @@ var mapdata =
         "/d/latemoon/npc/shaowei": 1
       }
     },
-    "/d/latemoon/npc/obj/latebook": {
-      "short": "后院书房",
-      "exits": {
-        "east": "/d/latemoon/npc/obj/latemoon7"
-      },
-      "objects": {
-        "/d/latemoon/npc/obj/npc/girl": 1
-      }
-    },
-    "/d/latemoon/obj/latebook": {
-      "short": "后院书房",
-      "exits": {
-        "east": "/d/latemoon/obj/latemoon7"
-      },
-      "objects": {
-        "/d/latemoon/obj/npc/girl": 1
-      }
-    },
     "/d/latemoon/park/bridge1": {
       "short": "沁芳桥",
       "exits": {
@@ -2411,7 +2362,8 @@ var mapdata =
     "/d/latemoon/park/moondoor": {
       "short": "晚月庄后门",
       "exits": {
-        "north": "/d/latemoon/park/paroad1"
+        "north": "/d/latemoon/park/paroad1",
+        "south": "/d/latemoon/sroad1"
       }
     },
     "/d/latemoon/park/moroom": {
@@ -2541,7 +2493,8 @@ var mapdata =
       "short": "内厅穿堂",
       "exits": {
         "north": "/d/latemoon/room/corridor7",
-        "east": "/d/latemoon/room/bathroom1"
+        "east": "/d/latemoon/room/bathroom1",
+        "south": "/d/latemoon/miroom2"
       },
       "objects": {
         "/d/latemoon/room/npc/shaoin": 1
@@ -2677,12 +2630,12 @@ var mapdata =
     "/d/latemoon/sroad1": {
       "short": "山路",
       "exits": {
-        "southeast": "/d/latemoon/sroad2",
-        "north": "/d/sanyen/gate"
+        "north": "/d/latemoon/park/moondoor",
+        "southeast": "/d/latemoon/sroad2"
       }
     },
     "/d/latemoon/sroad2": {
-      "short": "蜿蜒小径\"), set(\"long\", @LONG你走在这条蜿蜒的小径上, 本来向北走的小径被一道峭壁挡住了,因此小径从这弯向东边去, 在你的西边是一片杂草和几棵小树。LONG );",
+      "short": "蜿蜒小径",
       "exits": {
         "northwest": "/d/latemoon/sroad1",
         "east": "/d/latemoon/sroad3"
@@ -2691,15 +2644,15 @@ var mapdata =
     "/d/latemoon/sroad3": {
       "short": "小径",
       "exits": {
-        "west": "/d/latemoon/sroad2",
-        "southeast": "/d/latemoon/sroad5"
+        "northwest": "/d/latemoon/sroad2",
+        "east": "/d/latemoon/sroad4"
       }
     },
     "/d/latemoon/sroad4": {
       "short": "蜿蜒小径",
       "exits": {
-        "north": "/d/latemoon/sroad5",
-        "southwest": "/d/latemoon/gate"
+        "west": "/d/latemoon/sroad3",
+        "south": "/d/latemoon/sroad5"
       },
       "objects": {
         "/d/latemoon/npc/butterfly": 1
@@ -2708,9 +2661,9 @@ var mapdata =
     "/d/latemoon/sroad5": {
       "short": "小径",
       "exits": {
-        "northwest": "/d/latemoon/sroad3",
-        "west": "/d/latemoon/bamboo1",
-        "south": "/d/latemoon/sroad4"
+        "north": "/d/latemoon/sroad4",
+        "south": "/d/latemoon/bamboo3",
+        "east": "/d/sanyen/tunnel"
       },
       "objects": {
         "/d/latemoon/npc/butterfly": 1
@@ -3086,8 +3039,8 @@ var mapdata =
     "/d/oldpine/spath3": {
       "short": "下坡道",
       "exits": {
-        "north": "/d/oldpine/spath2",
-        "south": "/d/oldpine/spath3"
+        "north": "/d/oldpine/spath4",
+        "south": "/d/oldpine/spath2"
       }
     },
     "/d/oldpine/spath4": {
@@ -3134,13 +3087,6 @@ var mapdata =
         "south": "/d/oldpine/riverbank2"
       }
     },
-    "/d/sanyen/..choyinsroad": {
-      "short": "山路",
-      "exits": {
-        "west": "/d/sanyen/sroad2",
-        "northdown": "/u/cloud/sunhill/road4"
-      }
-    },
     "/d/sanyen/back_temple": {
       "short": "后殿",
       "exits": {
@@ -3173,27 +3119,28 @@ var mapdata =
         "south": "/d/sanyen/front_yard"
       }
     },
-    "/d/sanyen/drag_field": {
+    "/d/sanyen/drug_field": {
       "short": "药圃",
       "exits": {
-        "west": "/d/sanyen/road2"
+        "south": "/d/sanyen/road2"
       }
     },
     "/d/sanyen/front_yard": {
       "short": "山烟寺前广场",
       "exits": {
         "north": "/d/sanyen/door",
-        "west": "/d/sanyen/gate"
+        "south": "/d/sanyen/gate"
       },
       "objects": {
-        "/u/cloud/npc/monk_guard": 2
+        "/d/sanyen/npc/monk_guard": 2
       }
     },
     "/d/sanyen/gate": {
       "short": "山烟寺山门",
       "exits": {
-        "west": "/d/sanyen/sroad2",
-        "east": "/d/sanyen/front_yard"
+        "south": "/d/sanyen/sroad2",
+        "north": "/d/sanyen/front_yard",
+        "west": "/d/sanyen/tunnele"
       },
       "objects": {
         "/d/sanyen/npc/greeting": 2
@@ -3242,7 +3189,7 @@ var mapdata =
       "short": "石板小径",
       "exits": {
         "west": "/d/sanyen/road1",
-        "east": "/d/sanyen/drag_field"
+        "north": "/d/sanyen/drug_field"
       },
       "objects": {
         "/d/sanyen/npc/bonze": 1
@@ -3252,14 +3199,14 @@ var mapdata =
       "short": "山路",
       "exits": {
         "west": "/d/sanyen/sroad2",
-        "northdown": "/u/cloud/sunhill/road4"
+        "northeast": "/u/cloud/sunhill/road4"
       }
     },
     "/d/sanyen/sroad2": {
       "short": "山路",
       "exits": {
-        "northdown": "/u/cloud/sunhill/road4",
-        "east": "/d/sanyen/gate"
+        "east": "/d/sanyen/sroad1",
+        "north": "/d/sanyen/gate"
       }
     },
     "/d/sanyen/temple": {
@@ -3285,7 +3232,7 @@ var mapdata =
     "/d/sanyen/tunnel": {
       "short": "隧道",
       "exits": {
-        "west": "/d/sanyen/sroad2",
+        "west": "/d/latemoon/sroad5",
         "east": "/d/sanyen/tunnele"
       }
     },
@@ -3385,7 +3332,7 @@ var mapdata =
         "northwest": "/d/wiz/entrance"
       },
       "objects": {
-        "/d/snow/npc/traveller": 3,
+        "/d/snow/npc/traveller": 2,
         "/d/snow/npc/waiter": 1
       }
     },
@@ -3419,6 +3366,7 @@ var mapdata =
     "/d/snow/mstreet1": {
       "short": "雪亭镇街道",
       "exits": {
+        "west": "/d/snow/bank",
         "south": "/d/snow/square",
         "north": "/d/snow/mstreet2",
         "east": "/d/snow/school1"
@@ -3519,7 +3467,7 @@ var mapdata =
         "CLASS_D(swordsman)+/master": 1
       }
     },
-    "/d/snow/secrect_storage": {
+    "/d/snow/secret_storage": {
       "short": "地下密室",
       "objects": {
         "/d/snow/obj/shield": 1
@@ -3569,19 +3517,26 @@ var mapdata =
     "/d/snow/sroad3": {
       "short": "青石官道",
       "exits": {
-        "southwest": "/d/canyon/road",
-        "north": "/d/snow/sroad4",
+        "west": "/d/snow/sroad4",
         "east": "/d/snow/sroad2"
-      },
-      "objects": {
-        "/d/snow/npc/crazy_dog": 1
       }
     },
     "/d/snow/sroad4": {
       "short": "青石官道",
       "exits": {
+        "north": "/d/snow/sroad5",
+        "east": "/d/snow/sroad3",
+        "southwest": "/d/canyon/road"
+      },
+      "objects": {
+        "/d/snow/npc/crazy_dog": 1
+      }
+    },
+    "/d/snow/sroad5": {
+      "short": "青石官道",
+      "exits": {
         "west": "/d/waterfog/sroad1",
-        "south": "/d/snow/sroad3"
+        "south": "/d/snow/sroad4"
       }
     },
     "/d/snow/temple": {
@@ -3710,7 +3665,7 @@ var mapdata =
       "short": "灵心观前",
       "exits": {
         "north": "/d/temple/square",
-        "eastdown": "/d/temple/ladder1"
+        "south": "/d/temple/ladder1"
       }
     },
     "/d/temple/inneryard": {
@@ -3730,8 +3685,8 @@ var mapdata =
         "/d/temple/npc/little_taoist1": 1
       },
       "exits": {
-        "eastup": "/d/temple/entrance",
-        "westdown": "/d/temple/ladder2"
+        "north": "/d/temple/entrance",
+        "west": "/d/temple/ladder2"
       }
     },
     "/d/temple/ladder2": {
@@ -3740,7 +3695,7 @@ var mapdata =
         "/d/temple/npc/guest": 1
       },
       "exits": {
-        "eastup": "/d/temple/ladder1",
+        "east": "/d/temple/ladder1",
         "southdown": "/d/temple/ladder3"
       }
     },
@@ -3844,7 +3799,7 @@ var mapdata =
     "/d/village/farmhouse1": {
       "short": "农舍",
       "exits": {
-        "north": "/d/village/fmhousback.c",
+        "north": "/d/village/fmhousback",
         "south": "/d/village/road4"
       }
     },
@@ -3871,13 +3826,6 @@ var mapdata =
       },
       "objects": {
         "/d/village/npc/oldliu": 1
-      }
-    },
-    "/d/village/jitan": {
-      "short": "祭坛",
-      "exits": {
-        "south": "/d/city/shenwumen",
-        "north": "/d/city/street7"
       }
     },
     "/d/village/lake": {
@@ -3969,7 +3917,7 @@ var mapdata =
     "/d/village/road2": {
       "short": "三叉路口",
       "exits": {
-        "southeast": "/d/chuenyu/croad1",
+        "south": "/d/city/nroad2",
         "north": "/d/village/road1",
         "west": "/d/village/road3"
       },
@@ -4097,7 +4045,7 @@ var mapdata =
         "south": "/d/waterfog/frontyard",
         "west": "/d/waterfog/westhall",
         "east": "/d/waterfog/easthall",
-        "north": "CLASS_D(fighter)+/guildhall"
+        "north": "/d/waterfog/guildhall"
       },
       "objects": {
         "/d/waterfog/npc/guard": 2
@@ -4123,13 +4071,24 @@ var mapdata =
         "southdown": "/d/waterfog/stair5"
       }
     },
+    "/d/waterfog/guildhall": {
+      "short": "水烟阁正厅",
+      "exits": {
+        "south": "/d/waterfog/entrance"
+      },
+      "objects": {
+        "CLASS_D(fighter)+champion": 1,
+        "CLASS_D(fighter)+master": 1,
+        "CLASS_D(fighter)+executioner": 1
+      }
+    },
     "/d/waterfog/kitchen": {
       "short": "厨房",
       "exits": {
         "south": "/d/waterfog/eaststair"
       }
     },
-    "/d/waterfog/servant_room": {
+    "/d/waterfog/servroom": {
       "short": "仆役卧室",
       "exits": {
         "west": "/d/waterfog/storage"
@@ -4138,7 +4097,7 @@ var mapdata =
     "/d/waterfog/sroad1": {
       "short": "青石官道",
       "exits": {
-        "east": "/d/snow/sroad4",
+        "east": "/d/snow/sroad5",
         "northwest": "/d/waterfog/sroad2"
       }
     },
@@ -4197,7 +4156,11 @@ var mapdata =
     "/d/waterfog/storage": {
       "short": "柴房",
       "exits": {
-        "__DIR__npc/servant": "2"
+        "south": "/d/waterfog/weststair",
+        "east": "/d/waterfog/servroom"
+      },
+      "objects": {
+        "/d/waterfog/npc/servant": 2
       }
     },
     "/d/waterfog/swordtomb": {
@@ -4241,7 +4204,7 @@ var mapdata =
     "/d/waterfog/wpath2": {
       "short": "山坡小径",
       "exits": {
-        "northeast": "/d/waterfog/wpath3",
+        "north": "/d/waterfog/wpath3",
         "east": "/d/waterfog/wpath1"
       }
     },
@@ -4249,20 +4212,20 @@ var mapdata =
       "short": "白石阶梯",
       "exits": {
         "north": "/d/waterfog/wpath4",
-        "southwest": "/d/waterfog/wpath2"
+        "south": "/d/waterfog/wpath2"
       }
     },
     "/d/waterfog/wpath4": {
       "short": "白石阶梯",
       "exits": {
         "south": "/d/waterfog/wpath3",
-        "northwest": "/d/waterfog/wpath5"
+        "north": "/d/waterfog/wpath5"
       }
     },
     "/d/waterfog/wpath5": {
       "short": "白石阶梯",
       "exits": {
-        "southeast": "/d/waterfog/wpath4",
+        "south": "/d/waterfog/wpath4",
         "west": "/d/waterfog/swordtomb"
       }
     },
@@ -4329,7 +4292,7 @@ var mapdata =
       "exits": {
         "west": "/u/cloud/wroad2",
         "north": "/u/cloud/nroad2",
-        "south": "u/cloud/sroad1",
+        "south": "/u/cloud/sroad1",
         "east": "/u/cloud/eroad1"
       }
     },
@@ -4361,14 +4324,14 @@ var mapdata =
       "short": "卧龙岗南坡",
       "exits": {
         "northup": "/u/cloud/dragonhill/hummock",
-        "southeast": "u/cloud/entrance"
+        "southeast": "/u/cloud/entrance"
       }
     },
     "/u/cloud/dragonhill/sroad": {
       "short": "黄土路",
       "exits": {
         "northwest": "/u/cloud/dragonhill/shillfoot",
-        "southeast": "u/cloud/entrance"
+        "southeast": "/u/cloud/entrance"
       }
     },
     "/u/cloud/drugstore": {
@@ -4383,7 +4346,8 @@ var mapdata =
     "/u/cloud/duchang": {
       "short": "赌场",
       "exits": {
-        "north": "/u/cloud/eroad1"
+        "north": "/u/cloud/eroad1",
+        "up": "/u/cloud/duchang2"
       },
       "objects": {
         "/u/cloud/npc/judge": 1
@@ -4392,8 +4356,7 @@ var mapdata =
     "/u/cloud/duchang2": {
       "short": "赌场",
       "exits": {
-        "north": "/u/cloud/eroad1",
-        "up": "/u/cloud/duchang2"
+        "down": "/u/cloud/duchang"
       }
     },
     "/u/cloud/dukou": {
@@ -4483,25 +4446,6 @@ var mapdata =
         "/u/cloud/npc/girl": 1
       }
     },
-    "/u/cloud/latemoon/entrance": {
-      "short": "碎石小径",
-      "exits": {
-        "west": "/d/latemoon/gate",
-        "east": "/u/cloud/wroad1"
-      },
-      "objects": {
-        "/u/cloud/npc/lm_guard": 2
-      }
-    },
-    "/u/cloud/latemoon/hall": {
-      "short": "晚月庄",
-      "exits": {
-        "east": "/u/cloud/latemoon/entrance"
-      },
-      "objects": {
-        "CLASS_D(dancer)+/master": 1
-      }
-    },
     "/u/cloud/m_house": {
       "short": "张百万家",
       "exits": {
@@ -4515,7 +4459,7 @@ var mapdata =
     "/u/cloud/marry_room": {
       "short": "红娘庄",
       "exits": {
-        "south": "/u/cloud/wroad1"
+        "south": "/u/cloud/wroad0"
       },
       "objects": {
         "/u/cloud/npc/mei_po": 1
@@ -4612,72 +4556,6 @@ var mapdata =
         "south": "/u/cloud/sunhill/road1"
       }
     },
-    "/u/cloud/sunhill/hillsmoke/bookroom": {
-      "short": "藏经阁",
-      "exits": {
-        "northwest": "/u/cloud/sunhill/hillsmoke/hall"
-      },
-      "objects": {
-        "/u/cloud/npc/monk_guard": 1
-      }
-    },
-    "/u/cloud/sunhill/hillsmoke/entrance": {
-      "short": "山烟寺外",
-      "exits": {
-        "south": "/u/cloud/sunhill/hillsmoke/yard",
-        "northdown": "/u/cloud/sunhill/road4"
-      }
-    },
-    "/u/cloud/sunhill/hillsmoke/guestroom": {
-      "short": "香客斋",
-      "exits": {
-        "east": "/u/cloud/sunhill/hillsmoke/yard"
-      },
-      "objects": {
-        "/u/cloud/npc/monk_waiter": 1
-      }
-    },
-    "/u/cloud/sunhill/hillsmoke/hall": {
-      "short": "山烟寺大殿",
-      "exits": {
-        "north": "/u/cloud/sunhill/hillsmoke/yard",
-        "southwest": "/u/cloud/sunhill/hillsmoke/studyroom",
-        "southeast": "/u/cloud/sunhill/hillsmoke/bookroom"
-      },
-      "objects": {
-        "/u/cloud/npc/monk_waiter": 1
-      }
-    },
-    "/u/cloud/sunhill/hillsmoke/studyroom": {
-      "short": "方丈",
-      "exits": {
-        "northeast": "/u/cloud/sunhill/hillsmoke/hall"
-      },
-      "objects": {
-        "/daemon/class/bonze/master.c": 1
-      }
-    },
-    "/u/cloud/sunhill/hillsmoke/woodroom": {
-      "short": "柴房",
-      "exits": {
-        "west": "/u/cloud/sunhill/hillsmoke/yard"
-      },
-      "objects": {
-        "/u/cloud/npc/monk_guard": 1
-      }
-    },
-    "/u/cloud/sunhill/hillsmoke/yard": {
-      "short": "寺院前庭",
-      "exits": {
-        "west": "/u/cloud/sunhill/hillsmoke/guestroom",
-        "north": "/u/cloud/sunhill/hillsmoke/entrance",
-        "south": "/u/cloud/sunhill/hillsmoke/hall",
-        "east": "/u/cloud/sunhill/hillsmoke/woodroom"
-      },
-      "objects": {
-        "/u/cloud/npc/monk_guard": 2
-      }
-    },
     "/u/cloud/sunhill/midriver": {
       "short": "江心",
       "exits": {
@@ -4703,22 +4581,22 @@ var mapdata =
     "/u/cloud/sunhill/road2": {
       "short": "盘山小径",
       "exits": {
-        "northdown": "/u/cloud/sunhill/road1",
-        "westup": "/u/cloud/sunhill/road3"
+        "north": "/u/cloud/sunhill/road1",
+        "west": "/u/cloud/sunhill/road3"
       }
     },
     "/u/cloud/sunhill/road3": {
       "short": "盘山小径",
       "exits": {
-        "eastdown": "/u/cloud/sunhill/road2",
-        "northeast": "/u/cloud/sunhill/road4"
+        "east": "/u/cloud/sunhill/road2",
+        "south": "/u/cloud/sunhill/road4"
       }
     },
     "/u/cloud/sunhill/road4": {
       "short": "盘山小径",
       "exits": {
-        "southwest": "/u/cloud/sunhill/road3",
-        "southup": "/d/sanyen/sroad2"
+        "north": "/u/cloud/sunhill/road3",
+        "southwest": "/d/sanyen/sroad1"
       }
     },
     "/u/cloud/sunhill/southriver": {
@@ -4778,14 +4656,25 @@ var mapdata =
       "exits": {
         "east": "/u/cloud/nwroad2",
         "west": "/u/cloud/god1"
+      },
+      "objects": {
+        "/u/cloud/npc/box_boss": 1,
+        "/u/cloud/npc/box_waiter": 8
+      }
+    },
+    "/u/cloud/wroad0": {
+      "short": "绮云镇街道",
+      "exits": {
+        "west": "/d/latemoon/entrance",
+        "east": "/u/cloud/wroad1",
+        "north": "/u/cloud/marry_room"
       }
     },
     "/u/cloud/wroad1": {
       "short": "绮云镇街道",
       "exits": {
-        "west": "/u/cloud/latemoon/entrance",
-        "north": "/u/cloud/marry_room",
         "south": "/u/cloud/bookstore",
+        "west": "/u/cloud/wroad0",
         "east": "/u/cloud/wroad2"
       }
     },

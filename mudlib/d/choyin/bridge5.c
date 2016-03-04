@@ -13,7 +13,7 @@ LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
   "north" : __DIR__"bridge4",
- "east" : "/daemon/class/scholar/entrance",
+ "east" : __DIR__"entrance",
 ]));
 	set("no_clean_up", 0);
 	set("outdoors", "choyin");

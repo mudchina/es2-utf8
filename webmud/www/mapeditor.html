@@ -30,8 +30,9 @@
 </script>
   <script src="js/jquery-1.12.0.min.js"></script>
   <script src='js/underscore-min.js'></script>
-  <script src="mapdraw.js"></script>
   <script src="mapdata.js"></script>
+  <script src="mapdraw.js"></script>
+  <script src="mapeditor.js"></script>
   <title>MUD地图编辑器</title>
   <link rel="stylesheet" href="main.css"/>
 </head>
@@ -42,27 +43,5 @@
   </div>
 </body>
 <script>
-$(document).ready(function(){
-  var w = 1600, h = 1400;
-  $('div#map').show();
-  $('div#map').css({
-    width: w +'px',
-    height: h +'px',
-  });
-  $('canvas#map').click(function(e){
-    // console.log(e.offsetX, e.offsetY);
-    var v = { x:e.offsetX, y:e.offsetY };
-    var p = mapXYFromView(v);
-    var k = mapFindAddrByXY(p.x, p.y);
-    var r = mapGetRoomByAddr(k);
-    if(k && r) console.log(k, r);
-  });
-  initMap({
-    width: w,
-    height: h,
-    center: '/d/snow/inn',
-    drawMarked: false,
-  });
-});
 </script>
 </html>

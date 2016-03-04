@@ -24,7 +24,7 @@ LONG
         ]) );
 
         set("exits", ([
-                "out"            : __DIR__"nroad1",
+                "north"            : __DIR__"nroad1",
                 "south"          : __DIR__"street16" ]) );
 
         set("objects", ([

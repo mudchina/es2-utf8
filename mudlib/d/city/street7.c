@@ -12,10 +12,10 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 3 */
-  "east" : "d/city/street8",
-  "west" : "d/city/street15",
-  "north" : "d/city/street16",
-  "south" : "d/city/jitan",]));
+  "east" : __DIR__"street8",
+  "west" : __DIR__"street15",
+  "north" : __DIR__"street16",
+  "south" : __DIR__"jitan",]));
 
 	set("outdoors", "city");
 

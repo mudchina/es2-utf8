@@ -13,8 +13,8 @@ LONG
         );
 
         set("exits", ([
-                "northwest"      : "/d/village/road2",
-		"southeast" 	 : __DIR__"croad2" ]) );
+                "south"      : "/d/village/road1",
+		"north" 	 : __DIR__"croad2" ]) );
 
 /*        set("objects", ([
                 "/u/cp/chater2" : 1, ]) );*/

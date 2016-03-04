@@ -14,7 +14,7 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
-  "east" : "/d/snow/sroad4",
+  "east" : "/d/snow/sroad5",
   "northwest" : "/d/waterfog/sroad2",
 ]));
 	set("outdoors", "waterfog");

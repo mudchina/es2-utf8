@@ -13,7 +13,7 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
-  "northeast" : "/d/waterfog/wpath3",
+  "north" : "/d/waterfog/wpath3",
   "east" : "/d/waterfog/wpath1",
 ]));
 	set("item_desc", ([ /* sizeof() == 1 */

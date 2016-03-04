@@ -12,14 +12,11 @@ void create()
 驼关。
 LONG
 	);
-    set("exits", ([ /* sizeof() == 3 */
-  "southwest" : "/d/canyon/road",
-  "north" : "/d/snow/sroad4",
+    set("exits", ([ /* sizeof() == 2 */
+  "west" : "/d/snow/sroad4",
   "east" : "/d/snow/sroad2",
 ]));
 	set("outdoors", "snow");
-	set("objects", ([
-		__DIR__"npc/crazy_dog": 1 ]) );
 
 	setup();
 	replace_program(ROOM);

@@ -14,7 +14,7 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
-  "north" : __DIR__"fmhousback.c",
+  "north" : __DIR__"fmhousback",
   "south" : __DIR__"road4",
 ]));
 	set("no_clean_up", 0);

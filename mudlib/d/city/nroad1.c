@@ -15,7 +15,7 @@ LONG
 
         set("exits", ([
                 "north"          : "/d/city/nroad2",
-                "enter"          : "/d/city/northdoor" ]) );
+                "south"          : "/d/city/northdoor" ]) );
 
         set("outdoors", "city"); 
         create_door("enter", "城门", "out" );

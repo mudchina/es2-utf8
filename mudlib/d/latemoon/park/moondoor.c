@@ -10,7 +10,7 @@ LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
     "north" :__DIR__"paroad1",
-
+    "south" :"/d/latemoon/sroad1",
 ]));
 
 	setup();

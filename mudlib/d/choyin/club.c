@@ -9,14 +9,14 @@ void create()
 	set("long", @LONG
 一间由白茅草搭成的草堂，室内仅有一竹榻，一矮几，四把竹椅．堂前一幅拓片装裱精
 致，上书:
-                              书有未曾经我读
-                              事无不可对人言
+      书有未曾经我读
+      事无不可对人言
 矮几上摊有书卷(books)放着一支朱砂笔，一房歙砚竟题有岳武穆藏，另几张上好生宣． 
 LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
-  "west" : __DIR__"yard.c",
-  "east" : __DIR__"fence.c",
+  "west" : __DIR__"yard",
+  "east" : __DIR__"fence",
 ]));
         set("no_fight", "1");
         set("no_magic", "1");

@@ -9,11 +9,10 @@ void create()
 LONG
         );
         set("exits", ([ /* sizeof() == 2 */
-           "northwest" :__DIR__"sroad3",
-           "west" :__DIR__"bamboo1",
-           "south" :__DIR__"sroad4",
-
-]));
+           "north" :__DIR__"sroad4",
+           "south" :__DIR__"bamboo3",
+           "east" : "/d/sanyen/tunnel",
+        ]));
 
         set("objects", ([
            "/d/latemoon/npc/butterfly" : 1 ]) );

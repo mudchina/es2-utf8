@@ -12,11 +12,9 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
-//  "north" : "/d/sanyen/sroad2",
-  "west" : "/d/sanyen/sroad2",
-"northdown" : "/u/cloud/sunhill/road4",
-//  "southdown" : "/d/snow/eroad3",
-]));
+      "west" : __DIR__"sroad2",
+      "northeast" : "/u/cloud/sunhill/road4",
+    ]));
 	set("outdoors", "sanyen");
 
 	setup();

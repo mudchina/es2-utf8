@@ -12,9 +12,10 @@ LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
 		"south" : __DIR__"weststair",
-		"east" : __DIR__"servant_room",
-	]));
-	set("objects", ([
+		"east" : __DIR__"servroom",
+	]) );
+
+    set("objects", ([
 		__DIR__"npc/servant" : 2
 	]) );
 

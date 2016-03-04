@@ -14,8 +14,8 @@ LONG
 	);
 	set("exits", ([ /* sizeof() == 3 */
 //  "west" : "d/city/siyuan",
-  "north" : "d/city/northdoor",
-  "south" : "d/city/street7",]));
+  "north" : __DIR__"northdoor",
+  "south" : __DIR__"street7",]));
 	set("outdoors", "city");
 
 	setup();

@@ -10,10 +10,9 @@ void create()
 南则顺著山势缓缓下山。
 LONG
 	);
-	set("exits", ([ /* sizeof() == 2 */
-//  "south" : "/d/sanyen/sroad1",
- "northdown": "/u/cloud/sunhill/road4",
- "east" : "/d/sanyen/gate",
+	set("exits", ([ /* sizeof() == 3 */
+ "east": __DIR__"sroad1",
+ "north": __DIR__"gate",
 ]));
 	set("outdoors", "sanyen");
 

@@ -29,13 +29,13 @@ function replaceDIR(str, refFile, mudlib) {
 }
   
 var alltypes = {};
-var roomtypes = ['ROOM', 'BANK', 'HOCKSHOP'];
+var roomtypes = ['ROOM', 'BANK', 'HOCKSHOP', 'CLASS_GUILD'];
 
 function jsonFromLPC(file, mudlib) {
   var text = fs.readFileSync(file, 'utf8');
   if(!text) return null;
 
-  var bases = text.match(/inherit [A-Z]+;/g);
+  var bases = text.match(/inherit [A-Z_]+;/g);
   if(!bases) return null;
 
   var base = bases[0].replace(/(inherit[ ]*|[ ]*;)/g, '')

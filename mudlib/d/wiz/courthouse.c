@@ -39,7 +39,7 @@ int re_route_cmd(string str)
                        });
         i = member_array(cmd, invalid_cmds);
         if (i == -1) return 0;
-        else write("到了法院你还练啥功\啊, 搞不清楚状况哦。\n");
+        else write("到了法院你还练啥功啊, 搞不清楚状况哦。\n");
         return 1;
 }
 

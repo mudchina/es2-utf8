@@ -29,31 +29,42 @@ var DIR_XY = {
 };
 
 var domainPos = {
-  canyon: [-14,-3],
-  choyin: [12,-28],
-  chuenyu: [-12,-18],
-  city: [-20,-20],
-  cloud: [8,-15],
-  death: [-18,0],
-  goathill: [4,14],
-  graveyard: [15,-8],
-  green: [11,10],
-  ice: [16,-5],
-  latemoon: [-3,-12],
-  oldpine: [6,-8],
-  sanyen: [2,-25],
-  snow: [0,0],
-  social_guild: [18,-20],
-  temple: [18,6],
-  village: [-18,-8],
-  waterfog: [-7,4],
-  wiz: [-3,2]
+  canyon: [-10,-2],
+  choyin: [12,-27],
+  chuenyu: [-18,1],
+  city: [-18,-18],
+  cloud: [8,-13],
+  death: [-18,10],
+  goathill: [4,19],
+  graveyard: [15,-3],
+  green: [11,15],
+  ice: [16,0],
+  latemoon: [-5,-25],
+  oldpine: [6,-3],
+  sanyen: [1,-17],
+  snow: [0,5],
+  social_guild: [18,-19],
+  temple: [18,11],
+  village: [-21,-7],
+  waterfog: [-7,9],
+  wiz: [-3,7]
 };
 
 function getDomain(key) {
   return key.split('/')[2];
 }
-  
+
+function mapXYToAddr(mapping, r, addr) {
+  var key = r.x + ',' + r.y;
+  var old = mapping[key];
+  if(old) {
+    if(typeof(old) === 'string') mapping[key] = [old, addr];
+    else if(Array.isArray(old)) old.push(addr);
+  } else {
+    mapping[key] = addr;
+  }
+}
+
 function mapAutoXY() {
   var rms = mapdata.rooms;
   var domains = mapdata.domains = {};
@@ -71,8 +82,7 @@ function mapAutoXY() {
       r.x = 0;
       r.y = 0;
     }
-    xy[r.x + ',' + r.y] = k;
-    //console.log(getDomain(k), k, '(' + r.x + ',' + r.y + ')');
+    mapXYToAddr(xy, r, k);
 
     var todo = [k];
     while(todo.length > 0) {
@@ -82,14 +92,16 @@ function mapAutoXY() {
       for(var d in e) {
         var key = e[d];
         var next = rms[key];
-        if(!next) console.log(key, k, r);
+        if(!next) {
+          if(key.indexOf("random(")<0) console.log(key, k, r);
+        }
         else if(!('x' in next)) {
           var delta = DIR_XY[d] || [0,0];
           var sameDomain = (getDomain(k) === getDomain(key));
           if(sameDomain) {
             next.x = r.x + delta[0];
             next.y = r.y + delta[1];
-            xy[next.x + ',' + next.y] = key;
+            mapXYToAddr(xy, next, key);
 
             todo.push(key);
           }
@@ -218,12 +230,14 @@ function drawMap() {
     if(x<0 || x>VIEW_W || y<0 || y>VIEW_H) continue;
 
     // draw room
+    var addr = mapFindAddrByXY(r.x, r.y);
     c.fillRect(x-ROOM_SIZE/2, y-ROOM_SIZE/2, ROOM_SIZE, ROOM_SIZE);
-
-    c.save();
-    c.fillStyle = MAP_BG;
-    c.fillRect(x-(ROOM_SIZE/2-2), y-(ROOM_SIZE/2-2), ROOM_SIZE-4, ROOM_SIZE-4);
-    c.restore();
+    if(!Array.isArray(addr)) {
+      c.save();
+      c.fillStyle = MAP_BG;
+      c.fillRect(x-(ROOM_SIZE/2-2), y-(ROOM_SIZE/2-2), ROOM_SIZE-4, ROOM_SIZE-4);
+      c.restore();
+    }
   }
 
   c.textBaseline = 'top';

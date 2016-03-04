@@ -20,9 +20,8 @@ LONG
 	]) );
 
 	set("exits", ([
-	//	"northeast" :	__DIR__"sroad4",
-		"east"	:	"/u/cloud/latemoon/entrance",
-		"enter" :		__DIR__"front_yard",
+		"east"	:	__DIR__"entrance",
+		"west" :		__DIR__"front_yard",
 	]));
 	
 	create_door ("east", "拱门", "west", DOOR_CLOSED);

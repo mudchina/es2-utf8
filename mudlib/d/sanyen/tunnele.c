@@ -12,8 +12,8 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
-  "west" : "/d/sanyen/tunnel",
-  "east" : "/d/sanyen/gate",
+  "west" : __DIR__"tunnel",
+  "east" : __DIR__"gate",
 ]));
 
 	setup();

@@ -14,7 +14,7 @@ LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
   "south" : "/d/waterfog/wpath3",
-  "northwest" : "/d/waterfog/wpath5",
+  "north" : "/d/waterfog/wpath5",
 ]));
 	set("no_clean_up", 0);
 	set("outdoors", "waterfog");

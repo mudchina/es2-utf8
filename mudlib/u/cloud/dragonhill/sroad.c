@@ -14,7 +14,7 @@ LONG
         );
         set("exits", ([ /* sizeof() == 4 */
   "northwest" : __DIR__"shillfoot",
-  "southeast" : "u/cloud/entrance"
+  "southeast" : "/u/cloud/entrance"
 ]));
         set("outdoors", "dragonhill");
 

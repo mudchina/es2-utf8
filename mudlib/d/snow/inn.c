@@ -33,11 +33,10 @@ LONG
 		"up"		: "/d/snow/inn_2f",
 		"northwest"	: "/d/wiz/entrance" ]) );
 
-	set("objects", ([
-//		"/d/npc/sungoku" : 1,
-		"/d/snow/npc/traveller" : 3,
-//		"/d/snow/npc/trav_blade" : 3,
-                "/d/snow/npc/waiter" : 1 ,]) );
+    set("objects", ([
+    "/d/snow/npc/traveller" : 2,
+    "/d/snow/npc/waiter" : 1,
+    ]) );
 
 	create_door("northwest", "木门", "southeast", DOOR_CLOSED);
 

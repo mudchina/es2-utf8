@@ -10,8 +10,8 @@ void create()
 LONG
         );
         set("exits", ([ /* sizeof() == 2 */
-  "north" : "/u/cloud/cross",
-  "south" : "/u/cloud/dukou",
+  "north" : __DIR__"cross",
+  "south" : __DIR__"dukou",
 ]));
         set("outdoors", "cloud");
 
