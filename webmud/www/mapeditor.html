@@ -8,6 +8,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="msapplication-tap-highlight" content="no" />
   <meta name="format-detection" content="telephone=no" />
+  <meta http-equiv="pragma" content="no-cache" />
 
   <!-- to avoid the warning of content security policy -->
   <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
@@ -29,28 +30,30 @@
 </script>
   <script src="js/jquery-1.12.0.min.js"></script>
   <script src='js/underscore-min.js'></script>
-  <script src="map.js"></script>
+  <script src="mapdraw.js"></script>
   <script src="mapdata.js"></script>
-  <title>新东方故事II</title>
+  <title>MUD地图编辑器</title>
   <link rel="stylesheet" href="main.css"/>
 </head>
 
 <body>
   <div id="page">
-    <div id="map"><canvas id='map' width=1600 height=1200></canvas></div>
+    <div id="map"><canvas id='map'></canvas></div>
   </div>
 </body>
 <script>
 $(document).ready(function(){
-  var w = 1600, h = 1200;
+  var w = 1600, h = 1400;
   $('div#map').show();
   $('div#map').css({
     width: w +'px',
     height: h +'px',
   });
   setMapViewSize(w, h);
-  autoXY(mapdata);
-  drawMap(mapdata.rooms, '/d/snow/inn');
+  mapAutoXY();
+  mapSetDrawMarked(0);
+  mapGoTo('/d/snow/inn');
+  //drawMap();
 });
 </script>
 </html>

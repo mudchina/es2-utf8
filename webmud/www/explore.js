@@ -130,6 +130,14 @@ function parseExits(str) {
   for(var i=1; i<marks.length; i++) {
     var desc = marks[i];
     var nameAddr = desc.split('\n')[0];
+    var words = nameAddr.split(' - ');
+    if(words.length != 2) return;
+    var short = words[0].trim();
+    var addr = words[1].trim();
+
+    // mark visited in map
+    mapGoTo(addr);
+
     var p = desc.indexOf(EXITS_MARK);
     if(p < 0) {
       p = desc.indexOf(EXITS_MASK2);
@@ -146,9 +154,6 @@ function parseExits(str) {
     for(var j=0; j<exits.length; j++) {
       exits[j] = exits[j].trim();
     }
-
-    // pass to map module
-    mapCheckRoom(nameAddr, exits);
 
     var openDirs = {};
     for(var j=0; j<SHORT_DIRS.length; j++) {

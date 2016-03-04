@@ -186,9 +186,6 @@ function connectServer() {
         words.shift();
         setCmdItem(words.join(' '));
       }
-
-      // pass to map module
-      mapCheckCmd(line);
     }
 
     //writeToScreen(str);
@@ -228,8 +225,9 @@ function adjustLayout() {
   $('div#map, div#expkeys').css({
     width: mw+'px',
     height: mh+'px',
+    overflow: 'scroll',
   });
-  setMapViewSize(mw-5, mh-5);
+  setMapViewSize(mw*2-5, mh*4-5);
   drawMap();
 
   // adjust output area, according to input area height
@@ -335,15 +333,6 @@ function initUI() {
     setChatChannel('');
   });
 
-  initModExplore(onMacroKey);
-  initModChat(onMacroKey);
-  initModMap(onMacroKey);
-
-  addLocalCmd('clear screen', function(){
-    $('div#out').html('');
-    scrollDown();
-  });
-
   // UI events
   $('input#str').keydown(function(e) {
     // console.log(e.keyCode);
@@ -362,6 +351,29 @@ function initUI() {
   $('input#str').focus(function(e){
     showPad(null);
   });
+
+  addLocalCmd('clear screen', function(){
+    $('div#out').html('');
+    scrollDown();
+  });
+
+  initModExplore(onMacroKey);
+  initModChat(onMacroKey);
+  initModMap(onMacroKey);
+}
+
+function initModMap(callback){
+  addLocalCmd('clear map', function(){
+    clearMap();
+    drawMap();
+  });
+  addLocalCmd('save map', function(){
+    saveMap();
+  });
+  mapAutoXY();
+  mapSetDrawMarked(0);
+  loadMap();
+  drawMap();
 }
 
 $(document).ready(function(){
