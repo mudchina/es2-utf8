@@ -28,13 +28,16 @@
   }
 })();
 </script>
-  <script src="js/jquery-1.12.0.min.js"></script>
-  <script src='js/underscore-min.js'></script>
-  <script src="mapdata.js"></script>
-  <script src="mapdraw.js"></script>
-  <script src="mapeditor.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="../js/jquery-1.12.0.min.js"></script>
+  <script src='../js/underscore-min.js'></script>
+  <script src='../js/webclient.js'></script>
+  <script src="../js/utf8-util.js"></script>
+  <script src="../mapdata.js"></script>
+  <script src="../mapdraw.js"></script>
+  <script src="main.js"></script>
   <title>MUD地图编辑器</title>
-  <link rel="stylesheet" href="mapeditor.css"/>
+  <link rel="stylesheet" href="main.css"/>
 </head>
 
 <body>
@@ -50,6 +53,7 @@
       </select>
       <textarea id="editor"></textarea>
     </div>
+    <div id='tips'></div>
   </div>
 </body>
 <script>

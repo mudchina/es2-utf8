@@ -16,8 +16,8 @@ var conf = {
     host: '0.0.0.0',
     port: 8080,
   },
-  www: __dirname + '/../www',
-  // mudlib: __dirname + '/../../mudib',
+  www: path.resolve(__dirname + '/www'),
+  mudlib: path.resolve(__dirname + '/../mudlib'),
   logTraffic: true,
   fileMan: false,
 };
@@ -47,6 +47,6 @@ if(args.w) conf.www = path.resolve(args.w);
 var server = WebTelnetProxy.startProxy(conf);
 
 // if mudlib specified, we allow edit files from remote
-if(args.m) {
-  var fileman = new FileMan.bind(server, args.m);
-}
+if(args.m) conf.mudlib = args.m;
+
+var fileman = (new FileMan()).bind(server, conf.mudlib);

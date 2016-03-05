@@ -155,7 +155,7 @@ function writeServerData(buf) {
 function connectServer() {
   // websocket
   var sock = io.connect();
-  sock.on('data', function(buf){
+  sock.on('stream', function(buf){
     writeServerData(buf);
   });
   sock.on('status', function(str){
@@ -169,7 +169,7 @@ function connectServer() {
   });
 
   // send any data to trigger a telnet connect
-  sock.emit('data', '\n');
+  sock.emit('stream', '\n');
 
   // send one or multi-cmds with \n
   window.sendCmd = function(str) {
@@ -190,7 +190,7 @@ function connectServer() {
     }
 
     //writeToScreen(str);
-    if(sock) sock.emit('data', str + '\n');
+    if(sock) sock.emit('stream', str + '\n');
   }
 }
 

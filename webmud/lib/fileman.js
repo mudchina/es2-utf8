@@ -19,26 +19,28 @@ var FileMan = Class({
   bind: function(server, root) {
     var fileman = this;
     this.root = root;
+    console.log('bind root: ' + this.root);
 
-    server.addService('listfile', function(req, reply){
-      fileman.readDir(req, reply);
+    server.addService('listfile', function(args, reply){
+      fileman.readDir(args, reply);
     });
-    server.addService('readfile', function(req, reply){
-      fileman.readFile(req, reply);
+    server.addService('readfile', function(args, reply){
+      fileman.readFile(args, reply);
     });
-    server.addService('writefile', function(req, reply){
-      fileman.writeFile(req, reply);
+    server.addService('writefile', function(args, reply){
+      fileman.writeFile(args, reply);
     });
-    server.addService('removefile', function(req, reply){
-      fileman.removeFileOrDir(req, reply);
+    server.addService('removefile', function(args, reply){
+      fileman.removeFileOrDir(args, reply);
     });
   },
 
   // req = path
   // reply(err, data = ['file', 'dir/', ...])
-  readDir: function(req, reply) {
-    var f = path.resolve(this.root, req);
+  readDir: function(args, reply) {
+    var f = path.resolve(this.root + args);
     try {
+      console.log('readDir', f);
       var list = fs.readdirSync(f);
       for(var i=0; i<list.length; i++) {
         var stat = fs.statSync(path.resolve(f, list[i]));
@@ -54,9 +56,10 @@ var FileMan = Class({
 
   // req: path
   // reply(err, ret = { path:'xxx', text: 'xxx', binary: ArrayBuffer });
-  readFile: function(req, reply) {
-    var f = path.resolve(this.root, req);
+  readFile: function(args, reply) {
+    var f = path.resolve(this.root + args);
     try {
+      console.log('readFile', f);
       var content = fs.readFileSync(f);
       return reply(0, content);
     } catch(e){
@@ -66,16 +69,17 @@ var FileMan = Class({
 
   // req = { path:'xxx', text: 'xxx', binary: ArrayBuffer }
   // reply(err, ret = 'text message');
-  writeFile: function(req, reply) {
-    var f = path.resolve(this.root, req.path);
+  writeFile: function(args, reply) {
+    var f = path.resolve(this.root + args.path);
     try {
       if(!this.ensureWriteDir(f))
         reply(403, 'Denied');
 
-      if(req.text) {
-        fs.writeFileSync(f, req.text);
+      if(args.text) {
+        fs.writeFileSync(f, args.text);
+        console.log('writeFile', f);
 
-      } else if(req.binary) {
+      } else if(args.binary) {
         // TODO:
         // var content = decode(req.binary);
         // fs.writeFileSync(f, content);
@@ -91,8 +95,8 @@ var FileMan = Class({
 
   // req: path
   // reply(err, ret = 'text message');
-  removeFileOrDir: function(req, reply) {
-    var f = path.resolve(this.root, req);
+  removeFileOrDir: function(args, reply) {
+    var f = path.resolve(this.root + args);
     var stat = null;
     try {
       stat = fs.statSync(f);
@@ -101,6 +105,7 @@ var FileMan = Class({
       return reply(404);
 
     try {
+      console.log('removeFileOrDir', f);
       if(stat.isDirectory()) {
         fs.rmdirSync(f);
       } else if(stat.isFile()){

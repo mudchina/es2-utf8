@@ -12,8 +12,8 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 1 */
-  "south" : "/d/death/road2",
-]));
+          "south" : "/d/death/road2",
+        ]));
 
 	setup();
 	replace_program(ROOM);

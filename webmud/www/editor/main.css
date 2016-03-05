@@ -20,6 +20,14 @@ div#page {
   overflow: hidden;
 }
 
+div#tips {
+  border: 1px solid gray;
+  background-color: beige;
+  padding: 5px;
+  position: absolute;
+  line-height: 130%;
+}
+
 div#left {
   width: 50%;
   height: 100%;
@@ -54,7 +62,7 @@ textarea#editor {
 }
 
 button {
-  font-size: 18px;
+  font-size: 14px;
   padding: 5px;
   margin: 5px;
 }

@@ -124,7 +124,7 @@ var WebTelnetProxy = Class({
         for(var i=0; i<buf.length; ++i) {
           view[i] = buf[i];
         }
-        peerSock.emit('data', arrBuf);
+        peerSock.emit('stream', arrBuf);
       }
     });
     telnet.on('error', function(){
@@ -150,7 +150,7 @@ var WebTelnetProxy = Class({
       webSock.logTraffic = 1;
     }
 
-    webSock.on('data', function(message) {
+    webSock.on('stream', function(message) {
       //console.log('websocket: ', message);
       var peerSock = webSock.peerSock;
       if(peerSock) {
@@ -165,19 +165,27 @@ var WebTelnetProxy = Class({
       proxy.onDisconnected(webSock);
     });
 
-    for(var action in proxy.services) {
-      webSock.on(action, function(req){
-        var func = proxy.services[action];
-        if(typeof func === 'function') {
-          func(req, function(err, ret){
-            var resp = { err: err, ret: ret };
-            // if sid sent in req, we send it back
-            if('sid' in req) resp.sid = req.sid;
-            webSock.emit(action, resp);
+    // implement the rpc interface, so we can reuse webclient.js
+    /* {
+      uid, // optional
+      pin, // optional
+      seq: seq,
+      f: method,
+      args: args,
+    } */
+    webSock.on('rpc', function(req){
+      var func = proxy.services[req.f];
+      if(typeof func === 'function') {
+        var reply = function(err, ret) {
+          webSock.emit('reply', {
+            seq: req.seq,
+            err: err,
+            ret: ret,
           });
-        }
-      });
-    }
+        };
+        func(req.args, reply);
+      } else console.log('rpc', req.f);
+    });
 
     proxy.sockets[webSock.id] = webSock;
     proxy.socketsCount ++;
