@@ -34,12 +34,22 @@
   <script src="mapdraw.js"></script>
   <script src="mapeditor.js"></script>
   <title>MUD地图编辑器</title>
-  <link rel="stylesheet" href="main.css"/>
+  <link rel="stylesheet" href="mapeditor.css"/>
 </head>
 
 <body>
   <div id="page">
-    <div id="map"><canvas id='map'></canvas></div>
+    <div id='left'>
+      <div id="map"><canvas id='map'></canvas></div>
+    </div>
+    <div id="right">
+      <div id="tools">
+        <button id="save">Save</button>
+      </div>
+      <select id="list" size="5">
+      </select>
+      <textarea id="editor"></textarea>
+    </div>
   </div>
 </body>
 <script>

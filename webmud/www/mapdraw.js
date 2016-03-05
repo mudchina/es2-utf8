@@ -137,6 +137,8 @@ function mapAutoXY() {
   }
 }
 
+var mapCanvas = null;
+
 // map view port size, canvas size
 var VIEW_W = 240, VIEW_H = 190;
 
@@ -145,9 +147,8 @@ var ROOM_RANGE = 20, ROOM_SIZE = 12, ME_SIZE = 8;
 var MAP_BG = '#753', MAP_COLOR = '#fff', ME_COLOR = '#f00';
 
 function setMapViewSize(w,h) {
-  var canvas = $('canvas#map')[0];
-  VIEW_W = canvas.width = w;
-  VIEW_H = canvas.height = h;
+  VIEW_W = mapCanvas.width = w;
+  VIEW_H = mapCanvas.height = h;
 }
 
 function mapXYToView(r) {
@@ -340,6 +341,9 @@ function initMap(opt) {
   if(!opt.width) opt.width = 1600;
   if(!opt.height) opt.height = 1200;
   if(!opt.center) opt.center = '/d/snow/inn';
+  if(!opt.canvas) opt.canvas = $('canvas#map')[0];
+
+  mapCanvas = opt.canvas;
   setMapViewSize(opt.width, opt.height);
 
   loadMap();

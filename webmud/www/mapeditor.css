@@ -1,0 +1,60 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: darkgray;
+}
+
+div {
+  margin: 0px;
+  padding: 0px;
+  border: 0px solid gray;
+}
+
+div#page {
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  overflow: hidden;
+}
+
+div#left {
+  width: 50%;
+  height: 100%;
+  overflow: auto;
+}
+
+div#right {
+  width: 50%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+div#map {
+  /* control by js */
+}
+
+div#tools {
+  text-align: right;
+}
+
+select#list {
+  margin: 0px 5px 5px 5px;
+}
+
+textarea#editor {
+  font-family: monospace;
+  background-color: #ddffdd;
+  overflow: scroll;
+  padding: 5px;
+  margin: 0px 5px 5px 5px;
+}
+
+button {
+  font-size: 18px;
+  padding: 5px;
+  margin: 5px;
+}

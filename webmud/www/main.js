@@ -374,6 +374,7 @@ function initModMap(callback){
     saveMap();
   });
   initMap({
+    canvas: $('canvas#map')[0],
     width: 640,
     height: 640,
     drawMarked: true,
