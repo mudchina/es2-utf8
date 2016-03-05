@@ -169,7 +169,7 @@ function connectServer() {
   });
 
   // send any data to trigger a telnet connect
-  sock.emit('data', str + '\n');
+  sock.emit('data', '\n');
 
   // send one or multi-cmds with \n
   window.sendCmd = function(str) {

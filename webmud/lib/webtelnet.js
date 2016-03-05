@@ -24,7 +24,7 @@ var WebTelnetProxy = Class({
     this.socketsCount = 0;
   },
 
-  // func({sock, key, data})
+  // func(req, reply(err, ret));
   addService: function(key, func) {
     if(typeof func === 'function') {
       this.services[key] = func;
@@ -165,14 +165,17 @@ var WebTelnetProxy = Class({
       proxy.onDisconnected(webSock);
     });
 
-    for(var key in proxy.services) {
-      var func = proxy.services[k];
-      webSock.on(key, function(data){
-        func({
-          sock: webSock,
-          key: key,
-          data: data,
-        });
+    for(var action in proxy.services) {
+      webSock.on(action, function(req){
+        var func = proxy.services[action];
+        if(typeof func === 'function') {
+          func(req, function(err, ret){
+            var resp = { err: err, ret: ret };
+            // if sid sent in req, we send it back
+            if('sid' in req) resp.sid = req.sid;
+            webSock.emit(action, resp);
+          });
+        }
       });
     }
 
