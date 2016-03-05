@@ -22,7 +22,7 @@ mapping default_dirs = ([
 	"up":			"上",
 	"down":			"下",
 	"out":			"外",
-	"enter":                "里",
+	"enter":        "里",
 ]);
 
 void create() { seteuid(getuid()); }
@@ -33,20 +33,20 @@ int main(object me, string arg)
 	object env, obj;
 	mapping exit;
 
-	if( !arg ) return notify_fail("△ 你要往哪个方向走？\n");
+	if( !arg ) return notify_fail("你要往哪个方向走？\n");
 
 	if( me->over_encumbranced() )
-		return notify_fail("△ 你的负荷过重，动弹不得。\n");
+		return notify_fail("你的负荷过重，动弹不得。\n");
 
 	if( me->is_busy() )
-		return notify_fail("△ 你的动作还没有完成，不能移动。\n");
+		return notify_fail("你的动作还没有完成，不能移动。\n");
 
 	env = environment(me);
-	if(!env) return notify_fail("△ 你哪里也去不了。\n");
+	if(!env) return notify_fail("你哪里也去不了。\n");
 
 	if( !mapp(exit = env->query("exits")) || undefinedp(exit[arg]) ) {
 		if( query_verb()=="go")
-			return notify_fail("△ 这个方向没有出路。\n");
+			return notify_fail("这个方向没有出路。\n");
 		else
 			return 0;
 	}
@@ -56,7 +56,7 @@ int main(object me, string arg)
 	if( !(obj = find_object(dest)) )
 		call_other(dest, "???");
 	if( !(obj = find_object(dest)) )
-		return notify_fail("△ 无法移动。\n");
+		return notify_fail("无法移动。\n");
 
 	if( !env->valid_leave(me, arg) ) return 0;
 
