@@ -1,6 +1,6 @@
 var mapdata = 
 {
-  "total": 1292,
+  "total": 1271,
   "count": 557,
   "domains": {
     "canyon": 27,

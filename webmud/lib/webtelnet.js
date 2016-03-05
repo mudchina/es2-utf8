@@ -19,8 +19,22 @@ var WebTelnetProxy = Class({
     this.io = null;
     this.timer = 0;
     this.isRunning = false;
+    this.services = {};
     this.sockets = {};  // sid -> socket
     this.socketsCount = 0;
+  },
+
+  // func({sock, key, data})
+  addService: function(key, func) {
+    if(typeof func === 'function') {
+      this.services[key] = func;
+    }
+  },
+
+  removeService: function(key) {
+    if(key in this.services) {
+      delete this.services[key];
+    }
   },
 
   startup: function() {
@@ -69,6 +83,8 @@ var WebTelnetProxy = Class({
     }
 
     this.reset();
+
+    return this;
   },
 
   tick: function() {
@@ -149,10 +165,19 @@ var WebTelnetProxy = Class({
       proxy.onDisconnected(webSock);
     });
 
+    for(var key in proxy.services) {
+      var func = proxy.services[k];
+      webSock.on(key, function(data){
+        func({
+          sock: webSock,
+          key: key,
+          data: data,
+        });
+      });
+    }
+
     proxy.sockets[webSock.id] = webSock;
     proxy.socketsCount ++;
-
-    proxy.connectTelnet(webSock);
   },
 });
 

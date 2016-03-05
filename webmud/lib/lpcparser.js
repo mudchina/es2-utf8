@@ -93,7 +93,7 @@ var walk = function(dir) {
       var stat = fs.statSync(file);
       if (stat && stat.isDirectory()) {
         results = results.concat(walk(file));
-      } else {
+      } else if(path.extname(file) === '.c'){
         results.push(file);
       }
     });
