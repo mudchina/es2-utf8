@@ -1,9 +1,9 @@
 // var mapdata = {}; in mapdata.js
 
 var drawMarkedOnly = 0;
-var curAddr = '';
-var curX = 0, curY = 0;
+var curAddr = '', curDomain = '';
 var curRoom = {};
+var curX = 0, curY = 0;
 
 var DIR_XY = {
   'north': [0, 1],
@@ -93,7 +93,7 @@ function mapAutoXY() {
         var key = e[d];
         var next = rms[key];
         if(!next) {
-          if(key.indexOf("random(")<0) console.log(key, k, r);
+          //if(key.indexOf("random(")>0) console.log(key, k, r);
         }
         else if(!('x' in next)) {
           var delta = DIR_XY[d] || [0,0];
@@ -141,6 +141,7 @@ var mapCanvas = null;
 
 // map view port size, canvas size
 var VIEW_W = 240, VIEW_H = 190;
+var x0 = VIEW_W/2, y0 = VIEW_H/2;
 
 // virtual map size, we can touch to scroll map
 var ROOM_RANGE = 20, ROOM_SIZE = 12, ME_SIZE = 8;
@@ -149,10 +150,25 @@ var MAP_BG = '#753', MAP_COLOR = '#fff', ME_COLOR = '#f00';
 function setMapViewSize(w,h) {
   VIEW_W = mapCanvas.width = w;
   VIEW_H = mapCanvas.height = h;
+  x0 = VIEW_W/2;
+  y0 = VIEW_H/2;
+  drawMap();
+}
+
+function setMapViewCenter(p) {
+  x0 = p.x;
+  y0 = p.y;
+  drawMap();
+}
+
+function getMapViewCenter() {
+  return {
+    x: x0,
+    y: y0,
+  };
 }
 
 function mapXYToView(r) {
-  var x0 = VIEW_W/2, y0 = VIEW_H/2;
   return {
     x: x0 + (r.x - curX) * ROOM_RANGE,
     y: y0 - (r.y - curY) * ROOM_RANGE,
@@ -160,7 +176,6 @@ function mapXYToView(r) {
 }
 
 function mapXYFromView(p) {
-  var x0 = VIEW_W/2, y0 = VIEW_H/2;
   return {
     x: Math.round((p.x - x0) / ROOM_RANGE) + curX,
     y: Math.round((y0 - p.y) / ROOM_RANGE) + curY,
@@ -172,8 +187,77 @@ function mapFindAddrByXY(x,y) {
   return xy ? xy[x+','+y] : '';
 }
 
+function mapFindDomainByXY(x,y) {
+  var domains = mapdata.domains;
+  for(var d in domains) {
+    var dm = domains[d];
+    if(x>=dm.left-1 && 
+       x<=dm.right+1 && 
+       y>=dm.bottom-1 && 
+       y<=dm.top+1) 
+      return d;
+  }
+  return '';
+}
+
 function mapGetRoomByAddr(addr) {
+  if(Array.isArray(addr)) addr = addr[0];
+  if(typeof addr !== 'string') return;
+
   return mapdata.rooms[addr];
+}
+
+function mapMarkActive(addr) {
+  if(Array.isArray(addr)) addr = addr[0];
+  if(typeof addr !== 'string') return;
+
+  var r = mapdata.rooms[addr];
+  if(r) {
+    r.v = 1;
+    curAddr = addr;
+    curRoom = r;
+  }
+  var d = getDomain(addr);
+  var dm = mapdata.domains[d];
+  if(dm) {
+    dm.v = 1;
+    curDomain = d;
+  }
+  drawMap();
+}
+
+function mapCenter(addr) {
+  if(Array.isArray(addr)) addr = addr[0];
+  if(typeof addr !== 'string') return;
+
+  if(addr) {
+    var r = mapdata.rooms[addr];
+    if(r) {
+      curX = r.x || 0;
+      curY = r.y || 0;
+    }
+  } else {
+    curX = 0;
+    curY = 0;
+  }
+
+  x0 = VIEW_W/2;
+  y0 = VIEW_H/2;
+
+  drawMap();
+}
+
+function mapGoTo(addr) {
+  mapMarkActive(addr);
+  mapCenter(addr);
+}
+
+function mapSetDrawMarked(y) {
+  drawMarkedOnly = y;
+}
+
+function mapGetCurAddr() {
+  return curAddr;
 }
 
 // draw map from map info
@@ -185,8 +269,6 @@ function drawMap() {
   // clear background
   c.fillStyle = MAP_BG;
   c.fillRect(0, 0, VIEW_W, VIEW_H);
-
-  var x0 = VIEW_W/2, y0 = VIEW_H/2;
 
   // draw path / exits
   c.strokeStyle = MAP_COLOR;
@@ -246,55 +328,41 @@ function drawMap() {
   c.lineWidth = 0.5;
   c.strokeStyle = '#ff0';
 
-  // draw player pos
-  c.fillStyle = ME_COLOR;
-  c.fillRect(x0-ME_SIZE/2, y0-ME_SIZE/2, ME_SIZE, ME_SIZE);
-
   // draw domain rect
   var domains = mapdata.domains;
   for(var d in domains) {
     var dm = domains[d];
     if(drawMarkedOnly && (!dm.v)) continue;
 
-    var p = mapXYToView({x: (dm.left-1), y: (dm.top+1)});
-    var p2 = mapXYToView({x: (dm.right+1), y: (dm.bottom-1)});
+    var p = mapXYToView({x:(dm.left-1), y:(dm.top+1)});
+    var p2 = mapXYToView({x:(dm.right+1), y:(dm.bottom-1)});
 
     c.save();
-    c.strokeStyle = '#ddd';
-    c.lineWidth = 0.2;
+    if(curDomain === d) {
+      c.strokeStyle = 'red';
+      c.lineWidth = 1;
+    } else {
+      c.strokeStyle = '#ddd';
+      c.lineWidth = 0.2;
+    }
     c.strokeRect(p.x, p.y-10, (p2.x-p.x), (p2.y-p.y)+10);
     c.restore();
 
     c.strokeText(d, p.x +5, p.y-10 +3);
   }
-}
 
-function mapGoTo(addr) {
-  var r = mapdata.rooms[addr];
-  if(r) {
-    r.v = 1;
-    curAddr = addr;
-    curRoom = r;
-    curX = r.x || 0;
-    curY = r.y || 0;
-    drawMap();
-  }
-
-  var d = mapdata.domains[getDomain(addr)];
-  if(d) {
-    d.v = 1;
+  // draw player pos
+  if(curAddr) {
+    var r = mapGetRoomByAddr(curAddr);
+    if(r) {
+      var p = mapXYToView(r);
+      c.fillStyle = ME_COLOR;
+      c.fillRect(p.x-ME_SIZE/2, p.y-ME_SIZE/2, ME_SIZE, ME_SIZE);
+    }
   }
 }
 
-function mapSetDrawMarked(y) {
-  drawMarkedOnly = y;
-}
-
-function mapGetCurAddr() {
-  return curAddr;
-}
-
-function clearMap() {
+function clearMapMarks() {
   var rms = mapdata.rooms;
   for(var k in rms) {
     var r = rms[k];
@@ -302,7 +370,7 @@ function clearMap() {
   }
 }
 
-function saveMap() {
+function saveMapMarks() {
   var marks = {};
 
   // get all marks in map
@@ -316,7 +384,7 @@ function saveMap() {
   localStorage.setItem('marks', JSON.stringify(marks));
 }
 
-function loadMap() {
+function loadMapMarks() {
   var marks = {};
 
   // load map info from local storage
@@ -344,7 +412,7 @@ function initMap(opt) {
   mapCanvas = opt.canvas;
   setMapViewSize(opt.width, opt.height);
 
-  loadMap();
+  loadMapMarks();
   mapAutoXY();
   mapSetDrawMarked(opt.drawMarked ? 1 : 0);
 

@@ -55,9 +55,7 @@ var roomtypes = ['ROOM', 'BANK', 'HOCKSHOP', 'CLASS_GUILD'];
 
 function jsonFromLPCFile(file, mudlib) {
   var text = fs.readFileSync(file, 'utf8');
-  if(!text) return null;
-
-  return parser.jsonFromLPC(text, file, mudlib, roomtypes);
+  return text ? parser.jsonFromLPC(text, file, mudlib, roomtypes) : null;
 }
 
 var walk = function(dir) {
@@ -162,7 +160,6 @@ function parseMap(mudlib, folders) {
     domains: domains,
     rooms: rooms,
   };
-  //autoXY(map);
 
   return map;
 }

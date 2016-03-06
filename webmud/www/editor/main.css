@@ -4,21 +4,19 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: darkgray;
+  background-color: gray;
 }
 
 div {
   margin: 0px;
   padding: 0px;
-  border: 0px solid gray;
 }
 
-div#page {
-  width: 100%;
-  height: 100%;
-  display: inline-flex;
-  overflow: hidden;
+button {
+  font-size: 14px;
   padding: 5px;
+  margin: 3px;
+  margin: 5px 5px 5px 0px;
 }
 
 div#tips {
@@ -28,6 +26,28 @@ div#tips {
   position: absolute;
   line-height: 130%;
   z-index: 100;
+  display: none;
+}
+
+div#page {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 0px 5px;
+  display: block;
+}
+
+div#toolbar {
+  width: 100%;
+  overflow: hidden;
+  display: block;
+}
+
+div#main {
+  width: 100%;
+  display: inline-flex;
+  overflow: hidden;
+  padding: 0px;
 }
 
 div#left {
@@ -52,14 +72,25 @@ canvas#map {
   display: inline;
 }
 
+select#list, select#sublist {
+  margin: 0px 0px 0px 5px;
+  border: 1px solid black;
+}
+
 div#tools {
   text-align: right;
   margin: 0px 5px;
+  display: inline;
 }
 
-select#list, select#sublist {
-  margin: 0px 5px;
-  border: 1px solid black;
+div#filename {
+  height: 18px;
+  font-size: 14px;
+  padding: 5px;
+  margin: 5px 5px 5px 0px;
+  display: inline;
+  background-color: white;
+  border: 1px solid gray;
 }
 
 #editor {
@@ -68,18 +99,3 @@ select#list, select#sublist {
   margin: 0px 0px 0px 5px;
 }
 
-div#filename {
-  height: 18px;
-  font-size: 14px;
-  padding: 5px;
-  margin: 5px;
-  display: inline;
-  background-color: white;
-  border: 1px solid gray;
-}
-
-button {
-  font-size: 14px;
-  padding: 5px;
-  margin: 5px 5px 5px 0px;
-}

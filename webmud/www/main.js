@@ -367,11 +367,11 @@ function initUI() {
 
 function initModMap(callback){
   addLocalCmd('clear map', function(){
-    clearMap();
+    clearMapMarks();
     drawMap();
   });
   addLocalCmd('save map', function(){
-    saveMap();
+    saveMapMarks();
   });
   initMap({
     canvas: $('canvas#map')[0],

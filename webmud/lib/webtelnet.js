@@ -24,10 +24,14 @@ var WebTelnetProxy = Class({
     this.socketsCount = 0;
   },
 
-  // func(req, reply(err, ret));
-  addService: function(key, func) {
+  // context->func(req, reply(err, ret));
+  // func.call(context, req, reply(err, ret));
+  addService: function(key, func, context) {
     if(typeof func === 'function') {
-      this.services[key] = func;
+      this.services[key] = {
+        func: func,
+        context: context,
+      }
     }
   },
 
@@ -174,7 +178,10 @@ var WebTelnetProxy = Class({
       args: args,
     } */
     webSock.on('rpc', function(req){
-      var func = proxy.services[req.f];
+      console.log('rpc', req.f);
+      var service = proxy.services[req.f];
+      var func = service.func;
+      var context = service.context;
       if(typeof func === 'function') {
         var reply = function(err, ret) {
           webSock.emit('reply', {
@@ -183,8 +190,8 @@ var WebTelnetProxy = Class({
             ret: ret,
           });
         };
-        func(req.args, reply);
-      } else console.log('rpc', req.f);
+        func.call(context, req.args, reply);
+      }
     });
 
     proxy.sockets[webSock.id] = webSock;

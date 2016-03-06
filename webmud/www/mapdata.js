@@ -24,6 +24,7 @@ var mapdata =
   },
   "rooms": {
     "/d/canyon/bamboo/bamboo1": {
+      "type": "ROOM",
       "short": "竹林道入口",
       "exits": {
         "north": "/d/canyon/bamboo/bamboo2",
@@ -31,6 +32,7 @@ var mapdata =
       }
     },
     "/d/canyon/bamboo/bamboo2": {
+      "type": "ROOM",
       "short": "竹林道",
       "exits": {
         "north": "/d/canyon/bamboo/bamboo3",
@@ -38,18 +40,21 @@ var mapdata =
       }
     },
     "/d/canyon/bamboo/bamboo3": {
+      "type": "ROOM",
       "short": "竹林道",
       "exits": {
         "south": "/d/canyon/bamboo/bamboo2"
       }
     },
     "/d/canyon/bamboo/train": {
+      "type": "ROOM",
       "short": "洞内石室",
       "exits": {
         "out": "/d/canyon/bamboo/bamboo3"
       }
     },
     "/d/canyon/blackmarket": {
+      "type": "ROOM",
       "short": "兵器库",
       "exits": {
         "east": "/d/canyon/canyon4"
@@ -59,6 +64,7 @@ var mapdata =
       }
     },
     "/d/canyon/camp1": {
+      "type": "ROOM",
       "short": "军营入口",
       "exits": {
         "west": "/d/canyon/canyon4",
@@ -71,6 +77,7 @@ var mapdata =
       }
     },
     "/d/canyon/camp2": {
+      "type": "ROOM",
       "short": "营火区",
       "exits": {
         "north": "/d/canyon/camp5",
@@ -80,6 +87,7 @@ var mapdata =
       }
     },
     "/d/canyon/camp3": {
+      "type": "ROOM",
       "short": "小兵营帐",
       "exits": {
         "south": "/d/canyon/camp1"
@@ -89,6 +97,7 @@ var mapdata =
       }
     },
     "/d/canyon/camp4": {
+      "type": "ROOM",
       "short": "小兵营帐",
       "exits": {
         "north": "/d/canyon/camp1"
@@ -99,6 +108,7 @@ var mapdata =
       }
     },
     "/d/canyon/camp5": {
+      "type": "ROOM",
       "short": "小队长营帐",
       "exits": {
         "south": "/d/canyon/camp2"
@@ -108,6 +118,7 @@ var mapdata =
       }
     },
     "/d/canyon/camp6": {
+      "type": "ROOM",
       "short": "小队长营帐",
       "exits": {
         "north": "/d/canyon/camp2"
@@ -118,6 +129,7 @@ var mapdata =
       }
     },
     "/d/canyon/camp7": {
+      "type": "ROOM",
       "short": "副将营帐",
       "exits": {
         "east": "/d/canyon/camp8",
@@ -128,6 +140,7 @@ var mapdata =
       }
     },
     "/d/canyon/camp8": {
+      "type": "ROOM",
       "short": "将军营帐",
       "exits": {
         "west": "/d/canyon/camp7"
@@ -138,12 +151,14 @@ var mapdata =
       }
     },
     "/d/canyon/canyon1": {
+      "type": "ROOM",
       "short": "黄石隘口尾",
       "exits": {
         "southwest": "/d/canyon/canyon2"
       }
     },
     "/d/canyon/canyon2": {
+      "type": "ROOM",
       "short": "隘口小路",
       "exits": {
         "northeast": "/d/canyon/canyon1",
@@ -151,6 +166,7 @@ var mapdata =
       }
     },
     "/d/canyon/canyon3": {
+      "type": "ROOM",
       "short": "隘口小路",
       "exits": {
         "north": "/d/canyon/canyon2",
@@ -158,6 +174,7 @@ var mapdata =
       }
     },
     "/d/canyon/canyon4": {
+      "type": "ROOM",
       "short": "隘口中道",
       "exits": {
         "north": "/d/canyon/canyon3",
@@ -166,6 +183,7 @@ var mapdata =
       }
     },
     "/d/canyon/canyon5": {
+      "type": "ROOM",
       "short": "关外小路",
       "exits": {
         "south": "/d/canyon/canyon6",
@@ -173,6 +191,7 @@ var mapdata =
       }
     },
     "/d/canyon/canyon6": {
+      "type": "ROOM",
       "short": "天驼关谷地",
       "exits": {
         "south": "/d/canyon/canyon7",
@@ -180,6 +199,7 @@ var mapdata =
       }
     },
     "/d/canyon/canyon7": {
+      "type": "ROOM",
       "short": "天驼关谷地",
       "exits": {
         "south": "/d/village/road1",
@@ -187,18 +207,21 @@ var mapdata =
       }
     },
     "/d/canyon/dream/tmp": {
+      "type": "ROOM",
       "short": "幻影道入口",
       "exits": {
         "down": "/d/canyon/fantasy1"
       }
     },
     "/d/canyon/evil/tmp": {
+      "type": "ROOM",
       "short": "妖魔道入口",
       "exits": {
         "up": "/d/canyon/fantasy1"
       }
     },
     "/d/canyon/fantasy1": {
+      "type": "ROOM",
       "short": "梦幻迷境通道",
       "exits": {
         "up": "/d/canyon/dream/tmp",
@@ -208,12 +231,14 @@ var mapdata =
       }
     },
     "/d/canyon/road": {
+      "type": "ROOM",
       "short": "碎石小路",
       "exits": {
         "northeast": "/d/snow/sroad4"
       }
     },
     "/d/canyon/stone_forest1": {
+      "type": "ROOM",
       "short": "黄石穿林路路口",
       "exits": {
         "east": "/d/canyon/canyon2",
@@ -221,6 +246,7 @@ var mapdata =
       }
     },
     "/d/canyon/stone_forest2": {
+      "type": "ROOM",
       "short": "黄石穿林路",
       "exits": {
         "west": "/d/canyon/stone_forest3",
@@ -228,6 +254,7 @@ var mapdata =
       }
     },
     "/d/canyon/stone_forest3": {
+      "type": "ROOM",
       "short": "梦幻迷境入口",
       "exits": {
         "mirror": "/d/canyon/fantasy1",
@@ -235,6 +262,7 @@ var mapdata =
       }
     },
     "/d/choyin/altar": {
+      "type": "ROOM",
       "short": "火龙将军庙",
       "exits": {
         "down": "/d/choyin/dragon_temple"
@@ -245,6 +273,7 @@ var mapdata =
       }
     },
     "/d/choyin/bridge1": {
+      "type": "ROOM",
       "short": "曲桥",
       "exits": {
         "north": "/d/choyin/s_street1",
@@ -255,6 +284,7 @@ var mapdata =
       }
     },
     "/d/choyin/bridge2": {
+      "type": "ROOM",
       "short": "曲桥",
       "exits": {
         "west": "/d/choyin/bridge1",
@@ -265,6 +295,7 @@ var mapdata =
       }
     },
     "/d/choyin/bridge3": {
+      "type": "ROOM",
       "short": "曲桥",
       "exits": {
         "south": "/d/choyin/bridge2",
@@ -275,6 +306,7 @@ var mapdata =
       }
     },
     "/d/choyin/bridge4": {
+      "type": "ROOM",
       "short": "曲桥",
       "exits": {
         "south": "/d/choyin/bridge5",
@@ -286,6 +318,7 @@ var mapdata =
       }
     },
     "/d/choyin/bridge5": {
+      "type": "ROOM",
       "short": "曲桥",
       "exits": {
         "north": "/d/choyin/bridge4",
@@ -293,6 +326,7 @@ var mapdata =
       }
     },
     "/d/choyin/cloudpool": {
+      "type": "ROOM",
       "short": "云梦大泽",
       "exits": {
         "southwest": "/d/choyin/solidpath2"
@@ -302,6 +336,7 @@ var mapdata =
       }
     },
     "/d/choyin/club": {
+      "type": "ROOM",
       "short": "草堂",
       "exits": {
         "west": "/d/choyin/yard",
@@ -309,6 +344,7 @@ var mapdata =
       }
     },
     "/d/choyin/court1": {
+      "type": "ROOM",
       "short": "县府衙门",
       "exits": {
         "south": "/d/choyin/crossroad"
@@ -319,6 +355,7 @@ var mapdata =
       }
     },
     "/d/choyin/craneroom": {
+      "type": "ROOM",
       "short": "树冠",
       "exits": {
         "down": "/d/choyin/guyehill"
@@ -328,6 +365,7 @@ var mapdata =
       }
     },
     "/d/choyin/crossroad": {
+      "type": "ROOM",
       "short": "十字路口",
       "exits": {
         "south": "/d/choyin/s_gate",
@@ -336,6 +374,7 @@ var mapdata =
       }
     },
     "/d/choyin/dragon_temple": {
+      "type": "ROOM",
       "short": "火龙将军庙",
       "exits": {
         "up": "/d/choyin/altar",
@@ -347,6 +386,7 @@ var mapdata =
       }
     },
     "/d/choyin/e_gate": {
+      "type": "ROOM",
       "short": "东城门",
       "exits": {
         "west": "/d/choyin/e_street1",
@@ -358,6 +398,7 @@ var mapdata =
       }
     },
     "/d/choyin/e_street1": {
+      "type": "ROOM",
       "short": "东大街",
       "exits": {
         "west": "/d/choyin/tree_tomb",
@@ -365,6 +406,7 @@ var mapdata =
       }
     },
     "/d/choyin/entrance": {
+      "type": "ROOM",
       "short": "曼雩台",
       "exits": {
         "west": "/d/choyin/bridge5",
@@ -375,6 +417,7 @@ var mapdata =
       }
     },
     "/d/choyin/fence": {
+      "type": "ROOM",
       "short": "竹林",
       "exits": {
         "west": "/d/choyin/club",
@@ -382,12 +425,14 @@ var mapdata =
       }
     },
     "/d/choyin/guyehill": {
+      "type": "ROOM",
       "short": "绝壁",
       "exits": {
         "northdown": "/d/choyin/rockroad"
       }
     },
     "/d/choyin/halfhole": {
+      "type": "ROOM",
       "short": "山洞",
       "exits": {
         "down": "/d/choyin/guyehill"
@@ -397,12 +442,14 @@ var mapdata =
       }
     },
     "/d/choyin/hollow": {
+      "type": "ROOM",
       "short": "寒谷",
       "exits": {
         "east": "/d/choyin/hollow1"
       }
     },
     "/d/choyin/hollow1": {
+      "type": "ROOM",
       "short": "寒谷",
       "exits": {
         "north": "/d/choyin/hollow2",
@@ -411,6 +458,7 @@ var mapdata =
       }
     },
     "/d/choyin/hollow2": {
+      "type": "ROOM",
       "short": "寒谷",
       "exits": {
         "west": "/d/choyin/hollow3",
@@ -418,6 +466,7 @@ var mapdata =
       }
     },
     "/d/choyin/hollow3": {
+      "type": "ROOM",
       "short": "寒谷尽头",
       "exits": {
         "east": "/d/choyin/hollow1"
@@ -427,6 +476,7 @@ var mapdata =
       }
     },
     "/d/choyin/hotel1": {
+      "type": "ROOM",
       "short": "福林酒楼",
       "exits": {
         "up": "/d/choyin/hotel2",
@@ -438,6 +488,7 @@ var mapdata =
       }
     },
     "/d/choyin/hotel2": {
+      "type": "ROOM",
       "short": "福林酒楼",
       "exits": {
         "up": "/d/choyin/hotel3",
@@ -449,6 +500,7 @@ var mapdata =
       }
     },
     "/d/choyin/hotel3": {
+      "type": "ROOM",
       "short": "福林酒楼",
       "exits": {
         "down": "/d/choyin/hotel2"
@@ -458,12 +510,14 @@ var mapdata =
       }
     },
     "/d/choyin/lionroom": {
+      "type": "ROOM",
       "short": "神秘洞穴",
       "objects": {
         "/d/choyin/npc/lion": 1
       }
     },
     "/d/choyin/n_gate": {
+      "type": "ROOM",
       "short": "乔阴县城北门",
       "exits": {
         "west": "/u/cloud/sunhill/road1",
@@ -477,6 +531,7 @@ var mapdata =
       }
     },
     "/d/choyin/n_street1": {
+      "type": "ROOM",
       "short": "福林大街",
       "exits": {
         "south": "/d/choyin/n_street2",
@@ -488,6 +543,7 @@ var mapdata =
       }
     },
     "/d/choyin/n_street2": {
+      "type": "ROOM",
       "short": "福林大街",
       "exits": {
         "south": "/d/choyin/n_street3",
@@ -495,6 +551,7 @@ var mapdata =
       }
     },
     "/d/choyin/n_street3": {
+      "type": "ROOM",
       "short": "福林大街",
       "exits": {
         "west": "/d/choyin/nw_street",
@@ -506,6 +563,7 @@ var mapdata =
       }
     },
     "/d/choyin/nw_street": {
+      "type": "ROOM",
       "short": "石板空地",
       "exits": {
         "west": "/d/choyin/w_street4",
@@ -514,12 +572,14 @@ var mapdata =
       }
     },
     "/d/choyin/platform": {
+      "type": "ROOM",
       "short": "云台",
       "objects": {
         "/d/choyin/npc/lboy": 2
       }
     },
     "/d/choyin/rockpath1": {
+      "type": "ROOM",
       "short": "青石小路",
       "exits": {
         "northdown": "/d/choyin/rockpath2",
@@ -527,6 +587,7 @@ var mapdata =
       }
     },
     "/d/choyin/rockpath2": {
+      "type": "ROOM",
       "short": "青石小路",
       "exits": {
         "north": "/d/choyin/solidpath1",
@@ -534,6 +595,7 @@ var mapdata =
       }
     },
     "/d/choyin/rockroad": {
+      "type": "ROOM",
       "short": "砾石路",
       "exits": {
         "north": "/d/choyin/spath",
@@ -541,6 +603,7 @@ var mapdata =
       }
     },
     "/d/choyin/rockyu": {
+      "type": "ROOM",
       "short": "青石峪",
       "exits": {
         "northdown": "/d/choyin/rockpath1",
@@ -552,6 +615,7 @@ var mapdata =
       }
     },
     "/d/choyin/s_gate": {
+      "type": "ROOM",
       "short": "乔阴县城南门",
       "exits": {
         "north": "/d/choyin/crossroad",
@@ -563,6 +627,7 @@ var mapdata =
       }
     },
     "/d/choyin/s_street1": {
+      "type": "ROOM",
       "short": "南门广场",
       "exits": {
         "south": "/d/choyin/bridge1",
@@ -576,6 +641,7 @@ var mapdata =
       }
     },
     "/d/choyin/s_street2": {
+      "type": "ROOM",
       "short": "福林大街",
       "exits": {
         "north": "/d/choyin/s_street3",
@@ -584,6 +650,7 @@ var mapdata =
       }
     },
     "/d/choyin/s_street3": {
+      "type": "ROOM",
       "short": "福林大街",
       "exits": {
         "south": "/d/choyin/s_street2",
@@ -591,6 +658,7 @@ var mapdata =
       }
     },
     "/d/choyin/s_street4": {
+      "type": "ROOM",
       "short": "承安街",
       "exits": {
         "west": "/d/choyin/s_street5",
@@ -598,6 +666,7 @@ var mapdata =
       }
     },
     "/d/choyin/s_street5": {
+      "type": "ROOM",
       "short": "承安街",
       "exits": {
         "west": "/d/choyin/crossroad",
@@ -605,6 +674,7 @@ var mapdata =
       }
     },
     "/d/choyin/solidpath1": {
+      "type": "ROOM",
       "short": "土路",
       "exits": {
         "west": "/d/choyin/e_gate",
@@ -613,6 +683,7 @@ var mapdata =
       }
     },
     "/d/choyin/solidpath2": {
+      "type": "ROOM",
       "short": "荒野小径",
       "exits": {
         "northeast": "/d/choyin/cloudpool",
@@ -620,6 +691,7 @@ var mapdata =
       }
     },
     "/d/choyin/spath": {
+      "type": "ROOM",
       "short": "土路",
       "exits": {
         "north": "/d/choyin/s_gate",
@@ -627,9 +699,11 @@ var mapdata =
       }
     },
     "/d/choyin/stonehole": {
+      "type": "ROOM",
       "short": "石室"
     },
     "/d/choyin/stove": {
+      "type": "ROOM",
       "short": "丹炉",
       "exits": {
         "out": "/d/choyin/tongbhill"
@@ -639,6 +713,7 @@ var mapdata =
       }
     },
     "/d/choyin/sw_road1": {
+      "type": "ROOM",
       "short": "街道",
       "exits": {
         "northeast": "/d/choyin/s_street1",
@@ -646,6 +721,7 @@ var mapdata =
       }
     },
     "/d/choyin/taolin": {
+      "type": "ROOM",
       "short": "桃林",
       "exits": {
         "south": "/d/choyin/taolin",
@@ -657,6 +733,7 @@ var mapdata =
       }
     },
     "/d/choyin/tomb1": {
+      "type": "ROOM",
       "short": "树王坟",
       "exits": {
         "north": "/d/choyin/tomb3",
@@ -668,12 +745,14 @@ var mapdata =
       }
     },
     "/d/choyin/tomb2": {
+      "type": "ROOM",
       "short": "树王坟内部",
       "exits": {
         "east": "/d/choyin/tomb1"
       }
     },
     "/d/choyin/tomb3": {
+      "type": "ROOM",
       "short": "树王坟内部",
       "exits": {
         "south": "/d/choyin/tomb1"
@@ -683,12 +762,14 @@ var mapdata =
       }
     },
     "/d/choyin/tongbhill": {
+      "type": "ROOM",
       "short": "桐柏山",
       "exits": {
         "northdown": "/d/choyin/rockyu"
       }
     },
     "/d/choyin/tree_tomb": {
+      "type": "ROOM",
       "short": "树王坟",
       "exits": {
         "north": "/d/choyin/n_street3",
@@ -698,12 +779,14 @@ var mapdata =
       }
     },
     "/d/choyin/w_street1": {
+      "type": "ROOM",
       "short": "西大街",
       "exits": {
         "east": "/d/choyin/w_street2"
       }
     },
     "/d/choyin/w_street2": {
+      "type": "ROOM",
       "short": "西大街",
       "exits": {
         "west": "/d/choyin/w_street1",
@@ -711,6 +794,7 @@ var mapdata =
       }
     },
     "/d/choyin/w_street3": {
+      "type": "ROOM",
       "short": "西大街",
       "exits": {
         "north": "/d/choyin/nw_street",
@@ -719,6 +803,7 @@ var mapdata =
       }
     },
     "/d/choyin/w_street4": {
+      "type": "ROOM",
       "short": "西大街",
       "exits": {
         "south": "/d/choyin/w_street2",
@@ -726,6 +811,7 @@ var mapdata =
       }
     },
     "/d/choyin/yamen": {
+      "type": "ROOM",
       "short": "大堂",
       "exits": {
         "north": "/d/choyin/yamen_iner",
@@ -738,12 +824,14 @@ var mapdata =
       }
     },
     "/d/choyin/yamen_iner": {
+      "type": "ROOM",
       "short": "内厅",
       "exits": {
         "south": "/d/choyin/yamen"
       }
     },
     "/d/choyin/yamen_yard": {
+      "type": "ROOM",
       "short": "县衙内院",
       "exits": {
         "south": "/d/choyin/court1",
@@ -754,12 +842,14 @@ var mapdata =
       }
     },
     "/d/choyin/yard": {
+      "type": "ROOM",
       "short": "庭院",
       "exits": {
         "east": "/d/choyin/club"
       }
     },
     "/d/chuenyu/base_b_m": {
+      "type": "ROOM",
       "short": "黑松山脚",
       "exits": {
         "south": "/d/chuenyu/sunnyroad",
@@ -767,6 +857,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/bedroom": {
+      "type": "ROOM",
       "short": "卧室",
       "exits": {
         "north": "/d/chuenyu/yiantai",
@@ -776,12 +867,14 @@ var mapdata =
       }
     },
     "/d/chuenyu/center": {
+      "type": "ROOM",
       "short": "黑松阁正厅",
       "exits": {
         "west": "/d/chuenyu/west_blackge"
       }
     },
     "/d/chuenyu/croad1": {
+      "type": "ROOM",
       "short": "黄土大道",
       "exits": {
         "south": "/d/village/road1",
@@ -789,6 +882,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/croad2": {
+      "type": "ROOM",
       "short": "路口",
       "exits": {
         "northeast": "/d/chuenyu/sunnyroad",
@@ -796,6 +890,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/dungeon": {
+      "type": "ROOM",
       "short": "刑房",
       "exits": {
         "west": "/d/chuenyu/tunnel3",
@@ -807,6 +902,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/dustyroad3": {
+      "type": "ROOM",
       "short": "青石小路",
       "exits": {
         "southwest": "/d/chuenyu/croad2",
@@ -815,6 +911,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/east_blackge": {
+      "type": "ROOM",
       "short": "黑松阁东厅",
       "exits": {
         "east": "/d/chuenyu/east_garden",
@@ -826,12 +923,14 @@ var mapdata =
       }
     },
     "/d/chuenyu/east_castle": {
+      "type": "ROOM",
       "short": "黑松城堡的东侧",
       "exits": {
         "west": "/d/chuenyu/gate_castle"
       }
     },
     "/d/chuenyu/east_garden": {
+      "type": "ROOM",
       "short": "东花园",
       "exits": {
         "west": "/d/chuenyu/east_blackge"
@@ -841,6 +940,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/foot_b_mtn": {
+      "type": "ROOM",
       "short": "黑松山腰",
       "exits": {
         "down": "/d/chuenyu/base_b_m",
@@ -848,6 +948,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/gate_castle": {
+      "type": "ROOM",
       "short": "黑松淳于",
       "exits": {
         "east": "/d/chuenyu/east_castle",
@@ -857,6 +958,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/high_b_mtn": {
+      "type": "ROOM",
       "short": "花岗石街",
       "exits": {
         "up": "/d/chuenyu/gate_castle",
@@ -864,6 +966,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/high_b_mtn2": {
+      "type": "ROOM",
       "short": "花岗石街",
       "exits": {
         "down": "/d/chuenyu/base_b_m",
@@ -872,6 +975,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/home": {
+      "type": "ROOM",
       "short": "刘家小房",
       "exits": {
         "south": "/d/chuenyu/smallstorage",
@@ -884,6 +988,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/kitchen": {
+      "type": "ROOM",
       "short": "膳房",
       "exits": {
         "north": "/d/chuenyu/bedroom"
@@ -895,6 +1000,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/littlegarden": {
+      "type": "ROOM",
       "short": "花园",
       "exits": {
         "south": "/d/chuenyu/home"
@@ -904,6 +1010,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/north_garden": {
+      "type": "ROOM",
       "short": "北花园",
       "exits": {
         "south": "/d/chuenyu/west_blackge"
@@ -913,6 +1020,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/rope_bridge": {
+      "type": "ROOM",
       "short": "铁索桥",
       "exits": {
         "west": "/d/chuenyu/high_b_mtn",
@@ -923,6 +1031,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/smallstorage": {
+      "type": "ROOM",
       "short": "厨房",
       "exits": {
         "north": "/d/chuenyu/home"
@@ -932,6 +1041,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/smallyard": {
+      "type": "ROOM",
       "short": "翠绿的小草坪",
       "exits": {
         "east": "/d/chuenyu/home",
@@ -944,6 +1054,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/south_garden": {
+      "type": "ROOM",
       "short": "南花园",
       "exits": {
         "north": "/d/chuenyu/east_blackge"
@@ -953,6 +1064,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/storage": {
+      "type": "ROOM",
       "short": "储藏室",
       "exits": {
         "north": "/d/chuenyu/west_blackge"
@@ -962,6 +1074,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/sunnyroad": {
+      "type": "ROOM",
       "short": "山脚乡田",
       "objects": {
         "/d/chuenyu/npc/flower_seller": 1
@@ -972,6 +1085,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/tortureroom": {
+      "type": "ROOM",
       "short": "刑房",
       "exits": {
         "south": "/d/chuenyu/tunnel6",
@@ -983,6 +1097,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/tortureroom2": {
+      "type": "ROOM",
       "short": "刑房",
       "exits": {
         "south": "/d/chuenyu/tunnel6",
@@ -994,12 +1109,14 @@ var mapdata =
       }
     },
     "/d/chuenyu/trap_castle": {
+      "type": "ROOM",
       "short": "夹道",
       "exits": {
         "south": "/d/chuenyu/gate_castle"
       }
     },
     "/d/chuenyu/tunnel1": {
+      "type": "ROOM",
       "short": "地牢",
       "exits": {
         "south": "/d/chuenyu/tunnel5",
@@ -1010,6 +1127,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/tunnel2": {
+      "type": "ROOM",
       "short": "地牢",
       "exits": {
         "east": "/d/chuenyu/tunnel6",
@@ -1018,6 +1136,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/tunnel3": {
+      "type": "ROOM",
       "short": "地牢",
       "exits": {
         "east": "/d/chuenyu/dungeon",
@@ -1026,6 +1145,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/tunnel4": {
+      "type": "ROOM",
       "short": "地牢",
       "exits": {
         "north": "/d/chuenyu/tunnel5",
@@ -1035,6 +1155,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/tunnel5": {
+      "type": "ROOM",
       "short": "地牢",
       "exits": {
         "north": "/d/chuenyu/tunnel1",
@@ -1043,6 +1164,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/tunnel6": {
+      "type": "ROOM",
       "short": "地牢",
       "exits": {
         "north": "/d/chuenyu/tortureroom2",
@@ -1050,6 +1172,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/west_blackge": {
+      "type": "ROOM",
       "short": "黑松阁西厅",
       "exits": {
         "eastup": "/d/chuenyu/bedroom",
@@ -1063,12 +1186,14 @@ var mapdata =
       }
     },
     "/d/chuenyu/west_castle": {
+      "type": "ROOM",
       "short": "黑松城堡的西侧",
       "exits": {
         "east": "/d/chuenyu/gate_castle"
       }
     },
     "/d/chuenyu/west_garden": {
+      "type": "ROOM",
       "short": "西花园",
       "exits": {
         "east": "/d/chuenyu/west_blackge"
@@ -1079,6 +1204,7 @@ var mapdata =
       }
     },
     "/d/chuenyu/yiantai": {
+      "type": "ROOM",
       "short": "阳台",
       "exits": {
         "south": "/d/chuenyu/bedroom"
@@ -1088,6 +1214,7 @@ var mapdata =
       }
     },
     "/d/city/bank": {
+      "type": "BANK",
       "short": "旺金钱庄",
       "exits": {
         "south": "/d/city/street8"
@@ -1097,6 +1224,7 @@ var mapdata =
       }
     },
     "/d/city/biaoju": {
+      "type": "ROOM",
       "short": "振远总局",
       "exits": {
         "south": "/d/city/street1"
@@ -1106,6 +1234,7 @@ var mapdata =
       }
     },
     "/d/city/boots": {
+      "type": "ROOM",
       "short": "李记鞋店",
       "exits": {
         "south": "/d/city/street11"
@@ -1115,6 +1244,7 @@ var mapdata =
       }
     },
     "/d/city/bridge": {
+      "type": "ROOM",
       "short": "天桥",
       "exits": {
         "south": "/d/city/street17",
@@ -1129,6 +1259,7 @@ var mapdata =
       }
     },
     "/d/city/cloth": {
+      "type": "ROOM",
       "short": "四喜绸缎庄",
       "exits": {
         "east": "/d/city/street6"
@@ -1138,6 +1269,7 @@ var mapdata =
       }
     },
     "/d/city/eastdoor1": {
+      "type": "ROOM",
       "short": "京师东一门",
       "exits": {
         "west": "/d/city/street9"
@@ -1147,6 +1279,7 @@ var mapdata =
       }
     },
     "/d/city/eastdoor2": {
+      "type": "ROOM",
       "short": "京师东二门",
       "exits": {
         "west": "/d/city/street10"
@@ -1156,18 +1289,21 @@ var mapdata =
       }
     },
     "/d/city/feiyuan": {
+      "type": "ROOM",
       "short": "废园",
       "exits": {
         "south": "/d/city/street6"
       }
     },
     "/d/city/house1": {
+      "type": "ROOM",
       "short": "空房间",
       "exits": {
         "north": "/d/city/street11"
       }
     },
     "/d/city/jiaowu": {
+      "type": "ROOM",
       "short": "校武场",
       "exits": {
         "south": "/d/city/bridge",
@@ -1175,6 +1311,7 @@ var mapdata =
       }
     },
     "/d/city/jitan": {
+      "type": "ROOM",
       "short": "祭坛",
       "exits": {
         "south": "/d/city/shenwumen",
@@ -1182,6 +1319,7 @@ var mapdata =
       }
     },
     "/d/city/jiulou": {
+      "type": "ROOM",
       "short": "太白酒楼",
       "exits": {
         "east": "/d/city/street5",
@@ -1193,15 +1331,18 @@ var mapdata =
       }
     },
     "/d/city/jiulou_2": {
+      "type": "ROOM",
       "short": "太白酒楼二楼",
       "exits": {
         "down": "/d/city/jiulou"
       }
     },
     "/d/city/midao1": {
+      "type": "ROOM",
       "short": "地下密室"
     },
     "/d/city/northdoor": {
+      "type": "ROOM",
       "short": "京师北门",
       "exits": {
         "north": "/d/city/nroad1",
@@ -1212,6 +1353,7 @@ var mapdata =
       }
     },
     "/d/city/nroad1": {
+      "type": "ROOM",
       "short": "北驿道",
       "exits": {
         "north": "/d/city/nroad2",
@@ -1219,6 +1361,7 @@ var mapdata =
       }
     },
     "/d/city/nroad2": {
+      "type": "ROOM",
       "short": "北驿道",
       "exits": {
         "south": "/d/city/nroad1",
@@ -1229,6 +1372,7 @@ var mapdata =
       }
     },
     "/d/city/shangshu/chufang": {
+      "type": "ROOM",
       "short": "厨房",
       "exits": {
         "west": "/d/city/shangshu/road3"
@@ -1238,12 +1382,14 @@ var mapdata =
       }
     },
     "/d/city/shangshu/feiwu": {
+      "type": "ROOM",
       "short": "废屋",
       "exits": {
         "east": "/d/city/shangshu/road4"
       }
     },
     "/d/city/shangshu/gate": {
+      "type": "ROOM",
       "short": "尚书府大门",
       "exits": {
         "west": "/d/city/street3",
@@ -1254,6 +1400,7 @@ var mapdata =
       }
     },
     "/d/city/shangshu/huayuan": {
+      "type": "ROOM",
       "short": "花园",
       "exits": {
         "north": "/d/city/shangshu/road3",
@@ -1265,12 +1412,14 @@ var mapdata =
       }
     },
     "/d/city/shangshu/kefang": {
+      "type": "ROOM",
       "short": "客房",
       "exits": {
         "west": "/d/city/shangshu/road2"
       }
     },
     "/d/city/shangshu/keting": {
+      "type": "ROOM",
       "short": "尚书府客厅",
       "exits": {
         "west": "/d/city/shangshu/yuan"
@@ -1280,6 +1429,7 @@ var mapdata =
       }
     },
     "/d/city/shangshu/neizhai": {
+      "type": "ROOM",
       "short": "内宅",
       "exits": {
         "west": "/d/city/shangshu/huayuan"
@@ -1289,6 +1439,7 @@ var mapdata =
       }
     },
     "/d/city/shangshu/road1": {
+      "type": "ROOM",
       "short": "小径",
       "exits": {
         "east": "/d/city/shangshu/xiaowu",
@@ -1299,6 +1450,7 @@ var mapdata =
       }
     },
     "/d/city/shangshu/road2": {
+      "type": "ROOM",
       "short": "小径",
       "exits": {
         "north": "/d/city/shangshu/road1",
@@ -1311,6 +1463,7 @@ var mapdata =
       }
     },
     "/d/city/shangshu/road3": {
+      "type": "ROOM",
       "short": "花园小径",
       "exits": {
         "north": "/d/city/shangshu/yuan",
@@ -1319,6 +1472,7 @@ var mapdata =
       }
     },
     "/d/city/shangshu/road4": {
+      "type": "ROOM",
       "short": "小路",
       "exits": {
         "west": "/d/city/shangshu/feiwu",
@@ -1326,12 +1480,14 @@ var mapdata =
       }
     },
     "/d/city/shangshu/xiaowu": {
+      "type": "ROOM",
       "short": "小屋",
       "exits": {
         "west": "/d/city/shangshu/road1"
       }
     },
     "/d/city/shangshu/yuan": {
+      "type": "ROOM",
       "short": "尚书府庭院",
       "exits": {
         "west": "/d/city/shangshu/gate",
@@ -1341,6 +1497,7 @@ var mapdata =
       }
     },
     "/d/city/shenwumen": {
+      "type": "ROOM",
       "short": "神武门",
       "exits": {
         "north": "/d/city/jitan",
@@ -1349,6 +1506,7 @@ var mapdata =
       }
     },
     "/d/city/southdoor": {
+      "type": "ROOM",
       "short": "京师南门",
       "exits": {
         "north": "/d/city/street17"
@@ -1358,6 +1516,7 @@ var mapdata =
       }
     },
     "/d/city/street1": {
+      "type": "ROOM",
       "short": "京师东街",
       "exits": {
         "north": "/d/city/biaoju",
@@ -1366,6 +1525,7 @@ var mapdata =
       }
     },
     "/d/city/street10": {
+      "type": "ROOM",
       "short": "京师街道",
       "exits": {
         "east": "/d/city/eastdoor2",
@@ -1373,6 +1533,7 @@ var mapdata =
       }
     },
     "/d/city/street11": {
+      "type": "ROOM",
       "short": "京师街道",
       "exits": {
         "west": "/d/city/bridge",
@@ -1382,6 +1543,7 @@ var mapdata =
       }
     },
     "/d/city/street12": {
+      "type": "ROOM",
       "short": "京师街道",
       "exits": {
         "east": "/d/city/bridge",
@@ -1389,6 +1551,7 @@ var mapdata =
       }
     },
     "/d/city/street13": {
+      "type": "ROOM",
       "short": "京师街道",
       "exits": {
         "west": "/d/city/westdoor2",
@@ -1399,6 +1562,7 @@ var mapdata =
       }
     },
     "/d/city/street14": {
+      "type": "ROOM",
       "short": "京师街道",
       "exits": {
         "west": "/d/city/westdoor1",
@@ -1406,6 +1570,7 @@ var mapdata =
       }
     },
     "/d/city/street15": {
+      "type": "ROOM",
       "short": "京师街道",
       "exits": {
         "west": "/d/city/street14",
@@ -1413,6 +1578,7 @@ var mapdata =
       }
     },
     "/d/city/street16": {
+      "type": "ROOM",
       "short": "大栅栏",
       "exits": {
         "north": "/d/city/northdoor",
@@ -1420,6 +1586,7 @@ var mapdata =
       }
     },
     "/d/city/street17": {
+      "type": "ROOM",
       "short": "京师街道",
       "exits": {
         "north": "/d/city/bridge",
@@ -1430,6 +1597,7 @@ var mapdata =
       }
     },
     "/d/city/street2": {
+      "type": "ROOM",
       "short": "京师东街",
       "objects": {
         "/d/city/npc/walker": 2
@@ -1440,6 +1608,7 @@ var mapdata =
       }
     },
     "/d/city/street3": {
+      "type": "ROOM",
       "short": "京师东街",
       "exits": {
         "east": "/d/city/shangshu/gate",
@@ -1448,6 +1617,7 @@ var mapdata =
       }
     },
     "/d/city/street4": {
+      "type": "ROOM",
       "short": "京师西街",
       "exits": {
         "east": "/d/city/wumen",
@@ -1460,6 +1630,7 @@ var mapdata =
       }
     },
     "/d/city/street5": {
+      "type": "ROOM",
       "short": "京师西街",
       "exits": {
         "west": "/d/city/jiulou",
@@ -1468,6 +1639,7 @@ var mapdata =
       }
     },
     "/d/city/street6": {
+      "type": "ROOM",
       "short": "京师西街",
       "exits": {
         "east": "/d/city/shenwumen",
@@ -1477,6 +1649,7 @@ var mapdata =
       }
     },
     "/d/city/street7": {
+      "type": "ROOM",
       "short": "十字路口",
       "exits": {
         "east": "/d/city/street8",
@@ -1486,6 +1659,7 @@ var mapdata =
       }
     },
     "/d/city/street8": {
+      "type": "ROOM",
       "short": "京师街道",
       "exits": {
         "east": "/d/city/street9",
@@ -1497,6 +1671,7 @@ var mapdata =
       }
     },
     "/d/city/street9": {
+      "type": "ROOM",
       "short": "京师街道",
       "exits": {
         "east": "/d/city/eastdoor1",
@@ -1508,11 +1683,13 @@ var mapdata =
       }
     },
     "/d/city/wall": {
+      "type": "ROOM",
       "short": "院墙",
       "exits": {},
       "objects": {}
     },
     "/d/city/weapon": {
+      "type": "ROOM",
       "short": "京师武器店",
       "exits": {
         "south": "/d/city/street9"
@@ -1522,6 +1699,7 @@ var mapdata =
       }
     },
     "/d/city/westdoor1": {
+      "type": "ROOM",
       "short": "京师西一门",
       "exits": {
         "east": "/d/city/street14"
@@ -1531,6 +1709,7 @@ var mapdata =
       }
     },
     "/d/city/westdoor2": {
+      "type": "ROOM",
       "short": "京师西二门",
       "exits": {
         "east": "/d/city/street13"
@@ -1540,6 +1719,7 @@ var mapdata =
       }
     },
     "/d/city/wumen": {
+      "type": "ROOM",
       "short": "午门",
       "exits": {
         "east": "/d/city/street3",
@@ -1548,15 +1728,18 @@ var mapdata =
       }
     },
     "/d/city/xiangguo/gate": {
+      "type": "ROOM",
       "short": "相国府大门",
       "exits": {
         "east": "/d/city/street4"
       }
     },
     "/d/death/block": {
+      "type": "ROOM",
       "short": "空房间"
     },
     "/d/death/bridge": {
+      "type": "ROOM",
       "short": "奈何桥",
       "exits": {
         "north": "/d/death/gate",
@@ -1567,12 +1750,14 @@ var mapdata =
       }
     },
     "/d/death/bridge1": {
+      "type": "ROOM",
       "short": "奈何桥",
       "exits": {
         "north": "/d/death/bridge"
       }
     },
     "/d/death/gate": {
+      "type": "ROOM",
       "exits": {
         "south": "/d/death/bridge",
         "north": "/d/death/gateway"
@@ -1582,6 +1767,7 @@ var mapdata =
       }
     },
     "/d/death/gateway": {
+      "type": "ROOM",
       "short": "酆都城门",
       "exits": {
         "north": "/d/death/road1",
@@ -1592,21 +1778,25 @@ var mapdata =
       }
     },
     "/d/death/inn1": {
+      "type": "ROOM",
       "short": "小店",
       "exits": {
         "east": "/d/death/road1"
       }
     },
     "/d/death/inn2": {
+      "type": "ROOM",
       "short": "黑店",
       "exits": {
         "west": "/d/death/road1"
       }
     },
     "/d/death/jail": {
+      "type": "ROOM",
       "short": "绿岛"
     },
     "/d/death/road1": {
+      "type": "ROOM",
       "short": "鬼门大道",
       "exits": {
         "north": "/d/death/road2",
@@ -1616,6 +1806,7 @@ var mapdata =
       }
     },
     "/d/death/road2": {
+      "type": "ROOM",
       "short": "鬼门大道",
       "exits": {
         "north": "/d/death/road3",
@@ -1623,18 +1814,21 @@ var mapdata =
       }
     },
     "/d/death/road3": {
+      "type": "ROOM",
       "short": "路的尽头",
       "exits": {
         "south": "/d/death/road2"
       }
     },
     "/d/death/spath1": {
+      "type": "ROOM",
       "short": "墙边小路",
       "exits": {
         "east": "/d/death/gateway"
       }
     },
     "/d/goathill/canyon1": {
+      "type": "ROOM",
       "short": "峡谷",
       "exits": {
         "northdown": "/d/goathill/canyon2",
@@ -1642,6 +1836,7 @@ var mapdata =
       }
     },
     "/d/goathill/canyon2": {
+      "type": "ROOM",
       "short": "峡谷",
       "exits": {
         "northeast": "/d/goathill/canyon3",
@@ -1649,6 +1844,7 @@ var mapdata =
       }
     },
     "/d/goathill/canyon3": {
+      "type": "ROOM",
       "short": "峡谷",
       "exits": {
         "east": "/d/goathill/cavern1",
@@ -1656,6 +1852,7 @@ var mapdata =
       }
     },
     "/d/goathill/cavern1": {
+      "type": "ROOM",
       "short": "岩洞",
       "objects": {
         "/d/goathill/npc/worm": 2
@@ -1667,9 +1864,11 @@ var mapdata =
       }
     },
     "/d/goathill/cavern1.c": {
+      "type": "ROOM",
       "short": "空房间"
     },
     "/d/goathill/cavern2": {
+      "type": "ROOM",
       "short": "岩洞",
       "exits": {
         "east": "/d/goathill/cavern3",
@@ -1681,6 +1880,7 @@ var mapdata =
       }
     },
     "/d/goathill/cavern3": {
+      "type": "ROOM",
       "short": "岩穴",
       "exits": {
         "west": "/d/goathill/cavern2"
@@ -1691,6 +1891,7 @@ var mapdata =
       }
     },
     "/d/goathill/cavern4": {
+      "type": "ROOM",
       "short": "岩洞",
       "exits": {
         "northwest": "/d/goathill/cavern1"
@@ -1701,6 +1902,7 @@ var mapdata =
       }
     },
     "/d/goathill/mroad1": {
+      "type": "ROOM",
       "short": "山路",
       "exits": {
         "north": "/d/goathill/mroad2",
@@ -1708,6 +1910,7 @@ var mapdata =
       }
     },
     "/d/goathill/mroad2": {
+      "type": "ROOM",
       "short": "山路",
       "exits": {
         "northeast": "/d/goathill/mroad3",
@@ -1715,6 +1918,7 @@ var mapdata =
       }
     },
     "/d/goathill/mroad3": {
+      "type": "ROOM",
       "short": "山路",
       "exits": {
         "northup": "/d/goathill/mroad4",
@@ -1723,6 +1927,7 @@ var mapdata =
       }
     },
     "/d/goathill/mroad4": {
+      "type": "ROOM",
       "short": "山路转角",
       "exits": {
         "east": "/d/goathill/mroad5",
@@ -1734,6 +1939,7 @@ var mapdata =
       }
     },
     "/d/goathill/mroad5": {
+      "type": "ROOM",
       "short": "山路",
       "exits": {
         "northeast": "/d/goathill/mroad6",
@@ -1742,6 +1948,7 @@ var mapdata =
       }
     },
     "/d/goathill/mroad6": {
+      "type": "ROOM",
       "short": "山路",
       "exits": {
         "north": "/d/goathill/canyon1",
@@ -1750,6 +1957,7 @@ var mapdata =
       }
     },
     "/d/goathill/slope1": {
+      "type": "ROOM",
       "short": "岩石坡",
       "exits": {
         "north": "/d/goathill/mroad6",
@@ -1757,6 +1965,7 @@ var mapdata =
       }
     },
     "/d/goathill/temple1": {
+      "type": "ROOM",
       "short": "小土地庙",
       "exits": {
         "west": "/d/goathill/mroad3"
@@ -1766,18 +1975,21 @@ var mapdata =
       }
     },
     "/d/graveyard/grave1": {
+      "type": "ROOM",
       "short": "乱葬岗",
       "exits": {
         "southeast": "/d/graveyard/road1"
       }
     },
     "/d/graveyard/road1": {
+      "type": "ROOM",
       "short": "黄土小径",
       "exits": {
         "northwest": "/d/graveyard/grave1"
       }
     },
     "/d/green/cave0": {
+      "type": "ROOM",
       "short": "洞口",
       "exits": {
         "south": "/d/green/path0",
@@ -1788,6 +2000,7 @@ var mapdata =
       }
     },
     "/d/green/cave1": {
+      "type": "ROOM",
       "short": "黑暗山洞",
       "exits": {
         "south": "/d/green/cave0",
@@ -1795,6 +2008,7 @@ var mapdata =
       }
     },
     "/d/green/cave2": {
+      "type": "ROOM",
       "short": "黑暗山洞",
       "exits": {
         "south": "/d/green/cave1",
@@ -1802,6 +2016,7 @@ var mapdata =
       }
     },
     "/d/green/cavehall": {
+      "type": "ROOM",
       "short": "石室大厅",
       "exits": {
         "south": "/d/green/outdoor"
@@ -1811,6 +2026,7 @@ var mapdata =
       }
     },
     "/d/green/eight0": {
+      "type": "ROOM",
       "short": "迷阵",
       "exits": {
         "south": "/d/green/entrance",
@@ -1820,6 +2036,7 @@ var mapdata =
       }
     },
     "/d/green/eight1": {
+      "type": "ROOM",
       "short": "迷阵",
       "exits": {
         "south": "/d/green/eight1",
@@ -1829,6 +2046,7 @@ var mapdata =
       }
     },
     "/d/green/eight2": {
+      "type": "ROOM",
       "short": "迷阵",
       "exits": {
         "south": "/d/green/eight2",
@@ -1838,6 +2056,7 @@ var mapdata =
       }
     },
     "/d/green/eight3": {
+      "type": "ROOM",
       "short": "迷阵",
       "exits": {
         "south": "/d/green/eight3",
@@ -1847,6 +2066,7 @@ var mapdata =
       }
     },
     "/d/green/eight4": {
+      "type": "ROOM",
       "short": "迷阵",
       "exits": {
         "south": "/d/green/closed",
@@ -1856,6 +2076,7 @@ var mapdata =
       }
     },
     "/d/green/eight5": {
+      "type": "ROOM",
       "short": "迷阵",
       "exits": {
         "south": "/d/green/eight5",
@@ -1865,6 +2086,7 @@ var mapdata =
       }
     },
     "/d/green/eight6": {
+      "type": "ROOM",
       "short": "迷阵",
       "exits": {
         "south": "/d/green/eight5",
@@ -1874,6 +2096,7 @@ var mapdata =
       }
     },
     "/d/green/eight7": {
+      "type": "ROOM",
       "short": "迷阵",
       "exits": {
         "south": "/d/green/stoneroom",
@@ -1883,6 +2106,7 @@ var mapdata =
       }
     },
     "/d/green/entrance": {
+      "type": "ROOM",
       "short": "山路尽头",
       "exits": {
         "north": "/d/green/outdoor",
@@ -1891,6 +2115,7 @@ var mapdata =
       }
     },
     "/d/green/field0": {
+      "type": "ROOM",
       "short": "小广场",
       "exits": {
         "west": "/d/green/path8",
@@ -1900,6 +2125,7 @@ var mapdata =
       }
     },
     "/d/green/field1": {
+      "type": "ROOM",
       "short": "采石场的空地",
       "exits": {
         "west": "/d/green/field0",
@@ -1911,6 +2137,7 @@ var mapdata =
       }
     },
     "/d/green/house0": {
+      "type": "ROOM",
       "short": "民宅",
       "exits": {
         "east": "/d/green/path3"
@@ -1921,6 +2148,7 @@ var mapdata =
       }
     },
     "/d/green/house1": {
+      "type": "ROOM",
       "short": "工匠的家",
       "exits": {
         "south": "/d/green/path8"
@@ -1930,6 +2158,7 @@ var mapdata =
       }
     },
     "/d/green/house2": {
+      "type": "ROOM",
       "short": "民宅",
       "exits": {
         "south": "/d/green/field0"
@@ -1940,12 +2169,14 @@ var mapdata =
       }
     },
     "/d/green/house3": {
+      "type": "ROOM",
       "short": "民宅",
       "exits": {
         "south": "/d/green/field1"
       }
     },
     "/d/green/house4": {
+      "type": "ROOM",
       "short": "村长的家",
       "exits": {
         "north": "/d/green/field0"
@@ -1955,6 +2186,7 @@ var mapdata =
       }
     },
     "/d/green/mpath0": {
+      "type": "ROOM",
       "short": "山路",
       "exits": {
         "south": "/d/green/cave2",
@@ -1962,6 +2194,7 @@ var mapdata =
       }
     },
     "/d/green/mpath1": {
+      "type": "ROOM",
       "short": "山路",
       "exits": {
         "south": "/d/green/mpath0",
@@ -1969,6 +2202,7 @@ var mapdata =
       }
     },
     "/d/green/mpath2": {
+      "type": "ROOM",
       "short": "山路",
       "exits": {
         "south": "/d/green/mpath1",
@@ -1976,6 +2210,7 @@ var mapdata =
       }
     },
     "/d/green/outdoor": {
+      "type": "ROOM",
       "short": "石室",
       "exits": {
         "enter": "/d/green/cavehall",
@@ -1983,6 +2218,7 @@ var mapdata =
       }
     },
     "/d/green/path0": {
+      "type": "ROOM",
       "short": "小路的尽头",
       "exits": {
         "north": "/d/green/cave0",
@@ -1990,6 +2226,7 @@ var mapdata =
       }
     },
     "/d/green/path1": {
+      "type": "ROOM",
       "short": "小路",
       "exits": {
         "north": "/d/green/path0",
@@ -1997,6 +2234,7 @@ var mapdata =
       }
     },
     "/d/green/path2": {
+      "type": "ROOM",
       "short": "三叉路口",
       "exits": {
         "south": "/d/green/path3",
@@ -2008,6 +2246,7 @@ var mapdata =
       }
     },
     "/d/green/path3": {
+      "type": "ROOM",
       "short": "三叉路口",
       "exits": {
         "north": "/d/green/path2",
@@ -2017,6 +2256,7 @@ var mapdata =
       }
     },
     "/d/green/path4": {
+      "type": "ROOM",
       "short": "小路",
       "exits": {
         "south": "/d/green/path5",
@@ -2025,6 +2265,7 @@ var mapdata =
       }
     },
     "/d/green/path5": {
+      "type": "ROOM",
       "short": "石板路",
       "exits": {
         "west": "/d/green/path6",
@@ -2033,6 +2274,7 @@ var mapdata =
       }
     },
     "/d/green/path6": {
+      "type": "ROOM",
       "short": "石板路",
       "exits": {
         "west": "/d/snow/crossroad",
@@ -2040,6 +2282,7 @@ var mapdata =
       }
     },
     "/d/green/path8": {
+      "type": "ROOM",
       "short": "小巷子",
       "exits": {
         "west": "/d/green/path3",
@@ -2051,6 +2294,7 @@ var mapdata =
       }
     },
     "/d/green/shop0": {
+      "type": "ROOM",
       "short": "沈记商行",
       "exits": {
         "west": "/d/green/path4"
@@ -2061,6 +2305,7 @@ var mapdata =
       }
     },
     "/d/green/station0": {
+      "type": "ROOM",
       "short": "工作站",
       "exits": {
         "northeast": "/d/green/station1",
@@ -2071,6 +2316,7 @@ var mapdata =
       }
     },
     "/d/green/station1": {
+      "type": "ROOM",
       "short": "工作站",
       "exits": {
         "north": "/d/green/field1",
@@ -2081,6 +2327,7 @@ var mapdata =
       }
     },
     "/d/green/stoneroom": {
+      "type": "ROOM",
       "short": "石室",
       "exits": {
         "west": "/d/green/cavehall",
@@ -2088,12 +2335,14 @@ var mapdata =
       }
     },
     "/d/green/temple0": {
+      "type": "ROOM",
       "short": "土地庙",
       "exits": {
         "east": "/d/green/path2"
       }
     },
     "/d/green/water": {
+      "type": "ROOM",
       "short": "溪水边",
       "exits": {
         "west": "/d/green/outdoor",
@@ -2101,6 +2350,7 @@ var mapdata =
       }
     },
     "/d/latemoon/bamboo": {
+      "type": "ROOM",
       "short": "竹林",
       "exits": {
         "east": "/d/latemoon/bamboo1",
@@ -2110,6 +2360,7 @@ var mapdata =
       }
     },
     "/d/latemoon/bamboo1": {
+      "type": "ROOM",
       "short": "竹林",
       "exits": {
         "east": "/d/latemoon/bamboo",
@@ -2119,6 +2370,7 @@ var mapdata =
       }
     },
     "/d/latemoon/bamboo2": {
+      "type": "ROOM",
       "short": "竹林",
       "exits": {
         "east": "/d/latemoon/bamboo4",
@@ -2128,6 +2380,7 @@ var mapdata =
       }
     },
     "/d/latemoon/bamboo3": {
+      "type": "ROOM",
       "short": "竹林",
       "exits": {
         "north": "/d/latemoon/sroad5",
@@ -2137,6 +2390,7 @@ var mapdata =
       }
     },
     "/d/latemoon/bamboo4": {
+      "type": "ROOM",
       "short": "竹林",
       "exits": {
         "west": "/d/latemoon/bamboo3",
@@ -2149,6 +2403,7 @@ var mapdata =
       }
     },
     "/d/latemoon/entrance": {
+      "type": "ROOM",
       "short": "碎石小径",
       "exits": {
         "west": "/d/latemoon/gate",
@@ -2159,6 +2414,7 @@ var mapdata =
       }
     },
     "/d/latemoon/front_yard": {
+      "type": "ROOM",
       "short": "晚月庄前庭",
       "exits": {
         "east": "/d/latemoon/gate",
@@ -2167,6 +2423,7 @@ var mapdata =
       }
     },
     "/d/latemoon/gate": {
+      "type": "ROOM",
       "short": "晚月庄大门",
       "exits": {
         "east": "/d/latemoon/entrance",
@@ -2174,6 +2431,7 @@ var mapdata =
       }
     },
     "/d/latemoon/latebook": {
+      "type": "ROOM",
       "short": "后院书房",
       "exits": {
         "east": "/d/latemoon/latemoon7"
@@ -2183,6 +2441,7 @@ var mapdata =
       }
     },
     "/d/latemoon/latemoon1": {
+      "type": "ROOM",
       "short": "晚月庄大厅",
       "exits": {
         "east": "/d/latemoon/front_yard",
@@ -2195,6 +2454,7 @@ var mapdata =
       }
     },
     "/d/latemoon/latemoon2": {
+      "type": "ROOM",
       "short": "内厅",
       "exits": {
         "west": "/d/latemoon/latemoon4"
@@ -2204,6 +2464,7 @@ var mapdata =
       }
     },
     "/d/latemoon/latemoon3": {
+      "type": "ROOM",
       "short": "傍厅",
       "exits": {
         "south": "/d/latemoon/latemoon1"
@@ -2213,6 +2474,7 @@ var mapdata =
       }
     },
     "/d/latemoon/latemoon4": {
+      "type": "ROOM",
       "short": "内厅穿堂",
       "exits": {
         "north": "/d/latemoon/latemoonc",
@@ -2221,6 +2483,7 @@ var mapdata =
       }
     },
     "/d/latemoon/latemoon5": {
+      "type": "ROOM",
       "short": "后院走道",
       "exits": {
         "west": "/d/latemoon/latemoon6",
@@ -2228,6 +2491,7 @@ var mapdata =
       }
     },
     "/d/latemoon/latemoon6": {
+      "type": "ROOM",
       "short": "禁闭房",
       "exits": {
         "east": "/d/latemoon/latemoon5"
@@ -2237,6 +2501,7 @@ var mapdata =
       }
     },
     "/d/latemoon/latemoon7": {
+      "type": "ROOM",
       "short": "后院走道",
       "exits": {
         "south": "/d/latemoon/latemoon8",
@@ -2245,12 +2510,14 @@ var mapdata =
       }
     },
     "/d/latemoon/latemoon8": {
+      "type": "ROOM",
       "short": "密室",
       "exits": {
         "north": "/d/latemoon/latemoon7"
       }
     },
     "/d/latemoon/latemoonc": {
+      "type": "ROOM",
       "short": "大厅后院",
       "exits": {
         "north": "/d/latemoon/latemoon5",
@@ -2260,6 +2527,7 @@ var mapdata =
       }
     },
     "/d/latemoon/miroom": {
+      "type": "ROOM",
       "short": "set(,HIY \"密室\" NOR);",
       "exits": {
         "north": "/d/latemoon/miroom2"
@@ -2269,6 +2537,7 @@ var mapdata =
       }
     },
     "/d/latemoon/miroom2": {
+      "type": "ROOM",
       "short": "内厅",
       "exits": {
         "south": "/d/latemoon/miroom"
@@ -2278,6 +2547,7 @@ var mapdata =
       }
     },
     "/d/latemoon/park/bridge1": {
+      "type": "ROOM",
       "short": "沁芳桥",
       "exits": {
         "north": "/d/latemoon/park/moonc",
@@ -2285,6 +2555,7 @@ var mapdata =
       }
     },
     "/d/latemoon/park/bridge2": {
+      "type": "ROOM",
       "short": "翠嫣桥",
       "exits": {
         "north": "/d/latemoon/park/pavilion1",
@@ -2293,6 +2564,7 @@ var mapdata =
       }
     },
     "/d/latemoon/park/bridge3": {
+      "type": "ROOM",
       "short": "朱栏板桥",
       "exits": {
         "south": "/d/latemoon/park/moon4",
@@ -2300,6 +2572,7 @@ var mapdata =
       }
     },
     "/d/latemoon/park/flower2": {
+      "type": "ROOM",
       "short": "月洞门",
       "exits": {
         "north": "/d/latemoon/park/yard1",
@@ -2307,6 +2580,7 @@ var mapdata =
       }
     },
     "/d/latemoon/park/moon1": {
+      "type": "ROOM",
       "short": "长廊曲洞",
       "exits": {
         "west": "/d/latemoon/park/moonc",
@@ -2314,6 +2588,7 @@ var mapdata =
       }
     },
     "/d/latemoon/park/moon2": {
+      "type": "ROOM",
       "short": "湘园小径",
       "exits": {
         "south": "/d/latemoon/park/moon5",
@@ -2321,6 +2596,7 @@ var mapdata =
       }
     },
     "/d/latemoon/park/moon3": {
+      "type": "ROOM",
       "short": "甬路",
       "exits": {
         "southeast": "/d/latemoon/park/paroad2",
@@ -2329,6 +2605,7 @@ var mapdata =
       }
     },
     "/d/latemoon/park/moon4": {
+      "type": "ROOM",
       "short": "暖香榭",
       "exits": {
         "southwest": "/d/latemoon/park/paroad1",
@@ -2340,6 +2617,7 @@ var mapdata =
       }
     },
     "/d/latemoon/park/moon5": {
+      "type": "ROOM",
       "short": "桂花园",
       "exits": {
         "south": "/d/latemoon/park/moon3",
@@ -2350,6 +2628,7 @@ var mapdata =
       }
     },
     "/d/latemoon/park/moonc": {
+      "type": "ROOM",
       "short": "翠嶂",
       "exits": {
         "north": "/d/latemoon/park/flower2",
@@ -2360,6 +2639,7 @@ var mapdata =
       "objects": {}
     },
     "/d/latemoon/park/moondoor": {
+      "type": "ROOM",
       "short": "晚月庄后门",
       "exits": {
         "north": "/d/latemoon/park/paroad1",
@@ -2367,6 +2647,7 @@ var mapdata =
       }
     },
     "/d/latemoon/park/moroom": {
+      "type": "ROOM",
       "short": "紫翎小轩",
       "exits": {
         "east": "/d/latemoon/park/moon3"
@@ -2377,6 +2658,7 @@ var mapdata =
       }
     },
     "/d/latemoon/park/paroad1": {
+      "type": "ROOM",
       "short": "甬路",
       "exits": {
         "northwest": "/d/latemoon/park/bridge2",
@@ -2385,6 +2667,7 @@ var mapdata =
       }
     },
     "/d/latemoon/park/paroad2": {
+      "type": "ROOM",
       "short": "□香榭",
       "exits": {
         "east": "/d/latemoon/park/bridge2",
@@ -2395,6 +2678,7 @@ var mapdata =
       }
     },
     "/d/latemoon/park/pavilion1": {
+      "type": "ROOM",
       "short": "沁芳亭",
       "exits": {
         "north": "/d/latemoon/park/bridge1",
@@ -2405,6 +2689,7 @@ var mapdata =
       }
     },
     "/d/latemoon/park/yard1": {
+      "type": "ROOM",
       "short": "前院",
       "exits": {
         "north": "/d/latemoon/front_yard",
@@ -2412,6 +2697,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/bathroom": {
+      "type": "ROOM",
       "short": "小花池",
       "objects": {
         "/d/latemoon/room/npc/fireangel": 1,
@@ -2422,6 +2708,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/bathroom1": {
+      "type": "ROOM",
       "short": "沐浴更衣室",
       "objects": {
         "/d/latemoon/room/npc/shinyu": 1
@@ -2432,6 +2719,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/corridor7": {
+      "type": "ROOM",
       "short": "内厅",
       "exits": {
         "south": "/d/latemoon/room/flower1",
@@ -2443,6 +2731,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/eastroom": {
+      "type": "ROOM",
       "short": "东厢房",
       "exits": {
         "west": "/d/latemoon/room/eroad1"
@@ -2453,6 +2742,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/eat1": {
+      "type": "ROOM",
       "short": "大饭厅",
       "exits": {
         "east": "/d/latemoon/room/eat2",
@@ -2464,6 +2754,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/eat2": {
+      "type": "ROOM",
       "short": "膳房",
       "exits": {
         "east": "/d/latemoon/room/kitchen",
@@ -2475,6 +2766,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/eroad1": {
+      "type": "ROOM",
       "short": "东厢房走道",
       "exits": {
         "east": "/d/latemoon/room/eastroom",
@@ -2483,6 +2775,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/eroad2": {
+      "type": "ROOM",
       "short": "东厢房走道",
       "exits": {
         "north": "/d/latemoon/room/lroad1",
@@ -2490,6 +2783,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/flower1": {
+      "type": "ROOM",
       "short": "内厅穿堂",
       "exits": {
         "north": "/d/latemoon/room/corridor7",
@@ -2501,6 +2795,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/guest1": {
+      "type": "ROOM",
       "short": "客房",
       "exits": {
         "north": "/d/latemoon/room/two1"
@@ -2510,6 +2805,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/guest2": {
+      "type": "ROOM",
       "short": "上等厢房",
       "exits": {
         "north": "/d/latemoon/room/two2"
@@ -2519,6 +2815,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/kitchen": {
+      "type": "ROOM",
       "short": "厨房",
       "exits": {
         "west": "/d/latemoon/room/eat2"
@@ -2529,6 +2826,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/lcenter": {
+      "type": "ROOM",
       "short": "后厅",
       "exits": {
         "east": "/d/latemoon/room/lroad1",
@@ -2542,6 +2840,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/lroad1": {
+      "type": "ROOM",
       "short": "后厅走道",
       "exits": {
         "south": "/d/latemoon/room/eroad2",
@@ -2549,6 +2848,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/lroad3": {
+      "type": "ROOM",
       "short": "后厅走道",
       "exits": {
         "east": "/d/latemoon/room/lcenter",
@@ -2558,6 +2858,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/lstudio": {
+      "type": "ROOM",
       "short": "内书房",
       "exits": {
         "north": "/d/latemoon/room/lcenter"
@@ -2568,6 +2869,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/room4": {
+      "type": "ROOM",
       "short": "内书房",
       "exits": {
         "east": "/d/latemoon/room/lroad3"
@@ -2578,6 +2880,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/two1": {
+      "type": "ROOM",
       "short": "夹道",
       "exits": {
         "south": "/d/latemoon/room/guest1",
@@ -2586,6 +2889,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/two2": {
+      "type": "ROOM",
       "short": "夹道",
       "exits": {
         "south": "/d/latemoon/room/guest2",
@@ -2593,6 +2897,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/twoc": {
+      "type": "ROOM",
       "short": "仪门",
       "exits": {
         "north": "/d/latemoon/latemoon4",
@@ -2602,6 +2907,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/westroom": {
+      "type": "ROOM",
       "short": "西厢房",
       "exits": {
         "east": "/d/latemoon/room/wroad2"
@@ -2612,6 +2918,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/wroad1": {
+      "type": "ROOM",
       "short": "西厢房走道",
       "exits": {
         "north": "/d/latemoon/room/lroad3",
@@ -2619,6 +2926,7 @@ var mapdata =
       }
     },
     "/d/latemoon/room/wroad2": {
+      "type": "ROOM",
       "short": "西厢房走道",
       "exits": {
         "north": "/d/latemoon/room/wroad1",
@@ -2628,6 +2936,7 @@ var mapdata =
       }
     },
     "/d/latemoon/sroad1": {
+      "type": "ROOM",
       "short": "山路",
       "exits": {
         "north": "/d/latemoon/park/moondoor",
@@ -2635,6 +2944,7 @@ var mapdata =
       }
     },
     "/d/latemoon/sroad2": {
+      "type": "ROOM",
       "short": "蜿蜒小径",
       "exits": {
         "northwest": "/d/latemoon/sroad1",
@@ -2642,6 +2952,7 @@ var mapdata =
       }
     },
     "/d/latemoon/sroad3": {
+      "type": "ROOM",
       "short": "小径",
       "exits": {
         "northwest": "/d/latemoon/sroad2",
@@ -2649,6 +2960,7 @@ var mapdata =
       }
     },
     "/d/latemoon/sroad4": {
+      "type": "ROOM",
       "short": "蜿蜒小径",
       "exits": {
         "west": "/d/latemoon/sroad3",
@@ -2659,6 +2971,7 @@ var mapdata =
       }
     },
     "/d/latemoon/sroad5": {
+      "type": "ROOM",
       "short": "小径",
       "exits": {
         "north": "/d/latemoon/sroad4",
@@ -2670,6 +2983,7 @@ var mapdata =
       }
     },
     "/d/latemoon/upstar/upcenter": {
+      "type": "ROOM",
       "short": "佛堂门前",
       "exits": {
         "west": "/d/latemoon/upstar/uproom",
@@ -2678,6 +2992,7 @@ var mapdata =
       }
     },
     "/d/latemoon/upstar/uplook": {
+      "type": "ROOM",
       "short": "观景台",
       "exits": {
         "west": "/d/latemoon/upstar/upstarc",
@@ -2688,6 +3003,7 @@ var mapdata =
       }
     },
     "/d/latemoon/upstar/uproom": {
+      "type": "ROOM",
       "short": "佛堂",
       "exits": {
         "east": "/d/latemoon/upstar/upcenter"
@@ -2697,6 +3013,7 @@ var mapdata =
       }
     },
     "/d/latemoon/upstar/uproom2": {
+      "type": "ROOM",
       "short": "翠湘阁",
       "exits": {
         "south": "/d/latemoon/upstar/upstar4"
@@ -2706,6 +3023,7 @@ var mapdata =
       }
     },
     "/d/latemoon/upstar/uproom3": {
+      "type": "ROOM",
       "short": "缀芳阁",
       "exits": {
         "north": "/d/latemoon/upstar/upstar3"
@@ -2716,6 +3034,7 @@ var mapdata =
       }
     },
     "/d/latemoon/upstar/upstar1": {
+      "type": "ROOM",
       "short": "二楼走廊",
       "exits": {
         "east": "/d/latemoon/upstar/upstar4",
@@ -2724,6 +3043,7 @@ var mapdata =
       }
     },
     "/d/latemoon/upstar/upstar2": {
+      "type": "ROOM",
       "short": "二楼走廊",
       "exits": {
         "east": "/d/latemoon/upstar/upstar3",
@@ -2732,6 +3052,7 @@ var mapdata =
       }
     },
     "/d/latemoon/upstar/upstar3": {
+      "type": "ROOM",
       "short": "二楼走廊",
       "exits": {
         "west": "/d/latemoon/upstar/upstar2",
@@ -2740,6 +3061,7 @@ var mapdata =
       }
     },
     "/d/latemoon/upstar/upstar4": {
+      "type": "ROOM",
       "short": "二楼走廊",
       "exits": {
         "west": "/d/latemoon/upstar/upstar1",
@@ -2748,6 +3070,7 @@ var mapdata =
       }
     },
     "/d/latemoon/upstar/upstarc": {
+      "type": "ROOM",
       "short": "前堂楼",
       "exits": {
         "east": "/d/latemoon/upstar/uplook",
@@ -2756,6 +3079,7 @@ var mapdata =
       }
     },
     "/d/oldpine/cave1": {
+      "type": "ROOM",
       "short": "山洞",
       "exits": {
         "south": "/d/oldpine/cave+(random(4)+1)",
@@ -2765,6 +3089,7 @@ var mapdata =
       }
     },
     "/d/oldpine/cave2": {
+      "type": "ROOM",
       "short": "山洞",
       "exits": {
         "south": "/d/oldpine/cave+(random(4)+1)",
@@ -2774,6 +3099,7 @@ var mapdata =
       }
     },
     "/d/oldpine/cave3": {
+      "type": "ROOM",
       "short": "山洞",
       "exits": {
         "south": "/d/oldpine/cave+(random(4)+1)",
@@ -2783,6 +3109,7 @@ var mapdata =
       }
     },
     "/d/oldpine/cave4": {
+      "type": "ROOM",
       "short": "山洞",
       "exits": {
         "south": "/d/oldpine/cave+(random(4)+1)",
@@ -2792,6 +3119,7 @@ var mapdata =
       }
     },
     "/d/oldpine/cave5": {
+      "type": "ROOM",
       "short": "山洞",
       "exits": {
         "eastdown": "/d/oldpine/waterfall"
@@ -2801,6 +3129,7 @@ var mapdata =
       }
     },
     "/d/oldpine/clearing": {
+      "type": "ROOM",
       "short": "林间空地",
       "exits": {
         "west": "/d/oldpine/npath3",
@@ -2809,12 +3138,15 @@ var mapdata =
       }
     },
     "/d/oldpine/cliff1": {
+      "type": "ROOM",
       "short": "山壁上的窄穴"
     },
     "/d/oldpine/cliff2": {
+      "type": "ROOM",
       "short": "山壁上的窄穴"
     },
     "/d/oldpine/cliffdown": {
+      "type": "ROOM",
       "short": "林间....不....悬崖边",
       "exits": {
         "south": "/d/oldpine/pine+(random(6)+1)",
@@ -2825,12 +3157,14 @@ var mapdata =
       }
     },
     "/d/oldpine/cliffside": {
+      "type": "ROOM",
       "short": "林间....不....悬崖边",
       "exits": {
         "north": "/d/oldpine/pine1"
       }
     },
     "/d/oldpine/epath1": {
+      "type": "ROOM",
       "short": "林间小路",
       "exits": {
         "west": "/d/oldpine/clearing",
@@ -2838,6 +3172,7 @@ var mapdata =
       }
     },
     "/d/oldpine/epath2": {
+      "type": "ROOM",
       "short": "小石桥",
       "exits": {
         "west": "/d/oldpine/epath1",
@@ -2845,6 +3180,7 @@ var mapdata =
       }
     },
     "/d/oldpine/epath3": {
+      "type": "ROOM",
       "short": "林间小路",
       "exits": {
         "west": "/d/oldpine/epath2"
@@ -2854,6 +3190,7 @@ var mapdata =
       }
     },
     "/d/oldpine/keep1": {
+      "type": "ROOM",
       "short": "老松寨秘密入口",
       "exits": {
         "west": "/d/oldpine/pine2",
@@ -2864,6 +3201,7 @@ var mapdata =
       }
     },
     "/d/oldpine/keep2": {
+      "type": "ROOM",
       "short": "老松寨",
       "exits": {
         "west": "/d/oldpine/keep1",
@@ -2875,6 +3213,7 @@ var mapdata =
       }
     },
     "/d/oldpine/keep3": {
+      "type": "ROOM",
       "short": "老松寨",
       "exits": {
         "west": "/d/oldpine/keep2"
@@ -2885,6 +3224,7 @@ var mapdata =
       }
     },
     "/d/oldpine/lake": {
+      "type": "ROOM",
       "short": "水潭",
       "exits": {
         "north": "/d/oldpine/riverbank1"
@@ -2894,6 +3234,7 @@ var mapdata =
       }
     },
     "/d/oldpine/npath1": {
+      "type": "ROOM",
       "short": "林间小路",
       "exits": {
         "south": "/d/oldpine/npath2",
@@ -2901,6 +3242,7 @@ var mapdata =
       }
     },
     "/d/oldpine/npath2": {
+      "type": "ROOM",
       "short": "林间小路",
       "exits": {
         "southeast": "/d/oldpine/npath3",
@@ -2908,6 +3250,7 @@ var mapdata =
       }
     },
     "/d/oldpine/npath3": {
+      "type": "ROOM",
       "short": "林间小路",
       "exits": {
         "east": "/d/oldpine/clearing",
@@ -2915,6 +3258,7 @@ var mapdata =
       }
     },
     "/d/oldpine/passage": {
+      "type": "ROOM",
       "short": "秘密通道入口",
       "exits": {
         "north": "/d/oldpine/secrectpath1",
@@ -2922,12 +3266,14 @@ var mapdata =
       }
     },
     "/d/oldpine/path3": {
+      "type": "ROOM",
       "short": "秘密通道",
       "exits": {
         "south": "/d/oldpine/secrectpath1"
       }
     },
     "/d/oldpine/pine1": {
+      "type": "ROOM",
       "short": "松树林",
       "objects": {
         "/d/oldpine/npc/tall_bandit": 1,
@@ -2941,6 +3287,7 @@ var mapdata =
       }
     },
     "/d/oldpine/pine2": {
+      "type": "ROOM",
       "short": "松树林",
       "exits": {
         "south": "/d/oldpine/pine+(random(5)+2)",
@@ -2950,6 +3297,7 @@ var mapdata =
       }
     },
     "/d/oldpine/pine3": {
+      "type": "ROOM",
       "short": "松树林",
       "exits": {
         "south": "/d/oldpine/pine+(random(5)+2)",
@@ -2959,6 +3307,7 @@ var mapdata =
       }
     },
     "/d/oldpine/pine4": {
+      "type": "ROOM",
       "short": "松树林",
       "exits": {
         "south": "/d/oldpine/pine+(random(5)+2)",
@@ -2968,6 +3317,7 @@ var mapdata =
       }
     },
     "/d/oldpine/pine5": {
+      "type": "ROOM",
       "short": "松树林",
       "exits": {
         "south": "/d/oldpine/pine+(random(5)+2)",
@@ -2977,6 +3327,7 @@ var mapdata =
       }
     },
     "/d/oldpine/pine6": {
+      "type": "ROOM",
       "short": "松树林",
       "exits": {
         "south": "/d/oldpine/pine+(random(5)+2)",
@@ -2986,6 +3337,7 @@ var mapdata =
       }
     },
     "/d/oldpine/pine7": {
+      "type": "ROOM",
       "short": "松树林",
       "objects": {
         "/d/oldpine/npc/wolf_dog": 1
@@ -2999,6 +3351,7 @@ var mapdata =
       }
     },
     "/d/oldpine/riverbank1": {
+      "type": "ROOM",
       "short": "山涧之中",
       "exits": {
         "north": "/d/oldpine/riverbank2",
@@ -3006,6 +3359,7 @@ var mapdata =
       }
     },
     "/d/oldpine/riverbank2": {
+      "type": "ROOM",
       "short": "山涧之中",
       "exits": {
         "north": "/d/oldpine/waterfall",
@@ -3013,6 +3367,7 @@ var mapdata =
       }
     },
     "/d/oldpine/secrectpath1": {
+      "type": "ROOM",
       "short": "秘密通道",
       "exits": {
         "north": "/d/oldpine/path3",
@@ -3020,6 +3375,7 @@ var mapdata =
       }
     },
     "/d/oldpine/spath1": {
+      "type": "ROOM",
       "short": "林间小路",
       "objects": {
         "/d/oldpine/npc/bandit": 3
@@ -3030,6 +3386,7 @@ var mapdata =
       }
     },
     "/d/oldpine/spath2": {
+      "type": "ROOM",
       "short": "下坡道",
       "exits": {
         "south": "/d/oldpine/spath1",
@@ -3037,6 +3394,7 @@ var mapdata =
       }
     },
     "/d/oldpine/spath3": {
+      "type": "ROOM",
       "short": "下坡道",
       "exits": {
         "north": "/d/oldpine/spath4",
@@ -3044,18 +3402,21 @@ var mapdata =
       }
     },
     "/d/oldpine/spath4": {
+      "type": "ROOM",
       "short": "下坡道",
       "exits": {
         "south": "/d/oldpine/spath3"
       }
     },
     "/d/oldpine/stone": {
+      "type": "ROOM",
       "short": "大青石上",
       "objects": {
         "/d/oldpine/npc/venomsnake": 1
       }
     },
     "/d/oldpine/tree1": {
+      "type": "ROOM",
       "short": "大松树上",
       "objects": {
         "/d/oldpine/npc/spy": 1
@@ -3066,6 +3427,7 @@ var mapdata =
       }
     },
     "/d/oldpine/tree2": {
+      "type": "ROOM",
       "short": "大松树上",
       "exits": {
         "up": "/d/oldpine/tree3",
@@ -3076,18 +3438,21 @@ var mapdata =
       }
     },
     "/d/oldpine/tree3": {
+      "type": "ROOM",
       "short": "大松树顶",
       "exits": {
         "down": "/d/oldpine/tree2"
       }
     },
     "/d/oldpine/waterfall": {
+      "type": "ROOM",
       "short": "瀑布前",
       "exits": {
         "south": "/d/oldpine/riverbank2"
       }
     },
     "/d/sanyen/back_temple": {
+      "type": "ROOM",
       "short": "后殿",
       "exits": {
         "south": "/d/sanyen/corridor",
@@ -3098,6 +3463,7 @@ var mapdata =
       }
     },
     "/d/sanyen/corridor": {
+      "type": "ROOM",
       "short": "走廊",
       "exits": {
         "west": "/d/sanyen/corridor1",
@@ -3106,6 +3472,7 @@ var mapdata =
       }
     },
     "/d/sanyen/corridor1": {
+      "type": "ROOM",
       "short": "走廊",
       "exits": {
         "west": "/d/sanyen/kitchen",
@@ -3113,6 +3480,7 @@ var mapdata =
       }
     },
     "/d/sanyen/door": {
+      "type": "ROOM",
       "short": "山烟寺寺门",
       "exits": {
         "north": "/d/sanyen/road1",
@@ -3120,12 +3488,14 @@ var mapdata =
       }
     },
     "/d/sanyen/drug_field": {
+      "type": "ROOM",
       "short": "药圃",
       "exits": {
         "south": "/d/sanyen/road2"
       }
     },
     "/d/sanyen/front_yard": {
+      "type": "ROOM",
       "short": "山烟寺前广场",
       "exits": {
         "north": "/d/sanyen/door",
@@ -3136,6 +3506,7 @@ var mapdata =
       }
     },
     "/d/sanyen/gate": {
+      "type": "ROOM",
       "short": "山烟寺山门",
       "exits": {
         "south": "/d/sanyen/sroad2",
@@ -3147,6 +3518,7 @@ var mapdata =
       }
     },
     "/d/sanyen/heal_room": {
+      "type": "ROOM",
       "short": "流云轩",
       "exits": {
         "south": "/d/sanyen/inner_yard"
@@ -3156,6 +3528,7 @@ var mapdata =
       }
     },
     "/d/sanyen/inner_yard": {
+      "type": "ROOM",
       "short": "庭园",
       "exits": {
         "north": "/d/sanyen/heal_room",
@@ -3166,6 +3539,7 @@ var mapdata =
       }
     },
     "/d/sanyen/kitchen": {
+      "type": "ROOM",
       "short": "香积厨",
       "exits": {
         "east": "/d/sanyen/corridor1"
@@ -3175,6 +3549,7 @@ var mapdata =
       }
     },
     "/d/sanyen/road1": {
+      "type": "ROOM",
       "short": "石板大道",
       "exits": {
         "north": "/d/sanyen/temple",
@@ -3186,6 +3561,7 @@ var mapdata =
       }
     },
     "/d/sanyen/road2": {
+      "type": "ROOM",
       "short": "石板小径",
       "exits": {
         "west": "/d/sanyen/road1",
@@ -3196,6 +3572,7 @@ var mapdata =
       }
     },
     "/d/sanyen/sroad1": {
+      "type": "ROOM",
       "short": "山路",
       "exits": {
         "west": "/d/sanyen/sroad2",
@@ -3203,6 +3580,7 @@ var mapdata =
       }
     },
     "/d/sanyen/sroad2": {
+      "type": "ROOM",
       "short": "山路",
       "exits": {
         "east": "/d/sanyen/sroad1",
@@ -3210,6 +3588,7 @@ var mapdata =
       }
     },
     "/d/sanyen/temple": {
+      "type": "ROOM",
       "short": "大雄宝殿",
       "exits": {
         "south": "/d/sanyen/road1",
@@ -3221,6 +3600,7 @@ var mapdata =
       }
     },
     "/d/sanyen/tower": {
+      "type": "ROOM",
       "short": "塔林",
       "exits": {
         "west": "/d/sanyen/back_temple"
@@ -3230,6 +3610,7 @@ var mapdata =
       }
     },
     "/d/sanyen/tunnel": {
+      "type": "ROOM",
       "short": "隧道",
       "exits": {
         "west": "/d/latemoon/sroad5",
@@ -3237,6 +3618,7 @@ var mapdata =
       }
     },
     "/d/sanyen/tunnele": {
+      "type": "ROOM",
       "short": "隧道口",
       "exits": {
         "west": "/d/sanyen/tunnel",
@@ -3244,6 +3626,7 @@ var mapdata =
       }
     },
     "/d/snow/bank": {
+      "type": "BANK",
       "short": "安记钱庄",
       "exits": {
         "east": "/d/snow/mstreet1"
@@ -3253,6 +3636,7 @@ var mapdata =
       }
     },
     "/d/snow/crossroad": {
+      "type": "ROOM",
       "short": "山坳",
       "exits": {
         "north": "/d/goathill/mroad1",
@@ -3261,12 +3645,14 @@ var mapdata =
       }
     },
     "/d/snow/e_room": {
+      "type": "ROOM",
       "short": "客房",
       "exits": {
         "west": "/d/snow/inn_2f"
       }
     },
     "/d/snow/eroad1": {
+      "type": "ROOM",
       "short": "黄土小径",
       "exits": {
         "east": "/d/snow/eroad2",
@@ -3275,6 +3661,7 @@ var mapdata =
       }
     },
     "/d/snow/eroad2": {
+      "type": "ROOM",
       "short": "黄土小径",
       "exits": {
         "east": "/d/snow/eroad3",
@@ -3285,6 +3672,7 @@ var mapdata =
       }
     },
     "/d/snow/eroad3": {
+      "type": "ROOM",
       "short": "山路",
       "exits": {
         "south": "/d/oldpine/npath1",
@@ -3293,12 +3681,14 @@ var mapdata =
       }
     },
     "/d/snow/guestroom": {
+      "type": "ROOM",
       "short": "客房",
       "exits": {
         "north": "/d/snow/inneryard"
       }
     },
     "/d/snow/herbshop": {
+      "type": "ROOM",
       "short": "桑邻药铺",
       "exits": {
         "east": "/d/snow/mstreet3"
@@ -3309,9 +3699,11 @@ var mapdata =
       }
     },
     "/d/snow/herbshop1": {
+      "type": "ROOM",
       "short": "药铺密室"
     },
     "/d/snow/hockshop": {
+      "type": "HOCKSHOP",
       "short": "丰登当铺",
       "exits": {
         "west": "/d/snow/mstreet3",
@@ -3319,12 +3711,14 @@ var mapdata =
       }
     },
     "/d/snow/hockshop2": {
+      "type": "ROOM",
       "short": "储藏室",
       "exits": {
         "west": "/d/snow/hockshop"
       }
     },
     "/d/snow/inn": {
+      "type": "ROOM",
       "short": "饮风客栈",
       "exits": {
         "east": "/d/snow/square",
@@ -3337,6 +3731,7 @@ var mapdata =
       }
     },
     "/d/snow/inn_2f": {
+      "type": "ROOM",
       "short": "饮风客栈二楼",
       "exits": {
         "west": "/d/snow/w_room",
@@ -3349,12 +3744,14 @@ var mapdata =
       }
     },
     "/d/snow/innerhall": {
+      "type": "ROOM",
       "short": "武馆内院",
       "exits": {
         "west": "/d/snow/inneryard"
       }
     },
     "/d/snow/inneryard": {
+      "type": "ROOM",
       "short": "天井",
       "exits": {
         "south": "/d/snow/guestroom",
@@ -3364,6 +3761,7 @@ var mapdata =
       }
     },
     "/d/snow/mstreet1": {
+      "type": "ROOM",
       "short": "雪亭镇街道",
       "exits": {
         "west": "/d/snow/bank",
@@ -3373,6 +3771,7 @@ var mapdata =
       }
     },
     "/d/snow/mstreet2": {
+      "type": "ROOM",
       "short": "雪亭镇街道",
       "exits": {
         "north": "/d/snow/mstreet3",
@@ -3386,6 +3785,7 @@ var mapdata =
       }
     },
     "/d/snow/mstreet3": {
+      "type": "ROOM",
       "short": "雪亭镇街道",
       "exits": {
         "south": "/d/snow/mstreet2",
@@ -3395,6 +3795,7 @@ var mapdata =
       }
     },
     "/d/snow/mstreet4": {
+      "type": "ROOM",
       "short": "雪亭镇街道",
       "exits": {
         "north": "/d/snow/crossroad",
@@ -3403,12 +3804,14 @@ var mapdata =
       }
     },
     "/d/snow/n_room": {
+      "type": "ROOM",
       "short": "客房",
       "exits": {
         "south": "/d/snow/inn_2f"
       }
     },
     "/d/snow/nyard": {
+      "type": "ROOM",
       "short": "书房",
       "exits": {
         "south": "/d/snow/inneryard"
@@ -3418,6 +3821,7 @@ var mapdata =
       }
     },
     "/d/snow/postoffice": {
+      "type": "ROOM",
       "short": "雪亭驿",
       "exits": {
         "east": "/d/snow/mstreet4"
@@ -3427,6 +3831,7 @@ var mapdata =
       }
     },
     "/d/snow/school": {
+      "type": "ROOM",
       "short": "书院",
       "exits": {
         "north": "/d/snow/sroad2"
@@ -3436,6 +3841,7 @@ var mapdata =
       }
     },
     "/d/snow/school1": {
+      "type": "ROOM",
       "short": "淳风武馆大门",
       "exits": {
         "west": "/d/snow/mstreet1",
@@ -3446,6 +3852,7 @@ var mapdata =
       }
     },
     "/d/snow/school2": {
+      "type": "ROOM",
       "short": "淳风武馆教练场",
       "exits": {
         "north": "/d/snow/weapon_storage",
@@ -3458,6 +3865,7 @@ var mapdata =
       }
     },
     "/d/snow/schoolhall": {
+      "type": "ROOM",
       "short": "淳风武馆大厅",
       "exits": {
         "west": "/d/snow/school2",
@@ -3468,12 +3876,14 @@ var mapdata =
       }
     },
     "/d/snow/secret_storage": {
+      "type": "ROOM",
       "short": "地下密室",
       "objects": {
         "/d/snow/obj/shield": 1
       }
     },
     "/d/snow/smithy": {
+      "type": "ROOM",
       "short": "打铁铺子",
       "exits": {
         "east": "/d/snow/mstreet2"
@@ -3483,6 +3893,7 @@ var mapdata =
       }
     },
     "/d/snow/square": {
+      "type": "ROOM",
       "short": "广场",
       "exits": {
         "north": "/d/snow/mstreet1",
@@ -3495,6 +3906,7 @@ var mapdata =
       }
     },
     "/d/snow/sroad1": {
+      "type": "ROOM",
       "short": "雪亭镇街道",
       "exits": {
         "west": "/d/snow/sroad2",
@@ -3504,6 +3916,7 @@ var mapdata =
       }
     },
     "/d/snow/sroad2": {
+      "type": "ROOM",
       "short": "雪亭镇街道",
       "exits": {
         "west": "/d/snow/sroad3",
@@ -3515,6 +3928,7 @@ var mapdata =
       }
     },
     "/d/snow/sroad3": {
+      "type": "ROOM",
       "short": "青石官道",
       "exits": {
         "west": "/d/snow/sroad4",
@@ -3522,6 +3936,7 @@ var mapdata =
       }
     },
     "/d/snow/sroad4": {
+      "type": "ROOM",
       "short": "青石官道",
       "exits": {
         "north": "/d/snow/sroad5",
@@ -3533,6 +3948,7 @@ var mapdata =
       }
     },
     "/d/snow/sroad5": {
+      "type": "ROOM",
       "short": "青石官道",
       "exits": {
         "west": "/d/waterfog/sroad1",
@@ -3540,24 +3956,27 @@ var mapdata =
       }
     },
     "/d/snow/temple": {
+      "type": "ROOM",
       "short": "城隍庙",
       "exits": {
         "south": "/d/snow/eroad1",
         "west": "/d/snow/square"
       },
       "objects": {
-        "OBJ_PAPER_SEAL": 2,
+        "/obj/paper_seal": 2,
         "/d/snow/npc/keeper": 1,
         "/d/snow/obj/denotation": 1
       }
     },
     "/d/snow/w_room": {
+      "type": "ROOM",
       "short": "客房",
       "exits": {
         "east": "/d/snow/inn_2f"
       }
     },
     "/d/snow/weapon_storage": {
+      "type": "ROOM",
       "short": "兵器储藏室",
       "exits": {
         "south": "/d/snow/school2"
@@ -3567,18 +3986,21 @@ var mapdata =
       }
     },
     "/d/snow/workplace": {
+      "type": "ROOM",
       "short": "谷物加工厂",
       "exits": {
         "west": "/d/snow/mstreet2"
       }
     },
     "/d/social_guild/gee/gee_room": {
+      "type": "ROOM",
       "short": "游侠同盟总堂",
       "exits": {
         "west": "/d/choyin/n_gate"
       }
     },
     "/d/temple/book_room1": {
+      "type": "ROOM",
       "short": "经楼",
       "exits": {
         "up": "/d/temple/book_room2",
@@ -3586,12 +4008,14 @@ var mapdata =
       }
     },
     "/d/temple/book_room2": {
+      "type": "ROOM",
       "short": "经楼",
       "exits": {
         "down": "/d/temple/book_room1"
       }
     },
     "/d/temple/broom1": {
+      "type": "ROOM",
       "short": "经楼",
       "exits": {
         "up": "/d/temple/broom2",
@@ -3599,12 +4023,14 @@ var mapdata =
       }
     },
     "/d/temple/broom2": {
+      "type": "ROOM",
       "short": "书库",
       "exits": {
         "down": "/d/temple/broom1"
       }
     },
     "/d/temple/corridor1": {
+      "type": "ROOM",
       "short": "回廊",
       "exits": {
         "west": "/d/temple/temple1",
@@ -3612,6 +4038,7 @@ var mapdata =
       }
     },
     "/d/temple/corridor2": {
+      "type": "ROOM",
       "short": "回廊",
       "exits": {
         "north": "/d/temple/corridor6",
@@ -3619,6 +4046,7 @@ var mapdata =
       }
     },
     "/d/temple/corridor3": {
+      "type": "ROOM",
       "short": "回廊",
       "exits": {
         "north": "/d/temple/road1",
@@ -3628,6 +4056,7 @@ var mapdata =
       }
     },
     "/d/temple/corridor4": {
+      "type": "ROOM",
       "short": "回廊",
       "exits": {
         "north": "/d/temple/trainroom",
@@ -3636,6 +4065,7 @@ var mapdata =
       }
     },
     "/d/temple/corridor5": {
+      "type": "ROOM",
       "short": "回廊",
       "exits": {
         "west": "/d/temple/corridor4",
@@ -3645,6 +4075,7 @@ var mapdata =
       }
     },
     "/d/temple/corridor6": {
+      "type": "ROOM",
       "short": "回廊",
       "exits": {
         "south": "/d/temple/corridor2",
@@ -3653,6 +4084,7 @@ var mapdata =
       }
     },
     "/d/temple/corridor7": {
+      "type": "ROOM",
       "short": "回廊",
       "exits": {
         "north": "/d/temple/corridor3",
@@ -3662,6 +4094,7 @@ var mapdata =
       }
     },
     "/d/temple/entrance": {
+      "type": "ROOM",
       "short": "灵心观前",
       "exits": {
         "north": "/d/temple/square",
@@ -3669,6 +4102,7 @@ var mapdata =
       }
     },
     "/d/temple/inneryard": {
+      "type": "ROOM",
       "short": "天井",
       "exits": {
         "north": "/d/temple/corridor5",
@@ -3680,6 +4114,7 @@ var mapdata =
       }
     },
     "/d/temple/ladder1": {
+      "type": "ROOM",
       "short": "石英岩石阶",
       "objects": {
         "/d/temple/npc/little_taoist1": 1
@@ -3690,6 +4125,7 @@ var mapdata =
       }
     },
     "/d/temple/ladder2": {
+      "type": "ROOM",
       "short": "石英岩石阶",
       "objects": {
         "/d/temple/npc/guest": 1
@@ -3700,6 +4136,7 @@ var mapdata =
       }
     },
     "/d/temple/ladder3": {
+      "type": "ROOM",
       "short": "石英岩石阶",
       "exits": {
         "northup": "/d/temple/ladder2",
@@ -3707,6 +4144,7 @@ var mapdata =
       }
     },
     "/d/temple/ladder4": {
+      "type": "ROOM",
       "short": "石英岩石阶",
       "exits": {
         "eastup": "/d/temple/ladder3",
@@ -3714,6 +4152,7 @@ var mapdata =
       }
     },
     "/d/temple/ladder5": {
+      "type": "ROOM",
       "short": "石英岩石阶",
       "exits": {
         "northup": "/d/temple/ladder4",
@@ -3721,6 +4160,7 @@ var mapdata =
       }
     },
     "/d/temple/restroom1": {
+      "type": "ROOM",
       "short": "厢房",
       "exits": {
         "west": "/d/temple/corridor7"
@@ -3730,12 +4170,14 @@ var mapdata =
       }
     },
     "/d/temple/restroom2": {
+      "type": "ROOM",
       "short": "厢房",
       "exits": {
         "west": "/d/temple/corridor3"
       }
     },
     "/d/temple/road1": {
+      "type": "ROOM",
       "short": "青石小径",
       "exits": {
         "south": "/d/temple/corridor3",
@@ -3743,6 +4185,7 @@ var mapdata =
       }
     },
     "/d/temple/road2": {
+      "type": "ROOM",
       "short": "青石小径",
       "exits": {
         "southeast": "/d/temple/road1",
@@ -3754,6 +4197,7 @@ var mapdata =
       }
     },
     "/d/temple/square": {
+      "type": "ROOM",
       "short": "灵心观广场",
       "exits": {
         "north": "/d/temple/temple1",
@@ -3761,6 +4205,7 @@ var mapdata =
       }
     },
     "/d/temple/sroad": {
+      "type": "ROOM",
       "short": "青石官道",
       "exits": {
         "eastup": "/d/temple/ladder5",
@@ -3768,6 +4213,7 @@ var mapdata =
       }
     },
     "/d/temple/temple1": {
+      "type": "ROOM",
       "short": "灵心观大殿",
       "exits": {
         "west": "/d/temple/corridor2",
@@ -3781,12 +4227,14 @@ var mapdata =
       }
     },
     "/d/temple/temple2": {
+      "type": "ROOM",
       "short": "后殿",
       "exits": {
         "south": "/d/temple/corridor5"
       }
     },
     "/d/temple/trainroom": {
+      "type": "ROOM",
       "short": "练功\\房",
       "exits": {
         "south": "/d/temple/corridor4"
@@ -3797,6 +4245,7 @@ var mapdata =
       }
     },
     "/d/village/farmhouse1": {
+      "type": "ROOM",
       "short": "农舍",
       "exits": {
         "north": "/d/village/fmhousback",
@@ -3804,12 +4253,14 @@ var mapdata =
       }
     },
     "/d/village/field": {
+      "type": "ROOM",
       "short": "稻田",
       "exits": {
         "east": "/d/village/road9"
       }
     },
     "/d/village/fmhousback": {
+      "type": "ROOM",
       "short": "农舍后院",
       "exits": {
         "south": "/d/village/farmhouse1"
@@ -3819,6 +4270,7 @@ var mapdata =
       }
     },
     "/d/village/home": {
+      "type": "ROOM",
       "short": "刘家小房",
       "exits": {
         "northwest": "/d/village/smallstorage",
@@ -3829,18 +4281,21 @@ var mapdata =
       }
     },
     "/d/village/lake": {
+      "type": "ROOM",
       "short": "玉螺湖",
       "exits": {
         "east": "/d/village/lakeside"
       }
     },
     "/d/village/lakebottom1": {
+      "type": "ROOM",
       "short": "水下岩洞",
       "exits": {
         "westup": "/d/village/lakebottom2"
       }
     },
     "/d/village/lakebottom2": {
+      "type": "ROOM",
       "short": "水下岩洞",
       "exits": {
         "westup": "/d/village/valley1",
@@ -3851,6 +4306,7 @@ var mapdata =
       }
     },
     "/d/village/lakeside": {
+      "type": "ROOM",
       "short": "玉螺湖畔",
       "exits": {
         "west": "/d/village/lake",
@@ -3861,6 +4317,7 @@ var mapdata =
       }
     },
     "/d/village/littlegarden": {
+      "type": "ROOM",
       "short": "花园",
       "exits": {
         "south": "/d/village/road5",
@@ -3871,6 +4328,7 @@ var mapdata =
       }
     },
     "/d/village/lordhouse1": {
+      "type": "ROOM",
       "short": "财主家前院",
       "exits": {
         "south": "/d/village/lordhouse3",
@@ -3879,18 +4337,21 @@ var mapdata =
       }
     },
     "/d/village/lordhouse2": {
+      "type": "ROOM",
       "short": "财主家东房",
       "exits": {
         "west": "/d/village/lordhouse1"
       }
     },
     "/d/village/lordhouse3": {
+      "type": "ROOM",
       "short": "财主家南房",
       "exits": {
         "north": "/d/village/lordhouse1"
       }
     },
     "/d/village/melonfarm": {
+      "type": "ROOM",
       "short": "瓜地",
       "exits": {
         "south": "/d/village/melonguard",
@@ -3898,6 +4359,7 @@ var mapdata =
       }
     },
     "/d/village/melonguard": {
+      "type": "ROOM",
       "short": "瓜棚",
       "exits": {
         "north": "/d/village/melonfarm",
@@ -3908,6 +4370,7 @@ var mapdata =
       }
     },
     "/d/village/road1": {
+      "type": "ROOM",
       "short": "黄土大道",
       "exits": {
         "south": "/d/village/road2",
@@ -3915,6 +4378,7 @@ var mapdata =
       }
     },
     "/d/village/road2": {
+      "type": "ROOM",
       "short": "三叉路口",
       "exits": {
         "south": "/d/city/nroad2",
@@ -3926,6 +4390,7 @@ var mapdata =
       }
     },
     "/d/village/road3": {
+      "type": "ROOM",
       "short": "青石小路",
       "exits": {
         "west": "/d/village/road4",
@@ -3933,6 +4398,7 @@ var mapdata =
       }
     },
     "/d/village/road4": {
+      "type": "ROOM",
       "short": "青石小路",
       "exits": {
         "north": "/d/village/farmhouse1",
@@ -3942,6 +4408,7 @@ var mapdata =
       }
     },
     "/d/village/road5": {
+      "type": "ROOM",
       "short": "青石小路",
       "exits": {
         "west": "/d/village/road6",
@@ -3951,12 +4418,14 @@ var mapdata =
       }
     },
     "/d/village/road6": {
+      "type": "ROOM",
       "short": "青石小路",
       "exits": {
         "east": "/d/village/road5"
       }
     },
     "/d/village/road7": {
+      "type": "ROOM",
       "short": "青石小路",
       "exits": {
         "southeast": "/d/village/melonguard",
@@ -3966,6 +4435,7 @@ var mapdata =
       }
     },
     "/d/village/road8": {
+      "type": "ROOM",
       "short": "青石小路",
       "exits": {
         "south": "/d/village/road9",
@@ -3973,6 +4443,7 @@ var mapdata =
       }
     },
     "/d/village/road9": {
+      "type": "ROOM",
       "short": "青石小路",
       "exits": {
         "north": "/d/village/road8",
@@ -3981,6 +4452,7 @@ var mapdata =
       }
     },
     "/d/village/smallstorage": {
+      "type": "ROOM",
       "short": "厨房",
       "exits": {
         "southeast": "/d/village/home"
@@ -3990,6 +4462,7 @@ var mapdata =
       }
     },
     "/d/village/valley1": {
+      "type": "ROOM",
       "short": "忘情谷外",
       "exits": {
         "north": "/d/village/valley2",
@@ -3997,6 +4470,7 @@ var mapdata =
       }
     },
     "/d/village/valley2": {
+      "type": "ROOM",
       "short": "忘情谷外",
       "exits": {
         "south": "/d/village/valley1",
@@ -4004,6 +4478,7 @@ var mapdata =
       }
     },
     "/d/waterfog/clifftop": {
+      "type": "ROOM",
       "short": "水烟阁半山亭",
       "exits": {
         "westup": "/d/waterfog/stair5",
@@ -4015,6 +4490,7 @@ var mapdata =
       }
     },
     "/d/waterfog/east_2f": {
+      "type": "ROOM",
       "short": "东侧厅",
       "exits": {
         "west": "/d/waterfog/forehall",
@@ -4025,6 +4501,7 @@ var mapdata =
       }
     },
     "/d/waterfog/easthall": {
+      "type": "ROOM",
       "short": "水烟阁东侧花厅",
       "exits": {
         "north": "/d/waterfog/eaststair",
@@ -4032,6 +4509,7 @@ var mapdata =
       }
     },
     "/d/waterfog/eaststair": {
+      "type": "ROOM",
       "short": "东侧厅",
       "exits": {
         "up": "/d/waterfog/east_2f",
@@ -4040,6 +4518,7 @@ var mapdata =
       }
     },
     "/d/waterfog/entrance": {
+      "type": "ROOM",
       "short": "水烟阁正门",
       "exits": {
         "south": "/d/waterfog/frontyard",
@@ -4052,6 +4531,7 @@ var mapdata =
       }
     },
     "/d/waterfog/forehall": {
+      "type": "ROOM",
       "short": "聆啸厅",
       "exits": {
         "west": "/d/waterfog/west_2f",
@@ -4064,6 +4544,7 @@ var mapdata =
       }
     },
     "/d/waterfog/frontyard": {
+      "type": "ROOM",
       "short": "水烟阁前",
       "exits": {
         "west": "/d/waterfog/wpath1",
@@ -4072,6 +4553,7 @@ var mapdata =
       }
     },
     "/d/waterfog/guildhall": {
+      "type": "CLASS_GUILD",
       "short": "水烟阁正厅",
       "exits": {
         "south": "/d/waterfog/entrance"
@@ -4083,18 +4565,21 @@ var mapdata =
       }
     },
     "/d/waterfog/kitchen": {
+      "type": "ROOM",
       "short": "厨房",
       "exits": {
         "south": "/d/waterfog/eaststair"
       }
     },
     "/d/waterfog/servroom": {
+      "type": "ROOM",
       "short": "仆役卧室",
       "exits": {
         "west": "/d/waterfog/storage"
       }
     },
     "/d/waterfog/sroad1": {
+      "type": "ROOM",
       "short": "青石官道",
       "exits": {
         "east": "/d/snow/sroad5",
@@ -4102,6 +4587,7 @@ var mapdata =
       }
     },
     "/d/waterfog/sroad2": {
+      "type": "ROOM",
       "short": "青石官道",
       "exits": {
         "southeast": "/d/waterfog/sroad1",
@@ -4109,6 +4595,7 @@ var mapdata =
       }
     },
     "/d/waterfog/sroad3": {
+      "type": "ROOM",
       "short": "青石官道",
       "exits": {
         "northup": "/d/waterfog/stair1",
@@ -4119,6 +4606,7 @@ var mapdata =
       }
     },
     "/d/waterfog/stair1": {
+      "type": "ROOM",
       "short": "白石阶梯",
       "exits": {
         "northup": "/d/waterfog/stair2",
@@ -4126,6 +4614,7 @@ var mapdata =
       }
     },
     "/d/waterfog/stair2": {
+      "type": "ROOM",
       "short": "白石阶梯",
       "exits": {
         "southdown": "/d/waterfog/stair1",
@@ -4133,6 +4622,7 @@ var mapdata =
       }
     },
     "/d/waterfog/stair3": {
+      "type": "ROOM",
       "short": "白石阶梯",
       "exits": {
         "northup": "/d/waterfog/stair4",
@@ -4140,6 +4630,7 @@ var mapdata =
       }
     },
     "/d/waterfog/stair4": {
+      "type": "ROOM",
       "short": "白石阶梯",
       "exits": {
         "northup": "/d/waterfog/clifftop",
@@ -4147,6 +4638,7 @@ var mapdata =
       }
     },
     "/d/waterfog/stair5": {
+      "type": "ROOM",
       "short": "白石阶梯",
       "exits": {
         "northup": "/d/waterfog/frontyard",
@@ -4154,6 +4646,7 @@ var mapdata =
       }
     },
     "/d/waterfog/storage": {
+      "type": "ROOM",
       "short": "柴房",
       "exits": {
         "south": "/d/waterfog/weststair",
@@ -4164,12 +4657,14 @@ var mapdata =
       }
     },
     "/d/waterfog/swordtomb": {
+      "type": "ROOM",
       "short": "葬剑亭",
       "exits": {
         "east": "/d/waterfog/wpath5"
       }
     },
     "/d/waterfog/west_2f": {
+      "type": "ROOM",
       "short": "西侧厅",
       "exits": {
         "down": "/d/waterfog/weststair",
@@ -4180,6 +4675,7 @@ var mapdata =
       }
     },
     "/d/waterfog/westhall": {
+      "type": "ROOM",
       "short": "水烟阁西侧花厅",
       "exits": {
         "north": "/d/waterfog/weststair",
@@ -4187,6 +4683,7 @@ var mapdata =
       }
     },
     "/d/waterfog/weststair": {
+      "type": "ROOM",
       "short": "西侧厅",
       "exits": {
         "up": "/d/waterfog/west_2f",
@@ -4195,6 +4692,7 @@ var mapdata =
       }
     },
     "/d/waterfog/wpath1": {
+      "type": "ROOM",
       "short": "山坡小径",
       "exits": {
         "west": "/d/waterfog/wpath2",
@@ -4202,6 +4700,7 @@ var mapdata =
       }
     },
     "/d/waterfog/wpath2": {
+      "type": "ROOM",
       "short": "山坡小径",
       "exits": {
         "north": "/d/waterfog/wpath3",
@@ -4209,6 +4708,7 @@ var mapdata =
       }
     },
     "/d/waterfog/wpath3": {
+      "type": "ROOM",
       "short": "白石阶梯",
       "exits": {
         "north": "/d/waterfog/wpath4",
@@ -4216,6 +4716,7 @@ var mapdata =
       }
     },
     "/d/waterfog/wpath4": {
+      "type": "ROOM",
       "short": "白石阶梯",
       "exits": {
         "south": "/d/waterfog/wpath3",
@@ -4223,6 +4724,7 @@ var mapdata =
       }
     },
     "/d/waterfog/wpath5": {
+      "type": "ROOM",
       "short": "白石阶梯",
       "exits": {
         "south": "/d/waterfog/wpath4",
@@ -4230,12 +4732,14 @@ var mapdata =
       }
     },
     "/d/wiz/courthouse": {
+      "type": "ROOM",
       "short": "法院",
       "objects": {
         "/d/wiz/npc/judge": 1
       }
     },
     "/d/wiz/entrance": {
+      "type": "ROOM",
       "short": "巫师会客室",
       "exits": {
         "west": "/d/wiz/hall1",
@@ -4246,6 +4750,7 @@ var mapdata =
       }
     },
     "/d/wiz/hall1": {
+      "type": "ROOM",
       "short": "巫师交谊厅",
       "exits": {
         "north": "/d/wiz/jobroom",
@@ -4253,12 +4758,14 @@ var mapdata =
       }
     },
     "/d/wiz/jobroom": {
+      "type": "ROOM",
       "short": "工作进度简报室",
       "exits": {
         "south": "/d/wiz/hall1"
       }
     },
     "/u/cloud/biaoju": {
+      "type": "ROOM",
       "short": "镖局",
       "exits": {
         "north": "/u/cloud/eroad2"
@@ -4269,6 +4776,7 @@ var mapdata =
       }
     },
     "/u/cloud/bookstore": {
+      "type": "ROOM",
       "short": "书局",
       "exits": {
         "north": "/u/cloud/wroad1"
@@ -4278,6 +4786,7 @@ var mapdata =
       }
     },
     "/u/cloud/butchery": {
+      "type": "ROOM",
       "short": "镇北肉铺",
       "exits": {
         "east": "/u/cloud/nwroad1"
@@ -4288,6 +4797,7 @@ var mapdata =
       }
     },
     "/u/cloud/cross": {
+      "type": "ROOM",
       "short": "十字路口",
       "exits": {
         "west": "/u/cloud/wroad2",
@@ -4297,6 +4807,7 @@ var mapdata =
       }
     },
     "/u/cloud/dragonhill/hummock": {
+      "type": "ROOM",
       "short": "卧龙岗",
       "exits": {
         "northdown": "/u/cloud/dragonhill/nhillfoot",
@@ -4307,6 +4818,7 @@ var mapdata =
       }
     },
     "/u/cloud/dragonhill/nhillfoot": {
+      "type": "ROOM",
       "short": "卧龙岗北坡",
       "exits": {
         "northwest": "/u/cloud/dragonhill/nroad",
@@ -4314,6 +4826,7 @@ var mapdata =
       }
     },
     "/u/cloud/dragonhill/nroad": {
+      "type": "ROOM",
       "short": "黄土路",
       "exits": {
         "north": "/d/snow/sroad1",
@@ -4321,6 +4834,7 @@ var mapdata =
       }
     },
     "/u/cloud/dragonhill/shillfoot": {
+      "type": "ROOM",
       "short": "卧龙岗南坡",
       "exits": {
         "northup": "/u/cloud/dragonhill/hummock",
@@ -4328,6 +4842,7 @@ var mapdata =
       }
     },
     "/u/cloud/dragonhill/sroad": {
+      "type": "ROOM",
       "short": "黄土路",
       "exits": {
         "northwest": "/u/cloud/dragonhill/shillfoot",
@@ -4335,6 +4850,7 @@ var mapdata =
       }
     },
     "/u/cloud/drugstore": {
+      "type": "ROOM",
       "short": "药店",
       "exits": {
         "south": "/u/cloud/nroad1"
@@ -4344,6 +4860,7 @@ var mapdata =
       }
     },
     "/u/cloud/duchang": {
+      "type": "ROOM",
       "short": "赌场",
       "exits": {
         "north": "/u/cloud/eroad1",
@@ -4354,12 +4871,14 @@ var mapdata =
       }
     },
     "/u/cloud/duchang2": {
+      "type": "ROOM",
       "short": "赌场",
       "exits": {
         "down": "/u/cloud/duchang"
       }
     },
     "/u/cloud/dukou": {
+      "type": "ROOM",
       "short": "江北渡口",
       "exits": {
         "north": "/u/cloud/sroad1",
@@ -4370,6 +4889,7 @@ var mapdata =
       }
     },
     "/u/cloud/entrance": {
+      "type": "ROOM",
       "short": "绮云镇",
       "exits": {
         "northwest": "/u/cloud/dragonhill/sroad",
@@ -4377,6 +4897,7 @@ var mapdata =
       }
     },
     "/u/cloud/eroad1": {
+      "type": "ROOM",
       "short": "绮云镇街道",
       "exits": {
         "west": "/u/cloud/cross",
@@ -4386,6 +4907,7 @@ var mapdata =
       }
     },
     "/u/cloud/eroad2": {
+      "type": "ROOM",
       "short": "绮云镇街道",
       "exits": {
         "west": "/u/cloud/eroad1",
@@ -4395,6 +4917,7 @@ var mapdata =
       }
     },
     "/u/cloud/eroad3": {
+      "type": "ROOM",
       "short": "绮云镇街道",
       "exits": {
         "north": "/u/cloud/rich",
@@ -4403,6 +4926,7 @@ var mapdata =
       }
     },
     "/u/cloud/eroad4": {
+      "type": "ROOM",
       "short": "茶场",
       "exits": {
         "northwest": "/u/cloud/eroad3"
@@ -4412,6 +4936,7 @@ var mapdata =
       }
     },
     "/u/cloud/god1": {
+      "type": "ROOM",
       "short": "场院",
       "exits": {
         "east": "/u/cloud/woodboxy",
@@ -4419,6 +4944,7 @@ var mapdata =
       }
     },
     "/u/cloud/god2": {
+      "type": "ROOM",
       "short": "场院前厅",
       "exits": {
         "east": "/u/cloud/god1"
@@ -4428,6 +4954,7 @@ var mapdata =
       }
     },
     "/u/cloud/jiyuan": {
+      "type": "ROOM",
       "short": "怡红院",
       "exits": {
         "south": "/u/cloud/eroad1",
@@ -4438,6 +4965,7 @@ var mapdata =
       }
     },
     "/u/cloud/jiyuan2": {
+      "type": "ROOM",
       "short": "怡红院二楼",
       "exits": {
         "down": "/u/cloud/jiyuan"
@@ -4447,6 +4975,7 @@ var mapdata =
       }
     },
     "/u/cloud/m_house": {
+      "type": "ROOM",
       "short": "张百万家",
       "exits": {
         "south": "/u/cloud/rich"
@@ -4457,6 +4986,7 @@ var mapdata =
       }
     },
     "/u/cloud/marry_room": {
+      "type": "ROOM",
       "short": "红娘庄",
       "exits": {
         "south": "/u/cloud/wroad0"
@@ -4466,6 +4996,7 @@ var mapdata =
       }
     },
     "/u/cloud/monky": {
+      "type": "ROOM",
       "short": "斋院",
       "exits": {
         "north": "/u/cloud/wroad2"
@@ -4477,6 +5008,7 @@ var mapdata =
       }
     },
     "/u/cloud/nroad1": {
+      "type": "ROOM",
       "short": "东市场",
       "exits": {
         "west": "/u/cloud/nwroad3",
@@ -4486,6 +5018,7 @@ var mapdata =
       }
     },
     "/u/cloud/nroad2": {
+      "type": "ROOM",
       "short": "南市场",
       "exits": {
         "west": "/u/cloud/zaihuoy",
@@ -4494,6 +5027,7 @@ var mapdata =
       }
     },
     "/u/cloud/nwroad1": {
+      "type": "ROOM",
       "short": "北市场",
       "exits": {
         "west": "/u/cloud/butchery",
@@ -4503,6 +5037,7 @@ var mapdata =
       }
     },
     "/u/cloud/nwroad2": {
+      "type": "ROOM",
       "short": "西市场",
       "exits": {
         "west": "/u/cloud/woodboxy",
@@ -4512,6 +5047,7 @@ var mapdata =
       }
     },
     "/u/cloud/nwroad3": {
+      "type": "ROOM",
       "short": "中市场",
       "exits": {
         "west": "/u/cloud/nwroad2",
@@ -4524,6 +5060,7 @@ var mapdata =
       }
     },
     "/u/cloud/park": {
+      "type": "ROOM",
       "short": "张家花园",
       "exits": {
         "south": "/u/cloud/eroad2"
@@ -4533,6 +5070,7 @@ var mapdata =
       }
     },
     "/u/cloud/rich": {
+      "type": "ROOM",
       "short": "张百万家",
       "exits": {
         "north": "/u/cloud/m_house",
@@ -4543,6 +5081,7 @@ var mapdata =
       }
     },
     "/u/cloud/sroad1": {
+      "type": "ROOM",
       "short": "绮云镇街道",
       "exits": {
         "north": "/u/cloud/cross",
@@ -4550,6 +5089,7 @@ var mapdata =
       }
     },
     "/u/cloud/sunhill/dukou": {
+      "type": "ROOM",
       "short": "江南渡口",
       "exits": {
         "north": "/u/cloud/sunhill/southriver",
@@ -4557,6 +5097,7 @@ var mapdata =
       }
     },
     "/u/cloud/sunhill/midriver": {
+      "type": "ROOM",
       "short": "江心",
       "exits": {
         "north": "/u/cloud/sunhill/northriver",
@@ -4564,6 +5105,7 @@ var mapdata =
       }
     },
     "/u/cloud/sunhill/northriver": {
+      "type": "ROOM",
       "short": "泓水北侧",
       "exits": {
         "north": "/u/cloud/dukou",
@@ -4571,6 +5113,7 @@ var mapdata =
       }
     },
     "/u/cloud/sunhill/road1": {
+      "type": "ROOM",
       "short": "山脚小路",
       "exits": {
         "north": "/u/cloud/sunhill/dukou",
@@ -4579,6 +5122,7 @@ var mapdata =
       }
     },
     "/u/cloud/sunhill/road2": {
+      "type": "ROOM",
       "short": "盘山小径",
       "exits": {
         "north": "/u/cloud/sunhill/road1",
@@ -4586,6 +5130,7 @@ var mapdata =
       }
     },
     "/u/cloud/sunhill/road3": {
+      "type": "ROOM",
       "short": "盘山小径",
       "exits": {
         "east": "/u/cloud/sunhill/road2",
@@ -4593,6 +5138,7 @@ var mapdata =
       }
     },
     "/u/cloud/sunhill/road4": {
+      "type": "ROOM",
       "short": "盘山小径",
       "exits": {
         "north": "/u/cloud/sunhill/road3",
@@ -4600,6 +5146,7 @@ var mapdata =
       }
     },
     "/u/cloud/sunhill/southriver": {
+      "type": "ROOM",
       "short": "泓水南侧",
       "exits": {
         "north": "/u/cloud/sunhill/midriver",
@@ -4607,6 +5154,7 @@ var mapdata =
       }
     },
     "/u/cloud/tailory": {
+      "type": "ROOM",
       "short": "布庄",
       "exits": {
         "north": "/u/cloud/nwroad2"
@@ -4616,12 +5164,14 @@ var mapdata =
       }
     },
     "/u/cloud/tea_corridor": {
+      "type": "ROOM",
       "short": "香茗坊茶窖",
       "exits": {
         "south": "/u/cloud/tearoom"
       }
     },
     "/u/cloud/tearoom": {
+      "type": "ROOM",
       "short": "香茗坊",
       "exits": {
         "south": "/u/cloud/nwroad3",
@@ -4634,6 +5184,7 @@ var mapdata =
       }
     },
     "/u/cloud/tearoom2": {
+      "type": "ROOM",
       "short": "香茗坊二楼",
       "exits": {
         "down": "/u/cloud/tearoom"
@@ -4643,6 +5194,7 @@ var mapdata =
       }
     },
     "/u/cloud/weapony": {
+      "type": "ROOM",
       "short": "兵器屋",
       "exits": {
         "west": "/u/cloud/nroad1"
@@ -4652,6 +5204,7 @@ var mapdata =
       }
     },
     "/u/cloud/woodboxy": {
+      "type": "ROOM",
       "short": "棺材铺",
       "exits": {
         "east": "/u/cloud/nwroad2",
@@ -4663,6 +5216,7 @@ var mapdata =
       }
     },
     "/u/cloud/wroad0": {
+      "type": "ROOM",
       "short": "绮云镇街道",
       "exits": {
         "west": "/d/latemoon/entrance",
@@ -4671,6 +5225,7 @@ var mapdata =
       }
     },
     "/u/cloud/wroad1": {
+      "type": "ROOM",
       "short": "绮云镇街道",
       "exits": {
         "south": "/u/cloud/bookstore",
@@ -4679,6 +5234,7 @@ var mapdata =
       }
     },
     "/u/cloud/wroad2": {
+      "type": "ROOM",
       "short": "绮云镇街道",
       "exits": {
         "west": "/u/cloud/wroad1",
@@ -4687,6 +5243,7 @@ var mapdata =
       }
     },
     "/u/cloud/zaihuoy": {
+      "type": "ROOM",
       "short": "杂货铺",
       "exits": {
         "north": "/u/cloud/nwroad3",

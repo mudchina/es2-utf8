@@ -1,3 +1,7 @@
+'use strict';
+
+(function(){
+
 function smartTrim(text) {
   // strip line comments, // xxx
   text = text.replace(/([\/]{2}[^\n]*)/g, '');
@@ -15,7 +19,7 @@ function smartTrim(text) {
 function replaceDIR(str, refFile, mudlib) {
   if(str.indexOf('__DIR__')>=0) {
     if(refFile.indexOf(mudlib) === 0) {
-      refFile.substring(mudlib.length);
+      refFile = refFile.substring(mudlib.length);
       var words = refFile.split('/');
       if(words.length > 0) words[words.length-1] = '';
       var dir = words.join('/');
@@ -48,7 +52,7 @@ function jsonFromLPC(text, file, mudlib, types) {
   if(Array.isArray(types)) {
     var validtype = false;
     for(var i=0; i<bases.length; i++) {
-      if(contains(types, base[i])) {
+      if(contains(types, bases[i])) {
         validtype = true;
         break;
       }
@@ -56,11 +60,11 @@ function jsonFromLPC(text, file, mudlib, types) {
     if(!validtype) return null;
   }
 
-  // if(!contains(roomtypes, base)) return null;
-
   text = smartTrim(text);
 
-  var json = {};
+  var json = {
+    type: (bases.length===1) ? bases[0] : bases,
+  };
   var sets = text.match(/set[ ]*\(.*\)[ ]*;/g);
   if(sets) sets.forEach(function(str){
     var keys = str.match(/\([ ]*"[a-z_]+"[ ]*,/);
@@ -100,3 +104,12 @@ function jsonFromLPC(text, file, mudlib, types) {
   });
   return json;
 }
+
+if(typeof window !== 'undefined')
+  window.jsonFromLPC = jsonFromLPC;
+else
+  exports = module.exports = {
+    jsonFromLPC: jsonFromLPC,
+  };
+
+})();

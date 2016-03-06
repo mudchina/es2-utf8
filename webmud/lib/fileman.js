@@ -5,7 +5,8 @@
 var Class = require('mixin-pro').createClass;
 
 var path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+    parser = require('./parsemap');
 
 var FileMan = Class({
   constructor: function FileMan() {
@@ -13,26 +14,41 @@ var FileMan = Class({
   },
 
   reset: function() {
+    this.server = null;
     this.root = '/tmp';
   },
 
   bind: function(server, root) {
-    var fileman = this;
+    this.server = server;
     this.root = root;
-    console.log('bind root: ' + this.root);
 
-    server.addService('listfile', function(args, reply){
-      fileman.readDir(args, reply);
-    });
-    server.addService('readfile', function(args, reply){
-      fileman.readFile(args, reply);
-    });
-    server.addService('writefile', function(args, reply){
-      fileman.writeFile(args, reply);
-    });
-    server.addService('removefile', function(args, reply){
-      fileman.removeFileOrDir(args, reply);
-    });
+    // bind service to server
+    var services = {
+      readfile: this.readFile,
+      writefile: this.writeFile,
+      listfile: this.readDir,
+      removefile: this.removeFileOrDir,
+      loadmap: this.parseMap,
+    };
+    for(var k in services) {
+      server.addService(k, services[k], this);
+    }
+  },
+
+  parseMap: function(args, reply) {
+    console.log('parseMap');
+    var map = parser.parseMap(this.root, ['d','u']);
+    if(map) {
+      // cache to www/mapdata.js
+      try {
+        var mapdatafile = path.resolve(__dirname, '../www/mapdata.js');
+        var text = JSON.stringify(map, null, '  ');
+        fs.writeFileSync(mapdatafile, 'var mapdata = \n' + text + ';\n', 'utf8');
+        return reply(0, map);
+      } catch(e) {
+        return reply(403);
+      }
+    } else return reply(404);
   },
 
   // req = path

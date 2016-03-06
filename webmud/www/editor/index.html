@@ -41,25 +41,34 @@
   <script src='../js/webclient.js'></script>
   <script src="../js/utf8-util.js"></script>
   <script src="../mapdata.js"></script>
-  <script src="../mapdraw.js"></script>
+  <script src="../maprender.js"></script>
   <script src="js/parselpc.js"></script>
   <script src="main.js"></script>
-  <title>MUD地图编辑器</title>
+  <title>MUD Studio</title>
   <link rel="stylesheet" href="main.css"/>
 </head>
 
 <body>
+  <div id='tips'></div>
   <div id="page">
-    <div id='left'><div id="map"><canvas id='map'></canvas></div></div>
-    <div id="right">
-      <select id="list" size="5"></select><select id="sublist" size="5"></select>
-      <div id="tools">
-        <div id="filename"></div>
-        <button id="save">Save</button>
-      </div>
-      <div id="editor"></div>
+    <div id="toolbar">
+      <button id="loadmap">Reload Map</button>
+      <button id="movemap">Move Map</button>
+      <button id="select">Select</button>
+      <button id="link">Link</button>
+      <button id="unlink">Unlink</button>
     </div>
-    <div id='tips'></div>
+    <div id="main">
+      <div id='left'><div id="map"><canvas id='map'></canvas></div></div>
+      <div id="right">
+        <select id="list" size="5"></select><select id="sublist" size="5"></select>
+        <div id="tools">
+          <div id="filename"></div>
+          <button id="save">Save</button>
+        </div>
+        <div id="editor"></div>
+      </div>
+    </div>
   </div>
 </body>
 <script>
