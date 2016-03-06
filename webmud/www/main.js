@@ -230,7 +230,7 @@ function adjustLayout() {
   });
 
   // resize map & redraw
-  setMapViewSize(mw-5, mh*4-5);
+  setMapViewSize(mw, mh);
   drawMap();
 
   // adjust output area, according to input area height
@@ -374,10 +374,11 @@ function initModMap(callback){
     saveMapMarks();
   });
   initMap({
-    canvas: $('canvas#map')[0],
+    canvas: 'canvas#map',
     width: 640,
     height: 640,
     drawMarked: true,
+    drawDomain: false,
     center: '/d/snow/inn',
   });
 }

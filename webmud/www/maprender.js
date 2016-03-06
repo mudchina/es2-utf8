@@ -1,9 +1,10 @@
 // var mapdata = {}; in mapdata.js
 
-var drawMarkedOnly = 0;
 var curAddr = '', curDomain = '';
 var curRoom = {};
 var curX = 0, curY = 0;
+var drawMarkedOnly = 0;
+var drawDomain = 0;
 
 var DIR_XY = {
   'north': [0, 1],
@@ -256,6 +257,10 @@ function mapSetDrawMarked(y) {
   drawMarkedOnly = y;
 }
 
+function mapSetDrawDomain(y) {
+  drawDomain = y;
+}
+
 function mapGetCurAddr() {
   return curAddr;
 }
@@ -329,26 +334,28 @@ function drawMap() {
   c.strokeStyle = '#ff0';
 
   // draw domain rect
-  var domains = mapdata.domains;
-  for(var d in domains) {
-    var dm = domains[d];
-    if(drawMarkedOnly && (!dm.v)) continue;
+  if(drawDomain) {
+    var domains = mapdata.domains;
+    for(var d in domains) {
+      var dm = domains[d];
+      if(drawMarkedOnly && (!dm.v)) continue;
 
-    var p = mapXYToView({x:(dm.left-1), y:(dm.top+1)});
-    var p2 = mapXYToView({x:(dm.right+1), y:(dm.bottom-1)});
+      var p = mapXYToView({x:(dm.left-1), y:(dm.top+1)});
+      var p2 = mapXYToView({x:(dm.right+1), y:(dm.bottom-1)});
 
-    c.save();
-    if(curDomain === d) {
-      c.strokeStyle = 'red';
-      c.lineWidth = 1;
-    } else {
-      c.strokeStyle = '#ddd';
-      c.lineWidth = 0.2;
+      c.save();
+      if(curDomain === d) {
+        c.strokeStyle = 'red';
+        c.lineWidth = 1;
+      } else {
+        c.strokeStyle = '#ddd';
+        c.lineWidth = 0.2;
+      }
+      c.strokeRect(p.x, p.y-10, (p2.x-p.x), (p2.y-p.y)+10);
+      c.restore();
+
+      c.strokeText(d, p.x +5, p.y-10 +3);
     }
-    c.strokeRect(p.x, p.y-10, (p2.x-p.x), (p2.y-p.y)+10);
-    c.restore();
-
-    c.strokeText(d, p.x +5, p.y-10 +3);
   }
 
   // draw player pos
@@ -407,14 +414,15 @@ function initMap(opt) {
   if(!opt.width) opt.width = 1600;
   if(!opt.height) opt.height = 1200;
   if(!opt.center) opt.center = '/d/snow/inn';
-  if(!opt.canvas) opt.canvas = $('canvas#map')[0];
-
-  mapCanvas = opt.canvas;
-  setMapViewSize(opt.width, opt.height);
+  if(!opt.canvas) opt.canvas = 'canvas#map';
 
   loadMapMarks();
   mapAutoXY();
   mapSetDrawMarked(opt.drawMarked ? 1 : 0);
+  mapSetDrawDomain(opt.drawDomain ? 1 : 0);
+
+  mapCanvas = $(opt.canvas)[0];
+  setMapViewSize(opt.width, opt.height);
 
   mapGoTo(opt.center);
 }

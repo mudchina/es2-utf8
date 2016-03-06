@@ -356,11 +356,12 @@ $(document).ready(function(){
     height: h + 'px',
   });
   initMap({
-    canvas: canvas[0],
+    canvas: 'canvas#map',
     width: w,
     height: h,
     center: '/d/snow/inn',
     drawMarked: false,
+    drawDomain: true,
   });
 
   adjustLayout();
