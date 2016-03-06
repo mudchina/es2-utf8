@@ -267,8 +267,6 @@ function drawMap() {
 
     c.strokeText(d, p.x +5, p.y-10 +3);
   }
-  // draw room name at top-left
-  c.strokeText(curRoom.short, 5, 5);
 }
 
 function mapGoTo(addr) {

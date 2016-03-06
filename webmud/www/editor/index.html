@@ -11,7 +11,7 @@
   <meta http-equiv="pragma" content="no-cache" />
 
   <!-- to avoid the warning of content security policy -->
-  <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
+  <!--meta http-equiv="Content-Security-Policy" content="default-src *; img-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/-->
 
 <script>
   // fix wp8 view port issue, see:
@@ -28,13 +28,21 @@
   }
 })();
 </script>
-  <script src="/socket.io/socket.io.js"></script>
+<!--
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
+-->
   <script src="../js/jquery-1.12.0.min.js"></script>
   <script src='../js/underscore-min.js'></script>
+  <script src="./ace/ace.js"></script>
+
+  <script src="/socket.io/socket.io.js"></script>
   <script src='../js/webclient.js'></script>
   <script src="../js/utf8-util.js"></script>
   <script src="../mapdata.js"></script>
   <script src="../mapdraw.js"></script>
+  <script src="js/parselpc.js"></script>
   <script src="main.js"></script>
   <title>MUD地图编辑器</title>
   <link rel="stylesheet" href="main.css"/>
@@ -42,16 +50,14 @@
 
 <body>
   <div id="page">
-    <div id='left'>
-      <div id="map"><canvas id='map'></canvas></div>
-    </div>
+    <div id='left'><div id="map"><canvas id='map'></canvas></div></div>
     <div id="right">
+      <select id="list" size="5"></select><select id="sublist" size="5"></select>
       <div id="tools">
+        <div id="filename"></div>
         <button id="save">Save</button>
       </div>
-      <select id="list" size="5">
-      </select>
-      <textarea id="editor"></textarea>
+      <div id="editor"></div>
     </div>
     <div id='tips'></div>
   </div>

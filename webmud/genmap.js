@@ -8,7 +8,7 @@
 var info = require('../package.json');
 var path = require('path'),
     fs = require('fs');
-var parser = require('./lib/lpcparser');
+var parser = require('./lib/parsemap');
 
 var argv = process.argv;
 var me = argv[1];

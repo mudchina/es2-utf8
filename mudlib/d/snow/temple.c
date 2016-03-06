@@ -17,7 +17,7 @@ LONG
 	]));
 	set("no_fight", "1");
 	set("objects", ([ /* sizeof() == 2 */
-		OBJ_PAPER_SEAL : 2,
+		"/obj/paper_seal" : 2,
 		__DIR__"npc/keeper" : 1,
 		__DIR__"obj/denotation" : 1
 	]));

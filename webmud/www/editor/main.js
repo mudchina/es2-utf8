@@ -1,4 +1,19 @@
 var client = new WebClient();
+var editor = null;
+
+function addRoomToList(addr) {
+  if(typeof addr !== 'string') return;
+  var r = mapGetRoomByAddr(addr);
+  var t = addr + ' - ' + r.short + ' (' + r.x + ',' + r.y + ')';
+  $('<option>').val(addr).text(t).appendTo('select#list');
+}
+
+function addRoomsToList(addr) {
+  if(!Array.isArray(addr)) return;
+  addr.forEach(function(k){
+    addRoomToList(k);
+  });
+}
 
 function handleErr(err, ret) {
   var str = '';
@@ -17,21 +32,62 @@ function handleErr(err, ret) {
   return false;
 }
 
-function loadFile(addr) {
-  client.rpc('readfile', addr + '.c', function(err, ret) {
+function loadFile(addr, drilldown) {
+  var f = addr + '.c';
+  $('div#filename').text(f);
+  client.rpc('readfile', f, function(err, ret) {
     if(err) handleErr(err, ret);
     else {
+      // convert to string
       var data = new Uint8Array(ret);
       var str = binayUtf8ToString(data, 0);
-      $('textarea#editor').val(str);
-      //console.log(err, ret, str);
+
+      // set editor content
+      if(editor) {
+        editor.setValue(str);
+        editor.gotoLine(0,0,false);
+      }
+
+      var list = $('select#list'), sublist = $('select#sublist');
+
+      // move all items from sublist to list
+      if(drilldown) {
+        list.find('option').remove().end();
+        sublist.find('option').each(function(){
+          var me = $(this);
+          $('<option>').val(me.val()).text(me.text()).appendTo('select#list');
+        });
+      }
+
+      // add exits / objects to sublist
+      sublist.find('option').remove().end();
+      var json = jsonFromLPC(str, addr, "");
+      // console.log(JSON.stringify(json));
+      // console.log(err, ret, str);
+      if(json) {
+        var keys = ['exits', 'vendor_goods'];
+        keys.forEach(function(key){
+          if(key in json) {
+            var items = json[key];
+            for(var i in items) {
+              var ob = items[i];
+              $('<option>').val(ob).text(ob).appendTo('select#sublist');
+            }
+          }
+        });
+        if(json.objects) {
+          for(var ob in json.objects) {
+            $('<option>').val(ob).text(ob).appendTo('select#sublist');
+          }
+        }
+      }
     }
   });
 }
 
 function saveFile() {
   var addr = $('select#list').val();
-  var text = $('textarea#editor').val();
+  var text = editor ? editor.getValue() : '';
   if(addr && text && confirm('Save to ' + addr + '.c ?')) {
     client.rpc('writefile', {
       path: addr + '.c',
@@ -44,43 +100,31 @@ function saveFile() {
 
 function adjustLayout(){
   var w = $(window).width(), h = $(window).height();
-  var w1 = (w/2);
-  var h1 = (h);
+  var w1 = (w/2) - 5;
+  var h1 = (h - 10);
 
-  $('div#left, div#right').css({
+  $('div#left').css({
+    width: w1 + 'px',
+    height: (h1-2) + 'px',
+  });
+  $('div#right').css({
     width: w1 + 'px',
     height: h1 + 'px',
   });
 
-  var tools = $('div#tools'), list = $('select#list'), editor = $('textarea#editor');
-  tools.css({
-    width: w1 + 'px',
-  });
+  var list = $('select#list, select#sublist');
+  var tools = $('div#tools'), editor = $('#editor');
+  var w2 = w1 - 5-2;
   list.css({
-    width: (w1-10) + 'px',
+    width: (w2/2-10+2) + 'px',
+  });
+  tools.css({
+    width: w2 + 'px',
   });
   editor.css({
-    width: (w1-20) + 'px',
-    height: (h1 -20 - tools.outerHeight(true) - list.outerHeight(true)) + 'px',
+    width: (w2-10) + 'px',
+    height: (h1 -10-2 - tools.outerHeight(true) - list.outerHeight(true)) + 'px',
   });
-}
-
-function addRoomToList(addr) {
-  if(typeof addr !== 'string') return;
-  var r = mapGetRoomByAddr(addr);
-  var t = addr + ' - ' + r.short + ' (' + r.x + ',' + r.y + ')';
-  $('<option>').val(addr).text(t).appendTo('select#list');
-}
-
-function addRoomsToList(addr) {
-  if(!Array.isArray(addr)) return;
-  addr.forEach(function(k){
-    addRoomToList(k);
-  });
-}
-
-function clearRoomList(){
-  $('select#list').find('option').remove().end();
 }
 
 $(document).ready(function(){
@@ -121,11 +165,17 @@ $(document).ready(function(){
       });
     }
   });
+  
+  canvas.mouseout(function(e){
+    var tips = $('div#tips');
+    tips.hide();
+  });
 
   canvas.click(function(e){
     var k = getAddrByClick(e);
     if(k) {
-      clearRoomList();
+      $('select#list').find('option').remove().end();
+
       if(typeof k === 'string') {
         addRoomToList(k);
       } else if(Array.isArray(k) && k.length>0) {
@@ -137,9 +187,16 @@ $(document).ready(function(){
     }
   });
 
-  roomlist.change(function(e){
-    var addr = roomlist.val();
+  $('select#list').change(function(e){
+    var me = $(e.currentTarget);
+    var addr = me.val();
     if(addr) loadFile(addr);
+  });
+
+  $('select#sublist').change(function(e){
+    var me = $(e.currentTarget);
+    var addr = me.val();
+    if(addr) loadFile(addr, true);
   });
 
   $(document).delegate('textarea', 'keydown', function(e) {
@@ -187,6 +244,13 @@ $(document).ready(function(){
   });
 
   adjustLayout();
+
+  editor = ace.edit("editor");
+  editor.setTheme("ace/theme/xcode");
+  editor.session.setMode("ace/mode/lpc");
+  editor.session.setOptions({
+    tabSize: 2,
+  });
 
   client.bind(io(), false);
 });
