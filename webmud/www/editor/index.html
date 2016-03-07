@@ -44,7 +44,9 @@
   <script src="../maprender.js"></script>
   <script src="js/parselpc.js"></script>
   <script src="main.js"></script>
-  <title>MUD Studio</title>
+  <title>MUDWizard</title>
+  <!-- see: http://fortawesome.github.io/Font-Awesome/icons/ -->
+  <link rel="stylesheet" href="icon-font/css/font-awesome.min.css">
   <link rel="stylesheet" href="main.css"/>
 </head>
 
@@ -52,19 +54,19 @@
   <div id='tips'></div>
   <div id="page">
     <div id="toolbar">
-      <button id="loadmap">Reload Map</button>
-      <button id="movemap">Move Map</button>
-      <button id="select">Select</button>
-      <button id="link">Link</button>
-      <button id="unlink">Unlink</button>
+      <button id="loadmap"><i class='fa fa-refresh fa-1x'></i></button>
+      <button id="movemap"><i class='fa fa-arrows fa-1x'></i></button>
+      <button id="select"><i class='fa fa-mouse-pointer fa-1x'></i></button>
+      <button id="link"><i class='fa fa-chain fa-1x'></i></button>
+      <button id="unlink"><i class='fa fa-chain-broken fa-1x'></i></button>
     </div>
     <div id="main">
       <div id='left'><div id="map"><canvas id='map'></canvas></div></div>
       <div id="right">
         <select id="list" size="5"></select><select id="sublist" size="5"></select>
         <div id="tools">
-          <div id="filename"></div>
-          <button id="save">Save</button>
+          <input id="filename" readonly="readonly"></input>
+          <button id="save"><i class='fa fa-save fa-1x'></i></button>
         </div>
         <div id="editor"></div>
       </div>

@@ -34,7 +34,7 @@ function handleErr(err, ret) {
 
 function loadFile(addr, drilldown, center) {
   var f = addr + '.c';
-  $('div#filename').text(f);
+  $('input#filename').val(f);
   client.rpc('readfile', f, function(err, ret) {
     if(err) handleErr(err, ret);
     else {
@@ -90,7 +90,7 @@ function loadFile(addr, drilldown, center) {
 }
 
 function saveFile() {
-  var addr = $('select#list').val();
+  var addr = $('input#filename').val();
   var text = editor ? editor.getValue() : '';
   if(addr && text && confirm('Save to ' + addr + '.c ?')) {
     client.rpc('writefile', {
@@ -124,7 +124,7 @@ function adjustLayout(){
     width: (w-10) + 'px',
   });
 
-  var h2 = (h1-2) - toolbar.outerHeight(true);
+  var h2 = h1 - toolbar.outerHeight(true);
   $('div#left').css({
     width: w1 + 'px',
     height: h2 + 'px',
@@ -134,7 +134,7 @@ function adjustLayout(){
     height: h2 + 'px',
   });
 
-  setMapViewSize(w1, h2);
+  setMapViewSize(w1+1, h2);
 
   var list = $('select#list, select#sublist');
   var tools = $('div#tools'), div_editor = $('#editor');
@@ -147,7 +147,7 @@ function adjustLayout(){
   });
   div_editor.css({
     width: (w2-10) + 'px',
-    height: (h2-30 - tools.outerHeight(true) - list.outerHeight(true)) + 'px',
+    height: (h2-10 - tools.outerHeight(true) - list.outerHeight(true)) + 'px',
   });
 }
 
