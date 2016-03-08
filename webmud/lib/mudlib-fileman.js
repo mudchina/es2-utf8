@@ -9,30 +9,16 @@ var path = require('path'),
     parser = require('./parsemap');
 
 var FileMan = Class({
-  constructor: function FileMan() {
+  constructor: function FileMan(server, root) {
+    if(!(this && (this instanceof FileMan))) return new FileMan(server, root);
+
     this.reset();
+    if(server) this.bind(server, root);
   },
 
   reset: function() {
     this.server = null;
     this.root = '/tmp';
-  },
-
-  bind: function(server, root) {
-    this.server = server;
-    this.root = root;
-
-    // bind service to server
-    var services = {
-      readfile: this.readFile,
-      writefile: this.writeFile,
-      listfile: this.readDir,
-      removefile: this.removeFileOrDir,
-      loadmap: this.parseMap,
-    };
-    for(var k in services) {
-      server.addService(k, services[k], this);
-    }
   },
 
   parseMap: function(args, reply) {
@@ -156,6 +142,29 @@ var FileMan = Class({
 
     return true;
   },
+
+  bind: function(server, root) {
+    this.server = server;
+    this.root = root;
+
+    var self = this;
+    server.on('readfile', function(args, reply){
+      self.readFile(args, reply);
+    });
+    server.on('writefile', function(args, reply){
+      self.writeFile(args, reply);
+    });
+    server.on('listfile', function(args, reply){
+      self.readDir(args, reply);
+    });
+    server.on('removefile', function(args, reply){
+      self.removeFileOrDir(args, reply);
+    });
+    server.on('loadmap', function(args, reply){
+      self.parseMap(args, reply);
+    });
+  },
+
 });
 
 exports = module.exports = FileMan;

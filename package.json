@@ -1,17 +1,12 @@
 {
   "name": "es2-webmud",
-  "version": "0.9.7",
+  "version": "0.9.8",
   "description": "WebMUD with ES2 mudlib",
   "bin": {
-    "webmud": "./webmud/main.js",
-    "genmap": "./webmud/genmap.js"
+    "webmud": "./webmud/main.js"
   },
   "scripts": {
-    "start": "node ./webmud/main.js",
-    "debug": "node --debug ./webmud/main.js",
-    "clean": "rm -rf dist",
-    "test": "for i in $(ls src/tests/); do node \"src/tests/${i}\" | faucet ; done",
-    "validate": "npm run lint; npm run test && npm outdated --depth 0"
+    "start": "node ./webmud/main.js"
   },
   "repository": {
     "type": "git",
@@ -40,10 +35,10 @@
     "minimist": "^1.2.0",
     "mixin-pro": "^0.6.6",
     "socket.io": "^1.4.4",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "webrpc.js": "^0.9.7",
+    "webtelnet": "^1.0.1"
   },
   "devDependencies": {
-    "faucet": "0.0.1",
-    "tape": "^4.4.0"
   }
 }

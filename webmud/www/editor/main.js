@@ -1,4 +1,4 @@
-var client = new WebClient();
+var client = new WebRPCClient();
 var editor = null;
 
 function addRoomToList(addr) {
