@@ -146,7 +146,8 @@ var x0 = VIEW_W/2, y0 = VIEW_H/2;
 
 // virtual map size, we can touch to scroll map
 var ROOM_RANGE = 20, ROOM_SIZE = 12, ME_SIZE = 8;
-var MAP_BG = '#753', MAP_COLOR = '#fff', ME_COLOR = '#f00';
+var MAP_BG = '#642', MAP_COLOR = '#fff', ME_COLOR = '#f00', DM_COLOR = '#ffc';
+var SEL_COLOR = 'red';
 
 function setMapViewSize(w,h) {
   VIEW_W = mapCanvas.width = w;
@@ -331,7 +332,7 @@ function drawMap() {
   c.textBaseline = 'top';
   c.font = 'normal lighter 16px SimSun';
   c.lineWidth = 0.5;
-  c.strokeStyle = '#ff0';
+  c.strokeStyle = DM_COLOR;
 
   // draw domain rect
   if(drawDomain) {
@@ -345,11 +346,11 @@ function drawMap() {
 
       c.save();
       if(curDomain === d) {
-        c.strokeStyle = 'red';
+        c.strokeStyle = SEL_COLOR;
         c.lineWidth = 1;
       } else {
-        c.strokeStyle = '#ddd';
-        c.lineWidth = 0.2;
+        c.strokeStyle = DM_COLOR;
+        c.lineWidth = 0.5;
       }
       c.strokeRect(p.x, p.y-10, (p2.x-p.x), (p2.y-p.y)+10);
       c.restore();

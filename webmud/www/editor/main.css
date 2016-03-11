@@ -4,7 +4,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #666;
+  background-color: #333;
 }
 
 div {
@@ -76,6 +76,8 @@ canvas#map {
 select#list, select#sublist {
   margin: 0px 0px 0px 5px;
   border: 1px solid black;
+  background-color: #555;
+  color: white;
 }
 
 div#tools {
@@ -90,8 +92,9 @@ input#filename {
   padding: 4px;
   margin: 5px 5px 5px 0px;
   display: inline;
-  background-color: #eee;
   border: 1px solid black;
+  background-color: #555;
+  color: white;
 }
 
 #editor {
