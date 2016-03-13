@@ -25,27 +25,27 @@ int main(object me, string arg)
  
 	my = ob->query_entire_dbase();
  
-    printf(" 精  ： %s%4d/ %4d %s(%3d%%)" NOR "    灵力： %s%4d / %4d (+%d)\n" NOR,
+    printf(" 精：%s%4d/%4d %s(%3d%%)" NOR "  灵力：%s%4d/%4d (+%d)\n" NOR,
 		status_color(my["gin"], my["eff_gin"]),	my["gin"],	my["eff_gin"],
 		status_color(my["eff_gin"], my["max_gin"]),	my["eff_gin"] * 100 / my["max_gin"],
 		status_color(my["atman"], my["max_atman"]),	my["atman"], my["max_atman"],
 		my["atman_factor"] );
-    printf(" 气  ： %s%4d/ %4d %s(%3d%%)" NOR "    内力： %s%4d / %4d (+%d)\n" NOR,
+    printf(" 气：%s%4d/%4d %s(%3d%%)" NOR "  内力：%s%4d/%4d (+%d)\n" NOR,
 		status_color(my["kee"], my["eff_kee"]),	my["kee"], my["eff_kee"],
 		status_color(my["eff_kee"], my["max_kee"]),	my["eff_kee"] * 100 / my["max_kee"],
 		status_color(my["force"], my["max_force"]),	my["force"], my["max_force"],
 		my["force_factor"] );
-    printf(" 神  ： %s%4d/ %4d %s(%3d%%)" NOR "    法力： %s%4d / %4d (+%d)\n" NOR,
+    printf(" 神：%s%4d/%4d %s(%3d%%)" NOR "  法力：%s%4d/%4d (+%d)\n" NOR,
 		status_color(my["sen"], my["eff_sen"]),	my["sen"], my["eff_sen"],
 		status_color(my["eff_sen"], my["max_sen"]),	my["eff_sen"] * 100 / my["max_sen"],
 		status_color(my["mana"], my["max_mana"]), my["mana"], my["max_mana"],
 		my["mana_factor"] );
-    printf(" 食物： %s%4d/ %4d      " NOR "     潜能： %s%d\n" NOR,
+    printf(" 食物：%s%4d/ %4d   " NOR "   潜能： %s%d\n" NOR,
         status_color(my["food"], ob->max_food_capacity()),
         my["food"], ob->max_food_capacity(),
         HIY,
         (int)ob->query("potential") - (int)ob->query("learned_points"));
-    printf(" 饮水： %s%4d/ %4d      " NOR "     经验： %s%d\n" NOR,
+    printf(" 饮水：%s%4d/ %4d   " NOR "   经验： %s%d\n" NOR,
         status_color(my["water"], ob->max_water_capacity()),
         my["water"], ob->max_water_capacity(),
         HIM,

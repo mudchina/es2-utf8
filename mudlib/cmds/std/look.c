@@ -130,7 +130,7 @@ int look_living(object me, object obj)
 		    else 
 			str += sprintf("你才十四岁啊，有什么好看的？\n");
 		}
-	    else {
+	    else if((string)obj->query("race")=="人类"){
 		if ((int)obj->query("age") < 15)
 			str += sprintf("十四岁的小孩都是天天真真的模样。\n");
 		    else {

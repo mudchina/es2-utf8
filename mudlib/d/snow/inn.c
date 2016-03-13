@@ -43,7 +43,7 @@ LONG
 	setup();
 
 	// To "load" the board, don't ever "clone" a bulletin board.
-	call_other( "/obj/board/common_b", "???" );
+	// call_other( "/obj/board/common_b", "???" );
 }
 
 string look_sign(object me)
