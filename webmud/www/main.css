@@ -36,8 +36,8 @@ div#roomname {
 
 div#out1, div#out2box {
   margin: 0px;
-  padding: 10px 10px 20px 10px;
-  border: 2px solid gray; 
+  padding: 5px 5px 15px 5px;
+  border: 2px solid gray;
   border-radius: 10px;
 }
 
@@ -62,6 +62,8 @@ div#out2 {
 button#out2x {
   width: 30px;
   height: 30px;
+  margin: 0px -8px -13px 0px;
+  border-radius: 2px;
 }
 
 p.out {

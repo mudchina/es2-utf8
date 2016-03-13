@@ -212,7 +212,7 @@ function connectServer() {
     for(var i=0; i<lines.length; i++) {
       var line = lines[i].trim();
       // when we look at sth, we set it as item target
-      if((line.indexOf('l ') >= 0) || (line.indexOf('look ') >= 0)) {
+      if((line.indexOf('l ') === 0) || (line.indexOf('look ') === 0)) {
         var words = line.split(' ');
         words.shift();
         setCmdItem(words.join(' '));
