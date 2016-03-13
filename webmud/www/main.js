@@ -171,8 +171,7 @@ function writeToScreen(str, which) {
     if(autologin) {
       var p = localStorage.getItem('password');
       if(sendCmd && p) sendCmd(p);
-      $('button#map').click();
-      $('button#look').click();
+      $('button#explore').click();
     }
   }
 }
