@@ -146,7 +146,7 @@ var x0 = VIEW_W/2, y0 = VIEW_H/2;
 
 // virtual map size, we can touch to scroll map
 var ROOM_RANGE = 20, ROOM_SIZE = 12, ME_SIZE = 8;
-var MAP_BG = '#642', MAP_COLOR = '#fff', ME_COLOR = '#f00', DM_COLOR = '#ffc';
+var MAP_BG = '#222', MAP_COLOR = '#fff', ME_COLOR = '#f00', DM_COLOR = '#ffc';
 var SEL_COLOR = 'red';
 
 function setMapViewSize(w,h) {

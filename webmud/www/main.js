@@ -1,6 +1,10 @@
 var _cmdItem = '', _cmdTarget = '';
 var _localCmds = {};
 
+var cmdLast = '';
+var cmdHistory = [];
+var cmdIndex = 0;
+
 // set cmd item, if already same, then count +1
 function setCmdItem(str) {
   if(_cmdItem && str) {
@@ -22,7 +26,7 @@ function setCmdItem(str) {
   } else {
     _cmdItem = str;
   }
-  $('a#cmditem').text('物品/技能:'+_cmdItem);
+  $('a#cmditem').text(_cmdItem || '物品/技能:');
 }
 
 function getCmdItem() {
@@ -31,7 +35,7 @@ function getCmdItem() {
 
 function setCmdTarget(str) {
   _cmdTarget = str;
-  $('a#cmdtarget').text('目标:'+str);
+  $('a#cmdtarget').text(_cmdTarget || '目标:');
 }
 
 function getCmdTarget() {
@@ -69,16 +73,17 @@ function onTargetLink(e) {
   }
 }
 
-function scrollDown() {
-  var out = $('div#out');
+function scrollDown(which) {
+  var out = $('div#out' + (which || 1));
   out.scrollTop(out.prop('scrollHeight'));
 }
 
-function writeToScreen(str) {
+function writeLine(str, which) {
+  which = (which || 1);
   var p = $('<p>').append(str).addClass('out');
-  p.appendTo('div#out');
+  p.appendTo('div#out' + which);
   $('a.target', p).on('click', onTargetLink);
-  scrollDown();
+  scrollDown(which);
 }
 
 function addTargetLinks(str, type) {
@@ -111,26 +116,45 @@ function writeServerData(buf) {
 
   askingLogin = askingPass = false;
   if(str.indexOf(ROOM_MARK) >= 0) str = parseRoom(str);
-  else if(str.indexOf(CHAR_MARK) >= 0) str = parseChar(str);
-  else if(str.indexOf(ITEM_MARK) >= 0) str = addTargetLinks(str, 'item');
-  else if(str.indexOf(INV_MARK) >= 0) str = addTargetLinks(str, 'look');
-  else if(str.indexOf(SKILLS_MARK) >= 0) str = addTargetLinks(str, 'skill');
-  else if(str.indexOf(SMILEY_MARK) >= 0) str = parseSmiley(str);
+  else if(str.indexOf(CHAR_MARK) >= 0) {
+    $('div#out2').html('');
+    str = parseChar(str);
+    return writeToScreen(str, 2);
+  } else if(str.indexOf(ITEM_MARK) >= 0) {
+    $('div#out2').html('');
+    str = addTargetLinks(str, 'item');
+    return writeToScreen(str, 2);
+  } else if(str.indexOf(INV_MARK) >= 0) {
+    $('div#out2').html('');
+    str = addTargetLinks(str, 'look');
+    return writeToScreen(str, 2);
+  } else if(str.indexOf(SKILLS_MARK) >= 0) {
+    $('div#out2').html('');
+    str = addTargetLinks(str, 'skill');
+    return writeToScreen(str, 2);
+  } else if(str.indexOf(SMILEY_MARK) >= 0) str = parseSmiley(str);
   else if(str.indexOf(LOGIN_MARK) >= 0) askingLogin = true;
   else if(str.indexOf(PASS_MARK) >= 0) askingPass = true;
-  
+
+  if(str) writeToScreen(str);
+}
+
+function writeToScreen(str, which) {
+  which = (which || 1);
+  if(which === 2) {
+    $('div#out1').hide();
+    $('div#out2box').show();
+    showMap(false);
+    console.log(which, str);
+  }
+
   var lines = str.split('\r\n');
   for(var i=0; i<lines.length; i++) {
     var line = lines[i].replace(/\s\s/g, '&nbsp;');
-    if(i < lines.length-1) line += '<br/>';
-
     // replace the prompt '> ' with a empty line
     var len = line.length;
     if(len>=2 && line.substr(len-2) == '> ') line = line.substr(0, line-2);
-
-    line = ansi_up.ansi_to_html(line);
-
-    writeToScreen(line);
+    writeLine( ansi_up.ansi_to_html(line), which );
   }
 
   if(askingLogin) {
@@ -147,7 +171,8 @@ function writeServerData(buf) {
     if(autologin) {
       var p = localStorage.getItem('password');
       if(sendCmd && p) sendCmd(p);
-      $('button#explore').click();
+      $('button#map').click();
+      $('button#look').click();
     }
   }
 }
@@ -173,9 +198,15 @@ function connectServer() {
 
   // send one or multi-cmds with \n
   window.sendCmd = function(str) {
+    $('div#out2box').hide();
+    $('div#out1').show();
+
     if(str.indexOf('$target')) str = str.replace('$target', getCmdTarget());
     if(str.indexOf('$item')) str = str.replace('$item', getCmdItem());
     str = str.trim();
+
+    // remember last command, we can repeat
+    cmdLast = str;
 
     // process cmds one by one
     var lines = str.split('\n');
@@ -213,7 +244,7 @@ function adjustLayout() {
   var w1 = w0;
   var btns = ['explore', 'martial', 'map', 'chat', 'others'];
   for(var i=0; i<btns.length; i++) {
-    w1 -= $('button#'+btns[i]).outerWidth(true)+4;
+    w1 -= $('button#'+btns[i]).outerWidth(true)+2;
   }
   $('input#str').css({
     width: w1 + 'px',
@@ -235,12 +266,23 @@ function adjustLayout() {
 
   // adjust output area, according to input area height
   var h0 = $('div#in').outerHeight(true);
-  $('div#out').css({
-    width: (w-22) + 'px',
-    height: (h - h0 -32) + 'px',
+  var h1 = $('div#roomname').outerHeight(true);
+  var h2 = $('button#out2x').outerHeight(true);
+  $('div#room').css({
+    width: (w-24) + 'px',
+    height: (h - h0 -34) + 'px',
+  });
+  $('div#out1, div#out2box').css({
+    width: (w-24-4) + 'px',
+    height: (h - h0 -34 -h1 -4) + 'px',
+  });
+  $('div#out2').css({
+    width: (w-24-4) + 'px',
+    height: (h - h0 -34 -h1 -h2) + 'px',
   });
 
-  scrollDown();
+  scrollDown(1);
+  scrollDown(2);
 }
 
 function showPad(name) {
@@ -248,9 +290,6 @@ function showPad(name) {
   if(name) $('div#'+name).show();
   adjustLayout();
 }
-
-var cmdHistory = [];
-var cmdIndex = 0;
 
 function sendInput() {
   var cmd = $('input#str');
@@ -299,6 +338,25 @@ function cmdHistoryDown() {
   } else $('input#str').val('');
 }
 
+function showMap(y) {
+  var map = $('div#map');
+  var expkeys = $('div#expkeys');
+  var out1 = $('div#out1');
+  var out2 = $('div#out2box');
+  if(y === 0) {
+    y = ! map.is(':visible');
+  }
+  if(y) {
+    map.show();
+    expkeys.hide();
+    out1.show();
+    out2.hide();
+  } else {
+    map.hide();
+    expkeys.show();
+  }
+}
+
 function initUI() {
   $(window).resize(adjustLayout);
 
@@ -308,21 +366,12 @@ function initUI() {
     var pad = me.attr('pad');
     showPad(pad);
 
-    var map = $('div#map');
-    var expkeys = $('div#expkeys');
     switch(menu) {
     case 'explore':
-      map.hide();
-      expkeys.show();
+      showMap(false);
       break;
     case 'map':
-      if(map.is(':visible')) {
-        map.hide();
-        expkeys.show();
-      } else {
-        map.show();
-        expkeys.hide();
-      }
+      showMap(true);
       break;
     }
   });
@@ -354,10 +403,13 @@ function initUI() {
   $('input#str').focus(function(e){
     showPad(null);
   });
+  $('button#out2x').click(function(e){
+    $('div#out2box').hide();
+    $('div#out1').show();
+  });
 
-  addLocalCmd('clear screen', function(){
-    $('div#out').html('');
-    scrollDown();
+  addLocalCmd('repeat', function(){
+    sendCmd(cmdLast);
   });
 
   initModExplore(onMacroKey);
@@ -385,6 +437,7 @@ function initModMap(callback){
 
 $(document).ready(function(){
   initUI();
+  $('div#roomname').text('新 东 方 故 事 Ⅱ');
 
   setTimeout(function(){
     adjustLayout();

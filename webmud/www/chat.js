@@ -25,7 +25,7 @@ function setChatChannel(c,t) {
     t = '';
   }
   _chatChannel = c;
-  $('a#chatchannel').text('频道:'+t);
+  $('a#chatchannel').text(t || '频道:');
 }
 
 function getChatChannel() {

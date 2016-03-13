@@ -46,19 +46,19 @@ var EXPLORE_CMDS = [
   ['装备', 'wield $item', 'fight'],
   ['放下', 'unwield $item', 'fight'],
 
-  ['跟随', 'follow $target', 'explore'],
-  ['组队', 'team with $target', 'explore'],
-  ['学习', 'learn $item from $target', 'explore'],
-  ['切磋', 'fight $target', 'fight'],
-  ['投降', 'surrender', 'fight'],
+  ['跟随', 'follow $target', 'practice'],
+  ['组队', 'team with $target', 'practice'],
+  ['学习', 'learn $item from $target', 'practice'],
+  ['切磋', 'fight $target', 'practice'],
+  ['投降', 'surrender', 'practice'],
   ['偷', 'steal $item from $target', 'warn'],
 
   ['物品', 'i', 'status'],
   ['状态', 'hp $target', 'status'],
   ['技能', 'skills $target', 'status'],
   ['成就', 'score $target', 'status'],
-  ['保存', 'save', 'status'],
-  ['杀', 'kill $target', 'warn'],
+  ['保存', 'save', 'explore'],
+  ['重复', 'repeat', 'explore'],
 ];
 
 var MARTIAL_CMDS = [
@@ -117,65 +117,62 @@ var OTHER_CMDS = [
 
   // local cmds
   ['重置地图', 'clear map', 'warn'],
-  ['清除屏幕', 'clear screen', 'warn'],
 ];
 
 function getAllDirs() {
   return ALL_DIRS;
 }
 
-function parseExits(str) {
+function parseNameAddr(desc) {
   // parse exits, enable / disable go keys
-  var marks = str.split(ROOM_MARK);
-  for(var i=1; i<marks.length; i++) {
-    var desc = marks[i];
-    var nameAddr = desc.split('\n')[0];
-    var words = nameAddr.split(' - ');
-    if(words.length != 2) return;
-    var short = words[0].trim();
-    var addr = words[1].trim();
+  var nameAddr = desc.split('\n')[0];
+  var words = nameAddr.split(' - ');
+  if(words.length != 2) return;
+  var name = words[0].trim();
+  var addr = words[1].trim();
+  $('div#roomname').text(name);
+  // mark visited in map
+  mapGoTo(addr);
+}
 
-    // mark visited in map
-    mapGoTo(addr);
+function parseExits(desc) {
+  var p = desc.indexOf(EXITS_MARK);
+  if(p < 0) {
+    p = desc.indexOf(EXITS_MASK2);
+    if(p < 0) return;
+  }
+  p += EXITS_MARK.length;
+  var p2 = desc.indexOf('。', p);
+  if(p2 < 0) return;
 
-    var p = desc.indexOf(EXITS_MARK);
-    if(p < 0) {
-      p = desc.indexOf(EXITS_MASK2);
-      if(p < 0) continue;
-    }
-    p += EXITS_MARK.length;
-    var p2 = desc.indexOf('。', p);
-    if(p2 < 0) continue;
+  // extra open exits to array
+  var exits = desc.substr(p, p2-p)
+    .replace(ESC_1, '').replace(ESC_2, '').replace(/、/g, ',').replace('和', ',')
+    .split(',');
+  for(var j=0; j<exits.length; j++) {
+    exits[j] = exits[j].trim();
+  }
 
-    // extra open exits to array
-    var exits = desc.substr(p, p2-p)
-      .replace(ESC_1, '').replace(ESC_2, '').replace(/、/g, ',').replace('和', ',')
-      .split(',');
-    for(var j=0; j<exits.length; j++) {
-      exits[j] = exits[j].trim();
-    }
+  var openDirs = {};
+  for(var j=0; j<SHORT_DIRS.length; j++) {
+    openDirs[ SHORT_DIRS[j] ] = 0;
+  }
+  var domGo = $('table#go');
+  for(var j=0; j<exits.length; j++) {
+    var dir = exits[j];
+    var dirInfo = ALL_DIRS[ dir ];
+    if(!dirInfo) continue;
 
-    var openDirs = {};
-    for(var j=0; j<SHORT_DIRS.length; j++) {
-      openDirs[ SHORT_DIRS[j] ] = 0;
-    }
-    var domGo = $('table#go');
-    for(var j=0; j<exits.length; j++) {
-      var dir = exits[j];
-      var dirInfo = ALL_DIRS[ dir ];
-      if(!dirInfo) continue;
-
-      // enable go keys for valid exits
-      var dirShort = dirInfo[0];
-      var dirName = dirInfo[1];
-      $('button#'+dirShort, domGo).attr('macro',dir).text(dirName).removeClass('disable');
-      openDirs[ dirShort ] = 1;
-    }
-    // disable go keys for invalid exits
-    for(var k in openDirs) {
-      var btn = $('button#'+k, domGo);
-      if(!openDirs[k]) btn.attr('macro','').text('').addClass('disable');
-    }
+    // enable go keys for valid exits
+    var dirShort = dirInfo[0];
+    var dirName = dirInfo[1];
+    $('button#'+dirShort, domGo).attr('macro',dir).text(dirName).removeClass('disable');
+    openDirs[ dirShort ] = 1;
+  }
+  // disable go keys for invalid exits
+  for(var k in openDirs) {
+    var btn = $('button#'+k, domGo);
+    if(!openDirs[k]) btn.attr('macro','').text('').addClass('disable');
   }
 }
 
@@ -183,11 +180,17 @@ function parseRoom(str) {
   // when we move or look room, we reset target char & item
   setCmdTarget('');
   setCmdItem('');
-  
   // when new room info comes, we remove old links
-  $('div#out').find('a').contents().unwrap();
+  //$('div#out1').find('a').contents().unwrap();
+  $('div#out1').html('');
 
-  parseExits(str);
+  var marks = str.split(ROOM_MARK);
+  if(marks.length >= 2) {
+    var lines = marks[1].split('\n');
+    parseNameAddr(lines.shift());
+    str = lines.join('\n');
+    parseExits(str);
+  }
 
   return addTargetLinks(str, 'look');
 }
@@ -215,8 +218,12 @@ function parseChar(str) {
 }
 
 function initModExplore(callback) {
-  $('button.go').click(callback);
-  $('button#od').attr('macro', 'open door\nlook'); // HTML5 string not accept \n
+  $('button.go').click(function(e){
+    showMap(true);
+    callback(e);
+  });
+  $('button#look').click(callback);
+  $('button#opendoor').attr('macro', 'open door\nlook'); // HTML5 string not accept \n
   initKeys(EXPLORE_CMDS, 'div#expkeys', callback);
   initKeys(MARTIAL_CMDS, 'div#markeys', callback);
   initKeys(OTHER_CMDS, 'div#otherkeys', callback);

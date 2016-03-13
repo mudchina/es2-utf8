@@ -3,23 +3,65 @@ body, div#page {
   padding: 0px;
   width: 100%;
   height: 100%;
-  background-color: darkgray;
+  background-color: black;
+  font-size: 14px;
 }
 
 div {
+  margin: 0px;
+  padding: 0px;
+  background-color: black;
+  color: white;
 }
 
-div#out {
+div#room {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+div#roomname {
+  display: inline-block;
+  width: 160px;
+  height: 24px;
+  padding: 5px 5px 0px 5px;
+  margin: 3px 0px 1px 0px;
+  text-align: center;
+  font-size: 18px;
+  border-top: 2px solid gray;
+  border-bottom: 2px solid gray;
+  border-radius: 3px;
+  overflow-x: hidden;
+}
+
+div#out1, div#out2box {
   margin: 0px;
   padding: 10px 10px 20px 10px;
+  border: 2px solid gray; 
+  border-radius: 10px;
+}
+
+div#out1, div#out2 {
   overflow-y: scroll;
   overflow-x: scroll;
   font-family: SimSun;
+  text-align: left;
   font-size: 16px;
   line-height: 150%;
-  color: white;
-  background-color: #111;
-  border: 1px solid gray; 
+}
+
+div#out2box {
+  overflow: hidden;
+  display: none;
+  text-align: right;
+}
+
+div#out2 {
+}
+
+button#out2x {
+  width: 30px;
+  height: 30px;
 }
 
 p.out {
@@ -38,9 +80,13 @@ div#in {
 }
 
 input#str {
-  font-size: 18px;
-  padding: 5px;
-  border: 1px solid black;
+  height: 26px;
+  font-size: 14px;
+  padding: 3px;
+  background-color: black;
+  color: white;
+  border: 2px solid gray;
+  border-radius: 5px;
 }
 
 div#menu {
@@ -91,6 +137,15 @@ table.go {
 
 button {
   border-radius: 5px;
+  border: 2px solid gray;
+  background-color: #111;
+  color: white;
+}
+
+button.disable {
+  border: 1px solid black;
+  background-color: #222;
+  color: black;
 }
 
 button.menu, button.channel {
@@ -99,7 +154,6 @@ button.menu, button.channel {
   height: 36px;
   padding: 3px;
   margin: 1px;
-  background-color: aquamarine;
 }
 
 button.keys {
@@ -110,38 +164,37 @@ button.keys {
   margin: 1px;
 }
 
-button.go, button.channel {
+button#look, button.go, button.channel {
   font-size: 14px;
   width: 45px;
   height: 40px;
   padding: 3px;
   margin: 1px;
   border-radius: 10px;
-  background-color: aquamarine;
 }
 
 button.explore, button.learn, button.emote {
-  background-color: aquamarine;
+  color: white;
 }
 
 button.fight, button.practice, button.chat {
-  background-color: #66ddff;
+  color: aqua;
 }
 
 button.status, button.prepare, button.attack {
-  background-color: #ffdd88;
+  color: chartreuse;
 }
 
 button.kill, button.warn {
-  background-color: #ff8888;
+  color: red;
 }
 
 button.exert, button.whisper {
-  background-color: #88ff88;
+  color: orange;
 }
 
 button.rumor {
-  background-color: hotpink;
+  color: hotpink;
 }
 
 button.nw {
@@ -158,10 +211,6 @@ button.sw {
 
 button.se {
   border-bottom-right-radius: 20px;
-}
-
-button.disable {
-  background-color: darkgray;
 }
 
 a.target {
@@ -199,6 +248,21 @@ div.triangle {
   line-height: 0;
 }
 
+div#targets{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+div#targetsleft{
+  display: inline-block;
+  width: 70%;
+  text-align: left;
+}
+div#targetsright{
+  display: inline-block;
+  width: 20%;
+  text-align: right;
+}
 a#cmdtarget, a#cmditem, a#chatchannel {
   width: 100px;
   height: 20px;
@@ -207,9 +271,12 @@ a#cmdtarget, a#cmditem, a#chatchannel {
   font-size: 14px;
   border-radius: 5px;
   border: 1px solid gray;
-  background-color: #eee;
+  background-color: black;
+  color: white;
   text-decoration: none;
-  color: black;
+}
+a#chatchannel {
+  margin: 0px 5px 0px 0px;
 }
 
 canvas#map {

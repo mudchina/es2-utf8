@@ -45,9 +45,9 @@
 
 <body>
   <div id="page">
-    <div id="out"></div>
+    <div id="room"><div id="roomname"></div><div id="out1"></div><div id="out2box"><div id="out2"></div><button id="out2x">X</button></div></div>
     <div id="in">
-      <div id='targets'><a id='cmdtarget' href='#'>目标:</a><a id='cmditem' href='#'>物品/技能:</a><a id='chatchannel' href='#'>频道:</a></div>
+      <div id='targets'><div id='targetsleft'><a id='cmdtarget' href='#'>目标:</a><a id='cmditem' href='#'>物品/技能:</a></div><div id='targetsright'><a id='chatchannel' href='#'>频道:</a></div></div>
       <div id="menu"><input id='str' type="text" value=""><button id='explore' pad='explore' class='menu'>探索</button><button id='martial' pad='martial' class='menu'>武功</button><button id='chat' pad='chat' class='menu'>聊天</button><button id='map' pad='explore' class='menu'>地图</button><button id='others' pad='others' class='menu'>其它</button></div>
       <div id="explore" class="pad">
         <table class='pad' cellspacing=5 cellpadding=0 border=0>
@@ -63,7 +63,7 @@
             </tr>
             <tr>
               <td><button class='go' id='w' macro='w'>西</button></td>
-              <td><button class='go status' macro='l'>看</button></td>
+              <td><button class='status' id='look' macro='l'>看</button></td>
               <td><button class='go' id='e' macro='e'>东</button></td>
             </tr>
             <tr>
@@ -74,7 +74,7 @@
             <tr>
               <td><button class='go' id='up' macro='up'>上</button></td>
               <td><button class='go' id='d' macro='d'>下</button></td>
-              <td><button class='go' id='od' macro='open door\nlook'>开门</button></td>
+              <td><button class='go' id='opendoor' macro='open door\nlook'>开门</button></td>
             </tr>
           </table>
             </td>

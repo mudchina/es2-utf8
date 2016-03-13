@@ -90,11 +90,11 @@ function loadFile(addr, drilldown, center) {
 }
 
 function saveFile() {
-  var addr = $('input#filename').val();
+  var f = $('input#filename').val();
   var text = editor ? editor.getValue() : '';
-  if(addr && text && confirm('Save to ' + addr + '.c ?')) {
+  if(f && text && confirm('Save to ' + f + '?')) {
     client.rpc('writefile', {
-      path: addr + '.c',
+      path: f,
       text: text,
     }, function(err, ret) {
       if(err) handleErr(err);
