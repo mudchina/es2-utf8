@@ -268,15 +268,15 @@ function adjustLayout() {
   var h1 = $('div#roomname').outerHeight(true);
   var h2 = $('button#out2x').outerHeight(true);
   $('div#room').css({
-    width: (w-24) + 'px',
+    width: (w-10) + 'px',
     height: (h - h0 -34) + 'px',
   });
   $('div#out1, div#out2box').css({
-    width: (w-24-4) + 'px',
+    width: (w-10-4) + 'px',
     height: (h - h0 -34 -h1 -4) + 'px',
   });
   $('div#out2').css({
-    width: (w-24-4) + 'px',
+    width: (w-20-4) + 'px',
     height: (h - h0 -34 -h1 -h2) + 'px',
   });
 
