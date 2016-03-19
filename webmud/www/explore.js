@@ -33,41 +33,41 @@ var SHORT_DIRS = ['n','s','e','w','nw','sw','ne','se','up','d'];
 
 var EXPLORE_CMDS = [
   ['捡', 'get $item', 'explore'],
-  ['放', 'put', 'explore'],
-  ['给', 'give $item to $target', 'explore'],
+  ['放', 'put $item in $char', 'explore'],
+  ['给', 'give $item to $char', 'explore'],
   ['丢', 'drop $item', 'explore'],
-  ['买', 'buy $item from $target', 'explore'],
-  ['兑换', 'convert $item', 'explore'],
+  ['买', 'buy $item from $char', 'explore'],
+  ['物品', 'i $char', 'status,varargs'],
 
   ['吃', 'eat $item', 'explore'],
   ['喝', 'drink $item', 'explore'],
   ['穿', 'wear $item', 'fight'],
   ['脱', 'remove $item', 'fight'],
+  ['兑换', 'convert $item', 'explore'],
+  ['状态', 'hp $char', 'status,varargs'],
+
+  ['跟随', 'follow $char', 'practice'],
+  ['组队', 'team with $char', 'practice'],
+  ['学习', 'learn $item from $char', 'practice'],
+  ['切磋', 'fight $char', 'practice'],
+  ['投降', 'surrender', 'practice'],
+  ['技能', 'skills $char', 'status,varargs'],
+
   ['装备', 'wield $item', 'fight'],
   ['放下', 'unwield $item', 'fight'],
-
-  ['跟随', 'follow $target', 'practice'],
-  ['组队', 'team with $target', 'practice'],
-  ['学习', 'learn $item from $target', 'practice'],
-  ['切磋', 'fight $target', 'practice'],
-  ['投降', 'surrender', 'practice'],
-  ['偷', 'steal $item from $target', 'warn'],
-
-  ['物品', 'i', 'status'],
-  ['状态', 'hp $target', 'status'],
-  ['技能', 'skills $target', 'status'],
-  ['成就', 'score $target', 'status'],
+  ['偷', 'steal $item from $char', 'warn'],
   ['保存', 'save', 'explore'],
   ['重复', 'repeat', 'explore'],
+  ['成就', 'score $char', 'status,varargs'],
 ];
 
 var MARTIAL_CMDS = [
   ['全技', 'enable ?', 'learn'], // 显示全部技能类别
-  ['拜师', 'apprentice $target', 'learn'],
-  ['收徒', 'recruit $target', 'learn'],
-  ['开除', 'expell $target', 'learn'],
+  ['拜师', 'apprentice $char', 'learn'],
+  ['收徒', 'recruit $char', 'learn'],
+  ['开除', 'expell $char', 'learn'],
   // ['绰号', 'nick'], // nick <外号, 绰号>
-  ['学习', 'learn $item from $target', 'learn'],
+  ['学习', 'learn $item from $char', 'learn'],
   ['弃技', 'abandon $item', 'learn'],
 
   ['练习', 'practice $item', 'practice'],
@@ -80,7 +80,7 @@ var MARTIAL_CMDS = [
   ['用技', 'enable %skilltype $item', 'prepare'], // 指定所要用的技能，需指明技能种类和技能名称。
   ['施法', 'enchant 30', 'prepare'],   // enchant <灵力点数>, 设定使用魔法武器时要用来导引武器魔力所用的灵力强度。
   ['发力', 'enforce 30', 'prepare'],   // enforce <内力点数>, 指定每次击中敌人时，要发出几点内力伤敌。
-  ['画符', 'scribe $item on $target', 'prepare'],
+  ['画符', 'scribe $item on $char', 'prepare'],
   ['切磋', 'fight $char', 'warn'],
   ['投降', 'surrender', 'warn'],
 
@@ -88,7 +88,7 @@ var MARTIAL_CMDS = [
   ['疗伤', 'exert heal', 'exert'],
   ['冲穴', 'exert mobilize', 'exert'],
   ['逼毒', 'exert depoison', 'exert'],
-  ['杀', 'kill $target', 'warn'],
+  ['杀', 'kill $char', 'warn'],
   ['逃', 'wimpy 20', 'warn'], // we escape when < 20%
 ];
 
@@ -178,7 +178,7 @@ function parseExits(desc) {
 
 function parseRoom(str) {
   // when we move or look room, we reset target char & item
-  setCmdTarget('');
+  setCmdChar('');
   setCmdItem('');
   // when new room info comes, we remove old links
   //$('div#out1').find('a').contents().unwrap();
@@ -203,18 +203,37 @@ function parseChar(str) {
   setCmdItem('');
 
   var marks = str.split(CHAR_MARK);
-  for(var i=1; i<marks.length; i++) {
-    var desc = marks[i];
-    var targets = desc.match(/\([\w ]+\)/gi);
-    if(targets) {
-      var word = targets[0].replace('(','').replace(')','');
-      var id = word.toLowerCase();
-      setCmdTarget(id);
-      break;
-    }
+  if(marks.length < 2 ) return str;
+  var desc = marks[1];
+  var lines = desc.split('\n');
+  var name = lines.shift();
+  var targets = name.match(/\([\w ]+\)/gi);
+  if(targets) {
+    var word = targets[0].replace('(','').replace(')','');
+    var id = word.toLowerCase();
+    setCmdChar(id);
   }
+  return name + '\n' + addTargetLinks(lines.join('\n'), 'item');
+}
+
+function parseItem(str) {
+  // when we look at char, we reset targt item
+  setCmdItem('');
+
+  var marks = str.split(ITEM_MARK);
+  if(marks.length < 2 ) return str;
+  var desc = marks[1];
+  var lines = desc.split('\n');
+  var name = lines.shift();
   
-  return addTargetLinks(str, 'item');
+  var targets = name.match(/\([\w ]+\)/gi);
+  if(targets) {
+    var word = targets[0].replace('(','').replace(')','');
+    var id = word.toLowerCase();
+    setCmdItem(id);
+  }
+
+  return name + '\n' + addTargetLinks(lines.join('\n'), 'cmd');
 }
 
 function initModExplore(callback) {

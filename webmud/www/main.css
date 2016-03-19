@@ -60,7 +60,7 @@ div#out2 {
 }
 
 button#out2x {
-  width: 30px;
+  width: 50px;
   height: 30px;
   margin: 0px -8px -13px 0px;
   border-radius: 2px;
@@ -142,12 +142,6 @@ button {
   border: 2px solid gray;
   background-color: #111;
   color: white;
-}
-
-button.disable {
-  border: 1px solid black;
-  background-color: #222;
-  color: black;
 }
 
 button.menu, button.channel {
@@ -262,7 +256,7 @@ div#targetsleft{
 }
 div#targetsright{
   display: inline-block;
-  width: 20%;
+  width: 30%;
   text-align: right;
 }
 a#cmdtarget, a#cmditem, a#chatchannel {
@@ -279,6 +273,12 @@ a#cmdtarget, a#cmditem, a#chatchannel {
 }
 a#chatchannel {
   margin: 0px 5px 0px 0px;
+}
+
+button.disable {
+  border: 1px solid black;
+  background-color: #222;
+  color: black;
 }
 
 canvas#map {

@@ -42,9 +42,8 @@ int main(object me, string arg)
 
 	my = ob->query_entire_dbase();
 
-	line = sprintf( BOLD "%s" NOR "%s\n", RANK_D->query_rank(ob), ob->short(1) );
-	line += sprintf(" 你是一%s%s岁的%s%s，%s生。\n",
-		ob->query("unit"),
+	line = sprintf("▼ " BOLD "%s" NOR "%s\n", RANK_D->query_rank(ob), ob->short(1) );
+	line += sprintf(" %s岁%s%s，%s生。\n",
 		chinese_number(ob->query("age")), 
 		ob->query("gender"),
 		ob->query("race"),
@@ -111,15 +110,15 @@ int main(object me, string arg)
 	attack_points = COMBAT_D->skill_power(ob, skill_type, SKILL_USAGE_ATTACK);
 	parry_points = COMBAT_D->skill_power(ob, skill_type, SKILL_USAGE_DEFENSE);
 	dodge_points = COMBAT_D->skill_power(ob, "dodge", SKILL_USAGE_DEFENSE);
-
-	line += sprintf(" 战斗攻击力 " HIW "%d (+%d)" NOR "\t\t战斗防御力 " HIW "%d (+%d)\n" NOR,
+/*
+	line += " 食物：" + tribar_graph(my["food"], ob->max_food_capacity(), ob->max_food_capacity(), YEL) + "\n";
+	line += " 饮水：" + tribar_graph(my["water"], ob->max_water_capacity(), ob->max_water_capacity(), CYN) + "\n";
+*/
+	line += sprintf(" 攻击力 " HIW "%d (+%d)" NOR "\t\t防御力 " HIW "%d (+%d)\n" NOR,
 		attack_points/100 + 1, ob->query_temp("apply/damage"),
 		(dodge_points + (weapon? parry_points: (parry_points/10)))/100 + 1, ob->query_temp("apply/armor"));
 
-	line += " 食物：" + tribar_graph(my["food"], ob->max_food_capacity(), ob->max_food_capacity(), YEL) + "\n";
-	line += " 饮水：" + tribar_graph(my["water"], ob->max_water_capacity(), ob->max_water_capacity(), CYN) + "\n";
-
-	line += sprintf(" 你到目前为止总共杀了 %d 个人，其中有 %d 个是其他玩家。\n",
+	line += sprintf(" 总共杀过 %d 个人，其中有 %d 个是其他玩家。\n",
 		my["MKS"] + my["PKS"], my["PKS"]);
 
 	line += sprintf(" 杀    气： " RED "%d\t\t\t\t" NOR, ob->query("bellicosity") );

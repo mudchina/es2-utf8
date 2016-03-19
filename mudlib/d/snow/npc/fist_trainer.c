@@ -12,7 +12,7 @@ void create()
 	set("int", 14);
 	set("long",
 		"李火狮是个孔武有力的大块头，他正在训练他的弟子们习练「柳家拳\n"
-		"法」(liuh-ken)。\n" );
+		"法」。\n" );
 	set("combat_exp", 3000);
 	set("attitude", "heroism");
 

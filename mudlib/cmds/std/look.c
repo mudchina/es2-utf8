@@ -250,9 +250,9 @@ int look_room_item(object me, string arg)
 
 	if( mapp(item = env->query("item_desc")) && !undefinedp(item[arg]) ) {
 		if( stringp(item[arg]) )
-			write(item[arg]);
+			write("※ "+item[arg]);
 		else if( functionp(item[arg]) )
-			write((string)(*item[arg])(me));
+			write("※ "+(string)(*item[arg])(me));
 			
 		return 1;
 	}

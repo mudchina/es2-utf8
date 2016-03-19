@@ -83,9 +83,9 @@ string look_door(string dir)
 	if( !mapp(doors) || undefinedp(doors[dir]) )
 		return "你要看什麽？\n";
 	if( doors[dir]["status"] & DOOR_CLOSED )
-		return "这个" + doors[dir]["name"] + "是关著的。\n";
+		return "这个" + doors[dir]["name"] + "是关着的。你可以打开(open)它。\n";
 	else
-		return "这个" + doors[dir]["name"] + "是开著的。\n";
+		return "这个" + doors[dir]["name"] + "是开着的。你可以关上(close)它。\n";
 }
 
 varargs int open_door(string dir, int from_other_side)

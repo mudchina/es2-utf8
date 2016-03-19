@@ -19,16 +19,10 @@ LONG
 	set("objects", ([
  		"/d/snow/npc/annihir" : 1 ]) );
 
-
-
-
-
-
 	set("item_desc", ([
 		"sign": @TEXT
 这里是钱庄，目前我们提供的服务有：
-
-convert     兑换钱币。
+兑换(convert)钱币。
 
 TEXT
 	]) );

@@ -1,9 +1,10 @@
-var _cmdItem = '', _cmdTarget = '';
+var _cmdItem = '', _cmdChar = '';
 var _localCmds = {};
 
-var cmdLast = '';
-var cmdHistory = [];
-var cmdIndex = 0;
+var _allCmds = {};
+var _cmdLast = '';
+var _cmdHistory = [];
+var _cmdIndex = 0;
 
 // set cmd item, if already same, then count +1
 function setCmdItem(str) {
@@ -26,20 +27,49 @@ function setCmdItem(str) {
   } else {
     _cmdItem = str;
   }
+
   $('a#cmditem').text(_cmdItem || '物品/技能:');
+
+  // update macro key status
+  // console.log('setCmdItem', str);
+  var needCharItem = $('button.needCharItem');
+  var needItem = $('button.needItem');
+  var varargs = $('button.varargs');
+  if(_cmdChar && _cmdItem) {
+    needCharItem.removeClass('disable');
+    needItem.addClass('disable');
+  } else {
+    needCharItem.addClass('disable');
+    (_cmdItem) ? needItem.removeClass('disable') : needItem.addClass('disable');
+  }
+  varargs.removeClass('disable');
 }
 
 function getCmdItem() {
   return _cmdItem;
 }
 
-function setCmdTarget(str) {
-  _cmdTarget = str;
-  $('a#cmdtarget').text(_cmdTarget || '目标:');
+function setCmdChar(str) {
+  // console.log('setCmdChar', str);
+  _cmdChar = str;
+  $('a#cmdtarget').text(_cmdChar || '目标:');
+
+  // update macro key status
+  var needCharItem = $('button.needCharItem');
+  var needChar = $('button.needChar');
+  var varargs = $('button.varargs');
+  if(_cmdChar && _cmdItem) {
+    needCharItem.removeClass('disable');
+    needChar.addClass('disable');
+  } else {
+    needCharItem.addClass('disable');
+    (_cmdChar) ? needChar.removeClass('disable') : needChar.addClass('disable');
+  }
+  varargs.removeClass('disable');
 }
 
-function getCmdTarget() {
-  return _cmdTarget;
+function getCmdChar() {
+  return _cmdChar;
 }
 
 function addLocalCmd(cmd, func) {
@@ -69,6 +99,13 @@ function onTargetLink(e) {
     case 'item':
     case 'skill':
       setCmdItem(ob);
+      break;
+    case 'cmd':
+      if(_cmdItem) {
+        ob = ob + ' ' + _cmdItem;
+        setCmdItem('');
+      }
+      sendCmd(ob);
       break;
   }
 }
@@ -102,7 +139,7 @@ function addTargetLinks(str, type) {
   return str;
 }
 
-var ROOM_MARK = '▲ ', CHAR_MARK = '▼ ', ITEM_MARK = '◆ ';
+var ROOM_MARK = '▲ ', CHAR_MARK = '▼ ', ITEM_MARK = '◆ ', ITEM_DESC_MARK = '※ ';
 var TELNET_MARK = 'ﺢ탿퟿떿놿ﻉ';
 var INV_MARK = '带著下列这些东西', SKILLS_MARK = '目前所学过的技能';
 var LOGIN_MARK = '您的英文名字：', PASS_MARK = '请输入密码：';
@@ -120,21 +157,32 @@ function writeServerData(buf) {
     $('div#out2').html('');
     str = parseChar(str);
     return writeToScreen(str, 2);
+
   } else if(str.indexOf(ITEM_MARK) >= 0) {
     $('div#out2').html('');
-    str = addTargetLinks(str, 'item');
+    str = parseItem(str);
     return writeToScreen(str, 2);
+
+  } else if(str.indexOf(ITEM_DESC_MARK) >= 0) {
+    str = addTargetLinks(str, 'cmd');
+    return writeToScreen(str);
+
   } else if(str.indexOf(INV_MARK) >= 0) {
     $('div#out2').html('');
     str = addTargetLinks(str, 'look');
     return writeToScreen(str, 2);
+
   } else if(str.indexOf(SKILLS_MARK) >= 0) {
     $('div#out2').html('');
     str = addTargetLinks(str, 'skill');
     return writeToScreen(str, 2);
+
   } else if(str.indexOf(SMILEY_MARK) >= 0) str = parseSmiley(str);
   else if(str.indexOf(LOGIN_MARK) >= 0) askingLogin = true;
   else if(str.indexOf(PASS_MARK) >= 0) askingPass = true;
+  else if(str.indexOf('(y/n)') >= 0) {
+    sendCmd(confirm(str) ? 'y' : 'n');
+  }
 
   if(str) writeToScreen(str);
 }
@@ -145,7 +193,6 @@ function writeToScreen(str, which) {
     $('div#out1').hide();
     $('div#out2box').show();
     showMap(false);
-    console.log(which, str);
   }
 
   var lines = str.split('\r\n');
@@ -200,12 +247,12 @@ function connectServer() {
     $('div#out2box').hide();
     $('div#out1').show();
 
-    if(str.indexOf('$target')) str = str.replace('$target', getCmdTarget());
+    if(str.indexOf('$char')) str = str.replace('$char', getCmdChar());
     if(str.indexOf('$item')) str = str.replace('$item', getCmdItem());
     str = str.trim();
 
     // remember last command, we can repeat
-    cmdLast = str;
+    _cmdLast = str;
 
     // process cmds one by one
     var lines = str.split('\n');
@@ -231,7 +278,22 @@ function initKeys(cmds, div, callback) {
     var txt = pair[0];
     var macro = pair[1];
     var cls = pair[2];
-    $('<button>').text(txt).attr('id', id).attr('macro', macro).addClass('keys').addClass(cls).click(callback).appendTo(div);
+
+    var btn = $('<button>');
+    var needItem = (macro.indexOf('$item') >= 0);
+    var needChar = (macro.indexOf('$char') >= 0);
+    btn.text(txt).attr('id', id).attr('macro', macro).addClass('keys').click(callback).appendTo(div);
+    if(cls) {
+      if(cls.indexOf(',')>=0) {
+        var items = cls.split(',');
+        items.forEach(function(item){
+          btn.addClass(item.trim());
+        });
+      } else btn.addClass(cls);
+    }
+    if(needItem && needChar) btn.addClass('needCharItem');
+    else if(needItem) btn.addClass('needItem');
+    else if(needChar) btn.addClass('needChar');
   }
 }
 
@@ -301,11 +363,11 @@ function sendInput() {
   }
 
   // store cmd in history for re-use when press up / down arrow key
-  if(cmdHistory.length > 20) cmdHistory.unshift();
-  if(str && (str != cmdHistory[cmdHistory.length-1])) {
-    cmdHistory.push(str);
+  if(_cmdHistory.length > 20) _cmdHistory.unshift();
+  if(str && (str != _cmdHistory[_cmdHistory.length-1])) {
+    _cmdHistory.push(str);
   }
-  cmdIndex = cmdHistory.length;
+  _cmdIndex = _cmdHistory.length;
 
   if(sendCmd) {
     var c = getChatChannel();
@@ -320,19 +382,19 @@ function sendInput() {
 }
 
 function cmdHistoryUp() {
-  if(cmdIndex > 0) {
-    cmdIndex --;
-    if(cmdIndex < cmdHistory.length) {
-      var str = cmdHistory[cmdIndex];
+  if(_cmdIndex > 0) {
+    _cmdIndex --;
+    if(_cmdIndex < _cmdHistory.length) {
+      var str = _cmdHistory[_cmdIndex];
       $('input#str').val(str);
     }
   } else $('input#str').val('');
 }
 
 function cmdHistoryDown() {
-  if(cmdIndex < cmdHistory.length-1) {
-    cmdIndex ++;
-    var str = cmdHistory[cmdIndex];
+  if(_cmdIndex < _cmdHistory.length-1) {
+    _cmdIndex ++;
+    var str = _cmdHistory[_cmdIndex];
     $('input#str').val(str);
   } else $('input#str').val('');
 }
@@ -375,7 +437,7 @@ function initUI() {
     }
   });
   $('a#cmdtarget').click(function(e){
-    setCmdTarget('');
+    setCmdChar('');
   });
   $('a#cmditem').click(function(e){
     setCmdItem('');
@@ -405,15 +467,25 @@ function initUI() {
   $('button#out2x').click(function(e){
     $('div#out2box').hide();
     $('div#out1').show();
+    $('div#out2').html('');
+    setCmdChar('');
   });
 
   addLocalCmd('repeat', function(){
-    sendCmd(cmdLast);
+    sendCmd(_cmdLast);
   });
 
   initModExplore(onMacroKey);
   initModChat(onMacroKey);
   initModMap(onMacroKey);
+
+  // now we find all cmds from macro keys
+  var macroKeys = $('button.keys, button.go');
+  var n = macroKeys.length;
+  for(var i=0; i<n; i++) {
+    var macro = $(macroKeys[i]).attr('macro');
+    _allCmds[macro.split(' ')[0].trim()] = macro.trim();
+  }
 }
 
 function initModMap(callback){
@@ -440,6 +512,8 @@ $(document).ready(function(){
 
   setTimeout(function(){
     adjustLayout();
+    setCmdChar('');
+    setCmdItem('');
 
     setTimeout(function(){
       connectServer();

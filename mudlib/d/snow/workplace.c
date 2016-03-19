@@ -40,11 +40,10 @@ int do_work ()
 	me = this_player ();
 	
         if((int)me->query("gin")<30 || (int)me->query("sen")<30)
-                return notify_fail (
-			"你的精神太差了,现在不能工作.\n");
+                return notify_fail ("你的精神太差了,现在不能工作.\n");
 	
 	printf("
-你辛苦的工作终于结束了，可人也累的要死
+你辛苦的工作终于结束了，可人也累的要死。
 老板对你说：这是你的工钱。
 ");
 
@@ -59,6 +58,8 @@ int do_work ()
 		
 string look_sign ()
 {
-	return "\n现在正紧缺人手，急需雇佣一批短工来干活。
-		\nwork     开始工作。\n";
+	return "告示
+现在正紧缺人手，急需雇佣一批短工来干活。
+工作(work)一次，给工钱纹银一两。
+";
 }
