@@ -12,8 +12,8 @@ LONG
 	);
 	set("outdoors", "graveyard");
 	set("exits", ([ /* sizeof() == 1 */
-		"northwest" : __DIR__"grave1",
-]));
+    "northwest" : __DIR__"grave1",
+  ]));
 
 	setup();
 	replace_program(ROOM);

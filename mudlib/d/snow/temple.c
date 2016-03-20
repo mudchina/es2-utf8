@@ -12,8 +12,8 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
-		"south" : "/d/snow/eroad1",
-		"west" : "/d/snow/square",
+		"south" : __DIR__"eroad1",
+		"west" : __DIR__"square",
 	]));
 	set("no_fight", "1");
 	set("objects", ([ /* sizeof() == 2 */

@@ -12,11 +12,10 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 4 */
-  "west" : "/d/snow/sroad2",
-  "north" : "/d/snow/square",
-//  "south" : "/d/oldpine/npath1",
+  "west" : __DIR__"sroad2",
+  "north" : __DIR__"square",
   "south" : "/u/cloud/dragonhill/nroad",
-  "east" : "/d/snow/eroad1",
+  "east" : __DIR__"eroad1",
 ]));
 	set("outdoors", "snow");
 

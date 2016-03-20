@@ -12,13 +12,13 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 3 */
-  "west" : "/d/snow/sroad3",
-  "south" : "/d/snow/school",
-  "east" : "/d/snow/sroad1",
-]));
+  "west" : __DIR__"sroad3",
+  "south" : __DIR__"school",
+  "east" : __DIR__"sroad1",
+  ]));
 	set("objects", ([ /* sizeof() == 1 */
-  "/d/snow/npc/farmer" : 2,
-]));
+  __DIR__"npc/farmer" : 2,
+  ]));
 	set("outdoors", "snow");
 
 	setup();

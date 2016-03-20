@@ -51,8 +51,8 @@ int main(object me, string arg)
 
 	if( wizardp(me) || (int)ob->query("age") >= 18 ) {
 		line += sprintf(
-			" 膂力：[%s]  胆识：[%s]  悟性：[%s]  灵性：[%s]\n"
-			" 定力：[%s]  容貌：[%s]  根骨：[%s]  福缘：[%s]\n",
+			" 膂力:[%s] 胆识:[%s] 悟性:[%s] 灵性:[%s]\n"
+			" 定力:[%s] 容貌:[%s] 根骨:[%s] 福缘:[%s]\n",
 			display_attr(my["str"], ob->query_str()),
 			display_attr(my["cor"], ob->query_cor()),
 			display_attr(my["int"], ob->query_int()),
@@ -77,26 +77,25 @@ int main(object me, string arg)
 				line, my["family"]["master_name"] );
 	}
 
-	line += " <精>  " + tribar_graph(my["gin"], my["eff_gin"], my["max_gin"], GRN) + "\n";
-	line += " <气>  " + tribar_graph(my["kee"], my["eff_kee"], my["max_kee"], HIR) + "\n";
-	line += " <神>  " + tribar_graph(my["sen"], my["eff_sen"], my["max_sen"], HIB) + "\n";
-/*
-	line += sprintf(" 精： %s%4d/ %4d %s(%3d%%)" NOR "    灵力： %s%4d / %4d (+%d)\n" NOR,
+	//line += " <精>  " + tribar_graph(my["gin"], my["eff_gin"], my["max_gin"], GRN) + "\n";
+	//line += " <气>  " + tribar_graph(my["kee"], my["eff_kee"], my["max_kee"], HIR) + "\n";
+	//line += " <神>  " + tribar_graph(my["sen"], my["eff_sen"], my["max_sen"], HIB) + "\n";
+
+    line += sprintf(" 精：%s%4d/%4d %s(%3d%%)" NOR "  灵力：%s%4d/%4d (+%d)\n" NOR,
 		status_color(my["gin"], my["eff_gin"]),	my["gin"],	my["eff_gin"],
 		status_color(my["eff_gin"], my["max_gin"]),	my["eff_gin"] * 100 / my["max_gin"],
 		status_color(my["atman"], my["max_atman"]),	my["atman"], my["max_atman"],
 		my["atman_factor"] );
-	line += sprintf(" 气： %s%4d/ %4d %s(%3d%%)" NOR "    内力： %s%4d / %4d (+%d)\n" NOR,
+    line += sprintf(" 气：%s%4d/%4d %s(%3d%%)" NOR "  内力：%s%4d/%4d (+%d)\n" NOR,
 		status_color(my["kee"], my["eff_kee"]),	my["kee"], my["eff_kee"],
 		status_color(my["eff_kee"], my["max_kee"]),	my["eff_kee"] * 100 / my["max_kee"],
 		status_color(my["force"], my["max_force"]),	my["force"], my["max_force"],
 		my["force_factor"] );
-	line += sprintf(" 神： %s%4d/ %4d %s(%3d%%)" NOR "    法力： %s%4d / %4d (+%d)\n" NOR,
+    line += sprintf(" 神：%s%4d/%4d %s(%3d%%)" NOR "  法力：%s%4d/%4d (+%d)\n" NOR,
 		status_color(my["sen"], my["eff_sen"]),	my["sen"], my["eff_sen"],
 		status_color(my["eff_sen"], my["max_sen"]),	my["eff_sen"] * 100 / my["max_sen"],
 		status_color(my["mana"], my["max_mana"]), my["mana"], my["max_mana"],
 		my["mana_factor"] );
-*/
 
 /*
 	line += sprintf(" 食物：%d/%d，饮水：%d/%d\n\n",
@@ -114,18 +113,18 @@ int main(object me, string arg)
 	line += " 食物：" + tribar_graph(my["food"], ob->max_food_capacity(), ob->max_food_capacity(), YEL) + "\n";
 	line += " 饮水：" + tribar_graph(my["water"], ob->max_water_capacity(), ob->max_water_capacity(), CYN) + "\n";
 */
-	line += sprintf(" 攻击力 " HIW "%d (+%d)" NOR "\t\t防御力 " HIW "%d (+%d)\n" NOR,
+	line += sprintf(" 攻击力： " HIY "%d (+%d)" NOR "    防御力： " HIY "%d (+%d)\n" NOR,
 		attack_points/100 + 1, ob->query_temp("apply/damage"),
 		(dodge_points + (weapon? parry_points: (parry_points/10)))/100 + 1, ob->query_temp("apply/armor"));
 
 	line += sprintf(" 总共杀过 %d 个人，其中有 %d 个是其他玩家。\n",
 		my["MKS"] + my["PKS"], my["PKS"]);
 
-	line += sprintf(" 杀    气： " RED "%d\t\t\t\t" NOR, ob->query("bellicosity") );
+	line += sprintf(" 杀    气： " RED "%d    " NOR, ob->query("bellicosity") );
 	line += sprintf(" 潜    能： " HIY "%d (%d%%)\n" NOR,
 		(int)ob->query("potential") - (int)ob->query("learned_points"),
 		(1 + (int)ob->query("learned_points")) * 100 / (1 + (int)ob->query("potential")) );
-	line += sprintf(" 实战经验： " HIM "%d\t\t\t\t" NOR, ob->query("combat_exp") );
+	line += sprintf(" 实战经验： " HIM "%d    " NOR, ob->query("combat_exp") );
 	line += sprintf(" 综合评价： " HIC "%d\n\n" NOR, ob->query("score") );
 
 	write(line);

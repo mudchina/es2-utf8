@@ -1,7 +1,7 @@
 var mapdata = 
 {
-  "total": 1271,
-  "count": 557,
+  "total": 1270,
+  "count": 556,
   "domains": {
     "canyon": 27,
     "choyin": 62,
@@ -15,7 +15,6 @@ var mapdata =
     "oldpine": 41,
     "sanyen": 18,
     "snow": 38,
-    "social_guild": 1,
     "temple": 27,
     "village": 26,
     "waterfog": 28,
@@ -521,8 +520,7 @@ var mapdata =
       "short": "乔阴县城北门",
       "exits": {
         "west": "/u/cloud/sunhill/road1",
-        "south": "/d/choyin/n_street1",
-        "east": "/d/social_guild/gee/gee_room"
+        "south": "/d/choyin/n_street1"
       },
       "objects": {
         "/d/choyin/npc/cityguard": 2,
@@ -3676,7 +3674,7 @@ var mapdata =
       "short": "山路",
       "exits": {
         "south": "/d/oldpine/npath1",
-        "north": "/d/temple/sroad",
+        "east": "/d/temple/sroad",
         "west": "/d/snow/eroad2"
       }
     },
@@ -3992,13 +3990,6 @@ var mapdata =
         "west": "/d/snow/mstreet2"
       }
     },
-    "/d/social_guild/gee/gee_room": {
-      "type": "ROOM",
-      "short": "游侠同盟总堂",
-      "exits": {
-        "west": "/d/choyin/n_gate"
-      }
-    },
     "/d/temple/book_room1": {
       "type": "ROOM",
       "short": "经楼",
@@ -4209,7 +4200,7 @@ var mapdata =
       "short": "青石官道",
       "exits": {
         "eastup": "/d/temple/ladder5",
-        "south": "/d/snow/eroad3"
+        "west": "/d/snow/eroad3"
       }
     },
     "/d/temple/temple1": {

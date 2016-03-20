@@ -30,8 +30,8 @@ var DIR_XY = {
 };
 
 var domainPos = {
-  canyon: [-10,-2],
-  choyin: [12,-27],
+  canyon: [-11,-2],
+  choyin: [13,-27],
   chuenyu: [-18,1],
   city: [-18,-18],
   cloud: [8,-13],
@@ -41,14 +41,13 @@ var domainPos = {
   green: [11,15],
   ice: [16,0],
   latemoon: [-5,-25],
-  oldpine: [6,-3],
-  sanyen: [1,-17],
+  oldpine: [6,-5],
+  sanyen: [0,-17],
   snow: [0,5],
-  social_guild: [18,-19],
-  temple: [18,11],
+  temple: [19,12],
   village: [-21,-7],
-  waterfog: [-7,9],
-  wiz: [-3,7]
+  waterfog: [-8,9],
+  wiz: [-4,8]
 };
 
 function getDomain(key) {

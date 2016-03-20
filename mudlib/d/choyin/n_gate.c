@@ -16,7 +16,6 @@ LONG
 		// "north" : "/d/oldpine/spath4",
 		"west"  : "/u/cloud/sunhill/road1",
 		"south" : __DIR__"n_street1",
-	"east" : "/d/social_guild/gee/gee_room",
 	]));
 	set("objects", ([
 		__DIR__"npc/cityguard": 2,

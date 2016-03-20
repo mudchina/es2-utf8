@@ -88,7 +88,7 @@ int main(object me, string arg)
 	if( !mapp(lrn) ) lrn = ([]);
 	
 	for(i=0; i<sizeof(skl); i++) {
-		printf("%s%s%-40s" NOR " - %-10s %3d/%5d\n", 
+		printf("%s%s%-28s" NOR " - %s %d/%d\n",
 			(lrn[sname[i]] >= (skl[sname[i]]+1) * (skl[sname[i]]+1)) ? HIM : "",
 			(member_array(sname[i], mapped)==-1? "  ": "□"),
 			to_chinese(sname[i]) + " (" + sname[i] + ")",

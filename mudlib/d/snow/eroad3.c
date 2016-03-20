@@ -14,7 +14,7 @@ LONG
 	);
 	set("exits", ([ /* sizeof() == 3 */
   "south" : "/d/oldpine/npath1",
-  "north" : "/d/temple/sroad",
+  "east" : "/d/temple/sroad",
   "west" : __DIR__"eroad2",
 ]));
 	set("no_clean_up", 0);

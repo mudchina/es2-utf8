@@ -29,13 +29,13 @@ LONG
 	]) );
 	
 	set("exits", ([
-		"east"    	: "/d/snow/square",
-		"up"		: "/d/snow/inn_2f",
+		"east"  : __DIR__"square",
+		"up"		: __DIR__"inn_2f",
 		"northwest"	: "/d/wiz/entrance" ]) );
 
     set("objects", ([
-    "/d/snow/npc/traveller" : 2,
-    "/d/snow/npc/waiter" : 1,
+    __DIR__"npc/traveller" : 2,
+    __DIR__"npc/waiter" : 1,
     ]) );
 
 	create_door("northwest", "木门", "southeast", DOOR_CLOSED);

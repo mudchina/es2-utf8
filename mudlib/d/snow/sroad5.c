@@ -12,7 +12,7 @@ LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
   "west" : "/d/waterfog/sroad1",
-  "south" : "/d/snow/sroad4",
+  "south" : __DIR__"sroad4",
 ]));
 	set("outdoors", "snow");
 

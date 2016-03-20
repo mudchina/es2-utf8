@@ -13,11 +13,11 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 1 */
-  "east" : "/d/snow/mstreet1",
+  "east" : __DIR__"mstreet1",
 ]));
 
 	set("objects", ([
- 		"/d/snow/npc/annihir" : 1 ]) );
+ 		__DIR__"npc/annihir" : 1 ]) );
 
 	set("item_desc", ([
 		"sign": @TEXT

@@ -4,8 +4,9 @@
 .idea
 *.iml
 *.log
-*.o
 node_modules
+mudlib/data/user
+mudlib/data/login
 mudlib/log/log
 mudlib/log/USAGE
 mudlib/log/author_stats

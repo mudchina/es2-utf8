@@ -41,8 +41,8 @@ var EXPLORE_CMDS = [
 
   ['吃', 'eat $item', 'explore'],
   ['喝', 'drink $item', 'explore'],
-  ['穿', 'wear $item', 'fight'],
-  ['脱', 'remove $item', 'fight'],
+  ['问', 'ask $char', 'explore'],
+  ['偷', 'steal $item from $char', 'warn'],
   ['兑换', 'convert $item', 'explore'],
   ['状态', 'hp $char', 'status,varargs'],
 
@@ -53,10 +53,10 @@ var EXPLORE_CMDS = [
   ['投降', 'surrender', 'practice'],
   ['技能', 'skills $char', 'status,varargs'],
 
+  ['穿', 'wear $item', 'fight'],
+  ['脱', 'remove $item', 'fight'],
   ['装备', 'wield $item', 'fight'],
   ['放下', 'unwield $item', 'fight'],
-  ['偷', 'steal $item from $char', 'warn'],
-  ['保存', 'save', 'explore'],
   ['重复', 'repeat', 'explore'],
   ['成就', 'score $char', 'status,varargs'],
 ];
@@ -136,21 +136,29 @@ function parseNameAddr(desc) {
 }
 
 function parseExits(desc) {
+  var exitsmark = '';
   var p = desc.indexOf(EXITS_MARK);
-  if(p < 0) {
+  if(p >= 0) {
+    exitsmark = EXITS_MARK;
+  } else {
     p = desc.indexOf(EXITS_MASK2);
-    if(p < 0) return;
+    if(p >= 0) {
+      exitsmark = EXITS_MASK2;
+    } else {
+      return {};
+    }
   }
   p += EXITS_MARK.length;
   var p2 = desc.indexOf('。', p);
   if(p2 < 0) return;
 
   // extra open exits to array
-  var exits = desc.substr(p, p2-p)
-    .replace(ESC_1, '').replace(ESC_2, '').replace(/、/g, ',').replace('和', ',')
-    .split(',');
+  var exitstr = desc.substr(p, p2-p);
+  var exits = exitstr.replace(ESC_1, '').replace(ESC_2, '').replace(/、/g, ',').replace('和', ',').split(',');
+  var exitscn = [];
   for(var j=0; j<exits.length; j++) {
     exits[j] = exits[j].trim();
+    exitscn.push(ALL_DIRS[exits[j]][1]);
   }
 
   var openDirs = {};
@@ -174,6 +182,13 @@ function parseExits(desc) {
     var btn = $('button#'+k, domGo);
     if(!openDirs[k]) btn.attr('macro','').text('').addClass('disable');
   }
+
+  return {
+    mark: exitsmark,
+    str: exitstr,
+    en: exits,
+    zh: exitscn,
+  };
 }
 
 function parseRoom(str) {
@@ -184,15 +199,33 @@ function parseRoom(str) {
   //$('div#out1').find('a').contents().unwrap();
   $('div#out1').html('');
 
+  var exits = {};
   var marks = str.split(ROOM_MARK);
   if(marks.length >= 2) {
     var lines = marks[1].split('\n');
     parseNameAddr(lines.shift());
     str = lines.join('\n');
-    parseExits(str);
+    exits = parseExits(str);
   }
 
-  return addTargetLinks(str, 'look');
+  str = addTargetLinks(str, 'look');
+  str = str.replace(/    /g, '');
+
+  // replace the exits with cmd links
+  if(exits.str &&
+     Array.isArray(exits.en) &&
+     Array.isArray(exits.zh) &&
+     (exits.en.length === exits.zh.length)) {
+    var e = [];
+    for(var i=0; i<exits.en.length; i++) {
+      var id = exits.en[i];
+      var dirzh = exits.zh[i];
+      e.push(dirzh + '(<a class="target" href="#" type="cmd" ob="' + id + '">' + id + '</a>)');
+    }
+    str = str.replace(exits.mark+exits.str, exits.mark+e.join('、'));
+  }
+
+  return str;
 }
 
 // TODO: find NPC id,
@@ -233,7 +266,7 @@ function parseItem(str) {
     setCmdItem(id);
   }
 
-  return name + '\n' + addTargetLinks(lines.join('\n'), 'cmd');
+  return name + '\n' + addTargetLinks(lines.join('\n'), 'cmdv');
 }
 
 function initModExplore(callback) {

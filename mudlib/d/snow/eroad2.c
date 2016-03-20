@@ -11,8 +11,8 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
-  "east" : "/d/snow/eroad3",
-  "west" : "/d/snow/eroad1",
+  "east" : __DIR__"eroad3",
+  "west" : __DIR__"eroad1",
 ]));
 	set("outdoors", "snow");
 

@@ -23,7 +23,6 @@ void create()
 			0,
 			0,
 			0,
-			(: command, "hmm" :),
 			"虽然学问是无价的，不过如果你有心的话 ...",
 			"只要五两银子。",
 			}),
@@ -31,7 +30,6 @@ void create()
 		"刘安禄": ({
 			"哦 ... 你是说野羊山寨的二寨主，人称血手刘三的刘安禄吗？",
 			"他又出来做恶了？",
-			(: command, "hmm" :),
 			"你带我去见他，让我跟他说几句话。",
 			(: follow_player :),
 			})
@@ -65,8 +63,7 @@ int accept_object(object who, object ob)
 {
 	if( !who->query("marks/魏无极") ) {
 		if( ob->value() >= 500 ) {
-			say("魏无极点了点头，说道：很好，从今天起你随时可以来问我有关读书识字(literate)\n"
-				"                      的任何问题。\n");
+			say("魏无极点了点头，说道：很好，从今天起你随时可以来问我有关读书识字(literate)的任何问题。\n");
 			who->set("marks/魏无极", 1);
 			return 1;
 		} else {
@@ -74,8 +71,7 @@ int accept_object(object who, object ob)
 			return 0;
 		}
 	} else
-		say("魏无极点了点头，说道：哦，向你这么有心的学生还真是不多见，好好努力\n"
-			"                      将来必定前途无量，谢了。\n");
+		say("魏无极点了点头，说道：哦，向你这么有心的学生还真是不多见，好好努力将来必定前途无量，谢了。\n");
 	return 1;
 }
 

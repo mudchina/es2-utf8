@@ -24,24 +24,23 @@ void create()
 
 	setup();
 	add_money("coin", 50);
-        carry_object("/obj/cloth")->wear();
+  carry_object("/obj/cloth")->wear();
 //	for(int i=1; i<=100; i++){
-		carry_object("/u/cloud/obj/npc/chess_player/chess")->wield();
+	carry_object("/u/cloud/obj/npc/chess_player/chess")->wield();
 //	}
 }
 
 string	play_chess()
 {
-        command("say 要比试一盘？好啊！");
-	if(random(100)<50)
-	{
-		command("say 好棋技！佩服。无以为报，就给您两枚棋子防身吧！");
-		printf("%s", name(this_player()) );
-		command( "give chess to " + name(this_player()) );
-		return "0";
+  command("say 要比试一盘？好啊！");
+	if(random(100)<50) {
+	  write("你赢了。\n");
+		command( "give chess to " + this_player()->id() );
+		return "好棋技！佩服。无以为报，就给您两枚棋子防身吧！";
+	} else {
+	  write("你输了。\n");
+	  return "承让承让！";
 	}
-	else
-		command("say 承让承让！");
-	return "1";
+	return 0;
 }
 

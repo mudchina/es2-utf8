@@ -101,11 +101,21 @@ function onTargetLink(e) {
       setCmdItem(ob);
       break;
     case 'cmd':
+      sendCmd(ob);
+      break;
+    case 'cmdv':
       if(_cmdItem) {
-        ob = ob + ' ' + _cmdItem;
+        var relook = ['open','close'].indexOf(ob) >= 0;
+        ob += ' ' + _cmdItem;
         setCmdItem('');
+        if(relook) ob += '\nl';
       }
       sendCmd(ob);
+      break;
+    case 'ask':
+      if(_cmdChar) {
+        sendCmd('ask ' + _cmdChar + ' about ' + ob);
+      }
       break;
   }
 }
@@ -132,8 +142,23 @@ function addTargetLinks(str, type) {
       var quote_word = targets[i];
       var word = quote_word.replace('(','').replace(')','');
       var id = word.toLowerCase();
-      var link_word = '(<a class="target" href="#" type="' + type + '" ob="' + id + '">' + word + '</a>)';
+      var link_word = '(<a class="target" href="#" type="' + type + '" ob="' + id + '">' + word.toLowerCase() + '</a>)';
       str = str.replace(new RegExp('\\(' + word + '\\)', 'gi'), link_word);
+    }
+  }
+  return str;
+}
+
+function addTopicLinks(str, type) {
+  if(!type) type = 'ask';
+  var targets = str.match(/『[^x00-xFF^※]+』/gi);
+  if(targets) {
+    targets = _.unique(targets);
+    for(var i=0; i<targets.length; i++) {
+      var quote_word = targets[i];
+      var word = quote_word.replace('『','').replace('』','');
+      var link_word = '『<a class="target" href="#" type="' + type + '" ob="' + word + '">' + word + '</a>』';
+      str = str.replace(new RegExp('『' + word + '』', 'gi'), link_word);
     }
   }
   return str;
@@ -141,7 +166,7 @@ function addTargetLinks(str, type) {
 
 var ROOM_MARK = '▲ ', CHAR_MARK = '▼ ', ITEM_MARK = '◆ ', ITEM_DESC_MARK = '※ ';
 var TELNET_MARK = 'ﺢ탿퟿떿놿ﻉ';
-var INV_MARK = '带著下列这些东西', SKILLS_MARK = '目前所学过的技能';
+var INV_MARK = '带著下列这些东西', SKILLS_MARK = '目前所学过的技能', ASK_MARK = '你可以打听这些事情';
 var LOGIN_MARK = '您的英文名字：', PASS_MARK = '请输入密码：';
 var SMILEY_MARK = '：/';
 var askingLogin = false, askingPass = false, autologin = false;
@@ -164,12 +189,16 @@ function writeServerData(buf) {
     return writeToScreen(str, 2);
 
   } else if(str.indexOf(ITEM_DESC_MARK) >= 0) {
-    str = addTargetLinks(str, 'cmd');
+    str = addTargetLinks(str, 'cmdv');
     return writeToScreen(str);
 
   } else if(str.indexOf(INV_MARK) >= 0) {
     $('div#out2').html('');
     str = addTargetLinks(str, 'look');
+    return writeToScreen(str, 2);
+
+  } else if(str.indexOf(ASK_MARK) >= 0) {
+    str = addTopicLinks(str, 'ask');
     return writeToScreen(str, 2);
 
   } else if(str.indexOf(SKILLS_MARK) >= 0) {
@@ -195,9 +224,9 @@ function writeToScreen(str, which) {
     showMap(false);
   }
 
-  var lines = str.split('\r\n');
+  var lines = str.split('\n');
   for(var i=0; i<lines.length; i++) {
-    var line = lines[i].replace(/\s\s/g, '&nbsp;');
+    var line = lines[i];//.replace(/\s\s/g, '&nbsp;');
     // replace the prompt '> ' with a empty line
     var len = line.length;
     if(len>=2 && line.substr(len-2) == '> ') line = line.substr(0, line-2);
@@ -218,7 +247,10 @@ function writeToScreen(str, which) {
     if(autologin) {
       var p = localStorage.getItem('password');
       if(sendCmd && p) sendCmd(p);
-      $('button#explore').click();
+      
+      showPad('explore');
+      showMap(false);
+      showScene(true);
     }
   }
 }
@@ -404,7 +436,7 @@ function showMap(y) {
   var expkeys = $('div#expkeys');
   var out1 = $('div#out1');
   var out2 = $('div#out2box');
-  if(y === 0) {
+  if(typeof y !== 'boolean') {
     y = ! map.is(':visible');
   }
   if(y) {
@@ -415,6 +447,21 @@ function showMap(y) {
   } else {
     map.hide();
     expkeys.show();
+  }
+}
+
+function showScene(y) {
+  var out1 = $('div#out1');
+  var out2 = $('div#out2box');
+  if(typeof y !== 'boolean') {
+    y = ! out1.is(':visible');
+  }
+  if(y) {
+    out1.show();
+    out2.hide();
+  } else {
+    out1.hide();
+    out2.show();
   }
 }
 
@@ -430,9 +477,10 @@ function initUI() {
     switch(menu) {
     case 'explore':
       showMap(false);
+      showScene();
       break;
     case 'map':
-      showMap(true);
+      showMap();
       break;
     }
   });

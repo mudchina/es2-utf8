@@ -13,7 +13,7 @@ LONG
 	);
 	set("exits", ([ /* sizeof() == 2 */
      "eastup" : __DIR__"ladder5",
-     "south"   : "/d/snow/eroad3",
+     "west"   : "/d/snow/eroad3",
 ]));
 	set("outdoors", "temple");
 

@@ -55,8 +55,7 @@ string get_vendor_list(string arg)
 int do_vendor_list(string arg)
 {
     string list;
-
-    get_vendor_list(arg);
-    write(list);
+    list = get_vendor_list(arg);
+    if(list && stringp(list)) write(list);
     return 1;
 }
