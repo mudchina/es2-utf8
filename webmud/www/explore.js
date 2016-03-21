@@ -25,8 +25,8 @@ var ALL_DIRS = {
   'southwest': ['sw', '西南'],
   'up': ['up', '上'],
   'down': ['d', '下'],
-  'out': ['up', '外'],
-  'enter': ['d', '里'],
+  'out': ['up', '出去'],
+  'enter': ['d', '进去'],
 };
 
 var SHORT_DIRS = ['n','s','e','w','nw','sw','ne','se','up','d'];
@@ -37,14 +37,14 @@ var EXPLORE_CMDS = [
   ['给', 'give $item to $char', 'explore'],
   ['丢', 'drop $item', 'explore'],
   ['买', 'buy $item from $char', 'explore'],
-  ['物品', 'i $char', 'status,varargs'],
+  ['物品', 'i', 'status,varargs'],
 
   ['吃', 'eat $item', 'explore'],
   ['喝', 'drink $item', 'explore'],
   ['问', 'ask $char', 'explore'],
   ['偷', 'steal $item from $char', 'warn'],
   ['兑换', 'convert $item', 'explore'],
-  ['状态', 'hp $char', 'status,varargs'],
+  ['状态', 'hp', 'status,varargs'],
 
   ['跟随', 'follow $char', 'practice'],
   ['组队', 'team with $char', 'practice'],
