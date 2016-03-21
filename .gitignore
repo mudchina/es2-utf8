@@ -4,6 +4,7 @@
 .idea
 *.iml
 *.log
+*.pid
 node_modules
 mudlib/data/user
 mudlib/data/login

@@ -569,7 +569,7 @@ $(document).ready(function(){
   initUI();
   setCmdChar('');
   setCmdItem('');
-  $('div#roomname').text('新 东 方 故 事 Ⅱ');
+  $('div#roomname').text('天 朝 帝 国');
   setTimeout(function(){
     connectServer();
   }, 2000);
