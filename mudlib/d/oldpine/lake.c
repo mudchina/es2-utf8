@@ -13,11 +13,11 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 1 */
-  "north" : "/d/oldpine/riverbank1",
-]));
+  "north" : __DIR__"riverbank1",
+  ]));
 	set("objects", ([ /* sizeof() == 1 */
-  "/d/oldpine/npc/serpent" : 5,
-]));
+    __DIR__"npc/serpent" : 5,
+  ]));
 	set("resource/water", 1);
 	setup();
 	replace_program(ROOM);

@@ -13,7 +13,7 @@ void create()
 LONG
 	);
 	set("exits", ([ /* sizeof() == 3 */
-  "south" : "/d/oldpine/npath1",
+  "southeast" : "/d/oldpine/npath1",
   "east" : "/d/temple/sroad",
   "west" : __DIR__"eroad2",
 ]));

@@ -8,8 +8,8 @@ string look_sign(object me);
 
 void create()
 {
-        set("short", "绮云镇");
-        set("long", @LONG
+  set("short", "绮云镇");
+  set("long", @LONG
 这里是绮云镇的入口。绮云镇是坐落在泓水北岸的一个大镇, 以其商业
 发达和盛产茶叶而为来往客商们所青睐。北边过了卧龙岗就是著名的
 封山剑派北宗所在的雪亭镇; 镇南有个渡口, 过了江就是少林的支脉 
@@ -18,23 +18,26 @@ void create()
 LONG
         );
 
-        set("item_desc", ([
-                "sign": (: look_sign :)
-        ]) );
+  set("item_desc", ([
+    "sign": (: look_sign :)
+  ]) );
 
-        set("exits", ([ /* sizeof() == 2 */
-		  "northwest" : __DIR__"dragonhill/sroad",
-		  "south" : __DIR__"nwroad1",
+  set("exits", ([ /* sizeof() == 2 */
+    "northwest" : __DIR__"dragonhill/sroad",
+    "south" : __DIR__"nwroad1",
 	]));
 
- //       set("outdoors", "cloud");
+  set("outdoors", "cloud");
 
-        setup();
+  setup();
 //        replace_program(ROOM);
 }
 
 string look_sign(object me)
 {
-        return "公告上写着:[启事] 由此入镇收取黄金一两\n";
+  return "公告上写着:
+       [启事] 
+由此入镇收取黄金一两
+";
 }
 

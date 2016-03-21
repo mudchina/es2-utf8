@@ -4,7 +4,7 @@ inherit ROOM;
 
 void create()
 {
-    set("short", "练功\房");
+    set("short", "练功房");
 	set("long", @LONG
 你正站在一间宽阔的大房间里, 这里是茅山派弟子打坐练功的地
 方, 空气中弥漫著一股股汗臭味。四周的墙壁上画著一幅幅经脉穴道

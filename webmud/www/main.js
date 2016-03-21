@@ -263,7 +263,17 @@ function connectServer() {
     writeServerData(buf);
   });
   sock.on('status', function(str){
-    writeToScreen(str);
+    console.log(str);
+    if(str.indexOf('disconnected')>=0) {
+      alert('服务器连接已断开。');
+    } else if(str.indexOf('connected')>=0) {
+      if(confirm('前方是虚幻的武侠世界。\n\n即将开始冒险之旅，准备好了吗？')) {
+        $('div#in').show();
+        adjustLayout();
+      } else {
+        sock.disconnect();
+      }
+    }
   });
   sock.on('connected', function(){
     console.log('connected');
@@ -557,15 +567,10 @@ function initModMap(callback){
 
 $(document).ready(function(){
   initUI();
+  setCmdChar('');
+  setCmdItem('');
   $('div#roomname').text('新 东 方 故 事 Ⅱ');
-
   setTimeout(function(){
-    adjustLayout();
-    setCmdChar('');
-    setCmdItem('');
-
-    setTimeout(function(){
-      connectServer();
-    }, 200);
-  }, 100)
+    connectServer();
+  }, 2000);
 });

@@ -30,22 +30,22 @@ var DIR_XY = {
 };
 
 var domainPos = {
-  canyon: [-11,-2],
-  choyin: [13,-27],
-  chuenyu: [-18,1],
+  canyon: [-11,-1],
+  choyin: [13,-25],
+  chuenyu: [-18,2],
   city: [-18,-18],
-  cloud: [8,-13],
-  death: [-18,10],
+  cloud: [8,-11],
+  death: [-18,12],
   goathill: [4,19],
-  graveyard: [15,-3],
+  graveyard: [-8,20],
   green: [11,15],
   ice: [16,0],
-  latemoon: [-5,-25],
-  oldpine: [6,-5],
-  sanyen: [0,-17],
+  latemoon: [-5,-23],
+  oldpine: [14,-5],
+  sanyen: [0,-15],
   snow: [0,5],
   temple: [19,12],
-  village: [-21,-7],
+  village: [-21,-6],
   waterfog: [-8,9],
   wiz: [-4,8]
 };
