@@ -43,7 +43,6 @@ int main(object me, string arg)
     if( mapp(inq = ob->query("inquiry")) ) {
       id = keys(inq);
       msg = "你可以打听这些事情：\n";
-      msg += sprintf("※『这里』\n※『名字』\n※『传闻』\n" );
       for(i=0; i<sizeof(id); i++) {
         msg += sprintf("※『%s』\n", id[i] );
       }

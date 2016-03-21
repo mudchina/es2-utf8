@@ -17,9 +17,9 @@ LONG
   "east" : __DIR__"inneryard",
 ]));
 	set("objects", ([
-		CLASS_D("swordsman") + "/master":1 ]) );
+		"/daemon/class/swordsman/master":1 ]) );
 	set("valid_startroom", 1);
 	setup();
 	replace_program(ROOM);
-	"obj/board/swordsman_b"->foo();
+	//"obj/board/swordsman_b"->foo();
 }
