@@ -198,6 +198,7 @@ function writeServerData(buf) {
     return writeToScreen(str, 2);
 
   } else if(str.indexOf(ASK_MARK) >= 0) {
+    $('div#out2').html('');
     str = addTopicLinks(str, 'ask');
     return writeToScreen(str, 2);
 
