@@ -265,7 +265,7 @@ function connectServer() {
   sock.on('status', function(str){
     console.log(str);
     if(str.indexOf('disconnected')>=0) {
-      alert('服务器连接已断开。');
+      writeToScreen('服务器连接已断开。');
     } else if(str.indexOf('connected')>=0) {
       if(confirm('前方是虚幻的武侠世界。\n\n即将开始冒险之旅，准备好了吗？')) {
         $('div#in').show();
